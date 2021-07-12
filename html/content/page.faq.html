@@ -265,6 +265,23 @@
     <td id="answer_10" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
+          If the glycan composition is known, users can utilize the GlyGen <a href="https://www.glygen.org/glycan_search.html#composition_search"> composition search </a> to search for a glycan within the GlyGen set which captures ~30% of the entire GlyTouCan collection. 
+          To search for a GlyTouCan accession against the entire GlyTouCan , use the <a href="https://glycosmos.gitlab.io/compo2wurcsui/"> compo2wurcs tool </a> developed by <a href="https://glycosmos.org/"> GlyCosmos </a>. 		  
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>3.</td>
+    <td id="question_11" class="faqquestion">
+      How do I find a GlyTouCan accession for my glycan structure?
+    </td>
+  </tr>
+  <tr>
+    <td id="answer_11" class="faqanswer" colspan="2">
+      <ul class=faqanswer>
+        <li class=faqanswer>
           You can use one of the following ways to get a GlyTouCan accession:
           <ul class=faqanswer>
             <li class=faqanswer>
@@ -335,13 +352,41 @@
   </tr>
 
   <tr>
-    <td>3.</td>
-    <td id="question_11" class="faqquestion">
+    <td>4.</td>
+    <td id="question_12" class="faqquestion">
+      How can I convert my glycan sequence to different formats (e.g IUPAC, WURCS, GlycoCT, LinearCode, etc.)?
+    </td>
+  </tr>
+  <tr>
+    <td id="answer_12" class="faqanswer" colspan="2">
+      <ul class=faqanswer>
+        <li class=faqanswer>
+          <b>GlycanFormatConverter </b>(PMID:<a href="https://pubmed.ncbi.nlm.nih.gov/30535258">30535258</a>) allows users to convert glycan sequences from different import formats (such as IUPAC-Condensed, IUPAC-Extended, GlycoCT, KCF, LinearCode, WURCS) to the desired export formats (such as IUPAC-Short,IUPAC-Condensed,IUPAC-Extended,GlycoCT,WURCS,GlycanWeb). 
+        </li>
+		<li class=faqanswer>
+          Please see the below example (IUPAC-extended to WURCS) for step-by-step instructions on using the tool or click <a href=" https://github.com/glycoinfo/GlycanFormatConverter">here</a> to visit the <b>GlycanFormatConverter</b> GitHub repository. 
+        </li>
+		<li class=faqanswer>
+          Go to GlycanFormatConverter <a href="https://test.api.gfc.glycosmos.org/swagger-ui.html#!/converter-controller">Swagger</a> and select <b>iupacextended2wurcs</b>
+        </li>
+        <li class=faqanswer>
+          In the <b>import</b> field add your IUPAC string and specify <b>"txt"/"json"</b> in the format field.
+        </li>
+		<li class=faqanswer>
+          Once you select <b>Try it out</b>, you can see the WURCS string under <b>Response Body</b>.
+        </li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>5.</td>
+    <td id="question_13" class="faqquestion">
       How can I search all the glycans present on my protein?
     </td>
   </tr>
   <tr>
-    <td id="answer_11" class="faqanswer" colspan="2">
+    <td id="answer_13" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           Go to the <b>EXPLORE</b> tab on the GlyGen home page and select
@@ -360,12 +405,12 @@
 
   <tr>
     <td>1.</td>
-    <td id="question_13" class="faqquestion">
+    <td id="question_14" class="faqquestion">
       Does GlyGen have a tutorial on how to use the site?
     </td>
   </tr>
   <tr>
-    <td id="answer_13" class="faqanswer" colspan="2">
+    <td id="answer_14" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           Tutorials for specific searches can be accessed through the <b>EXPLORE</b> tab on GlyGen home page.
@@ -376,12 +421,12 @@
 
   <tr>
     <td>2.</td>
-    <td id="question_14" class="faqquestion">
+    <td id="question_15" class="faqquestion">
       What are the different resources integrated into GlyGen?
     </td>
   </tr>
   <tr>
-    <td id="answer_14" class="faqanswer" colspan="2">
+    <td id="answer_15" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           Click
@@ -394,12 +439,12 @@
 
   <tr>
     <td>3.</td>
-    <td id="question_15" class="faqquestion">
+    <td id="question_16" class="faqquestion">
       What licence does GlyGen use?
     </td>
   </tr>
   <tr>
-    <td id="answer_15" class="faqanswer" colspan="2">
+    <td id="answer_16" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           GlyGen’s data is licensed under CC BY 4.0. You are free to share (copy
@@ -426,12 +471,12 @@
 
   <tr>
     <td>4.</td>
-    <td id="question_16" class="faqquestion">
+    <td id="question_17" class="faqquestion">
       What is GlyGen’s policy regarding copyright and database distribution?
     </td>
   </tr>
   <tr>
-    <td id="answer_16" class="faqanswer" colspan="2">
+    <td id="answer_17" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           You must give appropriate credit to GlyGen (by referring to GlyGen for
@@ -457,12 +502,12 @@
 
   <tr>
     <td>5.</td>
-    <td id="question_17" class="faqquestion">
+    <td id="question_18" class="faqquestion">
       How can I access the GlyGen Data?
     </td>
   </tr>
   <tr>
-    <td id="answer_17" class="faqanswer" colspan="2">
+    <td id="answer_18" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           GlyGen data can be accessed through the <b>DATA</b> tab on the GlyGen
@@ -479,12 +524,12 @@
 
   <tr>
     <td>6.</td>
-    <td id="question_18" class="faqquestion">
+    <td id="question_19" class="faqquestion">
       How can I download GlyGen data?
     </td>
   </tr>
   <tr>
-    <td id="answer_18" class="faqanswer" colspan="2">
+    <td id="answer_19" class="faqanswer" colspan="2">
       <a name="data_download"></a>
       <ul class=faqanswer>
         <li class=faqanswer>
@@ -543,12 +588,12 @@
 
   <tr>
     <td>7.</td>
-    <td id="question_19" class="faqquestion">
+    <td id="question_20" class="faqquestion">
       What is a GlyGen data object?
     </td>
   </tr>
   <tr>
-    <td id="answer_19" class="faqanswer" colspan="2">
+    <td id="answer_20" class="faqanswer" colspan="2">
       <a name="data_object"></a>
       <ul class=faqanswer>
         <li class=faqanswer>
@@ -576,12 +621,12 @@
 
   <tr>
     <td>8.</td>
-    <td id="question_20" class="faqquestion">
+    <td id="question_21" class="faqquestion">
       What is the format of the readme files? / How to read them?
     </td>
   </tr>
   <tr>
-    <td id="answer_20" class="faqanswer" colspan="2">
+    <td id="answer_21" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           All readme files follow the BioCompute specifications. Technical
@@ -596,24 +641,24 @@
 
   <tr>
     <td>9.</td>
-    <td id="question_21" class="faqquestion">
+    <td id="question_22" class="faqquestion">
       How is data integrated into GlyGen?
     </td>
   </tr>
   <tr>
-    <td id="answer_21" class="faqanswer" colspan="2">
+    <td id="answer_22" class="faqanswer" colspan="2">
         <br><br><img src="/content/general_faq21.png" width=70%/>
     </td>
   </tr>
 
   <tr>
     <td>10.</td>
-    <td id="question_22" class="faqquestion">
+    <td id="question_23" class="faqquestion">
       How can I submit my data?
     </td>
   </tr>
   <tr>
-    <td id="answer_22" class="faqanswer" colspan="2">
+    <td id="answer_23" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           Please use our Contact <a href="https://www.glygen.org/contact.html">page</a> to submit your data to GlyGen.
@@ -624,13 +669,13 @@
 
   <tr>
     <td>11.</td>
-    <td id="question_23" class="faqquestion">
+    <td id="question_24" class="faqquestion">
       <a name="version_updates"></a>
       How often is the GlyGen data updated?
     </td>
   </tr>
   <tr>
-    <td id="answer_23" class="faqanswer" colspan="2">
+    <td id="answer_24" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           GlyGen data is released every six months during March-April and
@@ -646,12 +691,12 @@
 
   <tr>
     <td>12.</td>
-    <td id="question_24" class="faqquestion">
+    <td id="question_25" class="faqquestion">
       How can I access the previous versions of the data?
     </td>
   </tr>
   <tr>
-    <td id="answer_24" class="faqanswer" colspan="2">
+    <td id="answer_25" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>Go to the <b>DATA</b> tab on the GlyGen home page.</li>
         <li class=faqanswer>Click <b>view details</b> on the desired data object.</li>
@@ -665,13 +710,13 @@
 
   <tr>
     <td>13.</td>
-    <td id="question_25" class="faqquestion">
+    <td id="question_26" class="faqquestion">
       I am not able to retrieve any information for my UniProt Accession or
       GlyTouCan Accession?
     </td>
   </tr>
   <tr>
-    <td id="answer_25" class="faqanswer" colspan="2">
+    <td id="answer_26" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           Go to General FAQ 14 for more information.
@@ -682,13 +727,13 @@
 
   <tr>
     <td>14.</td>
-    <td id="question_26" class="faqquestion">
+    <td id="question_27" class="faqquestion">
       <a name="UniProt/GCT_accessions"></a>
       Which UniProtKB and GlyTouCan accessions are included in GlyGen?
     </td>
   </tr>
   <tr>
-    <td id="answer_26" class="faqanswer" colspan="2">
+    <td id="answer_27" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           GlyGen maintains a strict protein (UniProtKB) and glycan (GlyTouCan)
@@ -733,13 +778,13 @@
 
   <tr>
     <td>15.</td>
-    <td id="question_27" class="faqquestion">
+    <td id="question_28" class="faqquestion">
       The reference or the source database reflects different data than what is
       represented in the GlyGen pages for the same annotation?
     </td>
   </tr>
   <tr>
-    <td id="answer_27" class="faqanswer" colspan="2">
+    <td id="answer_28" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           The data in GlyGen is downloaded on a specific date (“freeze date”)
@@ -757,12 +802,12 @@
 
   <tr>
     <td>16.</td>
-    <td id="question_28" class="faqquestion">
+    <td id="question_29" class="faqquestion">
       Does GlyGen filter out publication information on the Protein detail page?
     </td>
   </tr>
   <tr>
-    <td id="answer_28" class="faqanswer" colspan="2">
+    <td id="answer_29" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           Yes, GlyGen filters out some publications of large scale studies that
@@ -775,12 +820,12 @@
 
   <tr>
     <td>17.</td>
-    <td id="question_29" class="faqquestion">
+    <td id="question_30" class="faqquestion">
       What is ECO or eco_id (eco_identifier)?
     </td>
   </tr>
   <tr>
-    <td id="answer_29" class="faqanswer" colspan="2">
+    <td id="answer_30" class="faqanswer" colspan="2">
       <ul class=faqanswer>
         <li class=faqanswer>
           The Evidence & Conclusion Ontology (ECO) is a controlled vocabulary

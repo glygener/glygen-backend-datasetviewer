@@ -59,15 +59,19 @@ def main():
             elif config_json["server"] in ["beta"]:
                 url = "https://%s-%s.glygen.org/" % (config_json["server"], domain);
             elif config_json["server"] in ["prd"]:
-                url = "https://%s.glygen.org/" % (domain, config_json["server"]);
+                url = "https://%s.glygen.org/" % (domain);
             domain_dict[domain] = url
         
         domain_dict["portal"] = "https://%s.glygen.org/" % (config_json["server"])
         if config_json["server"] in ["prd"]:
             domain_dict["portal"] = "https://glygen.org/"
 
-        out_json = {"moduleversion":versions, "domains":domain_dict, 
-                        "bcoprefix":bco_prefix, "dsprefix":ds_prefix, "taskstatus":1};
+        out_json = {
+            "moduleversion":versions, "domains":domain_dict, 
+            "bcoprefix":bco_prefix, "dsprefix":ds_prefix, 
+            "pagelinks":custom_config_json["pagelinks"],    
+            "taskstatus":1
+        }
     except Exception, e:
         out_json = {"taskstatus":0, "errormsg":"query failed!"}
 

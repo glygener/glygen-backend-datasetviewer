@@ -1,10 +1,14 @@
 {
-	"server":"tst"
-	,"module":"datasetviewer"
-	,"title":"Dataset Collection"
-	,"project":"glygen"
-        ,"moduleversion":"1.5.1"
-        ,"datarelease":"1.5.8"
+    "server":"beta"
+    ,"module":"datasetviewer"
+    ,"title":"Dataset Collection"
+    ,"project":"glygen"
+    ,"moduleversion":"1.7.1"
+    ,"datarelease":"1.7.8"
+    ,"qcdict":{
+        "format_sanity":"checks if the number of values in a record are the same as the number of fields or headers"
+        ,"xx":""
+    }
 }
 
 

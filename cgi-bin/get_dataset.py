@@ -18,7 +18,7 @@ from bson import json_util, ObjectId
 import json
 import util
 import cgi
-
+import gzip
 
 import pymongo
 from pymongo import MongoClient
@@ -28,6 +28,26 @@ from pymongo import MongoClient
 __version__="1.0"
 __status__ = "Dev"
 
+def get_top_lines(in_file):
+
+    buffer = ""
+    FR = gzip.open(in_file, 'rb') if in_file[-3:] == ".gz" else open(in_file, 'r')
+    l_count = 0 
+    for line in FR: 
+        l_count += 1
+        buffer += line
+        if l_count == 1000:
+            break
+    FR.close()
+    return buffer
+
+
+def check_bco_existence(bco_id, rel):
+    
+    query_obj = {"bco_id":bco_id}
+    bco_collection = "c_bco_v-" + rel
+    doc = dbh[bco_collection].find_one(query_obj)
+    return  doc != None
 
 
 ##############################
@@ -48,32 +68,42 @@ def get_preview(doc, path_obj, obj_ver):
 
     out_json["info"]["filename"] = file_name
     out_json["info"]["filetype"] = file_type
+    out_json["info"]["rndrtype"] = "html"
     out_json["info"]["objid"] = doc["bco_id"].split("/")[-1].split(".")[0]
     out_json["info"]["filestatus"] = False               
     out_json["txtbuffer"] = ""
 
+
+    rel_data_path = data_path + "/%s/" % (selected_release)
+    rel_data_root = data_root + "/%s/" % (selected_release)
+
+    rel_file = data_path + "/%s/releaseinfo/all_history.json" % (current_release)
+
+    rel_json = json.loads(open(rel_file, "r").read())
+    id_list = rel_json.keys()
+    rel_date_dict = {}
+    for bco_id in id_list:
+        new_bco_id = bco_id.replace("DSBCO_", "GLY_")
+        rel_json[new_bco_id] = rel_json[bco_id]
+        for rel in rel_json[bco_id]:
+            rel_date_dict[rel] = rel_json[bco_id][rel]["releasedate"]
+        
+    bco_id = doc["bco_id"].split("/")[-1]
+    out_json["versions"] = []
+    out_json["selectedversion"] = selected_release
+    r_list = [current_release.split("-")[-1]]
+    if bco_id in rel_json:
+        r_list = sorted(rel_json[bco_id], reverse=True)
+
+    for rel in r_list:
+        rel_date = rel_date_dict[rel]
+        bco_exists = check_bco_existence(doc["bco_id"], rel)
+        if bco_exists == True:
+            out_json["versions"].append("v-" + rel + " " + rel_date)
+
+
     
-    cmd = "cat " + path_obj["htmlpath"] + "/ln2wwwdata/reviewed/release-notes.txt"
-    release_info = commands.getoutput(cmd).strip()
-    current_version = release_info.split(" ")[0]
-    out_json["versions"] = [release_info]
-    out_json["selectedversion"] = obj_ver if obj_ver != None else current_version
-
-    file_list = glob.glob(path_obj["htmlpath"] + "/ln2wwwdata/reviewed/v-*/release-notes.txt")
-    for rel_file in file_list:
-        if os.path.exists(rel_file):
-            cmd = "cat " + rel_file
-            release_info = commands.getoutput(cmd).strip()
-            ver = release_info.split(" ")[0]
-            file_path = path_obj["htmlpath"] + "/ln2wwwdata/reviewed/%s/%s" % (ver,out_json["info"]["filename"])
-            if os.path.isfile(file_path) == True:
-                out_json["versions"].append(release_info)
-
-
-    data_dir = path_obj["htmlpath"] + "/ln2wwwdata/reviewed/"
-    if obj_ver != None and obj_ver != current_version:
-            data_dir += obj_ver + "/"
-    file_path = data_dir + out_json["info"]["filename"]
+    file_path = rel_data_path + "reviewed/"+  out_json["info"]["filename"]
     if os.path.exists(file_path) == False:
         out_json["info"]["filestatus"] = False
         return out_json
@@ -102,7 +132,7 @@ def get_preview(doc, path_obj, obj_ver):
         elif file_type == "fasta":
             out_json["seqobjects"] = []
             seqCount = 0
-            in_file = path_obj["htmlpath"] + "/ln2wwwdata/reviewed/" + file_name
+            in_file = rel_data_path + "/reviewed/" + file_name
             for record in SeqIO.parse(in_file, "fasta"):
                 seqCount += 1
                 seqId = record.id
@@ -111,40 +141,26 @@ def get_preview(doc, path_obj, obj_ver):
                 out_json["seqobjects"].append({"seqid":seqId, "seqdesc":seqDesc, "seqbody":seqBody})
                 if seqCount == 10:
                     break
-        elif file_type in ["rdf"]:
-            in_file = path_obj["htmlpath"] + "/ln2wwwdata/reviewed/" + file_name
-            with open(in_file, 'r') as FR:
-                lineCount = 0
-                for line in FR:
-                    lineCount += 1
-                    out_json["txtbuffer"] += line
-                    if lineCount == 100:
-                        break
-        elif file_type in ["gp", "gb", "nt"]:
-            in_file = path_obj["htmlpath"] + "/ln2wwwdata/reviewed/" + file_name
-            with open(in_file, 'r') as FR:
-                lineCount = 0
-                for line in FR:
-                    lineCount += 1
-                    out_json["txtbuffer"] += line
-                    if lineCount == 200:
-                        break
-        elif file_type in ["png"] or file_name == "glycan_images.tar.gz":
-            file_list = glob.glob(path_obj["htmlpath"] + "/ln2wwwdata/glycanimages/*.png")
+        elif file_type in ["gz"] and file_name.find("glycan_images") != -1:
+            i_type = file_name.split("_")[2]
+            i_path = rel_data_path + "/glycanimages_%s/" % (i_type)
+            i_root = rel_data_root + "/glycanimages_%s/" % (i_type)
+            file_list = glob.glob(i_path + "*.png")
             for f in file_list[1000:1010]:
                 recordId = f.split("/")[-1].split(".")[0]
-                url = root_obj["htmlroot"] + "/ln2wwwdata/glycanimages/"  + f.split("/")[-1]
+                url = i_root +  f.split("/")[-1]
                 out_json["txtbuffer"] +=  "%s <br>" % (recordId)
                 out_json["txtbuffer"] += "<img src=\"%s\"><hr><br>" % (url)
-        elif file_type in ["aln"]:
-            file_list = glob.glob(path_obj["htmlpath"] + "/ln2wwwdata/aln/"+species_short+"/*.aln")
-            for f in file_list[0:10]:
-                recordId = f.split("/")[-1].split(".")[0]
-                out_json["txtbuffer"] +=  "%s" % (recordId)
-                with open(f, 'r') as FR:
-                    for line in FR:
-                        out_json["txtbuffer"] += line
-                    out_json["txtbuffer"] += "\n\n"
+        elif file_type.lower() in ["gif", "jpeg", "jpg"]:
+            url = rel_data_root + "/reviewed/%s" % (file_name)
+            out_json["txtbuffer"] += "<img src=\"%s\"><br>" % (url)
+        elif file_type.lower() in ["mp4"]:
+            url = rel_data_root + "/reviewed/%s" % (file_name)
+            out_json["txtbuffer"] += "<video controls=\"controls\"><source src=\"%s\" type=\"video/mp4\"></video><br>" % (url)
+        elif file_type in ["gz","gp", "gb", "nt"]:
+            out_json["info"]["rndrtype"] = "text"
+            in_file = rel_data_path + "/reviewed/" + file_name
+            out_json["txtbuffer"] += get_top_lines(in_file)
         else:
             out_json["txtbuffer"] +=  "Please implement service for " + file_type + " preview!"
 
@@ -178,10 +194,15 @@ def main():
 
 
 
+    global dbh
     global config_json
     global db_obj
     global client
     global root_obj
+    global data_path
+    global data_root
+    global selected_release
+    global current_release
 
 
     print "Content-Type: application/json"
@@ -216,9 +237,16 @@ def main():
         obj_id = db_obj["bcourl"] % (obj_id)
         obj_ver = in_json["objver"] if "objver" in in_json else ""
         query_obj = {"bco_id":obj_id}
-        bco_collection = "c_bco_v-" + config_json["datarelease"]
-       
+
+
+        current_release = "v-" + config_json["datarelease"]
+        selected_release = obj_ver if obj_ver not in [None, ""] else current_release
+        data_path = path_obj["htmlpath"] + "/ln2releases/"
+        data_root = root_obj["htmlroot"] + "/ln2releases/"
+
+        bco_collection = "c_bco_" + selected_release
         doc = dbh[bco_collection].find_one(query_obj)
+
         if doc != None:
             out_json = get_preview(doc, custom_config_json[config_json["server"]]["pathinfo"], obj_ver)
 
@@ -234,5 +262,5 @@ def main():
 
 
 if __name__ == '__main__':
-	main()
+        main()
 

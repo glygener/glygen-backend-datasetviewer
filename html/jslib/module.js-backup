@@ -19,8 +19,7 @@ var filterState = {};
 var pageId = 'home';
 var categoryList = [];
 var seen = {};
-var domainUrlDict = {};
-
+var htmlRoot = '';
 
 ////////////////////////////////
 $(document).ready(function() {
@@ -40,12 +39,10 @@ $(document).ready(function() {
             }
             else{
                 $("#moduleversioncn").html(resJson["moduleversion"]);
-                domainUrlDict = resJson["domains"];
                 setNavigation(resJson["domains"]);
                 dsPrefix = resJson["dsprefix"];
                 bcoPrefix = resJson["bcoprefix"];
-                console.log(resJson);
-                setPageLinks();
+                setPageLinks(resJson["pagelinks"]);
                 fillFrameCn();
             }
         }
@@ -73,20 +70,52 @@ function modifyMenuLinks(){
     return;
 }
 
+///////////////////////////////
+function getCovidNav(linksList){
+
+
+    var s = 'font-size:13px;';
+    var links = '<a class=pagelink href="covid19" style="font-size:13px;">Home</a>';
+    if (pageId == "covid19"){
+        return links;
+    }
+
+    for (var i in linksList){
+        var obj = linksList[i];
+        var l = '<a class=pagelink href="'+obj["url"]+'" style="'+s+'">'+obj["label"]+'</a>';
+        if (pageId == obj["url"]){
+            links += ' <font style="font-size:9px;">></font> ' + l;
+        }
+    }
+    return links;
+}
+
+///////////////////////////
+function getPageLinks(linksList){
+
+    var pageLinks = []
+    var s = 'font-size:13px;';
+    for (var i in linksList){
+        var obj = linksList[i];
+        var l = '<a class=pagelink href="'+obj["url"]+'" style="'+s+'">'+obj["label"]+'</a>';
+        pageLinks.push(l);
+    }
+    var links = pageLinks.join(" | ");
+    return links;
+}
 
 
 ////////////////////////////
-function setPageLinks(){
+function setPageLinks(linksList){
     
-    console.log(resJson["pagelinks"]);
-
     var pageLinks = []
-    for (var i in resJson["pagelinks"]){
-        var obj = resJson["pagelinks"][i];
-        var l = '<a class=pagelink href="'+obj["url"]+'">'+obj["label"]+'</a>';
+    var s = 'font-size:13px;';
+    for (var i in linksList){
+        var obj = linksList[i];
+        var l = '<a class=pagelink href="'+obj["url"]+'" style="'+s+'">'+obj["label"]+'</a>';
         pageLinks.push(l);
     }
-    var links = pageLinks.join(" &nbsp;|&nbsp; ");
+    var links = pageLinks.join(" | ");
     $("#pagelinkscn").html(links);
     return;
 }
@@ -100,13 +129,21 @@ function fillFrameCn(){
         var gifImage = '<img src='+imgFile+' style="width:20%;margin-top:2%;">';        
         $("#pagecn").html(gifImage);
 
+        //var urlStr = location.href.substring(0, location.href.length);
+        //var parts = urlStr.split("/")
+        //htmlRoot = parts[0] + '/' + parts[1] + '/' +parts[2];
+        //pageId = (parts[3] == '' ? 'home' : parts[3]);
+        //objId = (pageId.indexOf(dsPrefix) != -1 ? pageId : "");
+        //pageId = (pageId.indexOf(dsPrefix) != -1 ? "view" : pageId);
+       
         var urlStr = location.href.substring(0, location.href.length);
         var parts = urlStr.split("/")
         var htmlRoot = parts[0] + '/' + parts[1] + '/' +parts[2];
         pageId = (parts[3] == '' ? 'home' : parts[3]);
-        objId = (pageId.indexOf(dsPrefix) != -1 ? pageId : "");
-        pageId = (pageId.indexOf(dsPrefix) != -1 ? "view" : pageId);
-        
+        objId = (pageId.indexOf("GLY") != -1 ? pageId : "");
+        pageId = (pageId.indexOf("GLY") != -1 ? "view" : pageId);
+        objId = objId.replace("GLYDS", "GLY_");
+
 
 
         if(pageId == 'home'){
@@ -121,10 +158,30 @@ function fillFrameCn(){
         else if(pageId == 'history'){
             fillReleaseHistoryViewCn({});
         }
-	else{
-                fillStaticHtmlCn(htmlRoot + '/content/page.'+pageId+'.html', '#pagecn');
-        }
-	return;
+        else{
+            if (pageId.indexOf("covid19") != -1){
+                fillStaticHtmlCn(htmlRoot + '/content/page.covid19_top.html','#pagecn','w');
+                setPageLinks(resJson["covidpagelinks"]);
+                $("#covidnavcn").html(getCovidNav(resJson["covidpagelinks"]))
+                $("#headercn").css("display", "none");
+                if (pageId == "covid19"){
+                    fillStaticHtmlCn(htmlRoot + '/content/page.'+pageId+'.html','#pagecn','a');
+                    var inJson = {"queryvalue":""};
+                    searchCovidBiomarkers(inJson);
+                    plotCovidBiomarkerStat(inJson);
+                }
+                else if (pageId == "covid19_headers"){
+                    fillCovidBiomarkerHeaders({});
+                }
+                else{
+                    fillStaticHtmlCn(htmlRoot + '/content/page.'+pageId+'.html','#pagecn','a');
+                }
+            }
+            else{
+                fillStaticHtmlCn(htmlRoot + '/content/page.'+pageId+'.html', '#pagecn','w');
+            }
+        }     
+        return;
 }
 
 
@@ -154,7 +211,7 @@ function fillGridViewCn(){
         
         var postData = 'injson=' + JSON.stringify(inJson);
         xhr.send(postData);
-	console.log(postData);
+	//console.log(postData);
 
 }
 
@@ -243,7 +300,6 @@ function rndrEntryContent(){
 
         var latestObjVer = resJson["versions"][0].split(" ")[0];
 
-
         var versionSelector = '<select class=versionselector id=versioncn>';
         for (var i in resJson["versions"]){
             var parts = resJson["versions"][i].split(" ");
@@ -256,28 +312,28 @@ function rndrEntryContent(){
 
         var bcoId = resJson["info"]["objid"];
         var datasetName = resJson["info"]["filename"];
-        var downloadUrl = '/ln2releases/'+ latestObjVer + '/reviewed/' + datasetName
+        var fileExt = datasetName.split(".").pop();
+        var downloadUrl = '/ln2wwwdata/reviewed/'+bcoId + '.' + fileExt;
         var readmeUrl = '/' + dsId + '/'  + latestObjVer  + '/readme';
 
-        var bcoUrl = '/' + bcoId + '/'  + latestObjVer + "/bco";
+
+        var bcoUrl = '/' + bcoId + '/'  + latestObjVer + '/bco';
         if (objVer != ''){
-                downloadUrl =  '/ln2releases/'+ objVer + '/reviewed/' + datasetName
-                readmeUrl = '/' + dsId + '/'  + objVer  + '/readme';
-                bcoUrl = '/' + bcoId + '/'  + objVer + "/bco";
+            downloadUrl =  '/ln2wwwdata/reviewed/' + objVer+ '/' + bcoId + '.' + fileExt;
+            readmeUrl = '/' + dsId + '/'  + objVer  + '/readme';
+            bcoUrl = '/' + bcoId + '/'  + objVer + '/bco';
         }
        
-        var links = '<a href="'+bcoUrl+'" style="font-size:16px;" target=_>BCO JSON</a>';
-        links += ' | <a href="'+readmeUrl+'" style="font-size:16px;" target=_>README</a>';
-        links += ' | <a href="'+downloadUrl+'" download="'+datasetName+'" style="font-size:16px;">DOWNLOAD</a>';
-        //var linkId = "obj_" + parseInt(resJson["info"]["objid"].replace("ONCOMX", ""));
-	//links += ' | <a id="'+linkId+'" class=commentlink style="font-size:16px;">COMMENT</a>';
+        var links = '<a href="'+bcoUrl+'" style="font-size:12px;" target=_>BCO JSON</a>';
+        links += ' | <a href="'+readmeUrl+'" style="font-size:12px;" target=_>README</a>';
+        links += ' | <a href="'+downloadUrl+'" download="'+datasetName+'" style="font-size:12px;">DOWNLOAD</a>';
         
 
 
         var s1 = 'font-size:16px;font-weight:bold;color:#004065;'; 
         var d1 = 'position:static;width:100%;background:#fff;';
         var divcn = '<div style="'+d1+'" id=datasetcn></div>';
-        var cn = '<table width=100% style="font-size:16px;" border=0>';
+        var cn = '<table width=100% style="font-size:13px;" border=0>';
         cn += '<tr height=30><td colspan=2 >&nbsp;</td></tr>';
         cn += '<tr><td colspan=2 align=left>'+dsId+' sample view</td></tr>';
         cn += '<tr><td style="'+s1+'" colspan=2 align=left>'+resJson["info"]["title"]+'</td></tr>';
@@ -303,10 +359,12 @@ function rndrEntryContent(){
 }
 
 
+
+
 ////////////////////////////////////////
 function drawFasta(seqObjs, containerId){
 
-    var cn = '<table width=100% style="font-size:16px;" border=0>';
+    var cn = '<table width=100% style="font-size:12px;" border=0>';
     for (var i in seqObjs){
         var obj = seqObjs[i];
         cn += '<tr><td align=left>>'+ obj.seqid + ' ' + obj.seqdesc + '</td></tr>';
@@ -332,7 +390,7 @@ function drawFasta(seqObjs, containerId){
 function drawPlainText(txtBuffer, containerId){
 
     var cnBody = '<textarea style="width:100%;" rows=45>'+txtBuffer+'</textarea>';
-    var cn = '<table width=100% style="font-size:16px;" border=0>';
+    var cn = '<table width=100% style="font-size:12px;" border=0>';
     cn += '<tr><td><pre>'+cnBody+'<pre></td></tr>';
     cn += '</table>';
     $(containerId).html(cn);
@@ -342,7 +400,7 @@ function drawPlainText(txtBuffer, containerId){
 ////////////////////////////////////
 function drawHtmlText(txtBuffer, containerId){
 
-    var cn = '<table width=100% style="font-size:16px;" border=0>';
+    var cn = '<table width=100% style="font-size:12px;" border=0>';
     cn += '<tr><td><pre>'+txtBuffer+'<pre></td></tr>';
     cn += '</table>';
     $(containerId).html(cn);
@@ -355,7 +413,7 @@ function drawHtmlText(txtBuffer, containerId){
 ///////////////////////////
 function fillJsonTextCn(){
 
-	var link = '<a class=pagelink id=saveobject href="#" style="font-size:16px;">Save Object</a>'; 
+	var link = '<a class=pagelink id=saveobject href="#" style="font-size:13px;">Save Object</a>'; 
 	var cn = '<table width=100%>';
 	cn += '<tr><td align=right>'+link+'</td></tr>';
 	cn += '<tr><td><textarea id=jsontext rows=40 style="width:100%;padding:10;"></textarea></td></tr>';
@@ -425,7 +483,7 @@ function rndrDataModelTable(){
 function rndrGridContent(){
 
 	var gridWidth = 250;
-	var gridHeight = 160;
+	var gridHeight = 140;
 	var npass = 0;
 	
         categoryList = resJson["categorylist"];
@@ -483,13 +541,13 @@ function rndrGridContent(){
 
                         gridDivs += '<div class="gridcn">';
 			var s = 'display:block;float:left;margin:20px 1% 0px 1%;';
-                        s += 'color:#333;font-size:16px;text-align:center;width:98%;border:0px dashed orange;';
+                        s += 'color:#333;font-size:11px;text-align:center;width:98%;border:0px dashed orange;';
                         objId = bcoPrefix + "0000".substring(0, 10 - String(obj["_id"]).length) + String(obj["_id"]);
                         objId = obj["_id"].replace(bcoPrefix, dsPrefix);
                         var titleText = statusType + ' ' + moleculeType.toLowerCase();
                         titleText += ' dataset ' + objId + ' in ';
                         titleText += fileType.toUpperCase() + ' format.';
-                        titleText += ' [' + speciesType + ']';
+                        titleText += '<br>' + speciesType;
                         gridDivs += '<div style="'+s+'">';
                         gridDivs += titleText;
                         gridDivs += '</div>';
@@ -497,7 +555,7 @@ function rndrGridContent(){
 			s += 'font-weight:bold;color:#004065;vertical-align:bottom;text-align:center;';
                         s += 'border:0px dashed orange;';
 			var detailsUrl = '/' + objId ;
-			gridDivs += '<a href="'+detailsUrl+'" style="font-size:16px;">';
+			gridDivs += '<a href="'+detailsUrl+'" style="font-size:12px;">';
 			gridDivs += '<div style="'+s+'">';
 			gridDivs += obj["title"];
 			gridDivs += '</div>';
@@ -505,17 +563,17 @@ function rndrGridContent(){
 		
 			var iconUrl = '/content/' + iconFileName;
 			var s = 'display:block;float:left;width:80%;height:120px;margin:20px 10% 0px 10%;';
-			s += 'font-size:16px;text-align:center;border:0px dashed orange;';
+			s += 'font-size:12px;text-align:center;border:0px dashed orange;';
 			gridDivs += '<div style="'+s+'">';
 			gridDivs += miniTable;
 			gridDivs += (miniTable == '' ? '<img src="'+iconUrl+'" height=90%>' : "");
 			gridDivs += '</div>';
 		
 			var s = 'display:block;float:left;width:80%;margin:0px 10% 0px 10%;';
-                        s += 'font-size:16px;text-align:center;border:0px dashed orange;';
+                        s += 'font-size:12px;text-align:center;border:0px dashed orange;';
 			gridDivs += '<div style="'+s+'">';
 			gridDivs += obj["description"] + ' ...<br>';
-                        gridDivs += '<a href="'+detailsUrl+'" style="font-size:16px;">view details</a>';
+                        gridDivs += '<a href="'+detailsUrl+'" style="font-size:12px;">view details</a>';
 			gridDivs += '</div>';	
 			gridDivs += '</div>';
 	}
@@ -523,7 +581,7 @@ function rndrGridContent(){
 
 
 
-        var filters = '<table width=100% border=0 style="font-size:16px;"><tr>';
+        var filters = '<table width=100% border=0 style="font-size:13px;"><tr>';
         for (var i in categoryList){
 	    var catName = categoryList[i];
 	    var cn_one = '';
@@ -554,8 +612,8 @@ function rndrGridContent(){
         var applybtn = '<input type=submit class=filterbtn id=apply style="'+s+'" value=" Apply ">';
         var resetbtn = '<input type=submit class=filterbtn id=reset style="'+s+'" value=" Reset ">';
 	var btns = '';
-	var filterLink = '<a id=filterlink href="" style="font-size:16px;">Filters</a>';
-	var filterTable = '<table width=100% border=0 style="font-size:16px;">' +
+	var filterLink = '<a id=filterlink href="" style="font-size:13px;">Filters</a>';
+	var filterTable = '<table width=100% border=0 style="font-size:13px;">' +
 			'<tr height=20 style="border-bottom:1px solid #eee;">' + 
 			'<td align=left>Total of '+ seen["total"]+ ' datasets ('+npass +' passed filter)</td>' + 
         		'<td align=right>'+filterLink+'</td>' + 
@@ -585,7 +643,7 @@ function popMessage(msg){
 	
 	var s = "padding:2px 20px 2px 20px;";
         var closebtn = '<input name=btn2 id=closewindow type=submit style="'+s+'" value="&times;">';
-        var table = '<table width=100% style="font-size:16px;" border=0>' +
+        var table = '<table width=100% style="font-size:13px;" border=0>' +
                         '<tr height=25><td align=right>'+ closebtn+'</td></tr>' +
                         '</table>';
 
@@ -695,7 +753,7 @@ $(document).on('click', '#savefile', function (event) {
     let xhr = new XMLHttpRequest();
     xhr.onloadend = function() {
         if (xhr.status == 200) {
-            console.log(xhr.responseText);
+            //console.log(xhr.responseText);
             resJson = JSON.parse(xhr.responseText);
             $("#allwrappercn").css("display", "none");
             $("#progresscn").css("display", "block");
@@ -907,6 +965,7 @@ $(document).on('click', '#submitfile', function (event) {
     };
     xhr.open("POST", "/cgi-bin/upload.py");
     xhr.send(formData);
+    console.log(formData);
 
 });
 
@@ -951,6 +1010,108 @@ $(document).on('click', '#searchbtn', function (event) {
 });
 
 
+$(document).on('click', '#searchcovidbtn', function (event) {
+    event.preventDefault();
+    
+    var queryValue = $("#covidqueryvalue").val().trim();
+    var inJson = {}
+    inJson = {"queryvalue":queryValue};
+
+    fillStaticHtmlCn(htmlRoot + '/content/page.covid19_top.html','#pagecn','w');
+    fillStaticHtmlCn(htmlRoot + '/content/page.covid19_searchresults.html','#pagecn','a');
+    $("#covidnavcn").html(getCovidNav(resJson["covidpagelinks"]))                      
+
+    $("#covidqueryvalue").val(queryValue);
+    searchCovidBiomarkers(inJson);
+});
+
+function fillCovidBiomarkerHeaders(inJson){
+
+    $('html').animate({scrollTop:0}, 'fast');
+    $('body').animate({scrollTop:0}, 'fast');
+    var imgFile = "/content/loading.gif";
+    var gifImage = '<img src='+imgFile+' style="width:20%;margin-left:40%;margin-top:2%;">';
+    $("#plotcn").html(gifImage);
+    let xhr = new XMLHttpRequest();
+    xhr.onloadend = function() {
+        if (xhr.status == 200) {
+            resJson = JSON.parse(xhr.responseText);
+            $("#pagecn").append('<div id=headerscn></div>');
+            drawTable(resJson["tabledata"], "headerscn", {"pagesize":1000});
+        } else {
+            console.log("error " + this.status);
+        }
+    };
+    var url = "/cgi-bin/get_covid_headers.py?injson=" + JSON.stringify(inJson);
+    xhr.open("GET", url);
+    xhr.send();
+    console.log(url);
+}       
+
+function plotCovidBiomarkerStat(inJson){
+
+    $('html').animate({scrollTop:0}, 'fast');
+    $('body').animate({scrollTop:0}, 'fast');
+    var imgFile = "/content/loading.gif";
+    var gifImage = '<img src='+imgFile+' style="width:20%;margin-left:40%;margin-top:2%;">';
+    $("#plotcn").html(gifImage);
+    let xhr = new XMLHttpRequest();
+    xhr.onloadend = function() {
+        if (xhr.status == 200) {
+            //console.log(xhr.responseText);
+            var res = JSON.parse(xhr.responseText);
+            var divName = 'plotcn';
+            var title = '';
+            var xTitle = 'Biomarker type';
+            var yTitle = 'Biomarker count';
+            var tickFreq = 'showTextEvery:1';
+            var valueName = 'Count';
+            console.log(res["plotdata1"]);
+            vjHighChartsSingleSeries(res["plotdata1"], title, divName, 
+                    xTitle, yTitle, tickFreq, 300, valueName);
+        } else {
+            console.log("error " + this.status);
+        }
+    };
+    var url = "/cgi-bin/get_covid_plotdata.py?injson=" + JSON.stringify(inJson);
+    xhr.open("GET", url);
+    xhr.send();
+    console.log(url);
+}
+
+function searchCovidBiomarkers(inJson){
+    $('html').animate({scrollTop:0}, 'fast');
+    $('body').animate({scrollTop:0}, 'fast');
+    var imgFile = "/content/loading.gif";
+    var gifImage = '<img src='+imgFile+' style="width:20%;margin-left:40%;margin-top:2%;">';
+    $(".searchresultscn").html(gifImage);
+    let xhr = new XMLHttpRequest();
+    xhr.onloadend = function() {
+        if (xhr.status == 200) {
+            //console.log(xhr.responseText);
+            resJson = JSON.parse(xhr.responseText);
+            var k_list = ["all", "diabetes", "cancer"];
+            for (var j in k_list){
+                var k = k_list[j];
+                var cnDiv = "searchresultscn_" + k;
+                drawTable(resJson["results"][k], cnDiv, {"pagesize":1000});
+                var rowCount = resJson["results"][k].length - 2;
+                var statCn = 'Total of ' + rowCount + ' results found.';
+                var jqId = "#statcn_" + k;
+                $(jqId).html(statCn);
+            }
+        } else {
+            console.log("error " + this.status);
+        }
+    };
+    var url = "/cgi-bin/search_covid.py?injson=" + JSON.stringify(inJson);
+    xhr.open("GET", url);
+    xhr.send();
+    console.log(url);
+    return;
+}
+
+
 
 
 
@@ -968,7 +1129,7 @@ $(document).on('click', '.xxxx', function (event) {
         event.preventDefault();
 
 	pageId = this.id;
-	setPageLink();
+	setPageLink(resJson["pagelinks"]);
         fillFrameCn();
 
 });
@@ -1045,7 +1206,7 @@ $(document).on('click', '.readmelink', function (event) {
  
 	var s = "padding:2px 20px 2px 20px;";
         var closebtn = '<input name=btn2 id=closewindow type=submit style="'+s+'" value="&times;">';
-        var table = '<table width=100% style="font-size:16px;" border=0>' +
+        var table = '<table width=100% style="font-size:13px;" border=0>' +
                         '<tr height=25><td align=right>'+ closebtn+'</td></tr>' +
                         '</table>';
 
@@ -1093,6 +1254,24 @@ $(document).on('click', '#btn', function (event) {
     
 });
 
+
+///////////////////////////////////////
+$(document).on('click', '#plottitlecn', function (event) {
+    event.preventDefault();
+    $('#plotcn').toggle();
+    $('#plottitleicon').children().toggleClass("closedsquare openedsquare");
+
+})
+
+$(document).on('click', '.tabletitletextcn', function (event) {
+    event.preventDefault();
+    var jqIdOne = "#tablecn_" + this.id.split("_")[1];
+    var jqIdTwo = "#tabletitleicon_" + this.id.split("_")[1];
+
+    $(jqIdOne).toggle();
+    $(jqIdTwo).children().toggleClass("closedsquare openedsquare");
+
+})
 
 
 function setNavItemAsCurrent(itemText) {
@@ -1154,10 +1333,10 @@ function setNavigation(domainUrls){
     $('.nav > li').removeClass('current');
     setNavItemAsCurrent(navItemText);
     
-    //$("#a_portal").attr('href', domainUrls["portal"]);
-    //$("#a_data").attr('href', domainUrls["data"]);
-    //$("#a_api").attr('href', domainUrls["api"]);
-    //$("#a_sparql").attr('href', domainUrls["sparql"]);
+    $("#a_portal").attr('href', domainUrls["portal"]);
+    $("#a_data").attr('href', domainUrls["data"]);
+    $("#a_api").attr('href', domainUrls["api"]);
+    $("#a_sparql").attr('href', domainUrls["sparql"]);
 
     
     $.each($(".a_header"), function(i, v) {
@@ -1169,13 +1348,4 @@ function setNavigation(domainUrls){
 }
 
 
-
-
-$(document).on('click', '.subdomain', function (event) {
-    event.preventDefault();
-    var parts = this.id.split("_")
-    var k = parts[1];
-    window.location.href = domainUrlDict[k];
-
-});
 

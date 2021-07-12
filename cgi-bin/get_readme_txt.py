@@ -54,7 +54,10 @@ def main():
     global config_json
     global db_obj
     global client
-    
+    global current_release
+    global data_path
+    global data_root
+
     print "Content-Type: text/html"
     print
     
@@ -70,6 +73,10 @@ def main():
         db_obj = custom_config_json[config_json["server"]]["dbinfo"]
         path_obj = custom_config_json[config_json["server"]]["pathinfo"]
         root_obj = custom_config_json[config_json["server"]]["rootinfo"]
+        current_release = "v-" + config_json["datarelease"]
+        data_path = path_obj["htmlpath"] + "/ln2releases/"
+        data_root = root_obj["htmlroot"] + "/ln2releases/"
+
     except Exception, e:
         out_json = {"taskstatus":0, "errormsg":"Loading config failed!"}
 
@@ -90,8 +97,6 @@ def main():
         bco_collection = "c_bco_v-" + config_json["datarelease"]
         doc = dbh[bco_collection].find_one(query_obj)
 
-
-        
         if doc == None:
             out_buffer += "\n\n\tReadme file does not exist for object %s!" % (obj_id)
         else:
@@ -165,15 +170,21 @@ def main():
                             #out_buffer += "      Media Type: %s" % (o["mediatype"])
                             out_buffer += "\n      URI: %s" % (o["uri"]["uri"])
                             out_buffer += ""
+                            if o["uri"]["filename"].split(".")[-2] == "stat":
+                                stat_file = data_path +"/%s/reviewed/%s"
+                                stat_file = stat_file % (current_release, o["uri"]["filename"])
+                                if os.path.isfile(stat_file):
+                                    stat_lines = open(stat_file, "r").read().split("\n")
+                                    out_buffer += "\n\n<b>Fields</b>"
+                                    for stat_line in stat_lines[1:]:
+                                        if stat_line.strip() == "":
+                                            continue
+                                        s_p = stat_line.split(",")
+                                        out_buffer += "\n      Name: %s" % (s_p[1])
+                                        out_buffer += "\n     Description: %s" % (s_p[2])
 
-            if "emperical_error" in doc["error_domain"]:
-                if "outputfields" in doc["error_domain"]["emperical_error"]:
-                    out_buffer += "\n\n<b>Fields</b>"
-                    for o in doc["error_domain"]["emperical_error"]["outputfields"]:
-                        out_buffer += "\n      Name: %s" % (o["fieldname"])
-                        out_buffer += "\n     Description: %s" % (o["fielddesc"])
-                        out_buffer += "\n      Unique Values: %s" % (o["uniquevalues"])
-                        out_buffer += ""   
+                                        out_buffer += "\n      Unique Values: %s" % (s_p[0])
+                                        out_buffer += ""   
         print "<pre>" 
         print out_buffer.encode(encoding='UTF-8',errors='strict')
         print "</pre>"

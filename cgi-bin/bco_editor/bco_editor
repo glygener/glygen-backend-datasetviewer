@@ -279,6 +279,7 @@ def main():
                     if k_one in config_json:
                         if k_two in config_json[k_one]:
                             config_json[k_one][k_two] = custom_config_json[k_one][k_two]
+            config_json["specversion"] = custom_config_json["specversion"]
     except Exception, e:
         out_json = {"taskstatus":0, "errormsg":"Loading config failed!"}
         print json.dumps(out_json, indent=4)
@@ -338,6 +339,7 @@ def main():
 
     
     out_json["editorversion"] = config_json["editorversion"]
+    out_json["specversion"] = config_json["specversion"]
     print json.dumps(out_json, indent=4)
 
 

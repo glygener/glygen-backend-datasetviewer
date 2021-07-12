@@ -40,7 +40,7 @@ div.footnote {
 }
 
 a.footer{
-  font-size:12px;
+  font-size:16px;
   color:#fff;
 }
 div.pagelinkscnwrapper{
@@ -99,10 +99,10 @@ div.moduletitlecn{
 }
 
 div.moduleversioncn{
-   position:absolute;right:10px;top:20px;height:20px;
-   font-size:11px;
+   position:absolute;right:10px;top:20px;width:400px;height:20px;
+   font-size:16px;
    z-index:100;
-   border:0px dashed #fff;
+   border:0px dashed red;
 }
 
 

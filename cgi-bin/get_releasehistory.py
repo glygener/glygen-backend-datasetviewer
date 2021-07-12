@@ -60,7 +60,9 @@ def main():
     global db_obj
     global client
     global root_obj
-
+    global current_release
+    global data_path
+    global data_root
 
     print "Content-Type: application/json"
     print   
@@ -74,6 +76,9 @@ def main():
         db_obj = custom_config_json[config_json["server"]]["dbinfo"]
         path_obj = custom_config_json[config_json["server"]]["pathinfo"]
         root_obj = custom_config_json[config_json["server"]]["rootinfo"]
+        current_release = "v-" + config_json["datarelease"]
+        data_path = path_obj["htmlpath"] + "/ln2releases/"
+        data_root = root_obj["htmlroot"] + "/ln2releases/"
     except Exception, e:
         print json.dumps({"taskstatus":0, "errormsg":"Loading config failed!"})
         sys.exit()
@@ -90,10 +95,8 @@ def main():
         dbh = client[db_obj["mongodbname"]]
  
         
-        rel_json = {}
-        for in_file in glob.glob(path_obj["htmlpath"] + "ln2wwwdata/releaseinfo/*_history.json"):
-            bco_id = in_file.split("/")[-1].split("_history")[0]
-            rel_json[bco_id] = json.loads(open(in_file, "r").read())
+        rel_file = data_path + "/%s/releaseinfo/all_history.json" % (current_release)
+        rel_json = json.loads(open(rel_file, "r").read())
 
 
         seen = {}
@@ -103,9 +106,10 @@ def main():
                 seen[ver] = True
                 if bco_id not in bcoid2filenames:
                     bcoid2filenames[bco_id] = []
-                file_name = rel_json[bco_id][ver]["filename"]
-                if file_name not in bcoid2filenames[bco_id]:
-                    bcoid2filenames[bco_id].append(file_name)
+                if ver in rel_json[bco_id][ver]:
+                    file_name = rel_json[bco_id][ver][ver]["filename"]
+                    if file_name not in bcoid2filenames[bco_id]:
+                        bcoid2filenames[bco_id].append(file_name)
         ver_list = sorted(seen.keys())
 
         cat_dict = {}
@@ -145,13 +149,18 @@ def main():
         row_two.append("string")
         data_frame = [row_one, row_two]
         for bco_id in rel_json:
+            bco_id_new = bco_id.replace("DSBCO_", db_obj["bcoprefix"])
             if selected_bco_list != [] and bco_id not in selected_bco_list:
                 continue
             row = [bco_id + " (%s)" %(", ".join(bcoid2filenames[bco_id]))]
             for ver in ver_list:
-                val = rel_json[bco_id][ver]["recordcount"] if ver in rel_json[bco_id] else 0
+                val = 0
+                if ver in rel_json[bco_id]:
+                    if ver in rel_json[bco_id][ver]:
+                        if "recordcount" in rel_json[bco_id][ver][ver]:
+                            val = rel_json[bco_id][ver][ver]["recordcount"]
                 row.append(val)
-            detail_link = "<a href=\"%s/history\" target=_>details</a>" % (bco_id)
+            detail_link = "<a href=\"%s/history\" target=_>details</a>" % (bco_id_new)
             row.append(detail_link)
             data_frame.append(row)
         out_json = {"dataframe":data_frame, "categories":cat_dict, "taskstatus":1, "errormsg":""}

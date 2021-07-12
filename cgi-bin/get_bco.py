@@ -85,23 +85,29 @@ def main():
         )
         client.server_info()
         dbh = client[db_obj["mongodbname"]]
+
+        in_json["objid"] = in_json["objid"].replace("/", "")
+
         obj_id = db_obj["bcourl"] % (in_json["objid"].split("_")[1]) 
 
         current_ver = open(path_obj["htmlpath"] + "/release-notes.txt", "r").read().strip().split(" ")[-1]
-        obj_ver = in_json["objver"] if in_json["objver"] != None else current_ver
-        
+        obj_ver = "v-" + config_json["datarelease"]
+        if "objver" in in_json:
+            obj_ver = in_json["objver"] if in_json["objver"] != None else obj_ver
+
+
         query_obj = {"bco_id":obj_id}
         bco_collection = "c_bco_" + obj_ver
         doc = dbh[bco_collection].find_one(query_obj)
-
-        ordr_dict = json.loads(open("conf/field_order.json").read())
-        doc = util.order_json_obj(doc, ordr_dict)
-
         
+
         if doc == None:
             print "\n\n\tReadme file does not exist for object %s!" % (obj_id)
         else:
-            doc.pop("_id")
+            ordr_dict = json.loads(open("conf/field_order.json").read())
+            doc = util.order_json_obj(doc, ordr_dict)
+            if "_id" in doc:
+                doc.pop("_id")
             print json.dumps(doc, indent=4)
         sys.exit()
     except pymongo.errors.ServerSelectionTimeoutError as err:

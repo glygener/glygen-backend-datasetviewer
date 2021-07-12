@@ -55,6 +55,9 @@ def main():
     global db_obj
     global client
     global path_obj
+    global current_release
+    global data_path
+    global data_root
 
     print "Content-Type: text/html"
     print
@@ -68,6 +71,9 @@ def main():
         db_obj = custom_config_json[config_json["server"]]["dbinfo"]
         path_obj = custom_config_json[config_json["server"]]["pathinfo"]
         root_obj = custom_config_json[config_json["server"]]["rootinfo"]
+        current_release = "v-" + config_json["datarelease"]
+        data_path = path_obj["htmlpath"] + "/ln2releases/"
+        data_root = root_obj["htmlroot"] + "/ln2releases/"
     except Exception, e:
         out_json = {"taskstatus":0, "errormsg":"Loading config failed!"}
 
@@ -84,20 +90,22 @@ def main():
         obj_id = in_json["objid"]
 
 
-        file_path = path_obj["htmlpath"] + "ln2wwwdata/releaseinfo/%s_history.json" % (obj_id)
+        file_path = data_path + "/%s/releaseinfo/all_history.json" % (current_release)
         if os.path.isfile(file_path) == False:
             print "\n\n\tNo history found for %s!" % (obj_id)
         else:
-            rel_json = json.loads(open(file_path, "r").read())
+            rel_json = json.loads(open(file_path, "r").read())    
             fname_list = []
-            for ver in rel_json:
-                file_name = rel_json[ver]["filename"]
+            obj_id_old = obj_id.replace(db_obj["bcoprefix"], "DSBCO_")
+            his_obj = rel_json[obj_id] if obj_id in rel_json else rel_json[obj_id_old]
+            for ver in his_obj:
+                file_name = his_obj[ver][ver]["filename"]
                 if file_name not in fname_list:
                     fname_list.append(file_name)
             print "<b>BCO ID</b> : %s<br>" % (obj_id)
             print "<b>File Name(s)</b> : %s<br><hr>" % (", ".join(fname_list))
-            for ver in sorted(rel_json, reverse=True):
-                o = rel_json[ver]
+            for ver in sorted(his_obj, reverse=True):
+                o = his_obj[ver][ver]
                 id_list_one = sorted(o["additions"]) if "additions" in o else []
                 id_list_two = sorted(o["deletions"]) if "deletions" in o else []
                 n_one = len(id_list_one)
