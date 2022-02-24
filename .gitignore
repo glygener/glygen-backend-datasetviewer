@@ -1,2 +1,5 @@
 TOKEN
 api/instance
+api/api.log
+api/dist-*
+api/run.sh
