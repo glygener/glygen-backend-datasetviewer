@@ -1,0 +1,2287 @@
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [14/Jan/2022 14:13:35] "[35m[1mPOST /dataset/search HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 240, in locate_app
+    __import__(module_name)
+ModuleNotFoundError: No module named 'glygen'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 338, in __call__
+    self._flush_bg_loading_exception()
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 326, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 314, in _load_app
+    self._load_unlocked()
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 330, in _load_unlocked
+    self._app = rv = self.loader()
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 388, in load_app
+    app = locate_app(self, import_name, name)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 250, in locate_app
+    raise NoAppException('Could not import "{name}".'.format(name=module_name))
+flask.cli.NoAppException: Could not import "glygen".
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [14/Jan/2022 14:15:24] "[35m[1mPOST /dataset/search HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 240, in locate_app
+    __import__(module_name)
+ModuleNotFoundError: No module named 'glygen'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 338, in __call__
+    self._flush_bg_loading_exception()
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 326, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 314, in _load_app
+    self._load_unlocked()
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 330, in _load_unlocked
+    self._app = rv = self.loader()
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 388, in load_app
+    app = locate_app(self, import_name, name)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 250, in locate_app
+    raise NoAppException('Could not import "{name}".'.format(name=module_name))
+flask.cli.NoAppException: Could not import "glygen".
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [18/Jan/2022 14:41:18] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Jan/2022 14:41:18] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Jan/2022 14:51:22] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 12:41:42] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:41:42] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:41:49] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:41:49] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:42:06] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:44:43] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:44:43] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:45:13] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:46:51] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 12:50:36] "[35m[1mPOST /dataset/search HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 407, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 430, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/representations.py", line 25, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type dict_keys is not JSON serializable
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 12:51:04] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 12:52:55] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:53:01] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:53:07] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 12:53:57] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:54:01] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:54:46] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:55:13] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:56:15] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 12:58:24] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:58:36] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:58:36] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:59:06] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 12:59:07] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:00:19] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:00:32] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:02:21] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:02:24] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:02:25] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:27:46] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:27:46] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:31:13] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:31:18] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:33:39] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:34:03] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:36:06] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:37:01] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:37:38] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:37:47] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:38:47] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:39:14] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:45:02] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:45:17] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:45:18] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:45:24] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:45:25] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [19/Jan/2022 13:46:06] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:11] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:11] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:25] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:25] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:34] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:35] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:39] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:46:39] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:47:07] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:47:08] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:48:18] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:48:18] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:48:29] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [19/Jan/2022 13:48:29] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [24/Jan/2022 16:17:41] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:42] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:46] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:46] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:55] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:55] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:56] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:17:56] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:18:57] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:18:58] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:28:22] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:28:23] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:29:01] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:29:01] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:30:02] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:30:03] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:31:49] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:31:49] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:34:47] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:34:47] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:37:12] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:37:12] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:38:29] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:38:29] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:38:37] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:38:37] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:30] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:30] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:40] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:41] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:44] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:44] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:52] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:39:53] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:40:00] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:40:00] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:40:18] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:40:18] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:42:21] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 16:42:21] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:25:22] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:25:23] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:35:22] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:35:23] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:35:29] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:35:29] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:03] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:03] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:04] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:04] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:06] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:06] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:24] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:24] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:25] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:36:25] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:37:45] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:37:46] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:11] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:11] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:18] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:18] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:52] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:52] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:53] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:38:53] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:39:55] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:39:55] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:39:56] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:39:56] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:41:39] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:41:54] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:42:43] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:42:56] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:43:10] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:43:14] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:43:36] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:44:53] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:44:54] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:44:58] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:44:59] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 17:45:21] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [24/Jan/2022 17:49:46] "[37mPOST /misc/info HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 223-912-113
+127.0.0.1 - - [24/Jan/2022 17:50:09] "[37mPOST /misc/info HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:03:14] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:03:15] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:03:18] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:03:18] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:00] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:00] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:01] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:01] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:02] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:02] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:07] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:07] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:12] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:12] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:21] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:21] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:26] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:27] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:40] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:04:40] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:05:45] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:05:45] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:05:46] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:05:46] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:06:15] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:06:15] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:06:16] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:06:16] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:07:24] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:07:24] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:07:25] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [24/Jan/2022 18:07:25] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 16:48:11] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [25/Jan/2022 16:48:12] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 16:48:47] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 83, in find_best_app
+    app = call_factory(script_info, app_factory)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 119, in call_factory
+    return app_factory()
+  File "/Users/rykahsay/projects/glygen/api/glygen/__init__.py", line 40, in create_app
+    app.register_blueprint(misc.bp)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1168, in register_blueprint
+    blueprint.register(self, options, first_registration)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 256, in register
+    deferred(state)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 294, in <lambda>
+    self.record(lambda s: s.add_url_rule(rule, endpoint, view_func, **options))
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 844, in _blueprint_setup_add_url_rule_patch
+    blueprint_setup.app.add_url_rule(
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1282, in add_url_rule
+    raise AssertionError(
+AssertionError: View function mapping is overwriting an existing endpoint function: misc.info
+127.0.0.1 - - [25/Jan/2022 16:49:01] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 83, in find_best_app
+    app = call_factory(script_info, app_factory)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 119, in call_factory
+    return app_factory()
+  File "/Users/rykahsay/projects/glygen/api/glygen/__init__.py", line 40, in create_app
+    app.register_blueprint(misc.bp)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1168, in register_blueprint
+    blueprint.register(self, options, first_registration)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 256, in register
+    deferred(state)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 294, in <lambda>
+    self.record(lambda s: s.add_url_rule(rule, endpoint, view_func, **options))
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 844, in _blueprint_setup_add_url_rule_patch
+    blueprint_setup.app.add_url_rule(
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1282, in add_url_rule
+    raise AssertionError(
+AssertionError: View function mapping is overwriting an existing endpoint function: misc.info
+127.0.0.1 - - [25/Jan/2022 16:49:54] "[35m[1mOPTIONS /dataset/search HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 83, in find_best_app
+    app = call_factory(script_info, app_factory)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 119, in call_factory
+    return app_factory()
+  File "/Users/rykahsay/projects/glygen/api/glygen/__init__.py", line 40, in create_app
+    app.register_blueprint(misc.bp)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1168, in register_blueprint
+    blueprint.register(self, options, first_registration)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 256, in register
+    deferred(state)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 294, in <lambda>
+    self.record(lambda s: s.add_url_rule(rule, endpoint, view_func, **options))
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 844, in _blueprint_setup_add_url_rule_patch
+    blueprint_setup.app.add_url_rule(
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1282, in add_url_rule
+    raise AssertionError(
+AssertionError: View function mapping is overwriting an existing endpoint function: misc.info
+127.0.0.1 - - [25/Jan/2022 16:51:23] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 83, in find_best_app
+    app = call_factory(script_info, app_factory)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 119, in call_factory
+    return app_factory()
+  File "/Users/rykahsay/projects/glygen/api/glygen/__init__.py", line 40, in create_app
+    app.register_blueprint(misc.bp)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1168, in register_blueprint
+    blueprint.register(self, options, first_registration)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 256, in register
+    deferred(state)
+  File "/usr/local/lib/python3.9/site-packages/flask/blueprints.py", line 294, in <lambda>
+    self.record(lambda s: s.add_url_rule(rule, endpoint, view_func, **options))
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 844, in _blueprint_setup_add_url_rule_patch
+    blueprint_setup.app.add_url_rule(
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 98, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1282, in add_url_rule
+    raise AssertionError(
+AssertionError: View function mapping is overwriting an existing endpoint function: misc.info
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 16:51:46] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 16:55:55] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:02:18] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 83, in find_best_app
+    app = call_factory(script_info, app_factory)
+  File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 119, in call_factory
+    return app_factory()
+  File "/Users/rykahsay/projects/glygen/api/glygen/__init__.py", line 39, in create_app
+    from . import misc
+File "/Users/rykahsay/projects/glygen/api/glygen/misc.py", line 44
+    return redirect(request.url)
+IndentationError: unexpected indent
+127.0.0.1 - - [25/Jan/2022 17:03:16] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/rykahsay/projects/glygen/api/glygen/misc.py", line 42, in upload
+    file = request.files['file']
+  File "/usr/local/lib/python3.9/site-packages/werkzeug/datastructures.py", line 442, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+KeyError: 'file'
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:04:17] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [25/Jan/2022 17:04:37] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [25/Jan/2022 17:05:33] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:07:05] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/rykahsay/projects/glygen/api/glygen/misc.py", line 46, in upload
+    out_file = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+NameError: name 'app' is not defined
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:07:28] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/rykahsay/projects/glygen/api/glygen/misc.py", line 46, in upload
+    out_file = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+KeyError: 'UPLOAD_FOLDER'
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/__init__.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:10:16] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/rykahsay/projects/glygen/api/glygen/misc.py", line 46, in upload
+    out_file = os.path.join(current_app.config['DATA_PATH'],"/userdata/", filename)
+NameError: name 'filename' is not defined
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:12:50] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:13:10] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:13:52] "[35m[1mPOST /misc/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.9/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/rykahsay/projects/glygen/api/glygen/misc.py", line 50, in upload
+    file.save(out_file)
+  File "/usr/local/lib/python3.9/site-packages/werkzeug/datastructures.py", line 3066, in save
+    dst = open(dst, "wb")
+FileNotFoundError: [Errno 2] No such file or directory: '/Volumes/disk2/tmp/toy.csv'
+127.0.0.1 - - [25/Jan/2022 17:14:39] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/rykahsay/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-266-294
+127.0.0.1 - - [25/Jan/2022 17:19:50] "[37mPOST /misc/info HTTP/1.1[0m" 200 -
+127.0.0.1 - - [25/Jan/2022 17:20:23] "[37mPOST /misc/upload HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 691-509-875
+127.0.0.1 - - [26/Jan/2022 16:48:37] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:48:38] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:48:48] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:48:49] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:50:21] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:50:22] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:53:25] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:53:26] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:53:28] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:57:01] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:57:01] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:57:04] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:57:05] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:57:16] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:57:16] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:58:23] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:58:23] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:58:53] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:58:53] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:59:30] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 16:59:30] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:05] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:05] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:10] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:13] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:13] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:21] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:00:21] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:04:34] "[33mPOST /document/get_one HTTP/1.1[0m" 404 -
+127.0.0.1 - - [26/Jan/2022 17:05:28] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:06:39] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:06:44] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:06:44] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:07:15] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:07:15] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:11:05] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:11:05] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:12:26] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:12:27] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:12:34] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:12:34] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:13:12] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:13:12] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:13:14] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:13:14] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:13:16] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:36] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:36] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:38] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:38] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:40] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:42] "[37mOPTIONS /dataset/historylist HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:42] "[37mPOST /dataset/historylist HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:44] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:44] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:46] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:48] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:48] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [26/Jan/2022 17:14:49] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+ * Serving Flask app 'glygen' (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 111-901-568
+127.0.0.1 - - [28/Jan/2022 01:55:11] "OPTIONS /dataset/search HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:13] "POST /dataset/search HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:14] "POST /dataset/search HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:32] "OPTIONS /dataset/detail HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:33] "POST /dataset/detail HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:38] "OPTIONS /dataset/search HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:39] "POST /dataset/search HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:56] "OPTIONS /dataset/detail HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jan/2022 01:55:56] "POST /dataset/detail HTTP/1.1" 200 -
+ * Serving Flask app 'glygen' (lazy loading)
+ * Environment: development
+ * Debug mode: on
+Traceback (most recent call last):
+  File "/usr/local/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/Library/Python/3.8/site-packages/flask/cli.py", line 994, in main
+    cli.main(args=sys.argv[1:])
+  File "/Library/Python/3.8/site-packages/flask/cli.py", line 600, in main
+    return super().main(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 1053, in main
+    rv = self.invoke(ctx)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 1659, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/Library/Python/3.8/site-packages/click/core.py", line 1395, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 754, in invoke
+    return __callback(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/click/decorators.py", line 84, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 754, in invoke
+    return __callback(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/cli.py", line 853, in run_command
+    run_simple(
+  File "/Library/Python/3.8/site-packages/werkzeug/serving.py", line 984, in run_simple
+    s.bind(server_address)
+OSError: [Errno 48] Address already in use
+127.0.0.1 - - [29/Jan/2022 12:35:43] "OPTIONS /dataset/search HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2022 12:35:44] "POST /dataset/search HTTP/1.1" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:14:46] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:14:47] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:18:35] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:18:36] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:22:46] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:22:47] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:23:09] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:23:10] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:23:33] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:23:33] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:24:53] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:27:20] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:28:26] "[35m[1mPOST /dataset/search HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 407, in wrapper
+    return self.make_response(data, code, headers=headers)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 430, in make_response
+    resp = self.representations[mediatype](data, *args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/representations.py", line 25, in output_json
+    dumped = dumps(data, **settings) + "\n"
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Cursor is not JSON serializable
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:30:20] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:30:36] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:30:37] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:33:21] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:33:22] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:36:37] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [31/Jan/2022 14:38:34] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:42:14] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:02] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:02] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:03] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:04] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:04] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:05] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:05] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:53] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:53] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:53] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:46:53] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:47:23] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:47:23] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:47:23] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [31/Jan/2022 14:47:24] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 12:45:45] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:46] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:46] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:46] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:50] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:50] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:54] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:54] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:45:55] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:15] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:15] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:15] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:15] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:20] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:20] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:22] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:22] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:22] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:23] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:52] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:52] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:52] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:52] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:57] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:46:57] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:40] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:40] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:40] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:40] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:48] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:48] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:48] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:49] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:50] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:52:51] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:15] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:15] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:20] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:20] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:55] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:55] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:57] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:54:58] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:55:32] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:55:32] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:55:35] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:55:35] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:56:29] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:56:29] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:56:32] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:56:33] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:26] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:26] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:29] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:30] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:45] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:45] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:49] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:57:50] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:30] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:30] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:31] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:31] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:59] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:59] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:58:59] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:59:00] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:59:25] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:59:25] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:59:25] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 12:59:26] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:03:10] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:03:10] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:03:10] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:03:11] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:11] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:11] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:12] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:13] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:26] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:26] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:28] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:29] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:33] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:33] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:34] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:34] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:41] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:41] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:43] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:05:43] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:06:24] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:06:24] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:06:26] "[37mOPTIONS /dataset/historylist HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:06:26] "[37mPOST /dataset/historylist HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:34] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:34] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:34] "[37mOPTIONS /dataset/historylist HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:34] "[37mPOST /dataset/historylist HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:38] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:38] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:13:39] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:07] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:07] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:07] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:08] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:43] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:44] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:44] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:14:45] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:15:56] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:15:56] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:15:56] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:15:58] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:18:27] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:18:27] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:18:27] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:18:28] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:07] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:07] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:08] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:08] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:44] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:44] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:44] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:19:45] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:20:13] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:20:14] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:20:14] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:20:14] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:21:48] "[35m[1mPOST /dataset/init HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 135, in post
+    req_obj["coll"] = "c_init"
+TypeError: 'NoneType' object does not support item assignment
+127.0.0.1 - - [10/Feb/2022 13:22:23] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:22:47] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:23:00] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:23:00] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:23:04] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:23:04] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:30] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:30] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:30] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:30] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:36] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:36] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:36] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:36] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:49] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:49] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:49] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:49] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:54] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:54] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:54] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:25:54] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:26:24] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:26:24] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:26:24] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:26:25] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:21] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:21] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:22] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:22] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:47] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:47] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:47] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:47] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:50] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:50] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:50] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:52] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:52] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:52] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:27:52] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:26] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:26] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:26] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:26] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:28] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:28] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:28:29] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:18] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:18] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:18] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:19] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:25] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:26] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:26] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:36:26] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:28] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:28] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:28] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:28] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:31] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:31] "[37mOPTIONS /dataset/historydetail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:37:31] "[37mPOST /dataset/historydetail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:10] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:10] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:22] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:22] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:55] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:55] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:58] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:40:58] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:41:00] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:41:00] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:54:36] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:54:36] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:56:07] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 13:56:07] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:02:18] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:02:18] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:02:52] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:02:52] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:03:32] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:03:32] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:04:32] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:04:32] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:11:49] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:11:49] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:12:23] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:12:23] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:19:14] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:19:14] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:21:13] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:21:13] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:25:36] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 14:25:36] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 15:02:24] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/smhsguest/projects/glygen/api/glygen/__init__.py", line 8, in <module>
+    from .dataset import api as dataset_api
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 153, in <module>
+    #@api.marshal_with(ds_model)
+NameError: name 'bp' is not defined
+127.0.0.1 - - [10/Feb/2022 15:04:17] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 167, in post
+    file_name = secure_filename(file.filename)
+NameError: name 'secure_filename' is not defined
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/__init__.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 15:05:11] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 168, in post
+    out_file = os.path.join(current_app.config['DATA_PATH'], file_name)
+NameError: name 'os' is not defined
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/misc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 15:05:24] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 168, in post
+    out_file = os.path.join(current_app.config['DATA_PATH'], file_name)
+NameError: name 'os' is not defined
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 15:05:32] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 170, in post
+    res_obj["out_file"] = out_file
+NameError: name 'res_obj' is not defined
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 15:06:26] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 172, in post
+    file.save(out_file)
+  File "/Library/Python/3.8/site-packages/werkzeug/datastructures.py", line 3066, in save
+    dst = open(dst, "wb")
+FileNotFoundError: [Errno 2] No such file or directory: '/Volumes/disk2/tmp/toy.csv'
+127.0.0.1 - - [10/Feb/2022 15:06:43] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:22:01] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:22:02] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:22:05] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:22:05] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:41:45] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:41:46] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:41:48] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:41:48] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:43:43] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:43:43] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:43:53] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 17:47:51] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:47:51] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:47:58] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 174, in post
+    return jsonify({"error_list":error_list}), 200
+NameError: name 'jsonify' is not defined
+127.0.0.1 - - [10/Feb/2022 17:51:54] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:51:54] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:52:02] "[37mOPTIONS /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:52:02] "[31m[1mPOST /dataset/upload HTTP/1.1[0m" 400 -
+127.0.0.1 - - [10/Feb/2022 17:53:39] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:53:39] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 17:53:47] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 174, in post
+    return jsonify({"error_list":error_list}), 200
+NameError: name 'jsonify' is not defined
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/__init__.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [10/Feb/2022 18:01:16] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 18:01:16] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [10/Feb/2022 18:01:23] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [15/Feb/2022 17:54:19] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 17:54:19] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 17:54:20] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 17:54:20] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 17:54:28] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 17:54:28] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:15:21] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:15:21] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:21:45] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:22:59] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:22:59] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:26:21] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:26:21] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:26:27] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:26:33] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:27:05] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:27:40] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:28:18] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [15/Feb/2022 18:28:25] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:28:38] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [15/Feb/2022 18:34:51] "[35m[1mPOST /dataset/upload HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 198, in post
+    error_obj = run_qc(out_file, file_format, res_obj, qc_type, data_version)
+  File "/Users/smhsguest/projects/glygen/api/glygen/qc.py", line 24, in run_qc
+    release_dir = "%s/releases/data/v-%s/" % (data_path, data_version)
+NameError: name 'data_path' is not defined
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [15/Feb/2022 18:35:27] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:35:38] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:35:38] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:35:38] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:35:39] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:35:41] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:36:01] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:36:08] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:38:58] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:38:58] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:39:08] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:39:08] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:39:18] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:40:47] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:40:47] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:41:08] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:41:16] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:41:16] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:42:17] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:42:17] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:42:25] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:43:26] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:43:27] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:43:36] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:43:48] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [15/Feb/2022 18:55:48] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:55:48] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:56:20] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:56:35] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:56:52] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 18:57:27] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:17:15] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:20:34] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:21:47] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:23:44] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [15/Feb/2022 19:27:31] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:28:25] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:28:25] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:28:42] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:29:47] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:29:47] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:30:02] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:30:57] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:30:57] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:30:57] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:30:57] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:38:12] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:38:12] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:46:38] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:46:38] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:46:41] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:46:41] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:46:41] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:48:28] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:48:28] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:48:28] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:48:28] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:50:01] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 19:50:01] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:46:06] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:46:06] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:46:06] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:46:06] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:48:14] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:48:14] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:48:14] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [15/Feb/2022 20:48:14] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+Traceback (most recent call last):
+  File "/usr/local/bin/flask", line 9, in <module>
+    sys.exit(main())
+  File "/Library/Python/3.8/site-packages/flask/cli.py", line 967, in main
+    cli.main(args=sys.argv[1:], prog_name="python -m flask" if as_module else None)
+  File "/Library/Python/3.8/site-packages/flask/cli.py", line 586, in main
+    return super(FlaskGroup, self).main(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 782, in main
+    rv = self.invoke(ctx)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/Library/Python/3.8/site-packages/click/core.py", line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/click/decorators.py", line 73, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+  File "/Library/Python/3.8/site-packages/click/core.py", line 610, in invoke
+    return callback(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/cli.py", line 852, in run_command
+    run_simple(
+  File "/Library/Python/3.8/site-packages/werkzeug/serving.py", line 1030, in run_simple
+    s.bind(server_address)
+OSError: [Errno 48] Address already in use
+127.0.0.1 - - [16/Feb/2022 16:23:22] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:22] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:23] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:24] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:27] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:28] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:29] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:29] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:29] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:41] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:41] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:41] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:23:41] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:21] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:21] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:21] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:21] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:28] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:28] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:28] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:24:28] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:12] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:12] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:12] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:12] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:51] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:51] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:51] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:25:51] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:03] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:03] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:04] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:04] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:51] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:51] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:51] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:28:51] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:30:03] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:30:03] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:30:03] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:30:03] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:32:59] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:32:59] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:32:59] "[37mOPTIONS /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:32:59] "[37mPOST /dataset/pagecn HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:34:56] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:34:57] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:35:00] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:35:00] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:53] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:53] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:55] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:55] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:57] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:58] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:50:58] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:53:31] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:53:31] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:53:31] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:53:32] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:58:22] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:58:23] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:58:23] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 16:58:23] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:21] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:21] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:22] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:22] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:29] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:29] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:29] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:01:29] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:02:52] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:02:52] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:06] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:06] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:09] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:09] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:18] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:18] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:20] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:03:20] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:08:06] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:08:06] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:08:06] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:08:06] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:49:50] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:49:55] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:49:59] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:52:16] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:52:20] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:52:25] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:53:10] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:53:24] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:53:29] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 17:53:33] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [16/Feb/2022 18:01:03] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 18:01:47] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/qc.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [16/Feb/2022 18:03:02] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 18:03:33] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 18:03:38] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 18:27:33] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [16/Feb/2022 18:27:33] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [18/Feb/2022 13:49:42] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:49:42] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:49:44] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:49:44] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:49:45] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:49:49] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:49:53] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:50:53] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:50:58] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:03] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:07] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:12] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:17] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:22] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:27] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:32] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:37] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+127.0.0.1 - - [18/Feb/2022 13:51:42] "[37mPOST /dataset/upload HTTP/1.1[0m" 200 -
+ * Serving Flask app "glygen" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 12:54:47] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 12:54:47] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 12:54:48] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 12:54:48] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 12:58:22] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 12:58:22] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:00:13] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:01:25] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:01:25] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:01:25] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:01:25] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 13:05:05] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:05:30] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:05:43] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 13:07:56] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 13:09:39] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 13:09:57] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 17:33:46] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:34:55] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 17:36:07] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:36:34] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:36:53] "[37mOPTIONS /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:36:53] "[37mPOST /dataset/search HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:36:59] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:36:59] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 17:52:37] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 17:57:34] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:04:29] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/dataset.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 18:06:48] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 18:07:43] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:07:54] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:09:37] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:09:37] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:09:38] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:09:38] "[35m[1mPOST /dataset/detail HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 109, in post
+    req_obj["bcoid"] = "https://biocomputeobject.org/%s/%s" % (req_obj["bcoid"], req_obj["dataversion"])
+KeyError: 'dataversion'
+127.0.0.1 - - [23/Feb/2022 18:09:53] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:09:56] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+ * Detected change in '/Users/smhsguest/projects/glygen/api/glygen/document.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 166-065-861
+127.0.0.1 - - [23/Feb/2022 18:13:16] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:13:17] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:13:17] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:13:17] "[35m[1mPOST /dataset/detail HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 672, in error_router
+    return original_handler(e)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 671, in error_router
+    return original_handler(f)
+  File "/Library/Python/3.8/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 669, in error_router
+    return self.handle_error(e)
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Python/3.8/site-packages/flask_restx/api.py", line 403, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/Library/Python/3.8/site-packages/flask_restx/resource.py", line 49, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/smhsguest/projects/glygen/api/glygen/dataset.py", line 109, in post
+    req_obj["bcoid"] = "https://biocomputeobject.org/%s/%s" % (req_obj["bcoid"], req_obj["dataversion"])
+KeyError: 'dataversion'
+127.0.0.1 - - [23/Feb/2022 18:14:00] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:00] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:03] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:03] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:03] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:04] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:13] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:13] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:13] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:13] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:52] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:52] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:55] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:14:55] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:15:59] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:12] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:46] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:46] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:48] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:48] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:53] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:53] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:55] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:17:55] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:35] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:35] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:37] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:37] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:46] "[37mOPTIONS /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:46] "[37mPOST /dataset/init HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:47] "[37mOPTIONS /dataset/detail HTTP/1.1[0m" 200 -
+127.0.0.1 - - [23/Feb/2022 18:18:48] "[37mPOST /dataset/detail HTTP/1.1[0m" 200 -

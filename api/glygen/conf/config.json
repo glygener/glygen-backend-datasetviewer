@@ -1,0 +1,105 @@
+{
+    "qcinfo":{
+      "glyco_site":{
+        "requiredfields":["uniprotkb_ac","start_pos", "end_pos", "site_seq", "glytoucan_ac", "glyco_type","xref_id", "citation_id","citation_type", "notes"]
+      },
+      "glyco_site_unicarbkb":{
+        "requiredfields":["protein","position", "toucan", "id", "aminoacid","aminoacidtype", "pmid", "notes"]
+      }
+    },
+    "collinfo":{
+        "c_init":{
+            "get_one":{
+                "prj":{
+                },
+                "queryfields":{
+                }
+            }
+        },
+        "c_html":{
+            "get_one":{
+                "prj":{
+                    "pageid":1,
+                    "cn":1
+                },
+                "queryfields":{
+                    "pageid":{"path":"pageid", "datatype":"string", "operator":"$eq", "required":true}
+                }
+            }
+        },
+        "c_assembly":{
+            "get_one":{
+                "prj":{},
+                "queryfields":{
+                    "fdaargos_id":{"path":"fdaargos_id", "datatype":"string", "operator":"$eq", "required":true}
+                }
+            },
+            "get_many":{
+                "prj":{},
+                "queryfields":{
+                    "fdaargos_id":{"path":"fdaargos_id", "datatype":"string", "operator":"$regex", "required":false}
+                }
+            }
+        },
+        "c_history":{
+            "get_one":{
+                "prj":{ "bcoid":1,"filenames":1,"history":1},
+                "queryfields":{
+                    "bcoid":{"path":"bcoid", "datatype":"string", "operator":"$eq", "required":true}
+                }
+            },
+            "get_many":{
+                "prj":{ "bcoid":1,"filenames":1,"history":1},
+                "queryfields":{
+                    "bcoid":{"path":"bcoid", "datatype":"string", "operator":"$eq", "required":false}
+                }
+            }
+        },
+        "c_extract":{
+            "get_one":{
+                "prj":{
+                },
+                "queryfields":{
+                    "bcoid":{"path":"bcoid", "datatype":"string", "operator":"$eq", "required":true}
+                }
+            },
+            "get_many":{
+                "prj":{
+                },
+                "queryfields":{
+                    "query":{"path":"", "datatype":"string", "operator":"$regex","required":false}
+                }
+            }
+        },
+        "c_bco":{
+            "get_one":{
+                "prj":{
+                },
+                "queryfields":{
+                    "bcoid":{"path":"object_id", "datatype":"string", "operator":"$eq", "required":true}
+                }
+            },
+            "get_many":{
+                "prj":{
+                },
+                "queryfields":{
+                    "query":{"path":"", "datatype":"string", "operator":"$regex","required":false}
+                }
+            }
+        }
+
+    }
+    ,"rootinfo":{
+    }
+    ,"pathinfo":{
+    }
+}
+
+
+
+
+
+
+
+
+
