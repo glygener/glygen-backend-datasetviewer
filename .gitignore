@@ -5,5 +5,9 @@ api/dist-*
 api/run.sh
 api/tmp
 
+app/.env.production
+app/*.tar.gz
+app/*.log
+app/glygen.*.env
 
 
