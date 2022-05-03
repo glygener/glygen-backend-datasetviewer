@@ -51,6 +51,13 @@ dataset_submit_query_model = api.model(
     }
 )
 
+glycan_finder_query_model = api.model(
+    'Glycan Finder Query',
+    {
+        'filename': fields.String(required=True, default="", description='File name')
+    }
+)
+
 dataset_historydetail_query_model = api.model(
     'Dataset History Detail Query',
     {
@@ -105,12 +112,28 @@ class DatasetDetail(Resource):
         extract_obj = get_one(req_obj)
         if "error" in extract_obj:
             return extract_obj
+       
+        req_obj["coll"] = "c_history"
+        req_obj["doctype"] = "track"
+        history_obj = get_one(req_obj)
+        if "error" in history_obj:
+            return history_obj
+
         req_obj["coll"] = "c_bco"
-        req_obj["bcoid"] = "https://biocomputeobject.org/%s/%s" % (req_obj["bcoid"], req_obj["dataversion"])
+        req_obj["bcoid"] = "https://biocomputeobject.org/%s" % (req_obj["bcoid"])
         bco_obj = get_one(req_obj)
         if "error" in bco_obj:
             return bco_obj
-        res_obj = {"extract":extract_obj, "bco":bco_obj}
+        
+        
+        res_obj = {
+            "status":1,
+            "record":{
+                "extract":extract_obj["record"], 
+                "bco":bco_obj["record"], 
+                "history":history_obj["record"]["history"]
+            }
+        }
 
         return res_obj
 
@@ -139,7 +162,54 @@ class HistoryList(Resource):
         '''Get dataset history list '''
         req_obj = request.json
         req_obj["coll"] = "c_history"
-        res_obj = get_many(req_obj)
+        req_obj["query"] = "" if "query" not in req_obj else req_obj["query"]
+
+        hist_obj = get_many(req_obj)
+        if "error" in hist_obj:
+            return hist_obj
+        res_obj = {"tabledata":{"type": "table","data": []}}
+        header_row = [
+            {"type": "string", "label": "BCOID"}
+            ,{"type": "string", "label": "File Name"}
+            ,{"type": "number", "label": "Field Count"}
+            ,{"type": "number", "label": "Fields Added"}
+            ,{"type": "number", "label": "Fields Removed"}
+            ,{"type": "number", "label": "Row Count"}
+            ,{"type": "number", "label": "Rows Count Prev"}
+            ,{"type": "number", "label": "Rows Count Change"}
+            ,{"type": "number", "label": "ID Count"}
+            ,{"type": "number", "label": "IDs Added"}
+            ,{"type": "number", "label": "IDs Removed"}
+            ,{"type": "string", "label": ""}
+
+        ]
+        f_list = ["file_name", 
+            "field_count", "fields_added", "fields_removed", 
+            "row_count", "row_count_last", "row_count_change",
+            "id_count", "ids_added", "ids_removed"
+        ]
+        res_obj["tabledata"]["data"].append(header_row)
+        for obj in hist_obj["recordlist"]:
+            if "history" in obj:
+                ver_one = req_obj["dataversion"]
+                ver_two = ver_one.replace(".", "_")
+                if ver_two in obj["history"]:
+                    row = [obj["bcoid"]]
+                    for f in f_list:
+                        row.append(obj["history"][ver_two][f])
+                    row.append("<a href=\"/%s/%s/history\">details</a>" % (obj["bcoid"],ver_one))
+                    match_flag = True
+                    idx_list = []
+                    if req_obj["query"] != "":
+                        q = req_obj["query"].lower()
+                        for v in [row[0].lower(), row[1].lower()]:
+                            idx_list.append(v.find(q))
+                        match_flag = False if idx_list == [-1,-1] else match_flag
+
+                    if match_flag == True:
+                        res_obj["tabledata"]["data"].append(row)
+
+
         return res_obj
 
 
@@ -154,6 +224,10 @@ class HistoryDetail(Resource):
         req_obj = request.json
         req_obj["coll"] = "c_history"
         res_obj = get_one(req_obj)
+        if "error" in res_obj:
+            return res_obj
+
+        res_obj["record"]["history"] = res_obj["record"]["history"][req_obj["dataversion"].replace(".","_")]
         return res_obj
 
 
@@ -243,5 +317,41 @@ class Dataset(Resource):
 
 
 
+@api.route('/glycan_finder')
+class Dataset(Resource):
+    '''Glycan Finder '''
+    @api.doc('get_dataset')
+    @api.expect(glycan_finder_query_model)
+    def post(self):
+        '''Glyca Finder '''
+        req_obj = request.json
+        data_path, ser = current_app.config["DATA_PATH"], current_app.config["SERVER"]
+        uploaded_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, req_obj["filename"])
+        if os.path.isfile(uploaded_file) == False:
+            res_obj = {"error":"submitted filename does not exist!", "status":0}
+        else:
+            file_format = req_obj["filename"].split(".")[-1]
+            app_dir = "/software/glycan_finder/"
+            cmd = "matlab -nodisplay -nosplash -nodesktop -r "
+            cmd += " \"cd %s;inFile='%s';ClassOne;exit;\" " % (app_dir,uploaded_file)
+            #glycan_list = commands.getoutput(cmd).split("\n")[-1].split(",")
+            glycan_list = ["A", "B"]
+            res_obj = {
+                "inputinfo":{"name":req_obj["filename"], "format":file_format},
+                "mappingrows":[
+                    [
+                        {"type": "string", "label": "GlyToucan Accession"},
+                        {"type": "string", "label": "Glycan Image"}
+                    ]
+                ]
+            }
+            for ac in glycan_list:
+                link_one = "<a href=\"https://glygen.org/glycan/%s\" target=_>%s</a>" % (ac,ac)
+                link_two = "<a href=\"https://gnome.glyomics.org/restrictions/GlyGen.              StructureBrowser.html?focus=%s\" target=_>related glycans</a>" % (ac)
+                img = "<img src=\"https://api.glygen.org/glycan/image/%s\">" % (ac)
+                links = "%s (other %s)" % (link_one, link_two)
+                res_obj["mappingrows"].append([links, img])
+
+        return res_obj
 
 

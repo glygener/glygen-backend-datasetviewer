@@ -1,13 +1,24 @@
 TOKEN
+test
+documentation
+api/instance/*
 api/instance
 api/api.log
 api/dist-*
 api/run.sh
 api/tmp
 
+app/conf
+app/build
+app/node_modules
+app/Dockerfile*
+app/*.log
+app/glygen*
+app/.env.*
 app/.env.production
 app/*.tar.gz
 app/*.log
 app/glygen.*.env
 
+app/public/ln2data
 

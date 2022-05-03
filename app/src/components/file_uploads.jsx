@@ -38,6 +38,41 @@ class FileUploads extends Component {
   };
 
 
+  handleGlycanFinder = () => {
+
+    var reqObj = {"filename":this.state.response.inputinfo.name};
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reqObj)
+    };
+    const svcUrl = LocalConfig.apiHash.dataset_glycan_finder;
+    fetch(svcUrl, requestOptions)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          var tmpState = this.state;
+          tmpState.isLoaded = true;
+          tmpState.response = result;
+          if (result.status === 0){
+            tmpState.dialog.status = true;
+            tmpState.dialog.msg = result.error;
+          }
+          this.setState(tmpState);
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+
+  }
+
+
+
+
   handleFileSubmit = () => {
 
     var reqObj = {"fname":"", "lname":"", "email":"", "affilation":""};
@@ -73,9 +108,6 @@ class FileUploads extends Component {
           });
         }
       );
-
-
-
 
   }
 
@@ -128,7 +160,9 @@ class FileUploads extends Component {
             tmpState.dialog.status = true;
             tmpState.dialog.msg = tmpState.response.error;
           }
-          
+          if (["png", "jpeg"].indexOf(tmpState.response.inputinfo.format) !== -1){
+            tmpState.tabidx = "glycanfinder";
+          }
           this.setState(tmpState);
           console.log("Ajax response:", result);
         },
@@ -176,7 +210,8 @@ class FileUploads extends Component {
 
     var tabHash = {
         failedrows:{ title:"Failed Rows", cn:""},
-        submitfile: { title:"Submit File", cn:""}
+        submitfile: { title:"Submit File", cn:""},
+        glycanfinder:{title:"Run Glycan Finder", cn:""}
     };
     if (this.state.dialog.status === false && this.state.viewstatus === 1){
       $("#tabcn").css("display", "block");
@@ -196,7 +231,8 @@ class FileUploads extends Component {
                 <div className="leftblock" style={{margin:"20px 0px 0px 0px"}}>
                   <Chart width={'100%'} chartType="Table" loader={<div>Loading Chart</div>}
                     data={this.state.response.failedrows}
-                    options={{showRowNumber: false, width: '100%', height: '100%'}}
+                    options={{showRowNumber: false, width: '100%', height: '100%', 
+                        allowHtml: true }}
                     rootProps={{ 'data-testid': '1' }}   
                   />
                 </div>
@@ -230,6 +266,35 @@ class FileUploads extends Component {
               );
             }
             tabHash.submitfile.cn = tmpCn;
+        }
+        else if (["png", "jpeg"].indexOf(this.state.response.inputinfo.format) !== -1){
+          var server = process.env.REACT_APP_SERVER;
+          var imageUrl = "/ln2data/userdata/"+server+"/tmp/" + this.state.response.inputinfo.name;
+          
+          var chartCn = "";
+          if ("mappingrows" in this.state.response){
+              chartCn = (
+                <Chart width={'100%'} chartType="Table" loader={<div>Loading Chart</div>}
+                  data={this.state.response.mappingrows}
+                  options={{allowHtml: true, showRowNumber: false, width: '100%', height: '100%'}}
+                  rootProps={{ 'data-testid': '1' }}
+                />
+              );
+          }
+          var tmpCn = (
+                <div>
+                <div id="submitcn" className="leftblock" style={{width:"50%", margin:"0px 0px 0px  20px"}}>
+                  <img src={imageUrl}/><br/>
+                  <input type="submit" id="run_glycan_finder"  value="Run Glycan Finder" 
+                      className="form-control"
+                      onClick={this.handleGlycanFinder}
+                    />
+                </div>
+                <div id="glycan_finder_results_cn" className="leftblock" 
+                  style={{width:"100%", margin:"40px 0px 0px  20px"}}>{chartCn}</div>
+                </div>
+            );
+            tabHash.glycanfinder.cn = tmpCn;
         }
     }
 
@@ -291,7 +356,7 @@ class FileUploads extends Component {
             <div className="leftblock" style={{width:"100%"}}> 
               Upload your csv or tsv file (
                 example files: <a href="/ln2data/downloads/examples/glyco_sites.csv" className="reglink" download>glyco_sites.csv</a>, &nbsp; 
-                <a href="/ln2data/downloads/examples/glyco_sites_unicarbkb.csv" className="reglink" download>glyco_sites_unicarbkb.csv</a>). 
+                <a href="/ln2data/downloads/examples/glyco_sites_unicarbkb.csv" className="reglink" download>glyco_sites_unicarbkb.csv</a>, <a href="/ln2data/downloads/examples/glycan_image.png" className="reglink" download>glycan_image.png</a>). 
                 Visit the 
                   <a id="upload_help" href="/static/upload_help" className="reglink"> tutorial/help page </a>
                  for detailed information on how to use this functionality.

@@ -14,6 +14,8 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 
 
+
+
 class App extends Component {
 
   state = {
@@ -22,6 +24,8 @@ class App extends Component {
       msg:""
     }
   };
+
+
 
   handleDialogClose = () => {
     var tmpState = this.state;
@@ -93,9 +97,9 @@ class App extends Component {
             )}
           />
           <Route
-            path="/:bcoId/history"
+            path="/:bcoId/:dataVersion/history"
             render={(props) => (
-              <HistoryDetail bcoId={props.match.params.bcoId}  initObj={this.state.response.record}/>
+              <HistoryDetail bcoId={props.match.params.bcoId} dataVersion={props.match.params.dataVersion}  initObj={this.state.response.record}/>
             )}
           />
           <Route

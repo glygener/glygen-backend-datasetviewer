@@ -48,6 +48,8 @@ class SearchResults extends Component {
     queryValue = (queryValue === undefined ? "" : queryValue);
     var reqObj = {query:queryValue};
 
+    this.handleFilterReset();
+
     const requestOptions = { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -154,8 +156,13 @@ class SearchResults extends Component {
 
     var filterHideFlag = (objList.length > 0 ? "block" : "none");
 
-    var resultSummary = passedObjList.length + " Results";
-    
+    var tmpList = [];
+    for (var i in this.state.filterlist){
+        var h = "<b>" + this.state.filterlist[i].split("|")[1] + "</b>";
+        tmpList.push(h);
+    }
+    var resultSummary = "<b>" + passedObjList.length + "</b> results found";
+    resultSummary += (tmpList.length > 0 ? ", after fileters: '" + tmpList.join("', '") + "'." : "."); 
 
    //return (<div>{this.state.pageStartIdx} {this.state.pageEndIdx}</div>);
 
@@ -166,7 +173,7 @@ class SearchResults extends Component {
       <div className="pagecn">
         
         <div className="leftblock" style={{width:"100%", margin:"20px 0px 0px 0px"}}>
-          <Searchbox onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
+          <Searchbox label={"Search by: BCOID, dataset file name, title, description or  categories"} onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
         </div>
         <div className="leftblock" style={{width:"100%", margin:"5px 0px 0px 0px",display:filterHideFlag}}>
           <Resultfilter

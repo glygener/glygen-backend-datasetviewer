@@ -6,12 +6,15 @@ import { Chart } from "react-google-charts";
 import { Link } from "react-router-dom";
 import DoubleArrowOutlinedIcon from '@material-ui/icons/DoubleArrowOutlined';
 import { Markup } from 'interweave';
+import $ from "jquery";
+import {sortReleaseList} from "./util";
 
-
+var verInfo = {};
 
 class DatasetPage extends Component {
   
   state = {
+    ver:"",
     tabidx:"sampleview",
     dialog:{
       status:false, 
@@ -19,16 +22,32 @@ class DatasetPage extends Component {
     }
   };
 
-
+  
   handleDialogClose = () => {
     var tmpState = this.state;
     tmpState.dialog.status = false;
     this.setState(tmpState);
   }
 
+  handleVersion = () => {
+    var ver = $("#verselector").val();
+    var reqObj = { bcoid:this.props.bcoId, dataversion:ver};
+    this.fetchPageData(reqObj);
+    var tmpState = this.state;
+    tmpState.ver = ver;
+    this.setState(tmpState);
+  }
+
   componentDidMount() {
-    var reqObj = { bcoid:this.props.bcoId, dataversion:this.props.initObj.dataversion};
-    alert(reqObj.dataversion);
+      var reqObj = { bcoid:this.props.bcoId, dataversion:this.props.initObj.dataversion};
+      this.fetchPageData(reqObj); 
+  
+  }
+
+
+
+  fetchPageData(reqObj){
+
 
     const requestOptions = { 
       method: 'POST',
@@ -36,7 +55,6 @@ class DatasetPage extends Component {
       body: JSON.stringify(reqObj)
     };
     const svcUrl = LocalConfig.apiHash.dataset_detail;
-
 
     fetch(svcUrl, requestOptions)
       .then((res) => res.json())
@@ -72,71 +90,79 @@ class DatasetPage extends Component {
 
 
 
+
   render() {
 
     if (!("response" in this.state)){
       return <Loadingicon/>
     }
-
+    
     const resObj = (this.state.response !== undefined ? this.state.response : {});
-    const extractObj = resObj.extract.record;
-    const bcoObj = resObj.bco.record;
-    
+    const extractObj = ("record" in resObj ? resObj.record.extract : undefined);
+    const bcoObj = ("record" in resObj ? resObj.record.bco : undefined);
+    const historyObj = ("record" in resObj ? resObj.record.history : undefined);
+   
 
 
-    
+    var readMe = (extractObj !== undefined ? extractObj.readme : undefined); 
+    var downloadUrl = (extractObj !== undefined ? extractObj.downloadurl : undefined);
+    var bcoTitle = (extractObj !== undefined ? extractObj.title : undefined);
+    var bcoDescription = (extractObj !== undefined ? extractObj.description : undefined);
+
     var tabHash = {
-      "sampleview":{
-        title:"Sample View",
-        cn:""
-      },
-      "bcoview":{
-        title:"BCO JSON",
-        cn:(<pre>{JSON.stringify(bcoObj, null, 4)}</pre>)
-      },
-      "readme":{
-        title:"README",
-        cn:(<pre>{extractObj.readme}</pre>)
-      },
-      "downloads":{
-        title:"DOWNLOADS",
-        cn:(
-          <ul style={{margin:"20px 0px 100px 20px"}}>
-            <li><Link to={extractObj.downloadurl} className="reglink" target="_">Download dataset file</Link></li>
-          </ul>
-        )
+        "sampleview":{
+          title:"Sample View",
+          cn:""
+        },
+        "bcoview":{
+          title:"BCO JSON",
+          cn:(<pre>{JSON.stringify(bcoObj, null, 4)}</pre>)
+        },
+        "readme":{
+          title:"README",
+          cn:(<pre>{readMe}</pre>)
+        },
+        "downloads":{
+          title:"DOWNLOADS",
+          cn:(
+            <ul style={{margin:"20px 0px 100px 20px"}}>
+              <li><Link to={downloadUrl} className="reglink" target="_">Download dataset file</Link></li>
+            </ul>
+          )
+        }
+      };
+
+      tabHash.sampleview.cn = "";    
+      if (extractObj !== undefined){
+        if(extractObj.sampledata.type === "table"){
+          tabHash.sampleview.cn = (
+            <Chart 
+              width={'100%'}
+            chartType="Table" 
+            loader={<div>Loading Chart</div>}
+            data={extractObj.sampledata.data}
+            options={{showRowNumber: false, width: '100%', height: '100%'}}
+            rootProps={{ 'data-testid': '1' }}   
+            />
+          )
+        }
+        else{
+          //tabHash.sampleview.cn = (<div><pre>{extractObj.sampledata.data}</pre></div>);
+          tabHash.sampleview.cn = <Markup content={extractObj.sampledata.data}/>;
+        }  
       }
-    };
 
-    tabHash.sampleview.cn = "";    
-    if (extractObj.sampledata.type === "table"){
-      tabHash.sampleview.cn = (
-        <Chart 
-          width={'100%'}
-          chartType="Table" 
-          loader={<div>Loading Chart</div>}
-          data={extractObj.sampledata.data}
-          options={{showRowNumber: false, width: '100%', height: '100%'}}
-          rootProps={{ 'data-testid': '1' }}   
-        />
-      )
-    }
-    else{
-        //tabHash.sampleview.cn = (<div><pre>{extractObj.sampledata.data}</pre></div>);
-        tabHash.sampleview.cn = <Markup content={extractObj.sampledata.data}/>;
 
-    }  
-
-    var tabTitleList= [];
-    var tabContentList = [];
-    for (var tabId in tabHash){
-      var activeFlag = (tabId === this.state.tabidx ? "active" : "" );
-      var btnStyle = {width:"100%", fontSize:"15px", color:"#333", border:"1px solid #ccc"};
-      btnStyle.color = (activeFlag === "active" ? "#990000" : "#333");
-      btnStyle.background = (activeFlag === "active" ? "#fff" : "#eee");
-      btnStyle.borderBottom = (activeFlag === "active" ? "1px solid #fff" : "1px solid #ccc");
-      tabTitleList.push(
-        <li key={"tab-"+tabId} className="nav-item" role="presentation" 
+      var tabTitleList= [];
+      var tabContentList = [];
+      for (var tabId in tabHash){
+        var activeFlag = (tabId === this.state.tabidx ? "active" : "" );
+        var btnStyle = {width:"100%", fontSize:"15px", color:"#333", border:"1px solid #ccc"};
+        btnStyle.color = (activeFlag === "active" ? "#990000" : "#333");
+        btnStyle.background = (activeFlag === "active" ? "#fff" : "#eee");
+        btnStyle.borderBottom = (activeFlag === "active" ? "1px solid #fff" : "1px solid #ccc");
+        tabTitleList.push(
+          <li key={"tab-"+tabId} className="nav-item" role="presentation" 
             style={{width:"25%"}}>
             <button className={"nav-link " + activeFlag} 
             id={tabId + "-tab"}  data-bs-toggle="tab" 
@@ -157,10 +183,37 @@ class DatasetPage extends Component {
       );
     }
         
+    var selectedFileName = "";
+    var verSelector = "";
+    if (historyObj !== undefined){
+      var verOptions = [];
+      //var verList = sortReleaseList(Object.keys(historyObj), false);
+      var verList = sortReleaseList(this.props.initObj.versionlist, false);
+      var selectedVer = (this.state.ver !== "" ? this.state.ver.split(".").join("_") : verList[0].split(".").join("_"));
+      for (var i in verList ){
+        var ver = verList[i].split(".").join("_");
+        if (ver in historyObj){
+            verInfo[ver] = historyObj[ver];
+        }
+        if (ver in verInfo){
+          var verLbl = ver.split("_").join(".") ;
+          var lbl = "version " + verLbl + " released on " + verInfo[ver].release_date 
+          lbl += " -- " + verInfo[ver].id_count + " record IDs ";
+          if (verInfo[ver].ids_added > 0){
+            lbl +=  ", " + verInfo[ver].ids_added + " added";
+          }
+          else if (verInfo[ver].ids_removed > 0){
+            lbl +=  ", " + verInfo[ver].ids_removed + " removed";
+          }
+          verOptions.push(<option value={verLbl}>{lbl}</option>);
+        }
+      }
+      selectedFileName = "Sample view for " + verInfo[selectedVer].file_name;
+      var s = {width:"50%"};
+      verSelector = (<select id="verselector" className="form-select" style={s} onChange={this.handleVersion}>{verOptions}</select>);
+    }
 
 
-    
-    
     return (
       <div className="pagecn">
         <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
@@ -172,12 +225,13 @@ class DatasetPage extends Component {
           &nbsp;
           <Link to="/" className="reglink">HOME </Link> 
             &nbsp; / &nbsp;
-          <Link to={"/"+extractObj.bcoid} className="reglink">{extractObj.bcoid}</Link> 
+          <Link to={"/"+this.props.bcoId} className="reglink">{this.props.bcoId}</Link> 
         </div>
         <div className="leftblock" style={{width:"100%", margin:"40px 0px 0px 0px"}}>
-          <span>{extractObj.bcoid} sample view</span><br/>
-          <span style={{fontWeight:"bold"}}>{extractObj.title}</span><br/>
-          <span>{extractObj.description}</span><br/>
+          <span>{selectedFileName}</span><br/>
+          <span>{verSelector}</span><br/>
+          <span style={{fontWeight:"bold"}}>{bcoTitle}</span><br/>
+          <span>{bcoDescription}</span><br/>
         </div>
 
         <div className="leftblock" 

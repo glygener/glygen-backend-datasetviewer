@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { Form, FormControl, Container, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 
-
 class Header extends Component {
 
   
@@ -17,25 +16,61 @@ class Header extends Component {
     if (server !== "prd"){
       navbarStyle.backgroundImage = 'url("/imglib/watermark.'+server+'.png")';
     }
-  
-    console.log("headerlinks", this.props.initObj);
+    var urlDict = {
+      "prd":{
+        "portal":"https://glygen.org", 
+        "api":"https://api.glygen.org",
+        "sparql":"https://sparql.glygen.org"
+      },
+      "beta":{
+        "portal":"https://beta.glygen.org",
+        "api":"https://beta-api.glygen.org",
+        "sparql":"https://beta-sparql.glygen.org"
+      },
+      "tst":{
+        "portal":"https://tst.glygen.org",
+        "api":"https://api.tst.glygen.org",
+        "sparql":"https://sparql.tst.glygen.org"
+      },
+      "dev":{
+        "portal":"https://dev.glygen.org",
+        "api":"https://api.dev.glygen.org",
+        "sparql":"https://sparql.dev.glygen.org"
+      }
+    }
 
+    console.log("headerlinks", this.props.initObj);
+    var pageId = window.location.href.split("/")[3];
+    pageId = (pageId.trim() === "" ? "home" : pageId);
+    var sOne = {color:"#ccc", margin:"0 10px 0px 0px"};
+    var sTwo = {color:"#fff", margin:"0 10px 0px 0px"};
     var headerLinks = [];
     for (var i in this.props.initObj.headerlinks){
       var obj = this.props.initObj.headerlinks[i];  
-      headerLinks.push(<Nav.Link key={"link_" +obj.id} href={obj.url}>{obj.label}</Nav.Link>)
+      var s = (obj.id === pageId ? sOne : sTwo);
+      if (["api", "portal", "sparql"].indexOf(obj.id) !== -1){
+          obj.url = urlDict[server][obj.id]
+          //alert(obj.id + ':' + obj.url);
+      }
+      headerLinks.push(<Nav.Link id={"link_" +obj.id} key={"link_" +obj.id} href={obj.url} style={{fontWeight:"bold"}} style={s}>{obj.label}</Nav.Link>)
     }
     
+    var urlDict = {
+      
+    };
 
     return (
       <Navbar className="globalheader"  variant="dark" expand="lg" 
         style={navbarStyle}
         >
         <Container fluid>
-          <Navbar.Brand href="/" style={{fontSize:"20px"}}>GlyGen Datasets</Navbar.Brand>
+          <Navbar.Brand href="/" style={{fontSize:"30px"}}>
+             <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-glygen.svg'} 
+            style={{width:"100%"}} />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" navbarScroll style={{fontSize:"18px"}}>
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll style={{fontSize:"20px"}}>
               {headerLinks}
               <NavDropdown title="About" id="navbarScrollingDropdown"
                 style={{display:"none"}}

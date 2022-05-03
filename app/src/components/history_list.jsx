@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Alertdialog from './dialogbox';
 import Loadingicon from "./loading_icon";
+import Searchbox from "./search_box";
 import * as LocalConfig from "./local_config";
 import { Link } from "react-router-dom";
 import DoubleArrowOutlinedIcon from '@material-ui/icons/DoubleArrowOutlined';
@@ -12,6 +13,7 @@ import $ from "jquery";
 class HistoryList extends Component {
   
   state = {
+    ver:"",
     tabidx:"sampleview",
     dialog:{
       status:false, 
@@ -20,23 +22,48 @@ class HistoryList extends Component {
   };
 
 
+  handleKeyPress = (e) => {
+    if(e.key === "Enter"){
+      e.preventDefault();
+      this.handleSearch();
+    }
+  }
+
+
+  handleSearch = () => {
+    var queryValue = $("#query").val();
+    queryValue = (queryValue === undefined ? "" : queryValue);
+    var reqObj = {
+      "doctype":"track", 
+      "dataversion":this.props.initObj.dataversion,
+      "query":queryValue
+    };
+    this.fetchPageData(reqObj);
+  }
+
+
   handleDialogClose = () => {
     var tmpState = this.state;
     tmpState.dialog.status = false;
     this.setState(tmpState);
   }
+  
+  handleVersion = () => {
+    var ver = $("#verselector").val();
+    var reqObj = {"doctype":"track", "dataversion":ver};
+    this.fetchPageData(reqObj);
+    var tmpState = this.state;
+    tmpState.ver = ver;
+    this.setState(tmpState);
+  }
 
-  componentDidMount() {
-
-    var reqObj = {};
+  fetchPageData(reqObj){
     const requestOptions = { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(reqObj)
     };
     const svcUrl = LocalConfig.apiHash.dataset_history_list;
-
-
     fetch(svcUrl, requestOptions)
       .then((res) => res.json())
       .then(
@@ -62,6 +89,16 @@ class HistoryList extends Component {
   }
 
 
+  componentDidMount() {
+    var reqObj = {
+      "doctype":"track", 
+      "dataversion":this.props.initObj.dataversion,
+      "query":""
+    };
+    this.fetchPageData(reqObj);
+  }
+
+
 
   render() {
 
@@ -69,36 +106,25 @@ class HistoryList extends Component {
       return <Loadingicon/>
     }
     var pageIdLabel = this.props.pageId.toUpperCase();
+    var tableData = this.state.response.tabledata.data;
+
+    var verOptions = [];
+    var verList = this.props.initObj.versionlist;
+    var selectedVer = (this.state.ver !== "" ? this.state.ver : verList[0]);
+    for (var i=0; i < verList.length -1; i++ ){
+        var ver = verList[i];
+        var lastVer = verList[parseInt(i)+1];
+        var lbl = "Changes from v-" + lastVer + " to " + "v-" + ver;
+        verOptions.push(<option value={ver}>{lbl}</option>);
+    }
+    var s = {width:"100%"};
+    var verSelector = (
+      <select id="verselector" className="form-select" style={s} onChange={this.handleVersion}>{verOptions}
+      </select>
+    );
 
 
-    var dataFrame = [];
-    
-    var seenVersion = {};
-    var valueRows = [];
-    for (var i in this.state.response.recordlist){
-      var obj = this.state.response.recordlist[i];
-      var tmpRow = [obj["bcoid"] + ' (' + obj["filenames"] + ')'];
-      for (var j in obj["history"]){
-        var o = obj["history"][j];
-        seenVersion[o["version"]] = true;
-        tmpRow.push(String(o["recordcount"]));
-      }
-      tmpRow.push('<a href=\"'+obj["bcoid"]+'/history\">details</a>');
-      valueRows.push(tmpRow);
-    }
 
-    var row = [ {"label": "File Name","type": "string"}];
-    for (var ver in seenVersion){
-      row.push({"label": "ver-"+ver,"type": "string"})
-    }
-    row.push({"label": "","type": "string"})
-    dataFrame.push(row);
-    
-    for (var i in valueRows){
-      dataFrame.push(valueRows[i]);
-    }
-    
-        
 
     return (
       <div className="pagecn">
@@ -113,12 +139,26 @@ class HistoryList extends Component {
           <Link to={"/static/"+this.props.pageId} className="reglink">{pageIdLabel}</Link> 
         </div>
 
-        <div className="leftblock" style={{width:"100%", margin:"40px 0px 0px 0px"}}>
+
+        <div className="leftblock" style={{width:"40%", margin:"40px 0px 0px 0px"}}>
+          <div className="leftblock"  style={{width:"90%"}}>
+            Select version transition
+          </div>
+          <span>{verSelector}</span><br/>
+        </div>
+
+
+        <div className="leftblock" style={{width:"40%", margin:"40px 0px 0px 10px"}}>
+        <Searchbox label={"Search by BCOID or dataset file name."} onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
+        </div>
+
+
+        <div className="leftblock" style={{width:"100%", margin:"0px 0px 0px 0px"}}>
             <Chart 
                 width={'100%'}
                 chartType="Table" 
                 loader={<div>Loading Chart</div>}
-                data={dataFrame}
+                data={tableData}
                 options={
                     {
                         showRowNumber: false, width: '100%', height: '100%',

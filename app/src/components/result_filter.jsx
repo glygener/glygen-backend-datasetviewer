@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Markup } from 'interweave';
 
 
 class Resultfilter extends Component {
@@ -10,15 +10,23 @@ class Resultfilter extends Component {
 
     var divList = [];
     for (var filterName in filterInfo) {
+      var filterNameLbl = filterName.substr(0,1).toUpperCase() + filterName.substr(1);
+      filterNameLbl = filterNameLbl.replace("_", " ");
       var liList = [];
-      for (var value in filterInfo[filterName]) {
+      var valueList = Object.keys(filterInfo[filterName]).sort();
+      for (var i in valueList) {
+        var value = valueList[i];
         var count = filterInfo[filterName][value];
         var combo = filterName + "|" + value;
-        liList.push(<li><input name="filtervalue" type="checkbox" value={combo}/> {value} ({count})</li>);
+        var valueLbl = value.substr(0,1).toUpperCase() + value.substr(1);
+        if (filterName === "file_type"){
+          valueLbl = value.toUpperCase();
+        }
+        liList.push(<li><input name="filtervalue" type="checkbox" value={combo}/> {valueLbl} ({count})</li>);
       }
       divList.push(
         <div className="filter_div_four">
-          <span style={{fontWeight:"bold"}}>{filterName}</span>
+          <span style={{fontWeight:"bold"}}>{filterNameLbl}</span>
           <ul style={{listStyleType:"none",padding:"0px 0px 0px 10px"}}>
             {liList}
           </ul>
@@ -34,7 +42,7 @@ class Resultfilter extends Component {
     return (
       <div className="leftblock filter_div_one">
         <div className="filter_div_two">
-          <div style={msgStyle}> {this.props.resultSummary} </div>
+          <div style={msgStyle}><Markup content={this.props.resultSummary}/></div>
           <div onClick={this.props.handleFilterIcon} className="reglink" 
             style={{display: "block", float: "right",margin:"0px"}}>
             <i className="material-icons" style={iconStyle}>tune</i>

@@ -2,49 +2,37 @@ import React, { Component } from "react";
 import { SocialIcon } from 'react-social-icons';
 
 
-class Footer extends Component {
+class Globalfooter extends Component {
   render() {
+    var sOne = {fontSize:"18px", marginRight:"40px", textDecoration:"none"};
     return (
-    <section className="border">
-      <footer className="text-center text-lg-start bg-light text-muted">
-
-        <section className="globalfooter" style={{padding:"0px", border:"0px dashed orange"}}>
-          <div className="container text-center text-md-start " 
-              style={{height:"200px",border:"0px dashed orange"}}>
-            <div className="row mt-3" style={{ display:"none",border:"0px dashed orange"}}>
-              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style={{width:"40%"}}>
-                  <span className="text-uppercase fw-bold mb-4">ABOUT</span><br/>
-                      Here you can use rows and columns to organize your footer content. Lorem ipsum
-                      dolor sit amet, consectetur adipisicing elit. Lorem ipsum
-                      dolor sit amet, consectetur adipisicing elit. Lorem ipsum
-                      dolor sit amet, consectetur adipisicing elit.
-              </div>
-
-              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                  <span className="text-uppercase fw-bold mb-4">QUICK LINKS</span><br/>
-                    <a href="#!" className="text-reset">About Us</a><br/>
-                    <a href="#!" className="text-reset">Contact Us</a><br/>
-                    <a href="#!" className="text-reset">Privacy Policy</a><br/>
-                    <a href="#!" className="text-reset">Sitemap</a>
-              </div>
-
-              <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                  <span className="text-uppercase fw-bold mb-4">CONTACT</span><br/>
-                    Addrss: New York, NY 10012, US<br/>
-                    Email: info@example.com<br/>
-                    Phone: + 01 234 567 88<br/>
-              </div>
-            </div>
+      <div className="leftblock" 
+        style={{width:"100%", background:"DodgerBlue", color:"#fff", margin:"0px 0px 0px 0px"}}>
+          <div className="leftblock" 
+            style={{width:"80%", textAlign:"center", margin:"30px 10% 20px 10%"}}>
+            <a href="https://glygen.org/license/" className="text-reset" style={sOne}>License</a> 
+            <a href="https://glygen.org/privacy-policy/" className="text-reset" style={sOne}>Privacy Policy</a>
+            <a href="https://glygen.org/disclaimer/" className="text-reset" style={sOne}>Disclaimer</a>
+            <a href="https://glygen.org/contact-us/" className="text-reset" style={sOne}>Contact Us</a>
           </div>
-      </section>
 
-      <div className="text-left p-4" style={{background: "DodgerBlue", color:"#fff", borderTop:"1px solid #fff"}}>
+          <div className="leftblock" 
+            style={{width:"80%", textAlign:"center", fontSize:"20px", margin:"0px 10% 20px 10%"}}>
+            Funded by NIH Glycoscience Common Fund Grant # 1U01GM125267 - 01
+          </div>
+          
+          <div className="leftblock" 
+            style={{width:"80%", textAlign:"center", margin:"0px 10% 30px 10%"}}>
+            <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-uga.png'}/>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-gwu.png'}/>
+          </div>
+
+          
       </div>
-    </footer>
-  </section>
-
     );
+
   }
 }
 
-export default Footer;
+export default Globalfooter;

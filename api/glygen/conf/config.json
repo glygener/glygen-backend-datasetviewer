@@ -10,81 +10,101 @@
     "collinfo":{
         "c_init":{
             "get_one":{
-                "prj":{
-                },
-                "queryfields":{
-                }
+                "prj":{},
+                "queryfields":{}
             }
         },
         "c_html":{
             "get_one":{
-                "prj":{
-                    "pageid":1,
-                    "cn":1
-                },
+                "prj":{"pageid":1,"cn":1},
                 "queryfields":{
-                    "pageid":{"path":"pageid", "datatype":"string", "operator":"$eq", "required":true}
-                }
-            }
-        },
-        "c_assembly":{
-            "get_one":{
-                "prj":{},
-                "queryfields":{
-                    "fdaargos_id":{"path":"fdaargos_id", "datatype":"string", "operator":"$eq", "required":true}
-                }
-            },
-            "get_many":{
-                "prj":{},
-                "queryfields":{
-                    "fdaargos_id":{"path":"fdaargos_id", "datatype":"string", "operator":"$regex", "required":false}
+                    "pageid":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"pageid","operator":"$eq"}]
+                    }
                 }
             }
         },
         "c_history":{
             "get_one":{
-                "prj":{ "bcoid":1,"filenames":1,"history":1},
+                "prj":{ },
                 "queryfields":{
-                    "bcoid":{"path":"bcoid", "datatype":"string", "operator":"$eq", "required":true}
+                    "doctype":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"doctype","operator":"$eq"}]
+                    },
+                    "bcoid":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"bcoid","operator":"$eq"}]
+                    }
                 }
             },
             "get_many":{
-                "prj":{ "bcoid":1,"filenames":1,"history":1},
+                "prj":{},
                 "queryfields":{
-                    "bcoid":{"path":"bcoid", "datatype":"string", "operator":"$eq", "required":false}
+                    "doctype":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"doctype","operator":"$eq"}]
+                    }
                 }
             }
         },
         "c_extract":{
             "get_one":{
-                "prj":{
-                },
+                "prj":{},
                 "queryfields":{
-                    "bcoid":{"path":"bcoid", "datatype":"string", "operator":"$eq", "required":true}
+                    "bcoid":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"bcoid","operator":"$eq"}]
+                    }
                 }
             },
             "get_many":{
-                "prj":{
-                },
+                "prj":{},
+                "sortfield":"bcoid",
                 "queryfields":{
-                    "query":{"path":"", "datatype":"string", "operator":"$regex","required":false}
+                    "query":{
+                      "required":false,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[
+                          {"path":"bcoid", "operator":"$regex"},
+                          {"path":"title", "operator":"$regex"},
+                          {"path":"description", "operator":"$regex"},
+                          {"path":"filename", "operator":"$regex"},
+                          {"path":"categories.species", "operator":"$regex"},
+                          {"path":"categories.molecule", "operator":"$regex"},
+                          {"path":"categories.tags", "operator":"$regex"}
+                      ]
+                    }
                 }
             }
         },
         "c_bco":{
             "get_one":{
-                "prj":{
-                },
+                "prj":{},
                 "queryfields":{
-                    "bcoid":{"path":"object_id", "datatype":"string", "operator":"$eq", "required":true}
+                    "bcoid":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"object_id","operator":"$regex"}]
+                    }
                 }
             },
             "get_many":{
-                "prj":{
-                },
-                "queryfields":{
-                    "query":{"path":"", "datatype":"string", "operator":"$regex","required":false}
-                }
+                "prj":{},
+                "queryfields":{}
             }
         }
 

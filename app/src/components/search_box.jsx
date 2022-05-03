@@ -9,8 +9,12 @@ class Searchbox extends Component {
 
     return (
         <div>
+            <div className="leftblock" style={{width:"100%"}}>
+              {this.props.label}
+            </div>
             <Paper component="form" elevation="0" className="searchbox_paper">
-                <InputBase id="query" className="searchbox_input"  placeholder={this.props.placeholder} 
+                
+              <InputBase id="query" className="searchbox_input"  placeholder={this.props.placeholder} 
                     inputProps={{ 'aria-label': 'search zulasites', 
                     'style': {fontSize: "14px", color:"#777"}}}
                     onKeyPress={this.props.onKeyPress}

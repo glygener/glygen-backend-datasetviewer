@@ -47,8 +47,7 @@ export function filterObjectList(objList, filterList) {
         if (["tags","protein"].indexOf(name) !== -1){
           continue;
         }
-        var value = obj.categories[name];
-        
+        var value = obj.categories[name].toLowerCase(); 
         var combo = name + "|" + value;
         if (!(name in retObj.filterinfo)) {
             retObj.filterinfo[name] = {};
@@ -171,8 +170,30 @@ export function rndrSearchResults(objList, startIdx, endIdx) {
 
 
 
-        
+export function sortReleaseList(tmpList, reversedFlag){        
 
+    var factorList = [10000, 1000, 1];
+    var relDict = {};
+    for (var i in tmpList){
+        var rel = tmpList[i]
+        var parts = (rel.indexOf(".") !== -1 ? rel.split(".") : rel.split("_"));
+        var ordr = 0;
+        for (var j in parts){
+            ordr += factorList[j]*parseInt(parts[j]);
+        }
+        relDict[ordr] = rel;
+    }
+
+    var releaseList = [];
+    var keyList = Object.keys(relDict).sort().reverse();
+    for (var i in keyList){
+        var ordr = keyList[i];
+        releaseList.push(relDict[ordr]);
+    }
+    
+    return releaseList;
+
+}
 
 export function rndrMiniTable(inObj){
 

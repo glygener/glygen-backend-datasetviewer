@@ -27,7 +27,7 @@ class HistoryDetail extends Component {
 
   componentDidMount() {
 
-    var reqObj = {"bcoid":this.props.bcoId};
+    var reqObj = {"bcoid":this.props.bcoId, dataversion:this.props.dataVersion, doctype:"pairs"};
     const requestOptions = { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -68,7 +68,7 @@ class HistoryDetail extends Component {
       return <Loadingicon/>
     }
 
-    
+    var recordObj = this.state.response.record;
 
     return (
       <div className="pagecn">
@@ -80,32 +80,58 @@ class HistoryDetail extends Component {
           &nbsp;
           <Link to="/" className="reglink">HOME </Link> 
             &nbsp; / &nbsp;
-          <Link to={ "/" + this.props.bcoId + "/history"} className="reglink">HISTORY DETAIL</Link> 
+          <Link to={ "/" + this.props.bcoId + "/" + this.props.dataVersion +"/history"} className="reglink">HISTORY DETAIL</Link> 
         </div>
         <div className="leftblock" style={{width:"100%", margin:"40px 0px 0px 0px"}}>
-          <span><b>BCO ID</b>: {this.state.response.record.bcoid}</span><br/>
-          <span><b>File Name(s)</b>: {this.state.response.record.filenames}</span>
-          <table style={{width:"100%", margin:"10px 0px 0px 0px"}}>
-            <tbody>
-              {this.state.response.record.history.map((obj) => (
-                <tr>
-                  <td style={{padding:"10px",border:"1px solid #ccc"}}>Version-{obj.version}</td>
-                  <td style={{padding:"10px",border:"1px solid #ccc"}}>{obj.recordcount} records</td>
-                  <td style={{padding:"10px",border:"1px solid #ccc"}}>
-                    {obj.additions.length} additions<br/>
-                    <textarea style={{width:"100%", height:"60px"}}>{obj.additions.join("\n")}</textarea>  
-                  </td>
-                  <td style={{padding:"10px",border:"1px solid #ccc"}}>
-                    {obj.deletions.length} deletions
-                    <textarea style={{width:"100%", height:"60px"}}>{obj.deletions.join("\n")}</textarea>  
-                  </td>
-                </tr>  
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-
+            <div className="leftblock"  style={{width:"20%", margin:"0px 0px 0px 0px"}}>
+                BCO ID<br/>
+                <input className="form-control" style={{width:"100%"}} value={recordObj.bcoid}/>
+            </div>
+            <div className="leftblock" style={{width:"50%",margin:"0px 0px 0px 10px"}}>
+                File Name(s)<br/> 
+                <input className="form-control" style={{width:"100%"}} value={recordObj.history.file_name}/>
+            </div>
+            <div className="leftblock" style={{width:"20%",margin:"0px 0px 0px 10px"}}>
+                Release Date<br/>
+                <input className="form-control" style={{width:"100%"}} value={recordObj.history.release_date}/>
+            </div>
+            <div className="leftblock" style={{width:"20%",margin:"20px 0px 0px 0px"}}>
+                Field Count<br/> 
+                <input className="form-control" style={{width:"100%"}} value={recordObj.history.field_count}/>
+            </div>
+            <div className="leftblock" style={{width:"50%",margin:"20px 0px 0px 10px"}}>
+                Row Count<br/>
+                <input className="form-control" style={{width:"100%"}} value={recordObj.history.row_count}/>
+            </div>
+            <div className="leftblock" style={{width:"20%",margin:"20px 0px 0px 10px"}}>
+                RecordID Count<br/>
+                <input className="form-control" style={{width:"100%"}} value={recordObj.history.id_count}/>
+            </div>
+            <div className="leftblock" style={{width:"50%",margin:"20px 0px 0px 0px"}}>
+                Fields Added ({("fields_added" in recordObj.history ? recordObj.history.fields_added.length : 0)})<br/> 
+                <div className="leftblock" style={{width:"100%", height:"100px", overflow:"auto",background:"#fff", padding:   "10px"}}>
+                  <pre>{ ("fields_added" in recordObj.history ? recordObj.history.fields_added.join("\n") : "") } </pre>
+                </div>
+            </div>
+            <div className="leftblock" style={{width:"40%",margin:"20px 0px 0px 10px"}}>
+                Fields Removed({("fields_removed" in recordObj.history ? recordObj.history.fields_removed.length : 0)})<br/>
+                <div className="leftblock" style={{width:"100%", height:"100px", overflow:"auto",background:"#fff", padding:   "10px"}}>
+                  <pre>{ ("fields_removed" in recordObj.history ? recordObj.history.fields_removed.join("\n") : "") }</pre>
+                </div>
+            </div>
+            <div className="leftblock" style={{width:"50%",margin:"20px 0px 0px 0px"}}>
+                RecordIDs Added({("ids_added" in recordObj.history ? recordObj.history.ids_added.length : 0)})<br/>
+                <div className="leftblock" style={{width:"100%", height:"100px", overflow:"auto",background:"#fff", padding:   "10px"}}>
+                  <pre>{ ("ids_added" in recordObj.history ? recordObj.history.ids_added.join("\n") : "") }</pre>
+                </div>
+            </div>
+            <div className="leftblock" style={{width:"40%",margin:"20px 0px 0px 10px"}}>
+                RecordIDs Removed({("ids_removed" in recordObj.history ? recordObj.history.ids_removed.length : 0)})<br/>
+                <div className="leftblock" style={{width:"100%", height:"100px", overflow:"auto",background:"#fff", padding:"10px"}}>
+                  <pre>{ ("ids_removed" in recordObj.history ? recordObj.history.ids_removed.join("\n") : "") }</pre>
+                </div>
+            </div>
+          </div>
       </div>
     );
   }
