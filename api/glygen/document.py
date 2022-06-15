@@ -5,6 +5,7 @@ import traceback
 import pymongo
 from flask import (current_app)
 from glygen.db import get_mongodb, log_error, next_sequence_value
+from collections import OrderedDict
 
 
 
@@ -150,5 +151,33 @@ def get_mongo_query(qf_dict, req_obj):
 
     o = {"$and":tmp_list_one} if tmp_list_one != [] else {}
     return o
+
+
+
+
+def order_json_obj(json_obj, ordr_dict):
+
+    for k1 in json_obj:
+        ordr_dict[k1] = ordr_dict[k1] if k1 in ordr_dict else 1000
+        if type(json_obj[k1]) is dict:
+            for k2 in json_obj[k1]:
+                ordr_dict[k2] = ordr_dict[k2] if k2 in ordr_dict else 1000
+                if type(json_obj[k1][k2]) is dict:
+                    for k3 in json_obj[k1][k2]:
+                        ordr_dict[k3] = ordr_dict[k3] if k3 in ordr_dict else 1000
+                    json_obj[k1][k2] = OrderedDict(sorted(json_obj[k1][k2].items(),key=lambda x: float(ordr_dict.get(x[0]))))
+                elif type(json_obj[k1][k2]) is list:
+                    for j in range(0, len(json_obj[k1][k2])):
+                        if type(json_obj[k1][k2][j]) is dict:
+                            for k3 in json_obj[k1][k2][j]:
+                                ordr_dict[k3] = ordr_dict[k3] if k3 in ordr_dict else 1000
+                                for kk in json_obj[k1][k2][j].keys():
+                                    ordr_dict[kk] = ordr_dict[kk] if kk in ordr_dict else 1000
+                                keyList = sorted(json_obj[k1][k2][j].keys(), key=lambda x: float(ordr_dict[x]))
+                                json_obj[k1][k2][j] = OrderedDict(sorted(json_obj[k1][k2][j].items(), key=lambda x: float(ordr_dict.get(x[0]))))
+            json_obj[k1] = OrderedDict(sorted(json_obj[k1].items(),key=lambda x: float(ordr_dict.get(x[0]))))
+
+    return OrderedDict(sorted(json_obj.items(), key=lambda x: float(ordr_dict.get(x[0]))))
+
 
 

@@ -47,6 +47,14 @@ class FileUploads extends Component {
       body: JSON.stringify(reqObj)
     };
     const svcUrl = LocalConfig.apiHash.dataset_glycan_finder;
+  
+
+    const s = "width:40%;margin:20px 30% 40px 30%";
+    var tmpCn = '<img src="' + process.env.PUBLIC_URL + '/imglib/loading.gif" style="'+s+'">';
+    $("#glycan_finder_results_cn").html(tmpCn);
+    $("#run_glycan_finder").html("");
+
+
     fetch(svcUrl, requestOptions)
       .then((res) => res.json())
       .then(
@@ -271,27 +279,38 @@ class FileUploads extends Component {
           var server = process.env.REACT_APP_SERVER;
           var imageUrl = "/ln2data/userdata/"+server+"/tmp/" + this.state.response.inputinfo.name;
           
+
           var chartCn = "";
           if ("mappingrows" in this.state.response){
+
               chartCn = (
+                <div>
+                <h5>Glycan Finder Result</h5>
                 <Chart width={'100%'} chartType="Table" loader={<div>Loading Chart</div>}
                   data={this.state.response.mappingrows}
                   options={{allowHtml: true, showRowNumber: false, width: '100%', height: '100%'}}
                   rootProps={{ 'data-testid': '1' }}
                 />
+                </div>
               );
           }
           var tmpCn = (
                 <div>
-                <div id="submitcn" className="leftblock" style={{width:"50%", margin:"0px 0px 0px  20px"}}>
-                  <img src={imageUrl}/><br/>
-                  <input type="submit" id="run_glycan_finder"  value="Run Glycan Finder" 
-                      className="form-control"
+                <div className="leftblock" style={{width:"70%", margin:"0px 0px 0px  20px"}}>
+                    <h5>Query Glycan Image </h5>
+                    <img src={imageUrl}/><br/>
+                </div>
+                <div id="run_glycan_finder"  className="leftblock" style={{width:"70%", margin:"20px 0px  0px  20px"}}>
+                <input type="submit" value="Run Glycan Finder" 
+                      className="form-control btn btn-outline-secondary btn-sm" 
+                      style={{width:"200px"}}
                       onClick={this.handleGlycanFinder}
                     />
                 </div>
                 <div id="glycan_finder_results_cn" className="leftblock" 
-                  style={{width:"100%", margin:"40px 0px 0px  20px"}}>{chartCn}</div>
+                  style={{width:"100%", margin:"40px 0px 0px  20px"}}>
+                    {chartCn}
+                </div>
                 </div>
             );
             tabHash.glycanfinder.cn = tmpCn;

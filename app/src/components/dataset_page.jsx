@@ -116,7 +116,7 @@ class DatasetPage extends Component {
         },
         "bcoview":{
           title:"BCO JSON",
-          cn:(<pre>{JSON.stringify(bcoObj, null, 4)}</pre>)
+          cn:(<pre style={{whiteSpace:"pre-wrap"}}>{JSON.stringify(bcoObj, null, 4)}</pre>)
         },
         "readme":{
           title:"README",

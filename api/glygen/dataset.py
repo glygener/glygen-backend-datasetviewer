@@ -1,10 +1,11 @@
 import os,sys
 from flask_restx import Namespace, Resource, fields
 from flask import (request, current_app)
-from glygen.document import get_one, get_many
+from glygen.document import get_one, get_many, order_json_obj
 from werkzeug.utils import secure_filename
 from glygen.qc import run_qc
 import datetime
+import time
 import subprocess
 import json
 
@@ -124,8 +125,13 @@ class DatasetDetail(Resource):
         bco_obj = get_one(req_obj)
         if "error" in bco_obj:
             return bco_obj
-        
-        
+
+        SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+        json_url = os.path.join(SITE_ROOT, "conf/config.json")
+        config_obj = json.load(open(json_url))
+        #return list(bco_obj["record"].keys())
+        bco_obj["record"] = order_json_obj(bco_obj["record"], config_obj["bco_field_order"])
+        #return list(bco_obj["record"].keys())
         res_obj = {
             "status":1,
             "record":{
@@ -327,15 +333,21 @@ class Dataset(Resource):
         req_obj = request.json
         data_path, ser = current_app.config["DATA_PATH"], current_app.config["SERVER"]
         uploaded_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, req_obj["filename"])
+        
+        output_file = "%s/userdata/%s/tmp/%s_output_%s.txt" % (data_path, ser, req_obj["filename"], os.getpid())
+
         if os.path.isfile(uploaded_file) == False:
             res_obj = {"error":"submitted filename does not exist!", "status":0}
         else:
             file_format = req_obj["filename"].split(".")[-1]
-            app_dir = "/software/glycan_finder/"
-            cmd = "matlab -nodisplay -nosplash -nodesktop -r "
-            cmd += " \"cd %s;inFile='%s';ClassOne;exit;\" " % (app_dir,uploaded_file)
-            #glycan_list = commands.getoutput(cmd).split("\n")[-1].split(",")
-            glycan_list = ["A", "B"]
+            cmd = "sh /hostpipe/glycan_finder.sh %s %s" % (uploaded_file, output_file)
+            glycan_list = []
+            if current_app.config["SERVER"] != "dev":
+                glycan_list = subprocess.getoutput(cmd).strip().split(",")
+            else:
+                glycan_list = ["A", "B"]
+                time.sleep(5)
+
             res_obj = {
                 "inputinfo":{"name":req_obj["filename"], "format":file_format},
                 "mappingrows":[
@@ -347,7 +359,7 @@ class Dataset(Resource):
             }
             for ac in glycan_list:
                 link_one = "<a href=\"https://glygen.org/glycan/%s\" target=_>%s</a>" % (ac,ac)
-                link_two = "<a href=\"https://gnome.glyomics.org/restrictions/GlyGen.              StructureBrowser.html?focus=%s\" target=_>related glycans</a>" % (ac)
+                link_two = "<a href=\"https://gnome.glyomics.org/restrictions/GlyGen.StructureBrowser.html?focus=%s\" target=_>related glycans</a>" % (ac)
                 img = "<img src=\"https://api.glygen.org/glycan/image/%s\">" % (ac)
                 links = "%s (other %s)" % (link_one, link_two)
                 res_obj["mappingrows"].append([links, img])
