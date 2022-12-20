@@ -2,7 +2,7 @@
     "server":"tst",
     "api_port":"9090",
     "base_url":"http://localhost:9090",
-    "data_path":"/data/shared/glygen/",
+    "data_path":"/data/shared/glyds/",
     "mail":{
         "server":"x.x.x.x", 
         "port":"25",
