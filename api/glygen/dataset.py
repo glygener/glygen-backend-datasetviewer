@@ -97,6 +97,9 @@ class DatasetList(Resource):
         req_obj = request.json
         req_obj["coll"] = "c_extract"
         res_obj = get_many(req_obj)
+
+        res_obj["stats"] = {"total":len(res_obj["recordlist"]), "retrieved":100}
+        res_obj["recordlist"] = res_obj["recordlist"][:100]
         return res_obj
 
 

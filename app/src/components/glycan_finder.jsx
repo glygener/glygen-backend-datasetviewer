@@ -9,7 +9,7 @@ import { Chart } from "react-google-charts";
 import $ from "jquery";
 
 
-class FileUploads extends Component {
+class GlycanFinder extends Component {
   
   state = {
     confirmation:"",
@@ -185,70 +185,26 @@ class FileUploads extends Component {
   }
 
 
+  
 
   getFormCn = () => {
 
     var formatOptions = [];
-    for (var i in this.props.initObj.fileuploadformats){
-      var obj = this.props.initObj.fileuploadformats[i];
-      if (["csv", "tsv"].indexOf(obj.id) !== -1){
-        formatOptions.push(<option value={obj.id}>{obj.label}</option>);
-      }
-    }
-
-    var qcOptions = [];
-    for (var i in this.props.initObj.fileuploadqc){
-      var obj = this.props.initObj.fileuploadqc[i];
-      qcOptions.push(<option value={obj.id}>{obj.label}</option>);
-    }
-
-    var verOptions = [];
-    for (var i in this.props.initObj.versionlist){
-      var v = this.props.initObj.versionlist[i];
-      verOptions.push(<option value={v}>v-{v}</option>);
-    }
-
+    var obj = {"id":"png", "label":"Glycan PNG"};
+    formatOptions.push(<option value={obj.id}>{obj.label}</option>);
 
     return(
       <div className="leftblock formone" style={{width:"100%",marginTop:"10px"}}>
         <div className="leftblock" style={{width:"100%"}}>
-          <br/>  
-          <h5>Glycan Image Search</h5>
-            The Glycan Finder search tool allows you to find glycan records that
-            have similar image/structure to your query glycan image. 
-                  <a id="glycan_finder" href="/glycan_finder"
-                  className="reglink"> Click here to run Glycan Finder</a>.
-            <br/><br/><br/>
-            <h5>CSV/TSV File Uploads</h5>
-            Upload your csv or tsv file (
-                example files: <a href="/ln2data/downloads/examples/glyco_sites.csv"
-                  className="reglink" download>glyco_sites.csv</a>, &nbsp;
-                <a href="/ln2data/downloads/examples/glyco_sites_unicarbkb.csv"
-                className="reglink" download>glyco_sites_unicarbkb.csv</a>).
-                Visit the
-                  <a id="upload_help" href="/static/upload_help"
-                  className="reglink"> tutorial/help page </a>
-                 for detailed information on how to use this functionality.
+              <br/>Upload image file (
+                example file: <a href="/ln2data/downloads/examples/glycan_image.png"
+                className="reglink" download>glycan_image.png</a>).
         </div>
         <div className="leftblock" style={{width:"25%",
                 margin:"20px 0px 0px 0px",border:"0px dashed orange"}}>
               <b>File Format</b><br/>
               <select id="formatselector"  className="form-control">
                 {formatOptions}
-              </select>
-        </div>
-
-        <div className="leftblock" style={{width:"15%", margin:"20px 0px 0px 10px"}}>
-              <b>QC Type</b><br/>
-              <select id="qcselector"  className="form-control">
-                {qcOptions}
-              </select>
-        </div>
-
-        <div className="leftblock" style={{width:"12%", margin:"20px 0px 0px 10px"}}>
-              <b>Data Version</b><br/>
-              <select id="dataversion"  className="form-control">
-                {verOptions}
               </select>
         </div>
 
@@ -268,8 +224,6 @@ class FileUploads extends Component {
     );
 
   }
-  
-
 
 
 
@@ -277,68 +231,15 @@ class FileUploads extends Component {
 
 
     var tabHash = {
-        failedrows:{ title:"Failed Rows", cn:""},
-        submitfile: { title:"Submit File", cn:""}
-    };
-    var tabHashTwo = {
-      glycanfinder:{title:"Run Glycan Finder", cn:""}
+        glycanfinder:{title:"Run Glycan Finder", cn:""}
     };
 
     if (this.state.dialog.status === false && this.state.viewstatus === 1){
       $("#tabcn").css("display", "block");
-      tabHash.failedrows.cn = (<Loadingicon/>)
-      tabHash.submitfile.cn = (<Loadingicon/>)
+      tabHash.glycanfinder.cn = (<Loadingicon/>)
     } 
     else if (this.state.dialog.status === false && this.state.viewstatus === 2){
-        if (["csv", "tsv"].indexOf(this.state.response.inputinfo.format) !== -1){
-            tabHash.failedrows.cn = (
-              <div className="leftblock">
-                <div className="leftblock" style={{width:"100%", fontWeight:"bold"}}>
-                  Summary
-                </div>
-                <div className="leftblock" style={{width:"100%", padding:"10px", border:"1px solid #eee"}}>
-                  <pre>{JSON.stringify(this.state.response.summary, null, 4)}</pre>
-                </div>
-                <div className="leftblock" style={{margin:"20px 0px 0px 0px"}}>
-                  <Chart width={'100%'} chartType="Table" loader={<div>Loading Chart</div>}
-                    data={this.state.response.failedrows}
-                    options={{showRowNumber: false, width: '100%', height: '100%', 
-                        allowHtml: true }}
-                    rootProps={{ 'data-testid': '1' }}   
-                  />
-                </div>
-              </div>
-            );
-            var tmpCn = (
-              <div className="leftblock" style={{color:"red"}}> 
-                <br/><br/>
-                This file cannot be uploaded since it has {this.state.response.summary.fatal_qc_flags} fatal error(s).
-              </div>
-            );
-            if (this.state.response.summary.fatal_qc_flags === 0){
-              tmpCn = (
-                <div id="submitcn" className="leftblock" style={{width:"50%", margin:"0px 0px 0px 20px"}}>
-                    Please fill and submit your information. <br/><br/>
-                    First Name<br/>
-                    <input type="text" id="fname" className="form-control" /><br/>
-                    Last Name<br/>
-                    <input type="text" id="lname" className="form-control" /> <br/>
-                    Email Address<br/>
-                    <input type="text" id="email" className="form-control" /> <br/>
-                    Affilation<br/>
-                    <select id="affilation"  className="form-control">
-                      {affOptions}
-                    </select><br/>
-                    <input type="submit" id="submitfile"  value="Submit File" className="form-control"
-                      onClick={this.handleFileSubmit}
-                    />
- 
-                </div>
-              );
-            }
-            tabHash.submitfile.cn = tmpCn;
-        }
-        else if (["png", "jpeg"].indexOf(this.state.response.inputinfo.format) !== -1){
+        if (["png", "jpeg"].indexOf(this.state.response.inputinfo.format) !== -1){
           var server = process.env.REACT_APP_SERVER;
           var imageUrl = "/ln2data/userdata/"+server+"/tmp/" + this.state.response.inputinfo.name;
           
@@ -376,7 +277,7 @@ class FileUploads extends Component {
                 </div>
                 </div>
             );
-            tabHashTwo.glycanfinder.cn = tmpCn;
+            tabHash.glycanfinder.cn = tmpCn;
         }
     }
 
@@ -440,7 +341,7 @@ class FileUploads extends Component {
           &nbsp;
           <Link to="/" className="reglink">HOME </Link> 
             &nbsp; / &nbsp;
-          <Link to={"/uploads"} className="reglink">FILE UPLOADS</Link> 
+          <Link to={"/uploads"} className="reglink">GLYCAN FINDER</Link> 
         </div>
         
         {formCn}
@@ -456,5 +357,5 @@ class FileUploads extends Component {
   }
 }
 
-export default FileUploads;
+export default GlycanFinder;
 

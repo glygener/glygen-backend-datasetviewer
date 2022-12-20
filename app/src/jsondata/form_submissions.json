@@ -1,0 +1,94 @@
+{
+  "step_one":{
+    "title":"",
+    "titlestyle":{"width":"100%", "margin":"0px 0px 15px 0px", "fontWeight":"bold"},
+    "description":"Please use the form below to submit a single glycan term to the dictionary. Please see wiki page for examples of the included terms in the glycan structure dictionary.",
+    "descstyle":{"width":"100%", "padding":"0px","margin":"20px 0px 15px 0px"},
+    "class":"submissionsform",
+    "groups":[
+      {
+        "groupid":"one",
+        "title":"Submitter Details",
+        "style":{"width":"96%","margin":"0px 30px 30px 0px",
+           "padding":"20px", "border":"1px solid DodgerBlue", "borderRadius":"10px"},
+        "emlist":[
+          {
+            "emid":"name", "emtype":"text", "datatype":"string|string",
+            "maxlength":128, "label":"Full Name", "class":"submissionsform",
+            "style":{"width":"45%", "margin":"10px 0px 0px 0px"},
+            "value":"", "placeholder":"", "required":true
+          },
+           {
+            "emid":"email", "emtype":"text", "datatype":"string|string",
+            "maxlength":128, "label":"Email Address", "class":"submissionsform",
+            "style":{"width":"45%", "margin":"10px 0px 0px 20px"},
+            "value":"", "placeholder":"", "required":true
+          }
+        ]
+      },
+      {
+        "groupid":"two",
+        "title":"Term Entry",
+        "style":{"width":"96%","margin":"0px 30px 30px 0px",
+           "padding":"20px", "border":"1px solid DodgerBlue", "borderRadius":"10px"},
+        "emlist":[
+            {"emid":"term", "label":"Term Name", 
+              "style":{"width":"100%"},
+              "emtype":"text",                  
+                "datatype":"string", "required":true, "maxlen":1000}
+            ,{"emid":"sentence", "label":"Sentence in the publication where the term was found", 
+              "style":{"width":"100%", "marginTop":"10px"},
+              "emtype":"textarea",                  
+                "datatype":"string", "required":true, "maxlen":1000}
+            ,{"emid":"pmidlist", "label":"Publication (List of PMIDs seperated by '|')", 
+              "style":{"width":"100%", "marginTop":"10px"}, 
+              "emtype":"textarea",
+                "datatype":"string", "required":true, "maxlen":1000}
+            ,{"emid":"termdef", "label":"Definition of the term", 
+                "style":{"width":"100%", "marginTop":"10px"},
+                "emtype":"textarea",
+                "datatype":"string", "maxlen":1000}
+            ,{"emid":"crossref", "label":"Cross-reference of the term in open access bioinformatics database. Format (database name: database ID)", 
+                "style":{"width":"100%", "marginTop":"10px"},
+                "emtype":"textarea",
+                "datatype":"string", "maxlen":1000}
+            ,{"emid":"synonyms", "label":"Synonyms of the term (separated by '|')", 
+                "style":{"width":"100%", "marginTop":"10px"},
+                "emtype":"textarea",
+                "datatype":"string", "maxlen":1000}
+            ,{"emid":"function", "label":"Function associated to the term. Please reference the function by enclosing PMID in square brackets (e.g. responsible in protein folding [PMID:xxxx])", 
+              "style":{"width":"100%", "marginTop":"10px"},
+              "emtype":"textarea",
+                "datatype":"string", "maxlen":1000}
+            ,{"emid":"disease", "label":"Disease associations with the term. Please reference the disease by enclosing source in square brackets (e.g. Breast cancer [PMID:xxxx])", 
+                "style":{"width":"100%", "marginTop":"10px"},
+                "emtype":"textarea",
+                "datatype":"string", "maxlen":1000}
+            ,{"emid":"wikiurl", "label":"Wikipedia URL", 
+              "style":{"width":"100%", "marginTop":"10px"},
+              "emtype":"text",
+                "datatype":"string", "maxlen":1000}
+            ,{"emid":"bookchapter", "label":"Essentials of glycobiology book chapter URL (where the term was described)", 
+              "style":{"width":"100%", "marginTop":"10px"},
+              "emtype":"text",
+                "datatype":"string", "maxlen":1000}
+
+        ]
+      },
+      {
+        "groupid":"six",
+        "style":{"width":"70%","margin":"0px 2% 0px 0px"},
+        "emlist":[
+          {
+            "emid":"submitbtn", "emtype":"button", "datatype":"button|button",
+            "class":"btn btn-outline-secondary",
+            "onclick":"this.handleSubmit",
+            "value":"Submit",
+            "style":{"display":"block", "float":"left", "margin":"10px 10px 0px 0px"}
+          }
+        ]
+      }
+    ]
+  }
+}
+

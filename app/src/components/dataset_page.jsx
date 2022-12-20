@@ -101,7 +101,9 @@ class DatasetPage extends Component {
     const extractObj = ("record" in resObj ? resObj.record.extract : undefined);
     const bcoObj = ("record" in resObj ? resObj.record.bco : undefined);
     const historyObj = ("record" in resObj ? resObj.record.history : undefined);
-   
+  
+
+
 
 
     var readMe = (extractObj !== undefined ? extractObj.readme : undefined); 
@@ -147,8 +149,8 @@ class DatasetPage extends Component {
           )
         }
         else{
-          //tabHash.sampleview.cn = (<div><pre>{extractObj.sampledata.data}</pre></div>);
-          tabHash.sampleview.cn = <Markup content={extractObj.sampledata.data}/>;
+          tabHash.sampleview.cn = (<div style={{fontSize:"14px"}}><pre>{extractObj.sampledata.data}</pre></div>);
+          //tabHash.sampleview.cn = <Markup content={extractObj.sampledata.data}/>;
         }  
       }
 
@@ -182,7 +184,7 @@ class DatasetPage extends Component {
         </div>
       );
     }
-        
+
     var selectedFileName = "";
     var verSelector = "";
     if (historyObj !== undefined){

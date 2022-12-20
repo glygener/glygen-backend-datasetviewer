@@ -161,10 +161,17 @@ class SearchResults extends Component {
         var h = "<b>" + this.state.filterlist[i].split("|")[1] + "</b>";
         tmpList.push(h);
     }
-    var resultSummary = "<b>" + passedObjList.length + "</b> results found";
-    resultSummary += (tmpList.length > 0 ? ", after fileters: '" + tmpList.join("', '") + "'." : "."); 
-
-   //return (<div>{this.state.pageStartIdx} {this.state.pageEndIdx}</div>);
+    var resultSummary = ""
+    if ("stats" in this.state.response){
+      var statObj = this.state.response.stats;
+      resultSummary = "<b>" + statObj.total + "</b> results found and ";
+      resultSummary += "<b>" + statObj.retrieved + "</b> retrieved";
+      if (tmpList.length > 0){
+        resultSummary += ", <b>" + passedObjList.length + "</b> shown after filters: ";
+        resultSummary += tmpList.join("', '")
+      }
+      resultSummary += ".";
+    }
 
     return (
       <div>

@@ -5,6 +5,8 @@ import StaticPage from "./components/static_page";
 import HistoryList from "./components/history_list";
 import HistoryDetail from "./components/history_detail";
 import FileUploads from "./components/file_uploads";
+import GlycanFinder from "./components/glycan_finder";
+
 import Alertdialog from './components/dialogbox';
 import Loadingicon from "./components/loading_icon";
 import * as LocalConfig from "./components/local_config";
@@ -12,6 +14,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Gsd from "./components/gsd";
 
 
 
@@ -84,6 +87,18 @@ class App extends Component {
       <div className="versioncn">APP v-{app_ver} &nbsp; |&nbsp; Data v-{data_ver}</div>
       <Router>
         <Switch>
+          <Route
+            path="/gsd"
+            render={(props) => (
+              <Gsd initObj={this.state.response.record}/>
+            )}
+          />
+          <Route
+            path="/glycan_finder"
+            render={(props) => (
+              <GlycanFinder pageId={"glycanfinder"} initObj={this.state.response.record}/>
+            )}
+          />
           <Route
             path="/uploads"
             render={(props) => (

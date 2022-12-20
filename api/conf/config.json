@@ -1,0 +1,33 @@
+{
+    "server":"tst",
+    "api_port":"9090",
+    "base_url":"http://localhost:9090",
+    "data_path":"/data/shared/glygen/",
+    "mail":{
+        "server":"x.x.x.x", 
+        "port":"25",
+        "sender":"no-reply@glygen.gwu.edu"
+    },
+    "dbinfo":{
+        "port":"6060",
+        "bridge_network":"glyds_backend",
+        "admin":{
+            "db":"admin",
+            "user":"superadmin",
+            "password":"superpass"
+        },
+        "glydb":{
+            "db":"glydb",
+            "user":"glydbadmin",
+            "password":"glydbpass"
+        }
+    },
+    "downloads":{
+        "jsondb":[
+            "initdb"
+            ,"bcodb"
+            ,"htmldb"
+            ,"statdb"
+        ]
+    }
+}

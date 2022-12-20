@@ -38,12 +38,8 @@ def create_app():
     from . import misc
     app.register_blueprint(misc.bp)
 
-    #from . import auth
-    #app.register_blueprint(auth.bp)
-
-    #from . import pdataset
-    #app.register_blueprint(pdataset.bp)
-
+    from . import gsd
+    app.register_blueprint(gsd.bp)
 
 
     app.add_url_rule('/', endpoint='index')

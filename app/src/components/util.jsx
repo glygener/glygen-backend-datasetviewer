@@ -3,27 +3,55 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 
+export function verifyReqObj (reqObj, formObj){
 
-
-export function verifyReqObj (reqObj, fieldDef){
+    var typeList = ["text", "int", "float", "select", "textarea", "stringlist", "obj", "objlist"];
     var errorList = [];
-    for (var f in fieldDef){
-      if(!(f in reqObj) === true){
-          errorList.push(<li>field "{f}" missing in request</li>);
+    for (var i in formObj.groups){
+      var grpObj = formObj.groups[i];
+      for (var j in grpObj.emlist){
+        var obj = grpObj.emlist[j];
+        var emId = obj.emid;
+        var emValue =  obj.value;
+        var emLbl = obj.label;
+        if (typeList.indexOf(obj.emtype) === -1){
+            continue;
+        }
+        else if (obj.required === true && ["stringlist", "objlist"].indexOf(obj.emtype) !== -1){
+          if (emValue === undefined){
+            errorList.push(<li key={"error_in_" + emId}>"{emLbl}" cannot be empty value</li>);
+          }
+          else if (emValue.length === 0){
+            errorList.push(<li key={"error_in_" + emId}>"{emLbl}" cannot be empty value</li>);
+          }
+        }
+        else if (obj.required === true && reqObj[emId] == null){
+          errorList.push(<li key={"error_in_" + emId}>"{emLbl}" cannot be empty value</li>);
+        }
+        else if (obj.required === true && obj["datatype"].split("|")[1] === "int" && isNaN(reqObj[emId])){
+          errorList.push(<li key={"error_in_" + emId}>"{emLbl}" cannot be empty value</li>);
+        }
+        else if (obj.required === true && reqObj[emId].toString() === "" ){
+          errorList.push(<li key={"error_in_" + emId}>"{emLbl}" cannot be empty value</li>);
+        }
+        else if ("datatype" in obj){
+          if (obj["datatype"].split("|")[0] === "number"){
+            if (typeof(reqObj[emId]) !== obj["datatype"].split("|")[0]){
+              errorList.push(<li>"{emLbl}" type mismatch</li>);
+            }
+          }
+        }
+        //else{
+        //  console.log("FLAG-2", emId, obj["datatype"], emValue);
+        //}
       }
-      else if (reqObj[f].toString() === "" ){
-          errorList.push(<li key={"error_in_" + f}>field "{f}" cannot be empty value</li>);
-      }
-      else if (typeof(reqObj[f]) !== fieldDef[f]["emtype"] ){
-        errorList.push(<li>field "{f}" type mismatch</li>);
-      }
+      //if (errorList.length === 0){
+      //  return errorList;
+      //}
     }
-    if (errorList.length === 0){
-        return errorList;
-    }
-    console.log(errorList);
-    return (<ul> {errorList} </ul>);
+    return errorList;
 }
+
 
 export function getStarList(starCount){
 
@@ -64,12 +92,13 @@ export function filterObjectList(objList, filterList) {
           passCount += 1;
         }
       }
-      //if (passCount === this.state.filterlist.length){
       if (filterList.length > 0) {
-        if (passCount > 0) {
+        if (passCount === filterList.length){
+        //if (passCount > 0) {
             retObj.passedobjlist.push(obj);
         }
-      } else {
+      } 
+      else {
         retObj.passedobjlist.push(obj);
       }
     }
@@ -172,7 +201,7 @@ export function rndrSearchResults(objList, startIdx, endIdx) {
 
 export function sortReleaseList(tmpList, reversedFlag){        
 
-    var factorList = [10000, 1000, 1];
+    var factorList = [1000000, 1000, 1];
     var relDict = {};
     for (var i in tmpList){
         var rel = tmpList[i]
@@ -218,6 +247,343 @@ export function rndrMiniTable(inObj){
     <table style={s} align="center" cellSpacing="1">
       <tbody>{rowList}</tbody>
     </table>
+  );
+}
+
+
+
+
+
+export function getFormElement(pathId, formObj,formClass, emValue){
+
+  pathId = pathId.replace(".", "_");
+
+
+  function handleChange (em) {
+  }
+
+
+
+
+  var basicTypeList = [
+      "text","password", "int", "float", "datetime","radio", "select", "textarea",
+      "stringlist"
+  ];
+
+  var emType = formObj.emtype;
+  var disableFlag = (formObj.disable === true ? true : false);
+
+
+  var em = "";
+  if (["text","password", "int", "float", "datetime"].indexOf(emType) !== -1){
+    var newType = (["int", "float"].indexOf(emType) !== -1 ? "number": emType);
+    var em = [];
+    em.push(
+      <input tag={newType} key={pathId + "_" +newType +  "_input"}
+        maxLength={formObj.maxlength}  id={pathId} type={formObj.emtype}
+        className={"form-control " + formClass}
+        onChange={handleChange}
+        defaultValue={emValue || ''}
+        disabled={disableFlag}
+        placeHolder={formObj.placeholder}
+      />
+    );
+    if ("description" in formObj){
+      em.push(
+        <span id={"desc_"+pathId} style={{width:"100%", fontStyle:"italic"}}>
+        {formObj.description}
+        </span>
+      );
+    }
+  }
+  else if (emType === "button"){
+    em = [];
+    em.push(<button id={pathId} className={formObj.class}
+      onClick={formObj.onclick} disabled={disableFlag}>
+      {formObj.value}
+      </button>);
+  }
+  else if (emType === "radio"){
+    em = [];
+    em.push(
+      <input type={emType} tag={emType} key={pathId +"_radio"}
+        className={formClass} id={pathId} value={emValue} name={formObj.name}
+        checked={formObj.checked}
+        disabled={disableFlag}
+      />
+    );
+    em.push( <span style={{fontSize:"16px"}}>&nbsp;{formObj.label}<br/></span>);
+    if ("description" in formObj){
+      em.push(<div className="leftblock" id={"desc_"+pathId}
+        style={{margin:"0 0 0 20px",width:"100%", fontStyle:"italic"}}>
+        {formObj.description}</div>);
+    }
+  }
+  else if (emType === "textarea"){
+    em = (
+      <textarea tag={emType} key={pathId +"_textarea"}
+        maxLength={formObj.maxlength} id={pathId}
+        className={"form-control " + formClass}
+        defaultValue={emValue || ''}
+        placeholder={formObj.placeholder}
+        disabled={disableFlag}
+        style={formObj.style}
+      >
+      </textarea>
+    );
+  }
+  else if (emType === "plaintext"){
+    em = (
+      <pre>{emValue}</pre>
+    );
+  }
+  else if (emType === "select"){
+    var optList = [];
+    for (var j in emValue.optlist){
+        const val = emValue.optlist[j].value;
+        const lbl = emValue.optlist[j].label;
+        const key = pathId + "_" + j + "_" + val + "_opt";
+        optList.push(<option key={key} value={val}>{lbl}</option>);
+    }
+    em = (
+        <select tag={emType} key={pathId + "_select"} id={pathId}
+          className={"form-select " + formClass}
+          defaultValue={emValue.selected || ''}
+          disabled={disableFlag}
+          onChange={formObj.onchange}
+        >
+          {optList}
+        </select>
+    );
+  }
+  else if (emType === "stringlist"){
+    var sTwo = {width:"100%", textAlign:"left", fontSize:"12px"};
+    var sThree = {margin:"0px", padding:"0px", fontSize:"12px", textDecoration:"none"};
+    var tmpList = [];
+    if(typeof(emValue) === "object"){
+      tmpList = emValue;
+    }
+    var spanList = [];
+    for (var i in tmpList){
+      var randStr = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 16);
+      var childPathId = pathId + "_"+ i + "_" + randStr;
+      var divId = pathId + "_"+ i + "_div";
+      var btnId = pathId + "^"+ i + "^btn";
+      spanList.push(
+        <div id={divId} key={divId} className="leftblock"
+          style={{width:"100%", padding:"0px",
+              marginBottom:"3px",border:"1px solid #ccc", borderRadius:"10px"}}>
+          <button id={btnId} key={btnId} className="btn btn-link rightblock"
+            style={{color:"#2358C2", margin:"10px 10px 0px 0px",padding:"0px",
+            textDecoration:"none"}}
+            onClick={formObj.onremoveitem} > X
+          </button>
+          <input id={childPathId} key={childPathId} className={"form-control " + formClass}
+            type={"text"} defaultValue={tmpList[i] || ''}
+            disabled={true} style={formObj.style}
+          />
+        </div>
+      );
+    }
+    var divId = pathId + "_last_div";
+    var btnId = pathId + "^addbtn";
+    var inputId = pathId.replace("|", "_") + "_last";
+
+    spanList.push(
+        <div id={divId} key={divId} className="leftblock"
+          style={{width:"100%", padding:"5px",
+              marginBottom:"3px",border:"1px solid #ccc", borderRadius:"10px"}}>
+          <div className="leftblock"  style={{width:"80%"}}>
+            <input id={inputId} key={inputId}
+              className={"form-control " + formClass}
+              maxLength={formObj.maxlength}
+              type={"text"} defaultValue={""}
+              disabled={false}
+              placeholder={formObj.placeholder}
+            />
+          </div>
+          <div className="leftblock" style={{margin:"2px 0px 0px 5px"}}>
+            <button id={btnId}
+              className="btn btn-outline-secondary btn-sm"
+              onClick={formObj.onadditem}>Add
+            </button>
+          </div>
+        </div>
+    );
+    em = (
+      <div id={pathId + "_div_xxx"} key={pathId + "_div_xx"}
+        className="leftblock" style={{width:"100%"}}>
+        {spanList}
+      </div>
+    );
+  }
+  else if (emType === "obj"){
+      var obj = emValue;
+      var spanList = [];
+      for (const j in formObj.proplist){
+          var childFormObj = formObj.proplist[j];
+          var childPropName = childFormObj.prop;
+          var childPropValue = obj[childPropName];
+          var childPropType = childFormObj.emtype;
+          var childPathId = pathId + "." + childPropName;
+          if(basicTypeList.indexOf(childPropType) !== -1){
+            if (childPropType === "select"){
+              childFormObj.value.selected = obj[childPropName];
+              childPropValue =  childFormObj.value;
+            }
+            var tmpEm = getFormElement(childPathId,childFormObj, formClass, childPropValue);
+            spanList.push(tmpEm);
+          }
+          else{
+            spanList.push(
+              <div key={childPathId + "_divvv"} className="leftblock"
+              style={{width:"98%", margin:"10px 10px 10px 5px", padding:"10px"}}>
+                {"exception: " + childPropName}<br/>{JSON.stringify(obj[childPropName])}<br/>
+              </div>
+            );
+          }
+      }
+      em = (
+        <div key={pathId + "_divone"} className="leftblock" style={{width:"100%", padding:"0px 10px 20px 10px",        marginBottom:"10px",border:"1px solid #ccc", borderRadius:"10px"}}>
+        {spanList}
+        </div>
+      );
+    }
+    else if (emType === "objlist"){
+      var sOne = {};
+      sTwo = {};
+      var typeMap = {};
+      var childPropList = [];
+      for (var i in formObj.proplist){
+        const o = formObj.proplist[i];
+        childPropList.push(o.prop);
+        var childPathId = pathId  + "_" + o.prop;
+        typeMap[childPathId] = o.emtype;
+        if (o.emtype === "objlist"){
+          for (var j in o.proplist){
+            const oo = o.proplist[j];
+            var grandChildPathId = childPathId + "_" + oo.prop;
+            typeMap[grandChildPathId] = oo.emtype;
+          }
+        }
+      }
+
+      var divList = [];
+      var spanList = [];
+      var lastSpanList = [];
+      for (const j in childPropList){
+        var childPropName = childPropList[j];
+        var childFormObj = formObj.proplist[j];
+        var childPathId = pathId + "_last_" + childPropName;
+        var childPropValue = "";
+        if (childFormObj.emtype === "select"){
+          childFormObj.value.selected = "";
+          childPropValue = childFormObj.value;
+        }
+        childFormObj.disable = false;
+        var tmpEm = getFormElement(childPathId,childFormObj, formClass,childPropValue);
+        lastSpanList.push(tmpEm);
+
+      }
+
+      for (const i in emValue){
+        //if (this.state.rmlist.indexOf(i) !== -1){continue;}
+        obj = emValue[i];
+        spanList[i] = [];
+        for (const j in childPropList){
+          var randStr = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 16);
+          var childPropName = childPropList[j];
+          var childPathId = pathId + "_" + i + "_" + j + "_" + childPropName + ' _' + randStr;
+          var childTypePath = pathId + "_" + childPropName;
+          var childPropType = (childTypePath in typeMap ? typeMap[childTypePath] : "");
+          if(basicTypeList.indexOf(childPropType) !== -1){
+            childFormObj = formObj.proplist[j];
+            childPropValue = obj[childPropName];
+            //spanList[i][childPropName] = childPropValue;
+            if (childPropType === "select"){
+              childFormObj.value.selected = childPropValue;
+              childPropValue = childFormObj.value;
+            }
+            childFormObj.disable = true;
+            var tmpEm = getFormElement(childPathId,childFormObj, formClass, childPropValue);
+            //var s = {border:"1px dashed green"};
+            //var tmpEm = (<div className="leftblock" style={s}>{childFormObj.label}</div>);
+            spanList[i].push(tmpEm);
+          }
+          else{
+            sOne = { width:"98%", margin:"10px 10px 10px 5px", padding:"10px"};
+            sTwo = {width:"100%", margin:"0px", padding:"10px", border:"1px solid #ccc", borderRadius:"10px"};
+            spanList[i].push(
+              <div key={childPathId + "_divvv"} className="leftblock" style={sOne}>
+                {"exception: " + childPropName}<br/>{JSON.stringify(emValue[childPropName])}<br/>
+              </div>
+            );
+          }
+        }
+        var divId = pathId + "_obj_" + i + "_div";
+        var btnId = pathId + "^obj^" + i + "^btn";
+        divList.push(
+            <div id={divId} key={divId} className="leftblock" style={formObj.wrapperstyle}>
+              <button id={btnId} key={btnId} className="btn btn-link rightblock"
+                style={{color:"#2358C2", margin:"5px 0px 0px 0px",padding:"0px",
+                textDecoration:"none"}}
+                onClick={formObj.onremoveitem} > X
+            </button>
+            <div id={divId + "_" + i + "_divtwo"} key={divId + "_" + i +  "_divtwo"} className="leftblock" style={{width:"100%"}}>
+            {spanList[i]}
+            </div>
+            </div>);
+      }
+      var divId = "last_div";
+      var btnId = pathId + "^addbtn";
+      divList.push(
+        <div id={divId} key={divId} className="leftblock"
+          style={{width:"100%", padding:"20px 10px 20px 10px", margin:"0px 0px 0px 0px",
+              border:"1px solid #ccc", borderRadius:"10px"}}>
+          <div id={divId + "_divtwo"} key={divId + "_divtwo"}
+            className="leftblock"          style={{width:"100%"}}>
+            {lastSpanList}
+          </div>
+          <div id={divId + "_divthree"} key={divId + "_divthree"}
+            className="leftblock" style={{width:"100%", margin:"10px 0px 0px 0px"}}>
+            <button id={btnId}
+              className="btn btn-outline-secondary btn-sm"
+                onClick={formObj.onadditem}>
+              Add
+            </button>
+          </div>
+        </div>
+      );
+      em = (
+        <div key={pathId + "_objlist_div_one"}  id={pathId + "_objlist_one"} className="leftblock" style={{width:"100%", fontSize:"12px",background:"#fff", marginTop:"0px"}}>
+           {divList}
+        </div>
+      );
+    }
+
+
+
+
+  var sOuter = {width:"100%",  background:"#fff", padding:"5px", fontSize:"12px"};
+  if ("style" in formObj){
+    sOuter = formObj.style;
+  }
+  var sInner = { paddingRight:"5px", background:"#fff",  fontSize:"12px"};
+
+  var passwordStrengthLbl = "";
+  //if (pathId === "password_one"){
+  //  passwordStrengthLbl = <div id={"lbl_"+pathId} className="leftblock" style={sInner} >
+  //    </div>;
+  //}
+
+  var rqrd = (formObj.required === true ? "*" : "");
+  var lblDiv = (<div id={"lbl_"+pathId} className="leftblock" style={sInner} >{formObj.label}
+    <span style={{color:"red"}}> {rqrd}</span> </div>);
+  if (emType === "radio"){lblDiv = "";}
+  return (
+    <div className="leftblock" key={pathId +"_" + emType} style={sOuter}>
+      {lblDiv} {passwordStrengthLbl} {em }
+    </div>
   );
 }
 
