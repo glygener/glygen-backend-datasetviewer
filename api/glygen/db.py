@@ -1,3 +1,4 @@
+import os
 import pymongo
 import datetime
 import string
@@ -16,7 +17,13 @@ def get_mongodb():
 
     ret_obj, error_obj = {}, {}
     try:
-        conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
+        conn_str, db_name = "", ""
+        if current_app.config["SERVER"] == "dev":
+            conn_str =  current_app.config["MONGODB_CONNSTRING"]
+            db_name = current_app.config["DB_NAME"]
+        else:
+            conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
+
         client = pymongo.MongoClient(conn_str)
         client.server_info()
         ret_obj = client[db_name]
