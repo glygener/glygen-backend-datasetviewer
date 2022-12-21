@@ -26,6 +26,7 @@
         "jsondb":[
             "initdb"
             ,"bcodb"
+            ,"extractdb"
             ,"htmldb"
             ,"statdb"
         ]
