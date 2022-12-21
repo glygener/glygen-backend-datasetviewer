@@ -19,15 +19,13 @@ def main():
 
     image = "glyds_%s_app" % (server) 
     container = "running_" + image
-    port = config_obj["port"]
+    port = config_obj["app_port"]
     data_path = config_obj["data_path"]
     
     cmd_list = []
     if os.path.isdir(data_path) == False:
         cmd_list.append("mkdir -p %s" % (data_path))
 
-    cmd = "cp glyds.%s.env .env.production" % (server)
-    cmd_list.append(cmd) 
     cmd = "npm run build"
     cmd_list.append(cmd)
     cmd = "docker build -t %s ." % (image)
@@ -46,6 +44,13 @@ def main():
         print (cmd)
         #x = subprocess.getoutput(cmd)
         #print (x)
+    
+
+    with open(".env.production", "r") as FW:
+        FW.write("REACT_APP_SERVER=%s\n" % (server))
+        FW.write("REACT_APP_ROOT_URL=https://data.%s.glygen.org\n" % (server))
+        FW.write("REACT_APP_API_URL=https://dsapi.%s.glygen.org\n" % (server))
+        FW.write("REACT_APP_APP_VERSION=1.1\n")
 
 
 
