@@ -58,6 +58,8 @@ def main():
             if d[-2:] != "db":
                 continue
             coll = "c_" + d[:-2]
+            if coll in ["c_extract", "c_bco", "c_history"]:
+                coll = "%s_v-%s" % (c, ver)
             result = dbh[coll].delete_many({})
             file_list = glob.glob(jsondb_dir + "/" + d + "/*.json")
             if mode == "partial":
@@ -67,6 +69,9 @@ def main():
                 doc = json.loads(open(in_file, "r").read())
                 if "_id" in doc:
                     doc.pop("_id")
+                if "object_id" in doc:
+                    bco_id = doc["object_id"].split("/")[-2]
+                doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
                 result = dbh[coll].insert_one(doc)     
                 nrecords += 1
                 if nrecords != 0 and nrecords%1000 == 0:
