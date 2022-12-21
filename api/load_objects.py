@@ -59,7 +59,7 @@ def main():
                 continue
             coll = "c_" + d[:-2]
             if coll in ["c_extract", "c_bco", "c_history"]:
-                coll = "%s_v-%s" % (c, ver)
+                coll = "%s_v-%s" % (coll, ver)
             result = dbh[coll].delete_many({})
             file_list = glob.glob(jsondb_dir + "/" + d + "/*.json")
             if mode == "partial":
