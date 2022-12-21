@@ -58,8 +58,6 @@ def info():
         if k in current_app.config:
             res_obj["config"][k] = current_app.config[k]
     mongo_dbh, error_obj = get_mongodb()
-    return jsonify(error_obj), 200
-
     res_obj["connection_status"] = "success" if error_obj == {} else error_obj
     return jsonify(res_obj), 200
 
