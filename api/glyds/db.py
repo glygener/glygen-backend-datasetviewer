@@ -15,13 +15,13 @@ from flask.cli import with_appcontext
 
 def get_mongodb():
 
-    conn_str, db_name = "", ""
-    return {}, {"status":0, "db":db_name, "conn_str":conn_str}
 
     ret_obj, error_obj = {}, {}
     try:
-        conn_str, db_name = "", ""
-        if current_app.config["SERVER"] == "dev":
+        conn_str, db_name, ser = "", "", ""
+        ser = current_app.config["SERVER"] if "SERVER" in current_app.config else ser
+        ser = os.environ["SERVER"] if "SERVER" in os.environ else ser
+        if ser == "dev":
             conn_str =  current_app.config["MONGODB_CONNSTRING"]
             db_name = current_app.config["DB_NAME"]
         else:
