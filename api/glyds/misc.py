@@ -53,13 +53,13 @@ def upload():
 @bp.route('/info', methods=('GET', 'POST'))
 def info():
     res_obj = {"config":{}}
-    #k_list = ["DB_HOST", "DB_NAME", "DB_USERNAME", "DB_PASSWORD",  "DATA_PATH"]
-    k_list = ["DB_HOST", "DB_NAME", "DB_USERNAME",  "DATA_PATH", "MAX_CONTENT_LENGTH"]
-    #k_list = ["DATA_PATH", "MAX_CONTENT_LENGTH"]
+    k_list = ["DATA_PATH", "MAX_CONTENT_LENGTH"]
     for k in k_list:
         if k in current_app.config:
             res_obj["config"][k] = current_app.config[k]
     mongo_dbh, error_obj = get_mongodb()
+    return jsonify(error_obj), 200
+
     res_obj["connection_status"] = "success" if error_obj == {} else error_obj
     return jsonify(res_obj), 200
 

@@ -24,6 +24,8 @@ def get_mongodb():
         else:
             conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
 
+        return {}, {"status":0, "db":db_name, "conn_str":conn_str}
+
         client = pymongo.MongoClient(conn_str)
         client.server_info()
         ret_obj = client[db_name]
