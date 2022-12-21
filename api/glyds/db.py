@@ -15,6 +15,8 @@ from flask.cli import with_appcontext
 
 def get_mongodb():
 
+    return {}, {"status":0, "db":db_name, "conn_str":conn_str}
+
     ret_obj, error_obj = {}, {}
     try:
         conn_str, db_name = "", ""
@@ -22,10 +24,7 @@ def get_mongodb():
             conn_str =  current_app.config["MONGODB_CONNSTRING"]
             db_name = current_app.config["DB_NAME"]
         else:
-            conn_str, db_name = "", ""
-            #conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
-
-        return {}, {"status":0, "db":db_name, "conn_str":conn_str}
+            conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
 
         client = pymongo.MongoClient(conn_str)
         client.server_info()
