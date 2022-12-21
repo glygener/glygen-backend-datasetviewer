@@ -46,7 +46,7 @@ def main():
         #print (x)
     
 
-    with open(".env.production", "r") as FW:
+    with open(".env.production", "w") as FW:
         FW.write("REACT_APP_SERVER=%s\n" % (server))
         FW.write("REACT_APP_ROOT_URL=https://data.%s.glygen.org\n" % (server))
         FW.write("REACT_APP_API_URL=https://dsapi.%s.glygen.org\n" % (server))
