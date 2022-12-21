@@ -54,15 +54,11 @@ def main():
         )
         client.server_info()
         dbh = client[glydb_db]
-        result = dbh["c_cache"].insert_one({})
         for d in dir_list:
             if d[-2:] != "db":
                 continue
             coll = "c_" + d[:-2]
-            if coll == "c_jumbo":
-                continue
             result = dbh[coll].delete_many({})
-
             file_list = glob.glob(jsondb_dir + "/" + d + "/*.json")
             if mode == "partial":
                 file_list = file_list[:2000]

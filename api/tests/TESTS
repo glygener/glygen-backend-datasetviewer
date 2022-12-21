@@ -1,0 +1,24 @@
+    $ http POST http://localhost:9090/misc/info
+
+    $ http POST http://localhost:9090/dataset/search < tmp/dataset_search.json
+    $ http POST http://localhost:9090/dataset/detail < tmp/dataset_detail.json
+    $ http POST http://localhost:9090/dataset/historylist < tmp/dataset_historylist.json
+    $ http POST http://localhost:9090/dataset/historydetail < tmp/dataset_historydetail.json
+
+    $ http POST http://localhost:9090/misc/info
+
+    $ http POST http://localhost:9090/dataset/submit < tmp/dataset_submit.json
+    
+    $ http POST http://localhost:9090/gsd/submit < tmp/gsd_submit.json
+    
+
+    # Testing upload/qc
+    $ python3 upload.py 
+    
+    $ http POST http://localhost:9090/dataset/glycan_finder < tmp/dataset_glycan_finder.json
+
+
+
+
+
+
