@@ -2,7 +2,7 @@ import os,sys
 import json
 import traceback
 from flask import (Blueprint,request,jsonify)
-from glygen.db import get_mongodb, log_error, next_sequence_value
+from glyds.db import get_mongodb, log_error, next_sequence_value
 
 from flask_jwt_extended import (
     jwt_required, jwt_refresh_token_required, get_jwt_identity

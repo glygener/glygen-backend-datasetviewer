@@ -1,9 +1,9 @@
 import os,sys
 from flask_restx import Namespace, Resource, fields
 from flask import (request, current_app)
-from glygen.document import get_one, get_many, order_json_obj
+from glyds.document import get_one, get_many, order_json_obj
 from werkzeug.utils import secure_filename
-from glygen.qc import run_qc
+from glyds.qc import run_qc
 import datetime
 import time
 import subprocess

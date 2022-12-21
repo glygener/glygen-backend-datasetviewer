@@ -1,6 +1,6 @@
 from flask_restx import Namespace, Resource, fields
 from flask import (request, current_app)
-from glygen.document import get_one, get_many
+from glyds.document import get_one, get_many
 
 
 api_name = "assembly"

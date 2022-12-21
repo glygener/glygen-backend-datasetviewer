@@ -5,7 +5,7 @@ import csv
 import hashlib
 
 from flask import (Blueprint,request,jsonify,current_app)
-from glygen.db import get_mongodb, log_error, next_sequence_value
+from glyds.db import get_mongodb, log_error, next_sequence_value
 from flask_restx import Resource, Api
 from werkzeug.utils import secure_filename
 
