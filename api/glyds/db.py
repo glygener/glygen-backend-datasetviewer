@@ -15,6 +15,7 @@ from flask.cli import with_appcontext
 
 def get_mongodb():
 
+    conn_str, db_name = "", ""
     return {}, {"status":0, "db":db_name, "conn_str":conn_str}
 
     ret_obj, error_obj = {}, {}
