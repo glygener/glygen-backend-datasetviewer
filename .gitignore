@@ -6,7 +6,6 @@ api/dist-*
 api/run.sh
 api/tmp
 
-app/conf
 app/build
 app/node_modules
 app/Dockerfile*

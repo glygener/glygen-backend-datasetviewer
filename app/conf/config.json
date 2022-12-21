@@ -1,0 +1,5 @@
+{
+    "server":"tst",
+    "app_port":"5050",
+    "data_path":"/data/shared/glyds/"
+}
