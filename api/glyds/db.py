@@ -22,7 +22,8 @@ def get_mongodb():
             conn_str =  current_app.config["MONGODB_CONNSTRING"]
             db_name = current_app.config["DB_NAME"]
         else:
-            conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
+            conn_str, db_name = "", ""
+            #conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
 
         return {}, {"status":0, "db":db_name, "conn_str":conn_str}
 

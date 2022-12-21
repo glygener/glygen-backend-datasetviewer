@@ -40,7 +40,6 @@ def main():
     for c in [api_container]:
         cmd = "docker ps |grep %s" % (c)
         x = subprocess.getoutput(cmd).split(" ")[-1].strip()
-        print ("Robel", x)
         if x == c:
             cmd_list.append("docker rm -f %s " % (c))
 
