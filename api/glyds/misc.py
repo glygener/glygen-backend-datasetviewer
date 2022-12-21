@@ -13,12 +13,6 @@ bp = Blueprint('misc', __name__, url_prefix='/misc')
 api = Api(bp)
 
 
-@bp.route('/hello', methods=('GET', 'POST'))
-class HelloWorld(Resource):
-    def hello(self):
-        return "Hello!"
-
-
 
 @bp.route('/hello_world', methods=('GET', 'POST'))
 def hello_world():
@@ -63,7 +57,8 @@ def info():
     k_list = ["DB_HOST", "DB_NAME", "DB_USERNAME",  "DATA_PATH", "MAX_CONTENT_LENGTH"]
     #k_list = ["DATA_PATH", "MAX_CONTENT_LENGTH"]
     for k in k_list:
-        res_obj["config"][k] = current_app.config[k]
+        if k in current_app.config:
+            res_obj["config"][k] = current_app.config[k]
     mongo_dbh, error_obj = get_mongodb()
     res_obj["connection_status"] = "success" if error_obj == {} else error_obj
     return jsonify(res_obj), 200
