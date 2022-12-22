@@ -41,9 +41,9 @@ def main():
     cmd_list.append(cmd)
 
     for cmd in cmd_list:
-        print (cmd)
-        #x = subprocess.getoutput(cmd)
-        #print (x)
+        #print (cmd)
+        x = subprocess.getoutput(cmd)
+        print (x)
     
 
     with open(".env.production", "w") as FW:
