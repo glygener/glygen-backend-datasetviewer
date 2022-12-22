@@ -70,13 +70,13 @@ add the following lines to your apache VirtualHost directive
  configuration to be 5050)
 
 
-  `
+  ```
   <VirtualHost *:443>
     ServerName www.glyds.org
     ProxyPass / http://127.0.0.1:5050/
     ProxyPassReverse / http://127.0.0.1:5050/
   </VirtualHost>
-  `
+  ```
 
 
 
