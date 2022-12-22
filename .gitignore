@@ -6,7 +6,6 @@ api/dist-*
 api/run.sh
 api/tmp
 
-app/build
 app/*.log
 app/glygen*
 app/.env.*
