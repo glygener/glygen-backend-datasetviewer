@@ -7,7 +7,6 @@ api/run.sh
 api/tmp
 
 app/build
-app/Dockerfile*
 app/*.log
 app/glygen*
 app/.env.*
