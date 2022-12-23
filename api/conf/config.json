@@ -27,6 +27,7 @@
             "initdb"
             ,"bcodb"
             ,"extractdb"
+            ,"historydb"
             ,"htmldb"
             ,"statdb"
         ]
