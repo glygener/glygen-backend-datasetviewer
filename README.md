@@ -2,6 +2,7 @@
 The following must be available on your server:
 
 * pymongo
+* httpie
 * jsonref
 * jsonschema
 * Node.js and npm
@@ -55,6 +56,21 @@ From the "api" subdirectory, run the python script given to build and start cont
   ```
 The last command should list docker containers and you should see one named
 "running_glyds_tst_api".
+
+
+## Step-5: Testing the APIs
+From the "api" subdirectory, run the following to test the APIs
+
+  ```
+  http POST http://localhost:9090/misc/info
+  http POST http://localhost:9090/dataset/search < queries/dataset_search.json
+  http POST http://localhost:9090/dataset/detail < queries/dataset_detail.json
+  http POST http://localhost:9090/dataset/historylist < queries/dataset_historylist.json
+  http POST http://localhost:9090/dataset/historydetail < queries/dataset_historydetail.json
+  http POST http://localhost:9090/dataset/submit < queries/dataset_submit.json
+  http POST http://localhost:9090/gsd/submit < queries/gsd_submit.json
+  http POST http://localhost:9090/dataset/glycan_finder < queries/dataset_glycan_finder.json
+  ```
 
 
 # Installation of APP
