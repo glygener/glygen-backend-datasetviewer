@@ -32,8 +32,8 @@ def main():
 
     rel_dir = config_obj["data_path"] + "/releases/data/v-%s/" % (ver)
     if os.path.isdir(rel_dir) == True:
-        print ("\t\nDirectory %s already exists!\n" % (rel_dir))
-        exit()
+        cmd = "rm -rf " + rel_dir
+        x = subprocess.getoutput(cmd)
     
     jsondb_dir = rel_dir + "/jsondb/"
     cmd = "mkdir -p %s" % (jsondb_dir)
