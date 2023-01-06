@@ -70,7 +70,16 @@
                 }
             },
             "get_many":{
-                "prj":{},
+                "prj":{
+                    "bcoid": 1,
+                    "title": 1,
+                    "description": 1,
+                    "filename": 1,
+                    "filetype": 1,
+                    "categories": 1,
+                    "minitable": 1,
+                    "iconfilename": 1
+                },
                 "sortfield":"bcoid",
                 "queryfields":{
                     "query":{

@@ -1,7 +1,7 @@
 {
     "server":"tst",
-    "api_port":"9090",
-    "base_url":"http://localhost:9090",
+    "api_port":"8081",
+    "base_url":"http://localhost:8081",
     "data_path":"/data/shared/glyds/",
     "mail":{
         "server":"x.x.x.x", 

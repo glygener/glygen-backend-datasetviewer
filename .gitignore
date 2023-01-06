@@ -13,6 +13,8 @@ app/.env.production
 app/*.tar.gz
 app/*.log
 app/glygen.*.env
+app/build
+app/node_modules/.cache
 
 app/public/ln2data
 

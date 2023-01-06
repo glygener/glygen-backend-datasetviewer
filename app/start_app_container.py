@@ -21,7 +21,17 @@ def main():
     container = "running_" + image
     port = config_obj["app_port"]
     data_path = config_obj["data_path"]
-    
+   
+
+    with open(".env.production", "w") as FW:
+        FW.write("REACT_APP_SERVER=%s\n" % (server))
+        FW.write("REACT_APP_ROOT_URL=https://data.%s.glygen.org\n" % (server))
+        FW.write("REACT_APP_API_URL=https://dsapi.%s.glygen.org\n" % (server))
+        FW.write("REACT_APP_APP_VERSION=1.1\n")
+
+
+
+
     cmd_list = []
     if os.path.isdir(data_path) == False:
         cmd_list.append("mkdir -p %s" % (data_path))
@@ -46,11 +56,6 @@ def main():
         print (x)
     
 
-    with open(".env.production", "w") as FW:
-        FW.write("REACT_APP_SERVER=%s\n" % (server))
-        FW.write("REACT_APP_ROOT_URL=https://data.%s.glygen.org\n" % (server))
-        FW.write("REACT_APP_API_URL=https://dsapi.%s.glygen.org\n" % (server))
-        FW.write("REACT_APP_APP_VERSION=1.1\n")
 
 
 

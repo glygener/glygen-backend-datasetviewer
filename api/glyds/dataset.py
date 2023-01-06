@@ -98,8 +98,11 @@ class DatasetList(Resource):
         req_obj["coll"] = "c_extract"
         res_obj = get_many(req_obj)
 
-        res_obj["stats"] = {"total":len(res_obj["recordlist"]), "retrieved":100}
-        res_obj["recordlist"] = res_obj["recordlist"][:100]
+        #res_obj["stats"] = {"total":len(res_obj["recordlist"]), "retrieved":100}
+        #res_obj["recordlist"] = res_obj["recordlist"][:100]
+
+        n = len(res_obj["recordlist"])
+        res_obj["stats"] = {"total":n, "retrieved":n}
         return res_obj
 
 
