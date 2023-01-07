@@ -1,7 +1,7 @@
 import os,sys
 from flask_restx import Namespace, Resource, fields
 from flask import (request, current_app)
-from glyds.document import get_one, get_many, order_json_obj
+from glyds.document import get_one, get_many, get_ver_list, order_json_obj
 from werkzeug.utils import secure_filename
 from glyds.qc import run_qc
 import datetime
@@ -115,6 +115,9 @@ class DatasetDetail(Resource):
     def post(self):
         '''Get single dataset object'''
         req_obj = request.json
+        
+        ver_list = get_ver_list(req_obj["bcoid"])
+        
         req_obj["coll"] = "c_extract"
         extract_obj = get_one(req_obj)
         if "error" in extract_obj:
@@ -125,6 +128,13 @@ class DatasetDetail(Resource):
         history_obj = get_one(req_obj)
         if "error" in history_obj:
             return history_obj
+
+        
+        history_dict = {}
+        for ver in history_obj["record"]["history"]:
+            if ver in ver_list:
+                history_dict[ver] = history_obj["record"]["history"][ver]
+
 
         req_obj["coll"] = "c_bco"
         req_obj["bcoid"] = "https://biocomputeobject.org/%s" % (req_obj["bcoid"])
@@ -143,7 +153,7 @@ class DatasetDetail(Resource):
             "record":{
                 "extract":extract_obj["record"], 
                 "bco":bco_obj["record"], 
-                "history":history_obj["record"]["history"]
+                "history":history_dict
             }
         }
 
