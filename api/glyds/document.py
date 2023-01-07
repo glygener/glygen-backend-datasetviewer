@@ -181,3 +181,27 @@ def order_json_obj(json_obj, ordr_dict):
 
 
 
+
+
+def get_ver_list(bco_id):
+
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "conf/config.json")
+    config_obj = json.load(open(json_url))
+    res_obj = {}
+    try:
+        mongo_dbh, error_obj = get_mongodb()
+        if error_obj != {}:
+            return error_obj
+        tmp_list = mongo_dbh.list_collection_names()
+        res_obj = []
+        for coll in tmp_list:
+            if coll.find("c_extract") != -1:
+                n = mongo_dbh[coll].count_documents({"bcoid":bco_id})
+                if n > 0:
+                    res_obj.append(coll.split("-")[-1].replace(".", "_"))
+    except Exception as e:
+        res_obj =  log_error(traceback.format_exc())
+
+    return res_obj
+
