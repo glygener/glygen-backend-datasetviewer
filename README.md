@@ -23,6 +23,8 @@ to download from that release. Since this will take long, use nohup as shown bel
   ```
   nohup python3 download_data.py -v {VER} > logfile.log &
   ```
+It is also important that you download all legacy releases since the application allows
+access to datasets from older releases.
 
 
 ## Step-2: Starting the mongodb container
@@ -41,13 +43,19 @@ To init your mongodb, go to the "api" subdirectory and run (this should be done 
   python3 init_mongodb.py
   ```
 
-You can populate the database partially (for test purposes) or fully using
-the following commands:
+You can load data from the most recent release you have downloaded using 
+the following command:
   ```
   cd api
-  python3 load_objects.py -v {VER} -m full
+  python3 load_current_release.py -v {VER} -m full
   ```
 
+To load data from downloaded legacy releases:
+  ```
+  cd api
+  python3 load_legacy_release.py -v {VER} -m full
+  ```
+      
 ## Step-4: Building and starting the docker container for the APIs
 From the "api" subdirectory, run the python script given to build and start container:
   ```

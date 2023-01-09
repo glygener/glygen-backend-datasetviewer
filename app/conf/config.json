@@ -1,5 +1,5 @@
 {
-    "server":"tst",
+    "server":"prd",
     "app_port":"8080",
     "data_path":"/data/shared/glyds/"
 }

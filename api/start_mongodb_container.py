@@ -20,7 +20,7 @@ def main():
     
     api_container = "running_glyds_%s_api" % (server)
     mongo_container = "running_glyds_mongo_%s" % (server)
-    mongo_network = config_obj["dbinfo"]["bridge_network"]
+    mongo_network = config_obj["dbinfo"]["bridge_network"] + "_" + server
     mongo_port = config_obj["dbinfo"]["port"]
     data_path = config_obj["data_path"]
 
@@ -42,7 +42,7 @@ def main():
     
     cmd_list.append("docker network create -d bridge %s" % (mongo_network))
     cmd = "docker run --name %s --network %s -p 127.0.0.1:%s:27017" % (mongo_container, mongo_network,mongo_port)
-    cmd += " -d -v %s/db:%s/db/%s %s mongo" % (data_path, data_path, server, e_params)
+    cmd += " -d -v %s/db/%s:/data/db %s mongo" % (data_path, server,  e_params)
     cmd_list.append(cmd)
 
     for cmd in cmd_list:

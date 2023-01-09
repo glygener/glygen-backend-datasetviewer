@@ -24,7 +24,7 @@ def main():
             parser.print_help()
             sys.exit(0)
 
-    current_ver = options.dataversion
+    ver = options.dataversion
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
     log_dir = config_obj["data_path"] + "/logs/"
@@ -32,41 +32,31 @@ def main():
 
 
 
-    ver_list = ["1.0.13","1.4.5","1.5.11","1.5.12","1.5.13","1.5.18","1.5.23",
-        "1.5.27","1.5.28","1.5.30","1.5.36","1.7.10","1.7.13","1.8.24",
-        "1.8.25","1.9.9","1.10.6","1.11.2", "2.0.1"
-    ]
-
-    if current_ver not in ver_list:
-        ver_list.append(current_ver)
-    
-    for ver in ver_list:
-
-        rel_dir = config_obj["data_path"] + "/releases/data/v-%s/" % (ver)
-        if os.path.isdir(rel_dir) == True:
-            cmd = "rm -rf " + rel_dir
-            x = subprocess.getoutput(cmd)
-    
-        jsondb_dir = rel_dir + "/jsondb/"
-        cmd = "mkdir -p %s" % (jsondb_dir)
+    rel_dir = config_obj["data_path"] + "/releases/data/v-%s/" % (ver)
+    if os.path.isdir(rel_dir) == True:
+        cmd = "rm -rf " + rel_dir
         x = subprocess.getoutput(cmd)
-        if os.path.isdir(jsondb_dir) == False:
-            print ("\t\nCould not create directory %s!\n" % (jsondb_dir))
-            exit()
+    
+    cmd = "mkdir -p %s" % (rel_dir)
+    x = subprocess.getoutput(cmd)
+    if os.path.isdir(rel_dir) == False:
+        print ("\t\nCould not create directory %s!\n" % (jsondb_dir))
+        exit()
 
-        os.chdir(jsondb_dir)
-        for d in config_obj["downloads"]["jsondb"]:
-            file_name = "%s.tar.gz" % (d)
-            url = "https://data.glygen.org/ftp/v-%s/%s.tar.gz" % (ver, d)
-            print (" ... downloading %s" % (url))
-            r = requests.get(url, allow_redirects=True)
-            open(file_name, 'wb').write(r.content)
-            cmd = "tar xvfz %s" % (file_name)
-            x = subprocess.getoutput(cmd)
-            cmd = "rm -f %s" % (file_name)
-            x = subprocess.getoutput(cmd)
-            print ("done!")
-
+    os.chdir(rel_dir)
+    for d in config_obj["downloads"]["jsondb"] + config_obj["downloads"]["others"]:
+        file_name = "%s.tar.gz" % (d)
+        url = "https://data.glygen.org/ftp/v-%s/%s.tar.gz" % (ver, d)
+        print (" ... downloading %s" % (url))
+        r = requests.get(url, allow_redirects=True)
+        open(file_name, 'wb').write(r.content)
+        cmd = "tar xvfz %s" % (file_name)
+        x = subprocess.getoutput(cmd)
+        #print (x)
+        cmd = "rm -f %s" % (file_name)
+        x = subprocess.getoutput(cmd)
+        print ("done!")
+    
 
 
 

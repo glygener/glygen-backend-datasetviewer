@@ -1,5 +1,5 @@
 {
-    "server":"tst",
+    "server":"prd",
     "api_port":"8081",
     "base_url":"http://localhost:8081",
     "data_path":"/data/shared/glyds/",
@@ -9,7 +9,7 @@
         "sender":"no-reply@glygen.gwu.edu"
     },
     "dbinfo":{
-        "port":"6060",
+        "port":"7070",
         "bridge_network":"glyds_backend",
         "admin":{
             "db":"admin",
@@ -30,6 +30,11 @@
             ,"historydb"
             ,"htmldb"
             ,"statdb"
+        ],
+        "others":[
+            "reviewed",
+            "compiled",
+            "misc"
         ]
     }
 }
