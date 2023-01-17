@@ -13,15 +13,24 @@ __status__ = "Dev"
 ###############################
 def main():
 
+    usage = "\n%prog  [options]"
+    parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
+    (options,args) = parser.parse_args()
+
+    for key in ([options.server]):
+        if not (key):
+            parser.print_help()
+            sys.exit(0)
+
+    server = options.server
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
-    server = config_obj["server"]
-
-    
     api_container = "running_glyds_%s_api" % (server)
     mongo_container = "running_glyds_mongo_%s" % (server)
     mongo_network = config_obj["dbinfo"]["bridge_network"] + "_" + server
-    mongo_port = config_obj["dbinfo"]["port"]
+    
+    mongo_port = config_obj["dbinfo"]["port"][server]
     data_path = config_obj["data_path"]
 
     u, p = config_obj["dbinfo"]["admin"]["user"], config_obj["dbinfo"]["admin"]["password"]

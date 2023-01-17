@@ -15,22 +15,23 @@ def main():
 
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     parser.add_option("-v","--dataversion",action="store",dest="dataversion",help="2.0.2/2.0.3 ...")
-        
+     
     (options,args) = parser.parse_args()
 
-    for key in ([options.dataversion]):
+    for key in ([options.server, options.dataversion]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
-    ver = options.dataversion
+    server = options.server
 
+    ver = options.dataversion
+    
     config_obj = json.loads(open("./conf/config.json", "r").read())
     log_dir = config_obj["data_path"] + "/logs/"
-    userdata_dir = config_obj["data_path"] + "/userdata/%s/jobs/" % (config_obj["server"])
-
-
+    userdata_dir = config_obj["data_path"] + "/userdata/%s/jobs/" % (server)
 
     rel_dir = config_obj["data_path"] + "/releases/data/v-%s/" % (ver)
     if os.path.isdir(rel_dir) == True:

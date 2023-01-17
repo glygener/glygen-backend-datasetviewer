@@ -13,14 +13,24 @@ __status__ = "Dev"
 ###############################
 def main():
 
+    usage = "\n%prog  [options]"
+    parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
+    (options,args) = parser.parse_args()
+
+    for key in ([options.server]):
+        if not (key):
+            parser.print_help()
+            sys.exit(0)
+
+    server = options.server
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
-    server = config_obj["server"]
-
     image = "glyds_%s_api" % (server) 
     api_container = "running_" + image
     mongo_container = "running_glyds_mongo_" + server
-    port = config_obj["api_port"]
+    api_port = config_obj["api_port"][server]
+
     data_path = config_obj["data_path"]
     network = config_obj["dbinfo"]["bridge_network"] + "_" + server
     mongo_user = config_obj["dbinfo"]["glydb"]["user"]
@@ -44,7 +54,7 @@ def main():
             cmd_list.append("docker rm -f %s " % (c))
 
 
-    cmd = "docker run -dit --name %s --network %s -p 127.0.0.1:%s:80" % (api_container, network, port)
+    cmd = "docker run -dit --name %s --network %s -p 127.0.0.1:%s:80" % (api_container, network, api_port)
     cmd += " -v %s:%s -e MONGODB_CONNSTRING=%s -e DB_NAME=%s " % (data_path, data_path, conn_str, mongo_db)
     cmd += " -e MAIL_SERVER=%s -e MAIL_PORT=%s -e MAIL_SENDER=%s -e DATA_PATH=%s -e SERVER=%s %s" % (mail_server, mail_port, mail_sender, data_path, server, image) 
     
