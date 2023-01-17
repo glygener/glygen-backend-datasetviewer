@@ -70,15 +70,16 @@ The last command should list docker containers and you should see one named
 From the "api" subdirectory, run the following to test the APIs
 
   ```
-  http POST http://localhost:9090/misc/info
-  http POST http://localhost:9090/dataset/search < queries/dataset_search.json
-  http POST http://localhost:9090/dataset/detail < queries/dataset_detail.json
-  http POST http://localhost:9090/dataset/historylist < queries/dataset_historylist.json
-  http POST http://localhost:9090/dataset/historydetail < queries/dataset_historydetail.json
-  http POST http://localhost:9090/dataset/submit < queries/dataset_submit.json
-  http POST http://localhost:9090/gsd/submit < queries/gsd_submit.json
-  http POST http://localhost:9090/dataset/glycan_finder < queries/dataset_glycan_finder.json
+  http POST http://localhost:{API_PORT}/misc/info
+  http POST http://localhost:{API_PORT}/dataset/search < queries/dataset_search.json
+  http POST http://localhost:{API_PORT}/dataset/detail < queries/dataset_detail.json
+  http POST http://localhost:{API_PORT}/dataset/historylist < queries/dataset_historylist.json
+  http POST http://localhost:{API_PORT}/dataset/historydetail < queries/dataset_historydetail.json
+  http POST http://localhost:{API_PORT}/dataset/submit < queries/dataset_submit.json
+  http POST http://localhost:{API_PORT}/gsd/submit < queries/gsd_submit.json
+  http POST http://localhost:{API_PORT}/dataset/glycan_finder < queries/dataset_glycan_finder.json
   ```
+where {API_PORT} the API port specified in the api/conf/config.json file.
 
 
 # Installation of APP
