@@ -13,7 +13,7 @@ The following must be available on your server:
 
 ## Setting config parameters
 After cloning this repo, you will need to set the paramters given in
-api/conf/config.json
+api/conf/config.json and app/conf/config.json 
 
 
 ## Step-1: Data download
@@ -21,16 +21,16 @@ Visit https://data.glygen.org/ftp/ to see what data release/version {VER} you wa
 download (for example 2.0.2), and go to the "api" subdirectory to run the python script 
 to download from that release. Since this will take long, use nohup as shown below.
   ```
-  nohup python3 download_data.py -v {VER} > logfile.log &
+  nohup python3 download_data.py -s {SERVER} -v {VER} > logfile.log &
   ```
-It is also important that you download all legacy releases since the application allows
-access to datasets from older releases.
+where {SERVER} can be dev, tst, beta or prd. It is also important that you download all 
+legacy releases since the application allows access to datasets from older releases.
 
 
 ## Step-2: Starting the mongodb container
 From the "api" subdirectory, run the python script given to build and start a mongodb container:
   ```
-  python3 start_mongodb_container.py
+  python3 start_mongodb_container.py -s {SERVER}
   docker ps
   ```
 The last command should list docker containers and you should see one named
@@ -40,26 +40,26 @@ The last command should list docker containers and you should see one named
 ## Step-3: Initialize and populate your mongodb database
 To init your mongodb, go to the "api" subdirectory and run (this should be done only one time):
   ```
-  python3 init_mongodb.py
+  python3 init_mongodb.py -s {SERVER}
   ```
 
 You can load data from the most recent release you have downloaded using 
 the following command:
   ```
   cd api
-  python3 load_current_release.py -v {VER} -m full
+  python3 load_current_release.py -s {SERVER} -v {VER} -m full
   ```
 
 To load data from downloaded legacy releases:
   ```
   cd api
-  python3 load_legacy_release.py -v {VER} -m full
+  python3 load_legacy_release.py -s {SERVER} -v {VER} -m full
   ```
       
 ## Step-4: Building and starting the docker container for the APIs
 From the "api" subdirectory, run the python script given to build and start container:
   ```
-  python3 start_api_container.py
+  python3 start_api_container.py -s {SERVER}
   docker ps
   ```
 The last command should list docker containers and you should see one named
@@ -94,7 +94,7 @@ in the host that should map to docker container for the app.
 
 From the "app" subdirectory, run the python script given to build and start container:
   ```
-  python3 start_app_container.py
+  python3 start_app_container.py -s {SERVER}
   docker ps
   ```
 The last command should list docker containers and you should see one named
