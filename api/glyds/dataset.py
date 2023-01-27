@@ -293,7 +293,7 @@ class DatasetUpload(Resource):
                 error_obj = {"error":"no filename given"}
             else:
                 file_name = secure_filename(file.filename)
-                data_path, ser = current_app.config["DATA_PATH"], current_app.config["SERVER"]
+                data_path, ser = os.environ["DATA_PATH"], os.environ["SERVER"]
                 out_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, file_name)
                 file.save(out_file)
                 res_obj = {
@@ -301,6 +301,7 @@ class DatasetUpload(Resource):
                     "summary":{"fatal_qc_flags":0, "total_qc_flags":0},
                     "failedrows":[]
                 }
+
                 error_obj = run_qc(out_file, file_format, res_obj, qc_type, data_version)
         res_obj = error_obj if error_obj != {} else res_obj
         return res_obj
@@ -314,7 +315,7 @@ class Dataset(Resource):
     def post(self):
         '''Submit dataset '''
         req_obj = request.json
-        data_path, ser = current_app.config["DATA_PATH"], current_app.config["SERVER"]
+        data_path, ser = os.environ["DATA_PATH"], os.environ["SERVER"]
         src_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, req_obj["filename"])
         dst_dir = "%s/userdata/%s/%s" % (data_path, ser, req_obj["affilation"])
         if os.path.isfile(src_file) == False:
@@ -347,7 +348,7 @@ class Dataset(Resource):
     def post(self):
         '''Glyca Finder '''
         req_obj = request.json
-        data_path, ser = current_app.config["DATA_PATH"], current_app.config["SERVER"]
+        data_path, ser = os.environ["DATA_PATH"], os.environ["SERVER"]
         uploaded_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, req_obj["filename"])
         
         output_file = "%s/userdata/%s/tmp/%s_output_%s.txt" % (data_path, ser, req_obj["filename"], os.getpid())
@@ -358,7 +359,7 @@ class Dataset(Resource):
             file_format = req_obj["filename"].split(".")[-1]
             cmd = "sh /hostpipe/glycan_finder.sh %s %s" % (uploaded_file, output_file)
             glycan_list = []
-            if current_app.config["SERVER"] != "dev":
+            if ser != "dev":
                 glycan_list = subprocess.getoutput(cmd).strip().split(",")
             else:
                 glycan_list = ["A", "B"]

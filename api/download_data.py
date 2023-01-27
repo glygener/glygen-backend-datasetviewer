@@ -32,6 +32,11 @@ def main():
     config_obj = json.loads(open("./conf/config.json", "r").read())
     log_dir = config_obj["data_path"] + "/logs/"
     userdata_dir = config_obj["data_path"] + "/userdata/%s/jobs/" % (server)
+    
+    for d in [log_dir, userdata_dir]:
+        if os.path.isdir(d) == False:
+            cmd = "mkdir -p %s" % (d)
+            x = subprocess.getoutput(cmd)
 
     rel_dir = config_obj["data_path"] + "/releases/data/v-%s/" % (ver)
     if os.path.isdir(rel_dir) == True:

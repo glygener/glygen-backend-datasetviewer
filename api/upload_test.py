@@ -1,10 +1,10 @@
 import requests
 import glob
 
-url = "http://localhost:5000/dataset/upload"
+url = "http://localhost:8081/dataset/upload"
 
 
-in_file = "tmp/G17689DH.png"
+in_file = "queries/G17689DH.png"
 files = {"file": open(in_file, 'rb')}
 req_obj = {"format":"png", "qctype":"basic", "dataversion":"1.12.3"}
 r = requests.post(url, files=files, data=req_obj)
