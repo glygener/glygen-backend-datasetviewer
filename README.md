@@ -58,6 +58,8 @@ This will allow you to start/stop the container with the following commands, and
 that the container will start on server reboot.
 
   ```
+  $ sudo systemctl daemon-reload 
+  $ sudo systemctl enable docker-glyds-mongo-{DEP}.service
   $ sudo systemctl start docker-glyds-mongo-{DEP}.service
   $ sudo systemctl stop docker-glyds-mongo-{DEP}.service
   ```
@@ -111,6 +113,8 @@ This will allow you to start/stop the container with the following commands, and
 that the container will start on server reboot.
 
   ```
+  $ sudo systemctl daemon-reload 
+  $ sudo systemctl enable docker-glyds-api-{DEP}.service
   $ sudo systemctl start docker-glyds-api-{DEP}.service
   $ sudo systemctl stop docker-glyds-api-{DEP}.service
   ```
@@ -171,6 +175,8 @@ This will allow you to start/stop the container with the following commands, and
 that the container will start on server reboot.
 
   ```
+  $ sudo systemctl daemon-reload 
+  $ sudo systemctl enable docker-glyds-app-{DEP}.service
   $ sudo systemctl start docker-glyds-app-{DEP}.service
   $ sudo systemctl stop docker-glyds-app-{DEP}.service
   ```
