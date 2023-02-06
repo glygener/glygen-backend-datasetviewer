@@ -29,7 +29,7 @@ def main():
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
 
-    image = "glyds_%s_app" % (server) 
+    image = "glyds_app_%s" % (server) 
     container = "running_" + image
     app_port = config_obj["app_port"][server]
     data_path = config_obj["data_path"]
@@ -60,12 +60,12 @@ def main():
     cmd_list.append(cmd)
 
     for c in [container]:
-        cmd = "docker ps |grep %s" % (c)
-        x = subprocess.getoutput(cmd).split(" ")[-1].strip()
-        if x == c:
-            cmd_list.append("docker rm -f %s " % (c))
+        cmd = "docker ps --all |grep %s" % (c)
+        container_id = subprocess.getoutput(cmd).split(" ")[0].strip()
+        if container_id.strip() != "":
+            cmd_list.append("docker rm -f %s " % (container_id))
 
-    cmd = "docker run -dit --name %s -p 127.0.0.1:%s:80 -v %s:%s %s" % (container,app_port,data_path, data_path, image)
+    cmd = "docker create --name %s -p 127.0.0.1:%s:80 -v %s:%s %s" % (container,app_port,data_path, data_path, image)
     cmd_list.append(cmd)
 
     for cmd in cmd_list:

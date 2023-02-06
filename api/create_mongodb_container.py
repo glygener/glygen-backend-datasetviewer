@@ -26,7 +26,7 @@ def main():
     server = options.server
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
-    api_container = "running_glyds_%s_api" % (server)
+    api_container = "running_glyds_api_%s" % (server)
     mongo_container = "running_glyds_mongo_%s" % (server)
     mongo_network = config_obj["dbinfo"]["bridge_network"] + "_" + server
     
@@ -38,11 +38,12 @@ def main():
 
     cmd_list = []
     for c in [mongo_container, api_container]:
-        cmd = "docker ps |grep %s" % (c)
-        x = subprocess.getoutput(cmd).split(" ")[-1].strip()
-        if x == c:
-            cmd_list.append("docker rm -f %s " % (c))
-    
+        cmd = "docker ps --all |grep %s" % (c)
+        container_id = subprocess.getoutput(cmd).split(" ")[0].strip()
+        if container_id.strip() != "":
+            cmd_list.append("docker rm -f %s " % (container_id))
+
+
     cmd = "docker network ls| grep %s" % (mongo_network)
     x = subprocess.getoutput(cmd).split()
     if x != []:
@@ -50,8 +51,10 @@ def main():
             cmd_list.append("docker network rm %s | true" % (mongo_network))
     
     cmd_list.append("docker network create -d bridge %s" % (mongo_network))
-    cmd = "docker run --name %s --network %s -p 127.0.0.1:%s:27017" % (mongo_container, mongo_network,mongo_port)
-    cmd += " -d -v %s/db/%s:/data/db %s mongo" % (data_path, server,  e_params)
+    
+    cmd = "docker create --name %s --network %s -p 127.0.0.1:%s:27017" % (mongo_container, mongo_network,mongo_port)
+    cmd += " -v %s/db/%s:/data/db %s mongo" % (data_path, server,  e_params)
+    
     cmd_list.append(cmd)
 
     for cmd in cmd_list:
