@@ -201,7 +201,7 @@ ile (e.g. /etc/httpd/conf.d/glyds.conf).
   </VirtualHost>
   ```
 
-where {API_PORT} and {API_PORT} are your port for the APP and API ports 
+where {APP_PORT} and {API_PORT} are your port for the APP and API ports 
 in conf/config.json file. You need to restart apache after this changes using 
 the following command:
 
