@@ -182,7 +182,7 @@ that the container will start on server reboot.
   ```
 
 
-## Setting public domains to the 
+## Mapping APP and API containers to public domains
 To map the APP and API containers to public domains (e.g. www.glyds.org and api.glyds.org),
 add apache VirtualHost directives. This VirtualHost directive can be in a new f
 ile (e.g. /etc/httpd/conf.d/glyds.conf).
