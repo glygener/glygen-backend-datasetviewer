@@ -183,20 +183,24 @@ that the container will start on server reboot.
 
 
 ## Setting public domains to the 
-To serve the APP at a given public domain name such as www.glyds.org,
-add the following lines to your apache VirtualHost directive 
-(assuming the "app_port" you have selected in the conf/config.json 
- configuration to be 5050)
-
+To serve the APP at a given public domain name (e.g. www.glyds.org),
+add the following lines to your apache VirtualHost directive. This
+VirtualHost directive can be in a new file (e.g. /etc/httpd/conf.d/glyds.conf).
 
   ```
   <VirtualHost *:443>
     ServerName www.glyds.org
-    ProxyPass / http://127.0.0.1:5050/
-    ProxyPassReverse / http://127.0.0.1:5050/
+    ProxyPass / http://127.0.0.1:{API_PORT}/
+    ProxyPassReverse / http://127.0.0.1:{API_PORT}/
   </VirtualHost>
   ```
 
+where {API_PORT} is your port for the API in conf/config.json file. You need to 
+restart apache after this changes using the following command:
+
+   ```
+   $ sudo apachectl restart 
+   ```
 
 
 
