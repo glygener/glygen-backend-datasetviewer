@@ -183,20 +183,27 @@ that the container will start on server reboot.
 
 
 ## Setting public domains to the 
-To serve the APP at a given public domain name (e.g. www.glyds.org),
-add the following lines to your apache VirtualHost directive. This
-VirtualHost directive can be in a new file (e.g. /etc/httpd/conf.d/glyds.conf).
+To map the APP and API containers to public domains (e.g. www.glyds.org and api.glyds.org),
+add apache VirtualHost directives. This VirtualHost directive can be in a new f
+ile (e.g. /etc/httpd/conf.d/glyds.conf).
 
   ```
   <VirtualHost *:443>
     ServerName www.glyds.org
+    ProxyPass / http://127.0.0.1:{APP_PORT}/
+    ProxyPassReverse / http://127.0.0.1:{APP_PORT}/
+  </VirtualHost>
+
+  <VirtualHost *:443>
+    ServerName api.glyds.org
     ProxyPass / http://127.0.0.1:{API_PORT}/
     ProxyPassReverse / http://127.0.0.1:{API_PORT}/
   </VirtualHost>
   ```
 
-where {API_PORT} is your port for the API in conf/config.json file. You need to 
-restart apache after this changes using the following command:
+where {API_PORT} and {API_PORT} are your port for the APP and API ports 
+in conf/config.json file. You need to restart apache after this changes using 
+the following command:
 
    ```
    $ sudo apachectl restart 
