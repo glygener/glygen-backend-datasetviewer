@@ -7,7 +7,7 @@ from bson import json_util
 import pymongo
 from pymongo import MongoClient
 import datetime
-
+import subprocess
 
 __version__="1.0"
 __status__ = "Dev"
@@ -20,25 +20,27 @@ def main():
 
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     parser.add_option("-v","--dataversion",action="store",dest="dataversion",help="2.0.2/2.0.3 ...")
     parser.add_option("-m","--mode",action="store",dest="mode",help="partial/full")
         
     (options,args) = parser.parse_args()
 
-    for key in ([options.dataversion, options.mode]):
+    for key in ([options.dataversion, options.mode, options.server]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
+    server = options.server
     ver = options.dataversion
     mode = options.mode
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
-    mongo_port = config_obj["dbinfo"]["port"]
+    mongo_port = config_obj["dbinfo"]["port"][server]
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
 
+    rel_dir = config_obj["data_path"] + "/releases/data/"
     jsondb_dir = config_obj["data_path"] + "/releases/data/v-%s/jsondb/" % (ver)
-
     dir_list = os.listdir(jsondb_dir)
 
     glydb_user, glydb_pass = config_obj["dbinfo"]["glydb"]["user"], config_obj["dbinfo"]["glydb"]["password"]
@@ -72,6 +74,9 @@ def main():
                 if "object_id" in doc:
                     bco_id = doc["object_id"].split("/")[-2]
                     doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
+                if coll == "c_init":
+                    doc["search_options"] = config_obj["search_options"]
+
                 result = dbh[coll].insert_one(doc)     
                 nrecords += 1
                 if nrecords != 0 and nrecords%1000 == 0:
@@ -79,6 +84,12 @@ def main():
                     print (" ... loaded %s documents to %s [%s]" % (nrecords, coll, ts))
             ts = datetime.datetime.now()
             print (" ... loaded %s documents to %s [%s]" % (nrecords, coll, ts))
+        os.chdir(rel_dir)
+        cmd = "rm -f current"
+        x = subprocess.getoutput(cmd)
+        cmd = "ln -s v-%s current" % (ver)
+        x = subprocess.getoutput(cmd)
+        print (" ... created symbolic link current->v-%s" % (ver))
     except pymongo.errors.ServerSelectionTimeoutError as err:
         print (err)
     except pymongo.errors.OperationFailure as err:

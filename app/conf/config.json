@@ -1,5 +1,9 @@
 {
-    "server":"tst",
-    "app_port":"8080",
+    "app_port":{
+        "prd":"8080",
+        "beta":"8882",
+        "tst":"8080",
+        "dev":"8080"
+    },
     "data_path":"/data/shared/glyds/"
 }

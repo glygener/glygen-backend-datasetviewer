@@ -1,0 +1,11 @@
+api 8081 running_glyds_prd_api
+app 8080 running_glyds_prd_app
+mongo 7070 running_glyds_mongo_prd
+
+
+api 8881 running_glyds_beta_api
+app 8882 running_glyds_beta_app
+mongo 7770 running_glyds_mongo_beta
+
+
+

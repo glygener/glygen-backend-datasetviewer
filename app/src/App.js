@@ -87,6 +87,7 @@ class App extends Component {
       <div className="versioncn">APP v-{app_ver} &nbsp; |&nbsp; Data v-{data_ver}</div>
       <Router>
         <Switch>
+<<<<<<< HEAD
           <Route
             path="/ln2downloads"
             render={(props) => (
@@ -94,6 +95,9 @@ class App extends Component {
             )}
           />
           <Route
+=======
+        <Route
+>>>>>>> e764b545442ad570d65a27f024b7378997de8326
             path="/gsd"
             render={(props) => (
               <Gsd initObj={this.state.response.record}/>
