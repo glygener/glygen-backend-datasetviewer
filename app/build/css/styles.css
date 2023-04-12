@@ -116,6 +116,22 @@ html, body{
     border:0px dashed orange;
 }
 
+.search_options{
+    display:block;
+    float:left;
+    width:20%;
+    margin:0px 0px 10px 0px;
+    height:35px;
+    border:1px solid #eee;
+}
+
+.search_paper_wrapper{
+    display:block;
+    float:left;
+    width:70%;
+}
+
+
 .searchbox_paper {
     padding:0px 0px 0px 2px;
     display:flex;
@@ -124,7 +140,6 @@ html, body{
     min-width:300px;
     height:35px;
     border:1px solid #eee;
-    
 }
 .searchbox_input {
     padding:0px 15px 0px 15px;
@@ -186,19 +201,32 @@ html, body{
     border-radius:10px;
 }
 
+div.searchboxwrapper{
+    display:block;
+    float:left;
+    width:98%;
+    margin:20px 1% 0px 1%;
+    border:1px dashed orange;
+}
+
+div.filterboxwrapper{
+    display:block;
+    float:left;
+    width:20%;
+    margin:20px 1% 0px 1%;
+    border:1px dashed orange;
+}
 
 div.pagecn{
     display:block;
     overflow:auto;
-    width:84%;
-    margin:0px 8% 500px 8%;
-    /*min-height:1000px !important;*/
+    width:78%;
+    margin:0px 1% 500px 1%;
     font-family: 'Montserrat', sans-serif; 
-    font-size:17px;
     color:#333;
     padding:0px;
     z-index:1;
-    border:0px dashed orange;
+    border:1px dashed orange;
  }
 
 

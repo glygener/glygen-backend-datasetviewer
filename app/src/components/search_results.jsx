@@ -174,14 +174,12 @@ class SearchResults extends Component {
 
     return (
       <div>
-      <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
-
-      <div className="pagecn">
-        
-        <div className="leftblock" style={{width:"100%", margin:"20px 0px 0px 0px"}}>
-          <Searchbox label={"Search by: BCOID, dataset file name, title, description or  categories"} onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
+        <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
+        <div className="searchboxwrapper">
+            <Searchbox initObj={this.props.initObj} 
+                onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
         </div>
-        <div className="leftblock" style={{width:"100%", margin:"5px 0px 0px 0px",display:filterHideFlag}}>
+        <div className="filterboxwrapper" style={{display:filterHideFlag}}>
           <Resultfilter
             filterinfo={filterInfo}
             resultcount={objList.length}
@@ -192,9 +190,9 @@ class SearchResults extends Component {
             handleFilterReset={this.handleFilterReset}
           />
         </div>
-      
+        <div className="pagecn">
         <div className="leftblock" 
-          style={{width:"100%", margin:"60px 0px 0px 0px",
+          style={{width:"100%", margin:"0px 0px 0px 0px",
           borderBottom:"1px solid #ccc"}}>
           <Paginator 
             paginatorId={"top"}

@@ -74,6 +74,9 @@ def main():
                 if "object_id" in doc:
                     bco_id = doc["object_id"].split("/")[-2]
                     doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
+                if coll == "c_init":
+                    doc["search_options"] = config_obj["search_options"]
+
                 result = dbh[coll].insert_one(doc)     
                 nrecords += 1
                 if nrecords != 0 and nrecords%1000 == 0:

@@ -11,6 +11,9 @@
         "sender":"no-reply@glygen.gwu.edu"
     },
     "data_path":"/data/shared/glyds/",
+    "search_options":{
+        "datasets":"GlyGen Datasets"
+    },
     "dbinfo":{
         "port":{ 
             "prd":"7070",
