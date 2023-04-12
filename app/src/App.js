@@ -88,6 +88,12 @@ class App extends Component {
       <Router>
         <Switch>
           <Route
+            path="/ln2downloads"
+            render={(props) => (
+              <Redirect to="/ln2downloads"/>
+            )}
+          />
+          <Route
             path="/gsd"
             render={(props) => (
               <Gsd initObj={this.state.response.record}/>
