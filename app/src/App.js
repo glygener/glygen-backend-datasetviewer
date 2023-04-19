@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SearchResults from "./components/search_results";
-import DatasetPage from "./components/dataset_page";
+import DatasetList from "./components/dataset_list";
+import RecordList from "./components/record_list";
 import StaticPage from "./components/static_page";
 import HistoryList from "./components/history_list";
 import HistoryDetail from "./components/history_detail";
@@ -87,17 +87,7 @@ class App extends Component {
       <div className="versioncn">APP v-{app_ver} &nbsp; |&nbsp; Data v-{data_ver}</div>
       <Router>
         <Switch>
-<<<<<<< HEAD
-          <Route
-            path="/ln2downloads"
-            render={(props) => (
-              <Redirect to="/ln2downloads"/>
-            )}
-          />
-          <Route
-=======
         <Route
->>>>>>> e764b545442ad570d65a27f024b7378997de8326
             path="/gsd"
             render={(props) => (
               <Gsd initObj={this.state.response.record}/>
@@ -136,14 +126,14 @@ class App extends Component {
           <Route
             path="/:bcoId"
             render={(props) => (
-              <DatasetPage bcoId={props.match.params.bcoId}  initObj={this.state.response.record}/>
+              <RecordList bcoId={props.match.params.bcoId} initObj={this.state.response.record}/>
             )}
           />
           <Route
             exact
             path="/"
             render={(props) => (
-              <SearchResults  initObj={this.state.response.record}/>
+              <DatasetList  initObj={this.state.response.record}/>
             )}
           />
         </Switch>

@@ -86,6 +86,9 @@ ds_model = api.model('Dataset', {
 })
 
 
+
+
+
 @api.route('/search')
 class DatasetList(Resource):
     '''f dfdsfadsfas f '''
@@ -95,15 +98,47 @@ class DatasetList(Resource):
     def post(self):
         '''Search datasets'''
         req_obj = request.json
-        req_obj["coll"] = "c_extract"
-        res_obj = get_many(req_obj)
+        if req_obj["searchtype"] == "metadata":
+            req_obj["coll"] = "c_extract"
+            res_obj = get_many(req_obj)
+            n = len(res_obj["recordlist"])
+            res_obj["stats"] = {"total":n, "retrieved":n}
+            return res_obj
+        else:
+            res = get_many({"coll":"c_extract", "query":""})
+            bco_dict = {}
+            for obj in res["recordlist"]:
+                bco_dict[obj["bcoid"]] = {
+                    "filename":obj["filename"],
+                    "categories":obj["categories"],
+                    "title":obj["title"]
+                }
+            req_obj = request.json
+            req_obj["coll"] = "c_records"
+            res = get_many(req_obj)
+            out_dict = {}
+            for obj in res["recordlist"]:
+                prefix, bco_idx, file_idx, row_idx = obj["recordid"].split("_")
+                bco_id = prefix + "_" + bco_idx
+                bco_title, file_name = bco_dict[bco_id]["title"], bco_dict[bco_id]["filename"]
+                o = {
+                    "recordid":obj["recordid"],
+                    "bcoid":bco_id, "fileidx":file_idx,
+                    "filename":file_name, "title":bco_title,
+                    "categories":bco_dict[bco_id]["categories"],
+                    "rowlist":[]
+                }
+                if bco_id not in out_dict:
+                    out_dict[bco_id] = o
+                out_dict[bco_id]["rowlist"].append(int(row_idx))
 
-        #res_obj["stats"] = {"total":len(res_obj["recordlist"]), "retrieved":100}
-        #res_obj["recordlist"] = res_obj["recordlist"][:100]
+            res_obj = {"recordlist":[]}
+            for bco_id in out_dict:
+                res_obj["recordlist"].append(out_dict[bco_id])
 
-        n = len(res_obj["recordlist"])
-        res_obj["stats"] = {"total":n, "retrieved":n}
-        return res_obj
+            n = len(res_obj["recordlist"])
+            res_obj["stats"] = {"total":n, "retrieved":n}
+            return res_obj
 
 
 @api.route('/detail')
@@ -123,6 +158,41 @@ class DatasetDetail(Resource):
         if "error" in extract_obj:
             return extract_obj
        
+        res = get_many({"coll":"c_records", "query":req_obj["bcoid"]})
+        row_list_one, row_list_two = [], []
+        for obj in res["recordlist"]:
+            row_idx = int(obj["recordid"].split("_")[-1])
+            if row_idx in  req_obj["rowlist"]:
+                row_list_one.append(obj["row"])
+            else:
+                row_list_two.append(obj["row"])
+
+
+        if extract_obj["record"]["sampledata"]["type"] == "table":
+            extract_obj["record"]["alldata"]["data"] = []
+            header_row = []
+            for obj in extract_obj["record"]["sampledata"]["data"][0]:
+                header_row.append(obj["label"])
+            extract_obj["record"]["alldata"] = {"type":"table", "data":[]}
+            extract_obj["record"]["resultdata"] = {"type":"table", "data":[]}
+            extract_obj["record"]["resultdata"]["data"].append(header_row)
+            extract_obj["record"]["alldata"]["data"].append(header_row)
+            extract_obj["record"]["resultdata"]["data"] += row_list_one
+            extract_obj["record"]["alldata"]["data"] += row_list_two
+        elif extract_obj["record"]["sampledata"]["type"] == "html":
+            extract_obj["record"]["alldata"] = {"type":"html", "data":"<pre>"}
+            extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
+            r_list_one, r_list_two = [], []
+            for row in row_list_one:
+                r_list_one.append("\n>"+row[-1]+"\n"+row[0])
+            for row in row_list_two:
+                r_list_two.append("\n>"+row[-1]+"\n"+row[0])
+            extract_obj["record"]["resultdata"]["data"] = "\n".join(r_list_one)
+            extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
+
+
+        extract_obj["record"].pop("sampledata")
+
         req_obj["coll"] = "c_history"
         req_obj["doctype"] = "track"
         history_obj = get_one(req_obj)

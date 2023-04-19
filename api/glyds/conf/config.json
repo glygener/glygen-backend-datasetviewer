@@ -57,6 +57,34 @@
                 }
             }
         },
+        "c_records":{
+          "get_one":{
+            "prj":{},
+            "queryfields":{
+              "recordid":{
+                "required":true,
+                "datatype":"string",
+                "junction":"$or",
+                "pathlist":[{"path":"recordid","operator":"$eq"}]
+              }
+            }
+          },
+          "get_many":{
+            "prj":{},
+            "sortfield":"recordid",
+            "queryfields":{
+              "query":{
+                "required":false,
+                "datatype":"string",
+                "junction":"$or",
+                "pathlist":[
+                  {"path":"recordid", "operator":"$regex"},
+                  {"path":"row", "operator":"$elemMatch"}
+                ]
+              }
+            }
+          }
+        },
         "c_extract":{
             "get_one":{
                 "prj":{},

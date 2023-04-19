@@ -37,11 +37,14 @@ def main():
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
     mongo_port = config_obj["dbinfo"]["port"][server]
-    host = "mongodb://127.0.0.1:%s" % (mongo_port)
-
-    rel_dir = config_obj["data_path"] + "/releases/data/"
-    jsondb_dir = config_obj["data_path"] + "/releases/data/v-%s/jsondb/" % (ver)
-    dir_list = os.listdir(jsondb_dir)
+    
+    #host = "mongodb://127.0.0.1:%s" % (mongo_port)
+    #rel_dir = config_obj["data_path"] + "/releases/data/"
+    host = "mongodb://localhost:27017"
+    rel_dir = "/Volumes/disk2/data/shared/glygen/releases/data/"
+    
+    jsondb_dir = rel_dir + "/v-%s/jsondb/" % (ver)
+    jsondb_list = config_obj["downloads"]["jsondb"]
 
     glydb_user, glydb_pass = config_obj["dbinfo"]["glydb"]["user"], config_obj["dbinfo"]["glydb"]["password"]
     glydb_db =  config_obj["dbinfo"]["glydb"]["db"]
@@ -56,34 +59,37 @@ def main():
         )
         client.server_info()
         dbh = client[glydb_db]
-        for d in dir_list:
-            if d[-2:] != "db":
-                continue
+        for d in jsondb_list:
             coll = "c_" + d[:-2]
             if coll in ["c_extract", "c_bco", "c_history"]:
                 coll = "%s_v-%s" % (coll, ver)
             result = dbh[coll].delete_many({})
-            file_list = glob.glob(jsondb_dir + "/" + d + "/*.json")
-            if mode == "partial":
-                file_list = file_list[:2000]
-            nrecords = 0
-            for in_file in file_list:
-                doc = json.loads(open(in_file, "r").read())
-                if "_id" in doc:
-                    doc.pop("_id")
-                if "object_id" in doc:
-                    bco_id = doc["object_id"].split("/")[-2]
-                    doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
-                if coll == "c_init":
-                    doc["search_options"] = config_obj["search_options"]
+            subdir_list = [jsondb_dir + "/" + d]
+            if d == "recordsdb":
+                subdir_list = glob.glob(jsondb_dir + "/" + d + "/*")
 
-                result = dbh[coll].insert_one(doc)     
-                nrecords += 1
-                if nrecords != 0 and nrecords%1000 == 0:
-                    ts = datetime.datetime.now()
-                    print (" ... loaded %s documents to %s [%s]" % (nrecords, coll, ts))
-            ts = datetime.datetime.now()
-            print (" ... loaded %s documents to %s [%s]" % (nrecords, coll, ts))
+            for subdir in subdir_list:
+                file_list = glob.glob(subdir + "/*.json")
+                nrecords = 0
+                for in_file in file_list:
+                    doc = json.loads(open(in_file, "r").read())
+                    if "_id" in doc:
+                        doc.pop("_id")
+                    if "object_id" in doc:
+                        bco_id = doc["object_id"].split("/")[-2]
+                        doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
+                    if coll == "c_init":
+                        doc["search_options"] = config_obj["search_options"]
+
+                    result = dbh[coll].insert_one(doc)     
+                    nrecords += 1
+                    if nrecords != 0 and nrecords%1000 == 0:
+                        ts = datetime.datetime.now()
+                        print (" ... loaded %s documents to %s [%s]" % (nrecords, coll, ts))
+                ts = datetime.datetime.now()
+                print (" ... loaded %s documents to %s [%s]" % (nrecords, coll, ts))
+        
+
         os.chdir(rel_dir)
         cmd = "rm -f current"
         x = subprocess.getoutput(cmd)

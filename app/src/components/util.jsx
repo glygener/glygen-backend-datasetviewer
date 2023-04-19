@@ -168,7 +168,7 @@ export function rndrSearchResults(objList, startIdx, endIdx) {
 
     cardList.push(
       <div className="col-md-4">
-        <div className="card mb-4 box-shadow" style={{width:"280px", minWidth:"250px"}}>
+        <div className="card mb-4 box-shadow" style={{minWidth:"350px"}}>
             <div className="leftblock" 
               style={{width:"90%", textAlign:"center",  fontSize:"15px", margin:"20px 5% 0px 5%"}}>
               {titleText}

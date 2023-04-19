@@ -12,14 +12,16 @@
     },
     "data_path":"/data/shared/glyds/",
     "search_options":{
-        "datasets":"GlyGen Datasets"
+        "metadata":"Dataset:metadata",
+        "data":"Dataset:body",
+        "bo5h":"Dataset:all"
     },
     "dbinfo":{
         "port":{ 
             "prd":"7070",
             "beta":"7770",
             "tst":"6060",
-            "dev":"6060"
+            "dev":"27017"
         },
         "bridge_network":"glyds_backend",
         "admin":{
@@ -40,6 +42,7 @@
             ,"extractdb"
             ,"historydb"
             ,"htmldb"
+            ,"recordsdb"
             ,"statdb"
         ],
         "others":[

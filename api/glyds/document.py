@@ -89,6 +89,7 @@ def get_many(req_obj):
         qry_obj = get_mongo_query(qf_dict, req_obj)
         if "error" in qry_obj:
             return qry_obj
+        #return qry_obj
 
         
         data_ver = init_obj["dataversion"]
@@ -146,6 +147,9 @@ def get_mongo_query(qf_dict, req_obj):
                     o = {p_obj["path"]:{p_obj["operator"]:query_val}}
                     if p_obj["operator"] == "$regex":
                         o = {p_obj["path"]:{p_obj["operator"]:query_val, "$options":"i"}}
+                    if p_obj["operator"] == "$elemMatch":
+                        o = {p_obj["path"]:{"$elemMatch":{"$regex":query_val, "$options":"i"}}}
+
                     tmp_list_two.append(o)
                 tmp_list_one.append({qf_obj["junction"]:tmp_list_two})
 
