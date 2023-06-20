@@ -1,7 +1,7 @@
 import os,sys
 from flask_restx import Namespace, Resource, fields
 from flask import (request, current_app)
-from glyds.document import get_one, get_many, get_ver_list, order_json_obj
+from glyds.document import get_one, get_many, get_many_text_search, get_ver_list, order_json_obj
 from werkzeug.utils import secure_filename
 from glyds.qc import run_qc
 import datetime
@@ -98,26 +98,29 @@ class DatasetList(Resource):
     def post(self):
         '''Search datasets'''
         req_obj = request.json
-        if req_obj["searchtype"] == "metadata":
-            req_obj["coll"] = "c_extract"
-            res_obj = get_many(req_obj)
-            n = len(res_obj["recordlist"])
-            res_obj["stats"] = {"total":n, "retrieved":n}
-            return res_obj
+        res_obj = {"recordlist":[]}
+
+        r_one = get_many({"coll":"c_extract", "query":""})
+        if "error" in r_one:
+            return r_one
+
+        bco_dict = {}
+        for obj in r_one["recordlist"]:
+            bco_dict[obj["bcoid"]] = {"filename":obj["filename"],"categories":obj["categories"],
+                "title":obj["title"]
+            }
+
+        if req_obj["query"] == "":
+            res_obj["recordlist"] = r_one["recordlist"]
         else:
-            res = get_many({"coll":"c_extract", "query":""})
-            bco_dict = {}
-            for obj in res["recordlist"]:
-                bco_dict[obj["bcoid"]] = {
-                    "filename":obj["filename"],
-                    "categories":obj["categories"],
-                    "title":obj["title"]
-                }
+            #dataset body search
             req_obj = request.json
             req_obj["coll"] = "c_records"
-            res = get_many(req_obj)
+            r_two = get_many_text_search(req_obj)
+            if "error" in r_two:
+                return r_two
             out_dict = {}
-            for obj in res["recordlist"]:
+            for obj in r_two["recordlist"]:
                 prefix, bco_idx, file_idx, row_idx = obj["recordid"].split("_")
                 bco_id = prefix + "_" + bco_idx
                 bco_title, file_name = bco_dict[bco_id]["title"], bco_dict[bco_id]["filename"]
@@ -131,14 +134,33 @@ class DatasetList(Resource):
                 if bco_id not in out_dict:
                     out_dict[bco_id] = o
                 out_dict[bco_id]["rowlist"].append(int(row_idx))
-
-            res_obj = {"recordlist":[]}
-            for bco_id in out_dict:
+            for bco_id in sorted(out_dict):
                 res_obj["recordlist"].append(out_dict[bco_id])
+            
 
-            n = len(res_obj["recordlist"])
-            res_obj["stats"] = {"total":n, "retrieved":n}
-            return res_obj
+            #dataset metadata search
+            seen = {}
+            req_obj["coll"] = "c_bco"
+            r_three = get_many_text_search(req_obj)
+            if "error" in r_three:
+                return r_three
+            
+            r_four = get_many(req_obj)
+            if "error" in r_four:
+                return r_four
+
+            for doc in r_three["recordlist"] + r_four["recordlist"] :
+                if "object_id" in doc:
+                    bco_id = doc["object_id"].split("/")[-2]
+                    seen[bco_id] = True
+            for doc in r_one["recordlist"]:
+                if doc["bcoid"] in seen and doc["bcoid"] not in out_dict:
+                    res_obj["recordlist"].append(doc)
+
+
+        n = len(res_obj["recordlist"])
+        res_obj["stats"] = {"total":n, "retrieved":n}
+        return res_obj
 
 
 @api.route('/detail')
@@ -158,18 +180,28 @@ class DatasetDetail(Resource):
         if "error" in extract_obj:
             return extract_obj
        
-        res = get_many({"coll":"c_records", "query":req_obj["bcoid"]})
+        res = get_many_text_search({"coll":"c_records", "query":req_obj["bcoid"]})
+
         row_list_one, row_list_two = [], []
+        limit_one, limit_two = 1000, 1000
+        row_count_one, row_count_two = 0, 0
+        req_obj["rowlist"] = [] if "rowlist" not in req_obj else req_obj["rowlist"]
+
         for obj in res["recordlist"]:
             row_idx = int(obj["recordid"].split("_")[-1])
-            if row_idx in  req_obj["rowlist"]:
-                row_list_one.append(obj["row"])
-            else:
-                row_list_two.append(obj["row"])
+            row = json.loads(obj["row"])
+            if row_idx in  req_obj["rowlist"] and row_count_one < limit_one:
+                row_list_one.append(row)
+                row_count_one += 1
+            elif row_count_two < limit_two:
+                row_list_two.append(row)
+                row_count_two += 1
+            if row_count_one > limit_one and row_count_two > limit_two:
+                break
+
 
 
         if extract_obj["record"]["sampledata"]["type"] == "table":
-            extract_obj["record"]["alldata"]["data"] = []
             header_row = []
             for obj in extract_obj["record"]["sampledata"]["data"][0]:
                 header_row.append(obj["label"])
@@ -179,7 +211,17 @@ class DatasetDetail(Resource):
             extract_obj["record"]["alldata"]["data"].append(header_row)
             extract_obj["record"]["resultdata"]["data"] += row_list_one
             extract_obj["record"]["alldata"]["data"] += row_list_two
-        elif extract_obj["record"]["sampledata"]["type"] == "html":
+        elif extract_obj["record"]["filetype"] in ["gz"]:
+            extract_obj["record"]["alldata"] = {"type":"html", "data":"<pre>"}
+            extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
+            r_list_one, r_list_two = [], []
+            for row in row_list_one:
+                r_list_one.append("\n"+row[0])
+            for row in row_list_two:
+                r_list_two.append("\n"+row[0])
+            extract_obj["record"]["resultdata"]["data"] = "\n".join(r_list_one)
+            extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
+        elif extract_obj["record"]["sampledata"]["type"] in ["html"]:
             extract_obj["record"]["alldata"] = {"type":"html", "data":"<pre>"}
             extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
             r_list_one, r_list_two = [], []
@@ -189,9 +231,19 @@ class DatasetDetail(Resource):
                 r_list_two.append("\n>"+row[-1]+"\n"+row[0])
             extract_obj["record"]["resultdata"]["data"] = "\n".join(r_list_one)
             extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
-
+        elif extract_obj["record"]["sampledata"]["type"] in ["text"]:
+            extract_obj["record"]["alldata"] = {"type":"html", "data":"<pre>"}
+            extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
+            r_list_one, r_list_two = [], []
+            for row in row_list_one:
+                r_list_one.append(row[0])
+            for row in row_list_two:
+                r_list_two.append(row[0])
+            extract_obj["record"]["resultdata"]["data"] = "\n".join(r_list_one)
+            extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
 
         extract_obj["record"].pop("sampledata")
+
 
         req_obj["coll"] = "c_history"
         req_obj["doctype"] = "track"

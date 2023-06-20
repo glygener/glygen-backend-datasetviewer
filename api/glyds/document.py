@@ -25,8 +25,6 @@ def get_one(req_obj):
         if req_obj["coll"] not in config_obj["collinfo"]:
             return {"status":0, "error":"unknown collection name"}
         
-        init_obj = mongo_dbh["c_init"].find_one({})
-
         coll_name =  req_obj["coll"]
         prj_obj = config_obj["collinfo"][coll_name]["get_one"]["prj"]
         qf_dict = config_obj["collinfo"][coll_name]["get_one"]["queryfields"]
@@ -35,7 +33,7 @@ def get_one(req_obj):
             return qry_obj
         #return {"error":"xxxxx", "query":qry_obj}
 
-
+        init_obj = mongo_dbh["c_init"].find_one({})
         data_ver = req_obj["dataversion"] if "dataversion" in req_obj else init_obj["dataversion"]
         if coll_name in  ["c_extract", "c_bco", "c_history"]:
             coll_name += "_v-%s" % (data_ver)
@@ -77,7 +75,6 @@ def get_many(req_obj):
         if req_obj["coll"] not in config_obj["collinfo"]:
             return {"status":0, "error":"unknown collection name"}
 
-        init_obj = mongo_dbh["c_init"].find_one({})
         
         coll_name =  req_obj["coll"]
         prj_obj = config_obj["collinfo"][coll_name]["get_many"]["prj"]
@@ -89,25 +86,28 @@ def get_many(req_obj):
         qry_obj = get_mongo_query(qf_dict, req_obj)
         if "error" in qry_obj:
             return qry_obj
-        #return qry_obj
 
-        
-        data_ver = init_obj["dataversion"]
+        #return {"error":qry_obj, "prj":prj_obj, "srt":sort_field}
+
+        init_obj = mongo_dbh["c_init"].find_one({}) 
+        data_ver = req_obj["dataversion"] if "dataversion" in req_obj else init_obj["dataversion"]
         if coll_name in  ["c_extract", "c_bco", "c_history"]:
             coll_name += "_v-%s" % (data_ver)
 
+        offset = req_obj["offset"] if "offset" in req_obj else 0
+        limit = req_obj["limit"] if "limit" in req_obj else 100000
         res_obj = {"status":1, "query":qry_obj, "coll":coll_name, "recordlist":[]}
         doc_list = []
         if prj_obj != {}:
             if sort_field == "":
-                doc_list = list(mongo_dbh[coll_name].find(qry_obj, prj_obj))
+                doc_list = list(mongo_dbh[coll_name].find(qry_obj, prj_obj).skip(offset).limit(limit))
             else:
-                doc_list = list(mongo_dbh[coll_name].find(qry_obj, prj_obj).sort([(sort_field, pymongo.ASCENDING)]))
+                doc_list = list(mongo_dbh[coll_name].find(qry_obj, prj_obj).skip(offset).limit(limit).sort([(sort_field, pymongo.ASCENDING)]))
         else:
             if sort_field == "":
-                doc_list = list(mongo_dbh[coll_name].find(qry_obj))
+                doc_list = list(mongo_dbh[coll_name].find(qry_obj).skip(offset).limit(limit))
             else:
-                doc_list = list(mongo_dbh[coll_name].find(qry_obj).sort([(sort_field,  pymongo.ASCENDING)]))
+                doc_list = list(mongo_dbh[coll_name].find(qry_obj).skip(offset).limit(limit).sort([(sort_field,  pymongo.ASCENDING)]))
         #return {"error":"xxxx", "query":qry_obj, "hitcount":len(doc_list)}
 
 
@@ -125,6 +125,53 @@ def get_many(req_obj):
         res_obj =  log_error(traceback.format_exc())
 
     return res_obj
+
+
+
+
+def get_many_text_search(req_obj):
+
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "conf/config.json")
+    config_obj = json.load(open(json_url))
+
+    try:
+        mongo_dbh, error_obj = get_mongodb()
+        if error_obj != {}:
+            return error_obj
+        if "coll" not in req_obj:
+            return {"status":0, "error":"no collection specified"}
+        if req_obj["coll"] not in config_obj["collinfo"]:
+            return {"status":0, "error":"unknown collection name"}
+        if "query" not in req_obj:
+            return {"status":0, "error":"no-query-provided"}
+
+        coll_name =  req_obj["coll"]
+        prj_obj = config_obj["collinfo"][coll_name]["get_many"]["prj"]
+        sort_field = ""
+        if "sortfield" in config_obj["collinfo"][coll_name]["get_many"]:
+            sort_field = config_obj["collinfo"][coll_name]["get_many"]["sortfield"]
+
+        query_text = "\"%s\"" % (req_obj["query"])
+        qry_obj = { "$text": { "$search": query_text } }
+        #return {"error":qry_obj}
+
+        init_obj = mongo_dbh["c_init"].find_one({})
+        data_ver = req_obj["dataversion"] if "dataversion" in req_obj else init_obj["dataversion"]
+        if coll_name in  ["c_extract", "c_bco", "c_history"]:
+            coll_name += "_v-%s" % (data_ver)
+
+
+        offset = req_obj["offset"] if "offset" in req_obj else 0
+        limit = req_obj["limit"] if "limit" in req_obj else 100000000
+        res_obj = {"status":1, "query":qry_obj, "coll":coll_name, "recordlist":[]}
+        prj_obj = {"_id":0}
+        res_obj["recordlist"]  = list(mongo_dbh[coll_name].find(qry_obj,prj_obj).skip(offset).limit(limit))
+    except Exception as e:
+        res_obj =  log_error(traceback.format_exc())
+
+    return res_obj
+
 
 
 

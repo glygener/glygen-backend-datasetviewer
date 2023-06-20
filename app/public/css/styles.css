@@ -120,8 +120,7 @@ html, body{
     display:block;
     float:left;
     font-size:18px;
-    width:5%;
-    margin:5px 0px 10px 10px;
+    margin:5px 10px 10px 10px;
     border:0px solid red;
 }
 
@@ -184,7 +183,7 @@ html, body{
     padding:20px 10px 10px 10px;
     margin:0px 0px 20px 0px;
     border:1px solid #ddd;
-  border-radius:10px;
+    border-radius:10px;
 }
 
 
@@ -218,11 +217,23 @@ div.filterboxwrapper{
     border:0px dashed orange;
 }
 
+div.statscn{
+    display:block;
+    float:left;
+    width:69%;
+    margin:20px 1% 0px 0%;
+    padding:10px;
+    z-index:1;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+
 div.searchresultscn{
     display:block;
     float:left;
     width:69%;
-    margin:20px 1% 500px 0%;
+    margin:5px 1% 500px 0%;
     font-family: 'Montserrat', sans-serif; 
     z-index:1;
     border:0px dashed orange;
@@ -383,10 +394,20 @@ span.faqquestionid{
 }
 
 .dgcell{
-  font-size:16px;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    overflow-y: auto;
+    height: calc(100% + 2%);
 }
 
 
 .dgcell_hg{
   background:#ffff00;
 }
+
+
+.MuiDataGrid-root .MuiDataGrid-cell {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+

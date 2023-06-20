@@ -43,7 +43,6 @@ class StaticPage extends Component {
     };
     const svcUrl = LocalConfig.apiHash.dataset_static_content;
 
-
     fetch(svcUrl, requestOptions)
       .then((res) => res.json())
       .then(
@@ -51,13 +50,13 @@ class StaticPage extends Component {
           var tmpState = this.state;
           tmpState.response = result;
           tmpState.isLoaded = true;          
-          if (tmpState.response.status === 0){
+          if (tmpState.response.status == 0){
             tmpState.dialog.status = true;
             tmpState.dialog.msg = tmpState.response.error;
           }
+          console.log("Request:",svcUrl);
+          console.log("AAAA", result);
           this.setState(tmpState);
-          //console.log("Request:",svcUrl);
-          console.log("Ajax response:", result);
         },
         (error) => {
           this.setState({
@@ -84,6 +83,7 @@ class StaticPage extends Component {
       return <Loadingicon/>
     }
     var pageIdLabel = this.props.pageId.toUpperCase();
+    var pageCn = ( this.state.dialog.status === true ? "no content found" : this.state.response.record.cn);
 
     return (
       <div className="pagecn">
@@ -99,7 +99,7 @@ class StaticPage extends Component {
         </div>
 
         <div className="leftblock" style={{width:"100%", margin:"40px 0px 0px 0px"}}>
-          <Markup content={this.state.response.record.cn}/>
+          <Markup content={pageCn}/>
         </div>
 
 

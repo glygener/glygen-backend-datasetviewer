@@ -8,7 +8,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 export default function Tableview(props) {
   
   var boxStyle = {
-      height: 1500, width: '100%',  background:"#fff"
+      height: 1000, width: '100%',  background:"#fff"
   };
 
   return (
@@ -23,7 +23,7 @@ export default function Tableview(props) {
             },
           },
         }}
-        pageSizeOptions={[50, 100, 200]}
+        pageSizeOptions={[10, 50, 100]}
         disableRowSelectionOnClick
         enableColumnAutosize={true}
       />

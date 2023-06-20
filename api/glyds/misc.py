@@ -62,3 +62,18 @@ def info():
     return jsonify(res_obj), 200
 
 
+
+@bp.route('/verlist', methods=('GET', 'POST'))
+def verlist():
+    dbh, error_obj = get_mongodb()
+    if error_obj != {}:
+        return error_obj
+    
+    res_obj = []
+    for coll in dbh.collection_names():
+        if coll.find("c_bco_v-") != -1:
+            rel = coll[8:]
+            res_obj.append(rel)
+
+    return jsonify(res_obj), 200
+

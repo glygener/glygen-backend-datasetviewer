@@ -71,7 +71,7 @@
           },
           "get_many":{
             "prj":{},
-            "sortfield":"recordid",
+            "sortfield":"",
             "queryfields":{
               "query":{
                 "required":false,
@@ -79,7 +79,7 @@
                 "junction":"$or",
                 "pathlist":[
                   {"path":"recordid", "operator":"$regex"},
-                  {"path":"row", "operator":"$elemMatch"}
+                  {"path":"row", "operator":"$regex"}
                 ]
               }
             }
@@ -141,7 +141,20 @@
             },
             "get_many":{
                 "prj":{},
-                "queryfields":{}
+                "queryfields":{
+                    "query":{
+                      "required":false,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[
+                          {"path":"object_id", "operator":"$regex"},
+                          {"path":"provenance_domain.name", "operator":"$regex"},
+                          {"path":"usability_domain", "operator":"$regex"},
+                          {"path":"extension_domain.dataset_extension.dataset_categories.category_value", "operator":"$regex"},
+                          {"path":"io_domain.output_subdomain.uri.filename", "operator":"$regex"}
+                      ]
+                    }
+                }
             }
         }
 

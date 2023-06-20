@@ -8,12 +8,17 @@ import Alertdialog from './dialogbox';
 import $ from "jquery";
 import Tableview from "./table";
 import {getColumns} from "./columns";
+import { Markup } from 'interweave';
 
 
 class DatasetList extends Component {  
   
   state = {
+    searchtype:"both",
+    searchquery:{"both":""},
     filterlist: [],
+    objlist:[],
+    statobj:{},
     pageIdx:1,
     pageBatchSize:5,
     pageStartIdx:1,
@@ -45,10 +50,26 @@ class DatasetList extends Component {
  
 
    handleSearch = () => {
-    var queryValue = ($("#query").val() === undefined ? "" : $("#query").val());
-    var searchType = ($("#searchtype").val() === undefined ? "metadata" : $("#searchtype").val());
-    var reqObj = {query:queryValue, "searchtype":searchType};
+    var defaultSearchType = this.state.searchtype;
+    //var searchType = ($("#searchtype").val() === undefined ? defaultSearchType : $("#searchtype").val());
+    
+    var searchType = "both";
+    var defaultQueryValue = this.state.searchquery[searchType];
+    var queryValue = ($("#query").val() === undefined ? defaultQueryValue : $("#query").val());
+
+    //var reqObj = {query:queryValue, "searchtype":searchType, "offset":1, "limit":50000};
+    //var reqObj = {query:queryValue, "searchtype":searchType};
+    var reqObj = {query:queryValue};
+
+
     this.handleFilterReset();
+
+    var tmpState = this.state;
+    tmpState.objlist = [];
+    tmpState.searchtype = searchType;
+    tmpState.searchquery[searchType] = queryValue;
+    tmpState.isLoaded = false;
+    this.setState(tmpState);
 
     const requestOptions = { 
       method: 'POST',
@@ -61,12 +82,13 @@ class DatasetList extends Component {
       .then(
         (result) => {
           var tmpState = this.state;
-          tmpState.response = result;
           tmpState.isLoaded = true;          
-          if (tmpState.response.status === 0){
+          if (result.status === 0){
             tmpState.dialog.status = true;
-            tmpState.dialog.msg = tmpState.response.error;
+            tmpState.dialog.msg = result.error;
           }
+          tmpState.objlist = result.recordlist;
+          tmpState.statobj = result.stats;
           this.setState(tmpState);
           //console.log("Request:",svcUrl);
           console.log("Ajax response:", result);
@@ -95,7 +117,7 @@ class DatasetList extends Component {
         return $(this).val();
       })
       .get(); // <----
-    
+     
     this.setState({ filterlist: tmpList });
     
   };
@@ -105,34 +127,39 @@ class DatasetList extends Component {
   };
 
   
-
+    handleSearchTypeChange = () => {
+        var searchType = $("#searchtype").val();
+        $("#query").val(this.state.searchquery[searchType])
+    }
 
 
 
   render() {
-  
-    if (!("response" in this.state)){
+
+    if (this.state.isLoaded === false){
       return <Loadingicon/>
     }
 
-    const objList = (this.state.response.recordlist !== undefined ? this.state.response.recordlist : []);
-    
-    //var filObj = filterObjectList(objList, []);
-    var filObj = filterObjectList(objList, this.state.filterlist);
-    var filterInfo = filObj.filterinfo;
-    var passedObjList = filObj.passedobjlist;
+    var filObjOne = filterObjectList(this.state.objlist, this.state.filterlist);
+    var passedObjList = filObjOne.passedobjlist;
     var passedCount = passedObjList.length;
+
+    //var filterInfo = filObjOne.filterinfo;
+    
+    var filObjTwo = filterObjectList(passedObjList, []);
+    var filterInfo = filObjTwo.filterinfo;
+            
 
     var batchSize = 20;
     var pageCount = parseInt(passedObjList.length/batchSize) + 1;
-    pageCount = (objList.length > 0 ? pageCount : 0);
+    pageCount = (this.state.objlist.length > 0 ? pageCount : 0);
 
 
     var startIdx = batchSize * (parseInt(this.state.pageIdx) - 1) + 1;
     var endIdx = startIdx + batchSize;
     endIdx = (endIdx > passedCount ? passedCount : endIdx);
 
-    //var filterHideFlag = (objList.length > 0 ? "block" : "none");
+    //var filterHideFlag = (this.state.objlist.length > 0 ? "block" : "none");
     var filterHideFlag = "block";
 
     var tmpList = [];
@@ -141,9 +168,8 @@ class DatasetList extends Component {
         tmpList.push(h);
     }
     var resultSummary = ""
-    if ("stats" in this.state.response){
-      var statObj = this.state.response.stats;
-      resultSummary = "<b>" + statObj.total + "</b> results found";
+    if ("total" in this.state.statobj){
+      resultSummary = "<b>" + this.state.statobj.total + "</b> datasets found";
       if (tmpList.length > 0){
         resultSummary += ", <b>" + passedObjList.length + "</b> shown after filters: ";
         resultSummary += tmpList.join("', '")
@@ -168,24 +194,30 @@ class DatasetList extends Component {
       tableRows.push(o)
     }
 
+
     return (
       <div>
         <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
         <div className="searchboxwrapper">
             <Searchbox initObj={this.props.initObj} 
-              defaultvalue={"Q14392"}  
+              searchtype={this.state.searchtype}
+              searchquery={this.state.searchquery[this.state.searchtype]}  
+              onSearchTypeChange={this.handleSearchTypeChange}
               onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
         </div>
         <div className="filterboxwrapper" style={{display:filterHideFlag}}>
           <Filter
             filterinfo={filterInfo}
-            resultcount={objList.length}
+            resultcount={this.state.objlist.length}
             resultSummary={resultSummary}
             handleSearchIcon={this.handleSearchIcon}
             handleFilterIcon={this.handleFilterIcon}
             handleFilterApply={this.handleFilterApply}
             handleFilterReset={this.handleFilterReset}
           />
+        </div>
+        <div className="statscn">
+            <Markup content={resultSummary}/>
         </div>
         <div className="searchresultscn">
           <Tableview cols={tableCols} rows={tableRows}/>

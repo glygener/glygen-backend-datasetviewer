@@ -57,7 +57,13 @@ def main():
         )
         client.server_info()
         dbh = client[glydb_db]
-        for doc in dbh[coll].find({}):
+        q = {}
+        #q = {"row":{"$regex":"kinase", "$options":"i"}}
+        #q = {"$and": [ {"$or": [{ "row": {"$options": "i","$regex": "kinase"}}]}]}
+        q = { "$text": { "$search": "\"sarscov2_protein_signalp_annotation\"" } }
+        n = dbh[coll].count_documents(q)
+        #for doc in dbh[coll].find(q).skip(1).limit(100):
+        for doc in dbh[coll].find(q):
             if "_id" in doc:
                 doc.pop("_id")
             print (json.dumps(doc, indent=4))

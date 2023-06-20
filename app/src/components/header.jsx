@@ -55,16 +55,16 @@ class Header extends Component {
       headerLinks.push(<Nav.Link id={"link_" +obj.id} key={"link_" +obj.id} href={obj.url} style={{fontWeight:"bold"}} style={s}>{obj.label}</Nav.Link>)
     }
     
-    var urlDict = {
-      
-    };
+    //var urlDict = {};
+
+    var logoUrl = urlDict[server]["portal"];
 
     return (
       <Navbar className="globalheader"  variant="dark" expand="lg" 
         style={navbarStyle}
         >
         <Container fluid>
-          <Navbar.Brand href="/" style={{fontSize:"30px"}}>
+          <Navbar.Brand href={logoUrl} style={{fontSize:"30px"}}>
              <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-glygen.svg'} 
             style={{width:"100%"}} />
           </Navbar.Brand>

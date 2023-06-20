@@ -12,9 +12,8 @@
     },
     "data_path":"/data/shared/glyds/",
     "search_options":{
-        "metadata":"Dataset:metadata",
-        "data":"Dataset:body",
-        "bo5h":"Dataset:all"
+        "metadata":"dataset metadata",
+        "data":"dataset body"
     },
     "dbinfo":{
         "port":{ 
@@ -42,8 +41,8 @@
             ,"extractdb"
             ,"historydb"
             ,"htmldb"
-            ,"recordsdb"
             ,"statdb"
+            ,"recordsdb"
         ],
         "others":[
             "reviewed",

@@ -116,19 +116,35 @@ html, body{
     border:0px dashed orange;
 }
 
+.search_label{
+    display:block;
+    float:left;
+    font-size:18px;
+    margin:5px 10px 10px 10px;
+    border:0px solid red;
+}
+
+.search_target{
+    display:block;
+    float:left;
+    width:80%;
+    margin:5px 0px 10px 0%;
+    border:0px solid red;
+}
+
 .search_options{
     display:block;
     float:left;
-    width:20%;
-    margin:0px 0px 10px 0px;
+    width:15%;
+    margin:0px 10px 0px 0px;
     height:35px;
-    border:1px solid #eee;
+    border:0px solid #eee;
 }
 
 .search_paper_wrapper{
     display:block;
     float:left;
-    width:70%;
+    width:50%;
 }
 
 
@@ -138,7 +154,7 @@ html, body{
     align-items:right;
     width:100%;
     min-width:300px;
-    height:35px;
+    height:38px;
     border:1px solid #eee;
 }
 .searchbox_input {
@@ -164,70 +180,74 @@ html, body{
 .filter_div_one{
     min-height:25px;
     width:100%;
-    padding:2px;
-    margin-top:0px;
+    padding:20px 10px 10px 10px;
+    margin:0px 0px 20px 0px;
     border:1px solid #ddd;
-    border-radius:10px 10px 10px 10px;
-    background:#fff;
-}
-
-
-.filter_div_two {
-    display:block;
-    float:left;
-    width:100%;
-    padding: 5px;
-    border:1px solid #ddd;
-    border-radius:10px 10px 10px 10px;
-}
-
-.filter_div_three {
-    display: none;
-    float: left;
-    width: 100%;
-    min-height: 100px;
-    margin:0px;
-    background: #f6f6f6;
-    border-top:1px solid #ccc;
-}
-
-.filter_div_four {
-    display:block;
-    float:left;
-    margin:10px 10px 10px 10px;
-    padding:10px; 
-    border:1px solid #ddd;
-    font-size:14px; 
     border-radius:10px;
 }
+
+
+.filter_div_two{
+    width:100%;
+    padding:10px;
+    margin:0px 0px 20px 0px;
+    border:1px solid #ddd;
+  border-radius:10px;
+}
+
+
+
+
 
 div.searchboxwrapper{
     display:block;
     float:left;
-    width:98%;
-    margin:20px 1% 0px 1%;
-    border:1px dashed orange;
+    width:90%;
+    margin:20px 5% 20px 5%;
+    padding:20px 10px 20px 10px;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
 div.filterboxwrapper{
     display:block;
     float:left;
     width:20%;
-    margin:20px 1% 0px 1%;
-    border:1px dashed orange;
+    margin:20px 10px 0px 5%;
+    border:0px dashed orange;
+}
+
+div.statscn{
+    display:block;
+    float:left;
+    width:69%;
+    margin:20px 1% 0px 0%;
+    padding:10px;
+    z-index:1;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+
+div.searchresultscn{
+    display:block;
+    float:left;
+    width:69%;
+    margin:5px 1% 500px 0%;
+    font-family: 'Montserrat', sans-serif; 
+    z-index:1;
+    border:0px dashed orange;
 }
 
 div.pagecn{
     display:block;
-    overflow:auto;
-    width:78%;
-    margin:0px 1% 500px 1%;
-    font-family: 'Montserrat', sans-serif; 
-    color:#333;
-    padding:0px;
+    float:left;
+    width:90%;
+    margin:20px 5% 500px 5%;
+    font-family: 'Montserrat', sans-serif;
     z-index:1;
-    border:1px dashed orange;
- }
+    border:0px dashed orange;
+}
 
 
 .navlink{
@@ -366,5 +386,28 @@ span.faqquestionid{
 
 .globalfooter {
     background:DodgerBlue;
+}
+
+.dgheader{
+  font-size:16px;
+  background:#f1f1f1;
+}
+
+.dgcell{
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    overflow-y: auto;
+    height: calc(100% + 2%);
+}
+
+
+.dgcell_hg{
+  background:#ffff00;
+}
+
+
+.MuiDataGrid-root .MuiDataGrid-cell {
+    white-space: normal !important;
+    word-wrap: break-word !important;
 }
 

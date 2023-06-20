@@ -1,12 +1,13 @@
-    http POST :5000/misc/info
-    http POST :5000/dataset/search < queries/dataset_search.json
-    http POST :5000/dataset/detail < queries/dataset_detail.json
-    http POST :5000/dataset/historylist < queries/dataset_historylist.json
-    http POST :5000/dataset/historydetail < queries/dataset_historydetail.json
-    http POST :5000/dataset/submit < queries/dataset_submit.json
-    http POST :5000/gsd/submit < queries/gsd_submit.json
-    http POST :5000/dataset/glycan_finder < queries/dataset_glycan_finder.json
-
+    http POST :8081/misc/info
+    http POST :8081/dataset/search < tests/queries/dataset_search.json
+    http POST :8081/dataset/detail < tests/queries/dataset_detail.json
+    http POST :8081/dataset/historylist < tests/queries/dataset_historylist.json
+    http POST :8081/dataset/historydetail < tests/queries/dataset_historydetail.json
+    http POST :8081/dataset/submit < tests/queries/dataset_submit.json
+    http POST :8081/gsd/submit < tests/queries/gsd_submit.json
+    http POST :8081/dataset/glycan_finder < tests/queries/dataset_glycan_finder.json
+   
+    http POST :8081/dataset/pagecn < tests/queries/dataset_pagecn.json
 
 
 

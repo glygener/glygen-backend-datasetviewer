@@ -8,30 +8,38 @@ class Filter extends Component {
   render() {
     var filterInfo = this.props.filterinfo;
 
+
     var divList = [];
-    for (var filterName in filterInfo) {
-      var filterNameLbl = filterName.substr(0,1).toUpperCase() + filterName.substr(1);
-      filterNameLbl = filterNameLbl.replace("_", " ");
+    var catList = Object.keys(filterInfo).sort()
+    if (catList.indexOf("species") !== -1){
+        const idx = catList.indexOf("species");
+        const x = catList.splice(idx, 1);
+        catList.unshift("species");
+    }
+
+    for (var c in catList) {
+      var catName = catList[c];
+      var catNameLbl = catName.substr(0,1).toUpperCase() + catName.substr(1);
+      catNameLbl = catNameLbl.replace("_", " ");
       var rList = [];
-      var valueList = Object.keys(filterInfo[filterName]).sort();
-      for (var i in valueList) {
-        var value = valueList[i];
-        var count = filterInfo[filterName][value];
-        var combo = filterName + "|" + value;
-        var valueLbl = value.substr(0,1).toUpperCase() + value.substr(1);
-        if (filterName === "file_type"){
-          valueLbl = value.toUpperCase();
+      var countDict = filterInfo[catName];
+      for (var catVal in countDict){
+        var count = countDict[catVal]
+        var combo = catName + "|" + catVal;
+        var catValLbl = catVal.substr(0,1).toUpperCase() + catVal.substr(1);
+        if (catName === "file_type"){
+          catValLbl = catVal.toUpperCase();
         }
         rList.push(<tr>
             <td valign="top" style={{paddingLeft:"10px"}}>
               <input name="filtervalue" type="checkbox" value={combo} onClick={this.props.handleFilterApply}/></td>
-            <td valign="top" style={{paddingLeft:"10px", fontSize:14}}>{valueLbl} ({count})</td>
+            <td valign="top" style={{paddingLeft:"10px", fontSize:14}}>{catValLbl} ({count})</td>
           </tr>);
       }
       divList.push(
         <div className="filter_div_two">
           <table style={{padding:"0px 0px 0px 10px"}}>
-            <tr><td colspan="2" style={{fontWeight:"bold", height:40}}>By {filterNameLbl}</td></tr>
+            <tr><td colspan="2" style={{fontWeight:"bold", height:40}}>By {catNameLbl}</td></tr>
             {rList}
           </table>
         </div>

@@ -75,26 +75,29 @@ export function filterObjectList(objList, filterList) {
         if (["tags","protein"].indexOf(name) !== -1){
           continue;
         }
-        var value = obj.categories[name].toLowerCase(); 
-        var combo = name + "|" + value;
-        if (!(name in retObj.filterinfo)) {
-            retObj.filterinfo[name] = {};
-        }
-        if(true){
-            if (!(value in retObj.filterinfo[name])){
-              retObj.filterinfo[name][value] = 1;
+        for (var q in obj.categories[name]){
+            var value = obj.categories[name][q].toLowerCase(); 
+
+            var combo = name + "|" + value;
+            if (!(name in retObj.filterinfo)) {
+                retObj.filterinfo[name] = {};
             }
-            else{
-              retObj.filterinfo[name][value] += 1;
+            if(true){
+                if (!(value in retObj.filterinfo[name])){
+                    retObj.filterinfo[name][value] = 1;
+                }
+                else{
+                retObj.filterinfo[name][value] += 1;
+                }
             }
-        }
-        if (filterList.indexOf(combo) !== -1) {
-          passCount += 1;
+            if (filterList.indexOf(combo) !== -1) {
+                passCount += 1;
+            }
         }
       }
       if (filterList.length > 0) {
+        //if (passCount > 0){
         if (passCount === filterList.length){
-        //if (passCount > 0) {
             retObj.passedobjlist.push(obj);
         }
       } 
