@@ -34,19 +34,11 @@ def main():
     app_port = config_obj["app_port"][server]
     data_path = config_obj["data_path"]
    
-
     with open(".env.production", "w") as FW:
-        api_sub_domain, app_sub_domain = "dsapi.%s" % (server), "data.%s" % (server)
-        if server == "beta":
-            api_sub_domain, app_sub_domain = "%s-dsapi" % (server), "%s-data" % (server)
-        elif server == "prd":
-            api_sub_domain, app_sub_domain = "dsapi", "data"
-
         FW.write("REACT_APP_SERVER=%s\n" % (server))
-        FW.write("REACT_APP_ROOT_URL=https://%s.glygen.org\n" % (app_sub_domain))
-        FW.write("REACT_APP_API_URL=https://%s.glygen.org\n" % (api_sub_domain))
+        FW.write("REACT_APP_ROOT_URL=%s\n" % (config_obj["app_root"][server]))
+        FW.write("REACT_APP_API_URL=%s\n" % (config_obj["api_root"][server]))
         FW.write("REACT_APP_APP_VERSION=1.1\n")
-
 
 
 

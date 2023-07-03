@@ -5,5 +5,18 @@
         "tst":"8080",
         "dev":"8080"
     },
+    "api_root":{
+        "prd":"https://dsapi.glygen.org",
+        "beta":"https://beta-dsapi.glygen.org",
+        "tst":"https://dsapi.tst.glygen.org",
+        "dev":"https://dsapi.dev.glygen.org"
+    },
+    "app_root":{
+        "prd":"https://data.glygen.org",
+        "beta":"https://beta-data.glygen.org",
+        "tst":"https://data.tst.glygen.org",
+        "dev":"https://data.dev.glygen.org"
+    },
     "data_path":"/data/shared/glyds/"
 }
+

@@ -1,3 +1,3 @@
 
- ... started loading c_bco  [2023-06-17 10:01:17.164042]
- ... finished loading 563/563 documents to c_bco_v-2.1.1 (from bcodb) [2023-06-17 10:01:17.917143]
+ ... started loading c_bco  [2023-07-03 11:46:17.863233]
+ ... finished loading 563/563 documents to c_bco_v-2.1.1 (from bcodb) [2023-07-03 11:46:18.793134]
