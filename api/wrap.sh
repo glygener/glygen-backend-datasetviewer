@@ -1,6 +1,6 @@
 #srv="prd"
-srv="beta"
-#srv="tst"
+#srv="beta"
+srv="tst"
 
 
 sudo systemctl stop docker-glyds-api-$srv.service

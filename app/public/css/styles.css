@@ -394,10 +394,14 @@ span.faqquestionid{
 }
 
 .dgcell{
+    white-space: break-spaces;
+}
+
+.dgcellold{
     text-overflow: ellipsis;
     white-space: break-spaces;
     overflow-y: auto;
-    height: calc(100% + 2%);
+    height: calc(100% + 2%); 
 }
 
 

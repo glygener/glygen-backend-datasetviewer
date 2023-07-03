@@ -23,16 +23,21 @@ class Filter extends Component {
       catNameLbl = catNameLbl.replace("_", " ");
       var rList = [];
       var countDict = filterInfo[catName];
-      for (var catVal in countDict){
+      var catValList = Object.keys(countDict).sort();
+      //for (var catVal in countDict){
+      for (var j in catValList){
+        var catVal = catValList[j];
         var count = countDict[catVal]
         var combo = catName + "|" + catVal;
         var catValLbl = catVal.substr(0,1).toUpperCase() + catVal.substr(1);
         if (catName === "file_type"){
           catValLbl = catVal.toUpperCase();
         }
+
+        var isChecked = (this.props.filterlist.indexOf(combo) === -1 ? false : true)
         rList.push(<tr>
             <td valign="top" style={{paddingLeft:"10px"}}>
-              <input name="filtervalue" type="checkbox" value={combo} onClick={this.props.handleFilterApply}/></td>
+              <input name="filtervalue" type="checkbox" checked={isChecked} value={combo} onClick={this.props.handleFilterApply}/></td>
             <td valign="top" style={{paddingLeft:"10px", fontSize:14}}>{catValLbl} ({count})</td>
           </tr>);
       }

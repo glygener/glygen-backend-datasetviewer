@@ -14,6 +14,19 @@
                 "queryfields":{}
             }
         },
+        "c_cache":{
+            "get_one":{
+                "prj":{},
+                "queryfields":{
+                    "list_id":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"list_id","operator":"$regex"}]
+                    }
+                } 
+            }
+        },
         "c_html":{
             "get_one":{
                 "prj":{"pageid":1,"cn":1},

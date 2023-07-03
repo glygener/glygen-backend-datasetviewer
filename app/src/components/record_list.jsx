@@ -3,10 +3,11 @@ import DatasetPage from "./dataset_page";
 
 export default function RecordList (props) {
   const location = useLocation();
-  
+
+
   var rowList = [];
   if (location.state !== undefined){
-      if (location.state.rowlist === undefined){
+      if (location.state.rowlist !== undefined){
         rowList = location.state.rowlist;
       }
   }

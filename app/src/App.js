@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DatasetSearch from "./components/dataset_search";
 import DatasetList from "./components/dataset_list";
 import RecordList from "./components/record_list";
 import StaticPage from "./components/static_page";
@@ -111,7 +112,14 @@ class App extends Component {
               <HistoryList pageId={"History List"}  initObj={this.state.response.record}/>
             )}
           />
-          <Route
+        <Route
+            exact
+            path="/results/:listId"
+            render={(props) => (
+            <DatasetList  initObj={this.state.response.record} listId={props.match.params.listId}/>
+            )}
+          />
+        <Route
             path="/:bcoId/:dataVersion/history"
             render={(props) => (
               <HistoryDetail bcoId={props.match.params.bcoId} dataVersion={props.match.params.dataVersion}  initObj={this.state.response.record}/>
@@ -122,18 +130,18 @@ class App extends Component {
             render={(props) => (
               <StaticPage pageId={props.match.params.pageId}  initObj={this.state.response.record}/>
             )}
-          />
-          <Route
+        />
+        <Route
             path="/:bcoId"
             render={(props) => (
               <RecordList bcoId={props.match.params.bcoId} initObj={this.state.response.record}/>
             )}
-          />
-          <Route
+        />
+        <Route
             exact
             path="/"
             render={(props) => (
-              <DatasetList  initObj={this.state.response.record}/>
+              <DatasetSearch  initObj={this.state.response.record}/>
             )}
           />
         </Switch>

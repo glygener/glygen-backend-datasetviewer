@@ -11,10 +11,9 @@ import {getColumns} from "./columns";
 import { Markup } from 'interweave';
 
 
-class DatasetList extends Component {  
+class DatasetSearch extends Component {  
   
   state = {
-    searchquery:"",
     filterlist: [],
     objlist:[],
     statobj:{},
@@ -22,6 +21,9 @@ class DatasetList extends Component {
     pageBatchSize:5,
     pageStartIdx:1,
     pageEndIdx:5,
+    listid:"",
+    isLoaded:false,
+    searchquery:"",
     dialog:{
       status:false, 
       msg:""
@@ -29,55 +31,30 @@ class DatasetList extends Component {
   };
 
   componentDidMount() {
-    this.handleGetResults();
-  }
-
-
-  handleDialogClose = () => {
-    var tmpState = this.state;
-    tmpState.dialog.status = false;
-    this.setState(tmpState);
-  }
-
   
-
-   handleGetResults = () => {
-    var reqObj = {list_id:this.props.listId};
-
-    this.handleFilterReset();
-
-    var tmpState = this.state;
-    tmpState.objlist = [];
-    tmpState.isLoaded = false;
-    this.setState(tmpState);
-
+    var reqObj = {}
     const requestOptions = { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(reqObj)
     };
-    const svcUrl = LocalConfig.apiHash.dataset_list;
-
+    const svcUrl = LocalConfig.apiHash.dataset_getall;
     fetch(svcUrl, requestOptions)
       .then((res) => res.json())
       .then(
         (result) => {
-          var tmpState = this.state;
-          tmpState.isLoaded = true;          
-          if (result.status === 0){
-            tmpState.dialog.status = true;
-            tmpState.dialog.msg = result.error;
-          }
-          tmpState.objlist = result.recordlist;
-          tmpState.statobj = result.stats;
-          tmpState.searchquery = result.searchquery;
-          this.setState(tmpState);
-          //console.log("Request:",svcUrl);
-          console.log("Ajax response:", result);
+            console.log("RRR:", result);
+            var tmpState = this.state;
+            tmpState.isLoaded = true;          
+            if (result.status === 0){
+                tmpState.dialog.status = true;
+                tmpState.dialog.msg = result.error;
+            }
+            tmpState.objlist = result.recordlist;
+            tmpState.statobj = result.stats;
+            this.setState(tmpState);
+            //console.log("Request:",svcUrl);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -88,43 +65,90 @@ class DatasetList extends Component {
   }
 
 
-  handleFilterReset = () => {
-    $('input[name="filtervalue"]:checkbox:checked').prop("checked", false);
-    this.setState({ filterlist: [] });
-  };
+  handleDialogClose = () => {
+    var tmpState = this.state;
+    tmpState.dialog.status = false;
+    this.setState(tmpState);
+  }
 
-  handleFilterApply = () => {
-    var tmpList = $('input[name="filtervalue"]:checkbox:checked')
-      .map(function () {return $(this).val();}).get(); // <----
-    this.setState({ filterlist: tmpList });
+  
+  handleKeyPress = (e) => {
+    if(e.key === "Enter"){
+      e.preventDefault();
+      this.handleSearch();
+    }
+  }
+ 
+
+   handleSearch = () => {
     
-  };
+    var queryValue = ($("#query").val() === undefined ? this.state.searchquery : $("#query").val());
+    var reqObj = {query:queryValue};
 
-  handleFilterIcon = () => {
-    $("#filtercn").toggle();
-  };
+    var tmpState = this.state;
+    tmpState.isLoaded = false;
+    this.setState(tmpState);
 
+    const requestOptions = { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reqObj)
+    };
+    const svcUrl = LocalConfig.apiHash.dataset_search;
 
-    handleKeyPress = (e) => {
-        if(e.key === "Enter"){
-            e.preventDefault();
-            this.handleSearch();
+    fetch(svcUrl, requestOptions)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log("SEARCH RRR", result);
+          var tmpState = this.state;
+          tmpState.isLoaded = true;          
+          if (result.status === 0){
+            tmpState.dialog.status = true;
+            tmpState.dialog.msg = result.error;
+          }
+          else{
+            window.location.href = "/results/" + result.list_id;
+          }
+          this.setState(tmpState);
+          //console.log("Request:",svcUrl);
+          console.log("Ajax response:", result);
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
         }
+      );
     }
-      
-    
-    handleSearch = () => {
-        window.location.href = "/";
-    }
+
+
+
+    handleFilterReset = () => {
+        $('input[name="filtervalue"]:checkbox:checked').prop("checked", false);
+        this.setState({ filterlist: [] });
+    };
+
+    handleFilterApply = () => {
+        var tmpList = $('input[name="filtervalue"]:checkbox:checked')
+            .map(function () {return $(this).val();}).get(); // <----
+        this.setState({ filterlist: tmpList });
+    };
+
+    handleFilterIcon = () => {
+        $("#filtercn").toggle();
+    };
+
 
 
 
     render() {
 
-        if (this.state.isLoaded === false){
-            return <Loadingicon/>
-        }
 
+        if (this.state.isLoaded === false){
+             return <Loadingicon/>
+        }
         var filObjOne = filterObjectList(this.state.objlist, this.state.filterlist);
         var passedObjList = filObjOne.passedobjlist;
         var passedCount = passedObjList.length;
@@ -132,8 +156,7 @@ class DatasetList extends Component {
     
         var filObjTwo = filterObjectList(passedObjList, []);
         var filterInfo = filObjTwo.filterinfo;
-
-
+            
         var batchSize = 20;
         var pageCount = parseInt(passedObjList.length/batchSize) + 1;
         pageCount = (this.state.objlist.length > 0 ? pageCount : 0);
@@ -175,14 +198,16 @@ class DatasetList extends Component {
             tableRows.push(o)
         }
 
+
         return (
             <div>
                 <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
                 <div className="searchboxwrapper">
-                    <div style={{display:"block", textAlign:"center"}}>
-                        Search results for `{this.state.searchquery}`,<br/>
-                        <a href="/"> click here </a> to search again.
-                    </div>
+                    <Searchbox initObj={this.props.initObj} 
+                        searchquery={this.state.searchquery}
+                        onSearch={this.handleSearch} 
+                        onKeyPress={this.handleKeyPress}
+                    />
                 </div>
                 <div className="filterboxwrapper" style={{display:filterHideFlag}}>
                     <Filter
@@ -199,7 +224,7 @@ class DatasetList extends Component {
                 </div>
             </div>
         );
-  }
+    }
 }
 
-export default DatasetList;
+export default DatasetSearch;

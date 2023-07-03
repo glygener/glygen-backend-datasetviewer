@@ -8,15 +8,37 @@ import datetime
 import time
 import subprocess
 import json
+import pytz
+import hashlib
+from glyds.db import get_mongodb
+
+
 
 api = Namespace("dataset", description="Dataset APIs")
 
+dataset_getall_query_model = api.model(
+    'Dataset Get All Query', 
+    {
+    }
+)
+
 dataset_search_query_model = api.model(
-    'Dataset Search Query', 
+    'Dataset Search Query',
     {
         'query': fields.String(required=True, default="", description='Query string')
     }
 )
+
+
+
+dataset_list_query_model = api.model(
+    'Dataset List Query',
+    {
+        'list_id': fields.String(required=True, default="", description='List ID string')
+    }
+)
+
+
 
 dataset_historylist_query_model = api.model(
     'Dataset History List Query',
@@ -89,17 +111,53 @@ ds_model = api.model('Dataset', {
 
 
 
+@api.route('/getall')
+class DatasetGetAll(Resource):
+    '''f dfdsfadsfas f '''
+    @api.doc('getall_datasets')
+    @api.expect(dataset_getall_query_model)
+    def post(self):
+        '''Get all datasets'''
+        req_obj = request.json
+        res_obj = {"recordlist":[]}
+        r_one = get_many({"coll":"c_extract", "query":""})
+        if "error" in r_one:
+            return r_one
+        res_obj["recordlist"] = r_one["recordlist"]
+        n = len(res_obj["recordlist"])
+        res_obj["stats"] = {"total":n, "retrieved":n}
+        return res_obj
+
+
+
+
+
 @api.route('/search')
-class DatasetList(Resource):
+class DatasetSearch(Resource):
     '''f dfdsfadsfas f '''
     @api.doc('search_datasets')
     @api.expect(dataset_search_query_model)
     #@api.marshal_list_with(ds_model)
     def post(self):
         '''Search datasets'''
+       
         req_obj = request.json
-        res_obj = {"recordlist":[]}
+        mongo_dbh, error_obj = get_mongodb()
+        if error_obj != {}:
+            return error_obj
+       
+        hash_str = json.dumps(req_obj)
+        hash_obj = hashlib.md5(hash_str.encode('utf-8'))
+        list_id = hash_obj.hexdigest()
+               
+        coll_names = mongo_dbh.collection_names()
+        if "c_cache" in coll_names:
+            res = get_one({"coll":"c_cache", "list_id":list_id})
+            if "error" not in res:
+                if "record" in res:
+                    return {"list_id":list_id}
 
+        res_obj = {"recordlist":[]}
         r_one = get_many({"coll":"c_extract", "query":""})
         if "error" in r_one:
             return r_one
@@ -114,7 +172,6 @@ class DatasetList(Resource):
             res_obj["recordlist"] = r_one["recordlist"]
         else:
             #dataset body search
-            req_obj = request.json
             req_obj["coll"] = "c_records"
             r_two = get_many_text_search(req_obj)
             if "error" in r_two:
@@ -123,6 +180,8 @@ class DatasetList(Resource):
             for obj in r_two["recordlist"]:
                 prefix, bco_idx, file_idx, row_idx = obj["recordid"].split("_")
                 bco_id = prefix + "_" + bco_idx
+                if bco_id not in bco_dict:
+                    continue
                 bco_title, file_name = bco_dict[bco_id]["title"], bco_dict[bco_id]["filename"]
                 o = {
                     "recordid":obj["recordid"],
@@ -160,7 +219,43 @@ class DatasetList(Resource):
 
         n = len(res_obj["recordlist"])
         res_obj["stats"] = {"total":n, "retrieved":n}
+        if n != 0:
+            ts_format = "%Y-%m-%d %H:%M:%S %Z%z"
+            ts = datetime.datetime.now(pytz.timezone('US/Eastern')).strftime(ts_format)
+            cache_info = { "reqobj":req_obj, "ts":ts}
+            cache_obj = { "list_id":list_id, "cache_info":cache_info, "results":res_obj}
+            cache_coll = "c_cache"
+            res = mongo_dbh[cache_coll].insert_one(cache_obj)
+
+    
+        res_obj = {"list_id":list_id}
         return res_obj
+
+
+
+@api.route('/list')
+class DatasetList(Resource):
+    '''Get search results'''
+    @api.doc('get_dataset')
+    @api.expect(dataset_list_query_model)
+    #@api.marshal_with(ds_model)
+    def post(self):
+        '''Get search results'''
+        req_obj = request.json
+        req_obj["coll"] = "c_cache"
+        res = get_one(req_obj)
+        if "error" in res:
+            return res
+        res_obj = {
+            "status":1, 
+            "recordlist":res["record"]["results"]["recordlist"],
+            "stats":res["record"]["results"]["stats"],
+            "searchquery":res["record"]["cache_info"]["reqobj"]["query"]
+        }
+        return res_obj
+
+
+
 
 
 @api.route('/detail')

@@ -26,7 +26,8 @@ export default function Tableview(props) {
         pageSizeOptions={[10, 50, 100]}
         disableRowSelectionOnClick
         enableColumnAutosize={true}
-      />
+        getRowHeight={() => 'auto'}  
+    />
     </Box>
   );
 }
