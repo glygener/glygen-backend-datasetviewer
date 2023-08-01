@@ -1,10 +1,11 @@
-srv="prd"
+prj="glyds"
+#srv="prd"
 #srv="beta"
-#srv="tst"
+srv="tst"
 
 
-sudo systemctl stop docker-glyds-api-$srv.service
+sudo systemctl stop docker-$prj-api-$srv.service
 python3 create_api_container.py -s $srv
-sudo systemctl start docker-glyds-api-$srv.service
+sudo systemctl start docker-$prj-api-$srv.service
 
 

@@ -36,8 +36,8 @@ def main():
     admin_user, admin_pass = config_obj["dbinfo"]["admin"]["user"], config_obj["dbinfo"]["admin"]["password"]
     admin_db = config_obj["dbinfo"]["admin"]["db"]
 
-    glydb_user, glydb_pass = config_obj["dbinfo"]["glydb"]["user"], config_obj["dbinfo"]["glydb"]["password"]
-    glydb_db =  config_obj["dbinfo"]["glydb"]["db"]
+    db_name = config_obj["dbinfo"]["dbname"]
+    db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
 
     try:
         client = pymongo.MongoClient(host,
@@ -48,7 +48,7 @@ def main():
             serverSelectionTimeoutMS=10000
         )
         client.server_info()
-        client.glydb.command('createUser', glydb_user, pwd=glydb_pass, roles=[{'role': 'readWrite', 'db': glydb_db}])
+        client[db_name].command('createUser', db_user, pwd=db_pass, roles=[{'role': 'readWrite', 'db': db_name}])
     except pymongo.errors.ServerSelectionTimeoutError as err:
         print (err)
     except pymongo.errors.OperationFailure as err:
@@ -58,3 +58,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+

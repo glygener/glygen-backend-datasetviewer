@@ -1,6 +1,7 @@
 # Requirements
 The following must be available on your server:
 
+* wheel
 * pymongo
 * httpie
 * jsonref

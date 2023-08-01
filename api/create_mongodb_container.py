@@ -26,8 +26,8 @@ def main():
     server = options.server
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
-    api_container = "running_glyds_api_%s" % (server)
-    mongo_container = "running_glyds_mongo_%s" % (server)
+    api_container = "running_" + config_obj["project"] + "_api_%s" % (server)
+    mongo_container = "running_" + config_obj["project"] + "_mongo_%s" % (server)
     mongo_network = config_obj["dbinfo"]["bridge_network"] + "_" + server
     
     mongo_port = config_obj["dbinfo"]["port"][server]

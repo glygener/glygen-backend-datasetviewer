@@ -61,6 +61,12 @@ class Filter extends Component {
           <div id="filtercn" >
             {divList}
           </div>
+        <div className="filterbtnscn">
+            <button onClick={this.props.handleFilterReset}
+                className="btn btn-outline-secondary" style={btnStyle}>Reset</button>
+            <button onClick={this.props.handleFilterApply}
+                className="btn btn-outline-secondary" style={btnStyle}>Apply</button>
+        </div>
       </div>
     );
   }

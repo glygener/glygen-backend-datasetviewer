@@ -1,4 +1,5 @@
 {
+    "project":"glyds",
     "app_port":{
         "prd":"8080",
         "beta":"8882",

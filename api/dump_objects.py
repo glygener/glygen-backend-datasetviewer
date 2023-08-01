@@ -43,20 +43,19 @@ def main():
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
     #host = "mongodb://localhost:%s" % (mongo_port)
 
-
-    glydb_user, glydb_pass = config_obj["dbinfo"]["glydb"]["user"], config_obj["dbinfo"]["glydb"]["password"]
-    glydb_db =  config_obj["dbinfo"]["glydb"]["db"]
+    db_name = config_obj["dbinfo"]["dbname"]
+    db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
 
     try:
         client = pymongo.MongoClient(host,
-            username=glydb_user,
-            password=glydb_pass,
-            authSource=glydb_db,
+            username=db_user,
+            password=db_pass,
+            authSource=db_name,
             authMechanism='SCRAM-SHA-1',
             serverSelectionTimeoutMS=10000
         )
         client.server_info()
-        dbh = client[glydb_db]
+        dbh = client[db_name]
         q = {}
         #q = {"row":{"$regex":"kinase", "$options":"i"}}
         #q = {"$and": [ {"$or": [{ "row": {"$options": "i","$regex": "kinase"}}]}]}

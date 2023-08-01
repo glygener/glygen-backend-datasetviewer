@@ -26,16 +26,18 @@ def main():
     server = options.server
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
-    image = "glyds_api_%s" % (server) 
+    image = "%s_api_%s" % (config_obj["project"], server) 
     api_container = "running_" + image
-    mongo_container = "running_glyds_mongo_" + server
+    mongo_container = "running_"+ config_obj["project"] +"_mongo_" + server
     api_port = config_obj["api_port"][server]
+
+    db_name = config_obj["dbinfo"]["dbname"] 
 
     data_path = config_obj["data_path"]
     network = config_obj["dbinfo"]["bridge_network"] + "_" + server
-    mongo_user = config_obj["dbinfo"]["glydb"]["user"]
-    mongo_password = config_obj["dbinfo"]["glydb"]["password"]
-    mongo_db =  config_obj["dbinfo"]["glydb"]["db"]
+    mongo_user = config_obj["dbinfo"][db_name]["user"]
+    mongo_password = config_obj["dbinfo"][db_name]["password"]
+    mongo_db =  config_obj["dbinfo"][db_name]["db"]
     mail_server = config_obj["mail"]["server"]
     mail_port = config_obj["mail"]["port"]
     mail_sender = config_obj["mail"]["sender"]

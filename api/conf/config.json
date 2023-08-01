@@ -1,4 +1,5 @@
 {
+    "project":"glyds",
     "api_port":{
         "prd":"8081",
         "beta":"8881",
@@ -16,6 +17,7 @@
         "data":"dataset body"
     },
     "dbinfo":{
+        "dbname":"glydb",
         "port":{ 
             "prd":"7070",
             "beta":"7770",

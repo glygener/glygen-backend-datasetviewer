@@ -9,6 +9,24 @@ __version__="1.0"
 __status__ = "Dev"
 
 
+def create_docker_file(prj):
+
+    line_list = [
+        "FROM nginx:1.21.0-alpine as production"
+        ,"ENV NODE_ENV production"
+        ,"RUN mkdir -p /data/shared/%s" % (prj)
+        ,"RUN ln -s /data/shared/%s /usr/share/nginx/html/ln2data" % (prj)
+        ,"RUN ln -s /data/shared/%s/releases /usr/share/nginx/html/ln2releases" % (prj)
+        ,"RUN ln -s /data/shared/%s/downloads /usr/share/nginx/html/ln2downloads" % (prj)
+        ,"RUN ln -s /data/shared/%s/releases/ftp /usr/share/nginx/html/ftp" % (prj)
+        ,"COPY ./build /usr/share/nginx/html"
+        ,"COPY nginx.conf /etc/nginx/conf.d/default.conf"
+        ,"EXPOSE 80"
+        ,"CMD [\"nginx\", \"-g\", \"daemon off;\"]"
+    ]
+    with open("Dockerfile", "w") as FW:
+        FW.write("%s\n" % ("\n\n".join(line_list)))
+    return
 
 ###############################
 def main():
@@ -29,7 +47,7 @@ def main():
 
     config_obj = json.loads(open("./conf/config.json", "r").read())
 
-    image = "glyds_app_%s" % (server) 
+    image = config_obj["project"] + "_app_%s" % (server) 
     container = "running_" + image
     app_port = config_obj["app_port"][server]
     data_path = config_obj["data_path"]
@@ -41,6 +59,7 @@ def main():
         FW.write("REACT_APP_APP_VERSION=1.1\n")
 
 
+    create_docker_file(config_obj["project"])
 
     cmd_list = []
     if os.path.isdir(data_path) == False:

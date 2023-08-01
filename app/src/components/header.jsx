@@ -64,7 +64,7 @@ class Header extends Component {
         style={navbarStyle}
         >
         <Container fluid>
-          <Navbar.Brand href={logoUrl} style={{fontSize:"30px"}}>
+          <Navbar.Brand href={logoUrl} className="globalheader_logo">
              <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-glygen.svg'} 
             style={{width:"100%"}} />
           </Navbar.Brand>

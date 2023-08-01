@@ -62,20 +62,20 @@ def main():
             coll_list.append("c_" + d[:-2])
 
 
+    db_name = config_obj["dbinfo"]["dbname"]
+    db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
 
-    glydb_user, glydb_pass = config_obj["dbinfo"]["glydb"]["user"], config_obj["dbinfo"]["glydb"]["password"]
-    glydb_db =  config_obj["dbinfo"]["glydb"]["db"]
 
     try:
         client = pymongo.MongoClient(host,
-            username=glydb_user,
-            password=glydb_pass,
-            authSource=glydb_db,
+            username=db_user,
+            password=db_pass,
+            authSource=db_name,
             authMechanism='SCRAM-SHA-1',
             serverSelectionTimeoutMS=10000
         )
         client.server_info()
-        dbh = client[glydb_db]
+        dbh = client[db_name]
         for coll in coll_list:
             log_file = "logs/%s_loading_progress.txt" % (coll)
             msg = "\n ... started loading %s " % (coll)
@@ -89,7 +89,6 @@ def main():
             if coll in ["c_extract", "c_bco", "c_history"]:
                 coll = "%s_v-%s" % (coll, ver)
             
-            #res = dbh[coll].delete_many({})
             res = dbh[coll].drop()
             for subdir in subdir_list:
                 s_d = subdir.split("/")[-1] 

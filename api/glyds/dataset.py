@@ -478,7 +478,8 @@ class Dataset(Resource):
     @api.expect(init_query_model)
     def post(self):
         '''Get init '''
-        req_obj = request.json
+        #req_obj = request.json
+        req_obj = {}
         req_obj["coll"] = "c_init"
         res_obj = get_one(req_obj)
         return res_obj

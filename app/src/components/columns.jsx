@@ -25,14 +25,14 @@ export function getColumns(key){
       {
         field: 'id', 
         headerName: 'BCO ID', 
-        width: 120, 
+        width: 130, 
         headerClassName:"dgheader", 
         cellClassName:"dgcell"
       },
       {
         field: 'filename',
         headerName: 'FILE NAME',
-        width: 300, 
+        width: 250, 
         headerClassName:"dgheader", 
         cellClassName:"dgcell" 
       },

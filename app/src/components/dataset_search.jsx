@@ -137,7 +137,7 @@ class DatasetSearch extends Component {
     };
 
     handleFilterIcon = () => {
-        $("#filtercn").toggle();
+        $(".filterboxwrapper").toggle();
     };
 
 
@@ -209,7 +209,10 @@ class DatasetSearch extends Component {
                         onKeyPress={this.handleKeyPress}
                     />
                 </div>
-                <div className="filterboxwrapper" style={{display:filterHideFlag}}>
+               
+                <div className="material-icons rightblock filtericoncn" onClick={this.handleFilterIcon}>tune</div>
+                <div className="statscn"> <Markup content={resultSummary}/> </div>
+                <div className="filterboxwrapper">
                     <Filter
                         filterinfo={filterInfo}
                         filterlist={this.state.filterlist}
@@ -218,7 +221,6 @@ class DatasetSearch extends Component {
                         handleFilterApply = {this.handleFilterApply}
                     />
                 </div>
-                <div className="statscn"><Markup content={resultSummary}/></div>
                 <div className="searchresultscn">
                     <Tableview cols={tableCols} rows={tableRows}/>
                 </div>

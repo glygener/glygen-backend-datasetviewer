@@ -22,68 +22,10 @@ html, body{
 .globalheader_logo {
     display:block;
     float:left;
-    width:180px;
-    height:55px;
-    margin:10px 0px 0px 0px;
-    font-family: 'Gruppo', cursive;
-    border:0px dashed orange;
-}
-.globalheader_logo_img {
-    float:left;
-    width:40px;
-    margin:0px 0px -18px 5px;
-    border:0px dashed orange;
-
-}
-.globalheader_logo_txt {
-    display:block;
-    float:left;
-    width:100%;
-    padding:0px;
-    border:0px dashed red;
-}
-
-.globalheader_logo_txt_one {
-    display:block;
-    float:left;
     font-size:30px;
-    font-family: 'Gruppo', sans-serif;
-    color:#ff8000;
-    padding:0px;
-    border:0px dashed blue;
-}
-.globalheader_logo_txt_two {
-    display:block;
-    float:left;
-    font-size:30px;
-    font-family: 'Gruppo', sans-serif;
-    color:#333333;
-    padding:0px 0px 0px 0px !important;
-    border:0px dashed blue;
-}
-
-
-
-
-.globalheader_global_links {
-    display:block;
-    float:right;
-    width:70%;
-    margin:30px 0% 0px 0%;
     border:0px dashed orange;
 }
 
-
-
-.globalheader_icon {
-    display:block;
-    float:right;
-    cursor:pointer;
-    color:#777;
-    font-size: 24px !important;
-    margin: 3px 0px 0px 20px;
-    border:0px dashed red;
-}
 
 .versioncn{
     display:block;
@@ -144,7 +86,7 @@ html, body{
 .search_paper_wrapper{
     display:block;
     float:left;
-    width:50%;
+    width:70%;
 }
 
 
@@ -153,7 +95,7 @@ html, body{
     display:flex;
     align-items:right;
     width:100%;
-    min-width:300px;
+    min-width:100px;
     height:38px;
     border:1px solid #eee;
 }
@@ -186,16 +128,19 @@ html, body{
     border-radius:10px;
 }
 
-
 .filter_div_two{
     width:100%;
     padding:10px;
     margin:0px 0px 20px 0px;
     border:1px solid #ddd;
-  border-radius:10px;
+    border-radius:10px;
 }
 
-
+.filtericoncn {
+    display:none !important;
+    cursor:pointer;
+    z-index:2;
+}
 
 
 
@@ -213,15 +158,15 @@ div.filterboxwrapper{
     display:block;
     float:left;
     width:20%;
-    margin:20px 10px 0px 5%;
+    margin:5px 0px 0px 5%;
     border:0px dashed orange;
 }
 
 div.statscn{
     display:block;
     float:left;
-    width:69%;
-    margin:20px 1% 0px 0%;
+    width:90%;
+    margin:20px 5% 0px 5%;
     padding:10px;
     z-index:1;
     border:1px solid #ddd;
@@ -233,7 +178,7 @@ div.searchresultscn{
     display:block;
     float:left;
     width:69%;
-    margin:5px 1% 500px 0%;
+    margin:5px 1% 500px 10px;
     font-family: 'Montserrat', sans-serif; 
     z-index:1;
     border:0px dashed orange;
@@ -395,6 +340,7 @@ span.faqquestionid{
 
 .dgcell{
     white-space: break-spaces;
+    min-height:25px;
 }
 
 .dgcellold{
