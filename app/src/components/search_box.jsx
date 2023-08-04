@@ -7,6 +7,10 @@ class Searchbox extends Component {
   
   render() {
 
+    var  search_examples = "";
+    if ("search_examples" in this.props.initObj){
+        search_examples = this.props.initObj.search_examples;
+    }
     return (
         <div>
             <div className="search_label">Search datasets </div>
@@ -21,6 +25,7 @@ class Searchbox extends Component {
                 <div onClick={this.props.onSearch} className="material-icons search_icon">search</div>
                 </Paper>
             </div>
+            <div className="search_examples">{search_examples}</div>
         </div>
     );
   }

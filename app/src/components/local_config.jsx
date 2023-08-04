@@ -6,6 +6,7 @@ export const apiHash = {
     dataset_search:process.env.REACT_APP_API_URL + "/dataset/search",
     dataset_list:process.env.REACT_APP_API_URL + "/dataset/list",
     dataset_detail:process.env.REACT_APP_API_URL + "/dataset/detail",
+    dataset_download:process.env.REACT_APP_API_URL + "/dataset/download",
     dataset_upload:process.env.REACT_APP_API_URL + "/dataset/upload",
     dataset_submit:process.env.REACT_APP_API_URL + "/dataset/submit",
     dataset_glycan_finder:process.env.REACT_APP_API_URL + "/dataset/glycan_finder",

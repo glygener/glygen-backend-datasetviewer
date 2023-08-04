@@ -146,7 +146,7 @@ class App extends Component {
           />
         </Switch>
       </Router>
-      <Footer />
+      <Footer initObj={this.state.response.record}/>
       </div>
     );
 

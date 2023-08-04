@@ -9,7 +9,7 @@
     display:block;
     float:left;
     width:160px;
-    font-size:25px;
+    font-size:30px;
     border:0px dashed orange;
 }
 
@@ -18,14 +18,24 @@
     display:block;
     float:left;
     font-size:12px;
+    width:90% !important;
     margin:5px 10px 2px 0px;
     border:0px solid red;
 }
 
+.search_examples{
+    display:block;
+    float:left;
+    width:100% !important;
+    margin:0px 0px 0px 0px;
+    font-size:11px;
+}
+
+
 .search_paper_wrapper{
     display:block;
     float:left;
-    width:100%;
+    width:100% !important;
     border:0px solid red;
 }
 

@@ -13,6 +13,11 @@ import { Markup } from 'interweave';
 import $ from "jquery";
 import {sortReleaseList} from "./util";
 
+import download from "downloadjs";
+
+
+
+
 var verInfo = {};
 
 class DatasetPage extends Component {
@@ -66,29 +71,62 @@ class DatasetPage extends Component {
     const svcUrl = LocalConfig.apiHash.dataset_detail;
 
 
-    fetch(svcUrl, requestOptions)
-      .then((res) => res.json())
-      .then(
+    fetch(svcUrl, requestOptions).then((res) => res.json()).then(
         (result) => {
-          var tmpState = this.state;
-          tmpState.response = result;
-          tmpState.isLoaded = true;          
-          if (tmpState.response.status === 0){
-            tmpState.dialog.status = true;
-            tmpState.dialog.msg = tmpState.response.error;
-          }
-          this.setState(tmpState);
-          //console.log("Request:",svcUrl);
-          //console.log("Ajax response:", result);
+            //console.log("Request:",svcUrl);
+            //console.log("Ajax response:", result);
+            var tmpState = this.state;
+            tmpState.response = result;
+            tmpState.isLoaded = true;          
+            if (tmpState.response.status === 0){
+                tmpState.dialog.status = true;
+                tmpState.dialog.msg = tmpState.response.error;
+            }
+            this.setState(tmpState);
+        },
+        (error) => { 
+            this.setState({isLoaded: true,error,});
+        }
+    );
+
+  }
+
+ handleDownload = (e) => {
+    e.preventDefault();
+    var rowList = (this.props.rowList === undefined ? [] : this.props.rowList);
+    var reqObj = {
+      bcoid:this.props.bcoId,
+      rowlist:this.props.rowList,
+      dataversion:this.props.initObj.dataversion
+    };
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reqObj)
+    };
+    const svcUrl = LocalConfig.apiHash.dataset_download;
+    fetch(svcUrl, requestOptions).then((res) => res.json()).then(
+        (result) => {
+            //console.log("Request:",svcUrl);
+            //console.log("DDDDD:", result);
+            if (result.status === 0){
+                var tmpState = this.state; 
+                tmpState.isLoaded = true;
+                tmpState.dialog.status = true;
+                tmpState.dialog.msg = result.error;
+                this.setState(tmpState);
+            }
+            else{
+                var buffer = result.rowlist.join("\n")
+                download(new Blob([buffer]), "matched_records.txt", "text/plain");
+            }
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
+            this.setState({isLoaded: true,error,});
         }
-      );
-  }
+    );   
+
+ }
 
 
   handleTitleClick = (e) => {
@@ -109,7 +147,7 @@ class DatasetPage extends Component {
         for (var j in row){
           var f = (j == 0 ? "id" : row[j]);
           tableCols.push({
-              field:f, headerName:f, minWidth:200, headerClassName:"dgheader",
+              field:f, headerName:f, minWidth:225, headerClassName:"dgheader",
               cellClassName:"dgcell"});
         }
       }
@@ -149,7 +187,7 @@ class DatasetPage extends Component {
       tabHash["resultview"] = {title:"Matched Records", cn:""};
       if (extractObj !== undefined){
         if(extractObj.resultdata.type === "table"){
-          tabHash.resultview.cn = this.getTableView(extractObj.resultdata.data);
+          tabHash.resultview.cn = (<div>{this.getTableView(extractObj.resultdata.data)}</div>);
         }
         else{
           tabHash.resultview.cn = (
@@ -176,15 +214,16 @@ class DatasetPage extends Component {
       cn:(<pre style={{whiteSpace:"pre-wrap"}}>{JSON.stringify(bcoObj, null, 4)}</pre>)
     };
     tabHash["readme"] = {title:"README",cn:(<pre>{readMe}</pre>)};
-    tabHash["downloads"] = {
-          title:"DOWNLOADS",
-          cn:(
-            <ul style={{margin:"20px 0px 100px 20px"}}>
-              <li><Link to={downloadUrl} className="reglink" target="_">
-                Download dataset file</Link></li>
-            </ul>
-          )
+
+
+    var downloadItems = [];
+    if (this.props.rowList.length > 0) {
+        downloadItems.push(<li><Link to={"#"} className="reglink" onClick={this.handleDownload}>Download matched records</Link></li>);
+
     }
+    downloadItems.push(<li><Link to={downloadUrl} className="reglink" target="_">Download dataset file</Link></li>);
+    tabHash["downloads"] = {title:"DOWNLOADS",cn:(<ul style={{margin:"20px 0px 100px 20px"}}>{downloadItems}</ul>)};
+
 
     var tabTitleList= [];
     var tabContentList = [];

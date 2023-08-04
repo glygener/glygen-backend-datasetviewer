@@ -57,11 +57,14 @@ class DatasetList extends Component {
       body: JSON.stringify(reqObj)
     };
     const svcUrl = LocalConfig.apiHash.dataset_list;
+    console.log("API:", svcUrl);
+    console.log("REQ:", reqObj);
 
     fetch(svcUrl, requestOptions)
       .then((res) => res.json())
       .then(
         (result) => {
+          console.log("RES:", result);
           var tmpState = this.state;
           tmpState.isLoaded = true;          
           if (result.status === 0){
@@ -72,8 +75,6 @@ class DatasetList extends Component {
           tmpState.statobj = result.stats;
           tmpState.searchquery = result.searchquery;
           this.setState(tmpState);
-          //console.log("Request:",svcUrl);
-          console.log("Ajax response:", result);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -124,6 +125,10 @@ class DatasetList extends Component {
         if (this.state.isLoaded === false){
             return <Loadingicon/>
         }
+        if (this.state.dialog.status === true){
+            return (<div><Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/></div>);
+        }
+        
 
         var filObjOne = filterObjectList(this.state.objlist, this.state.filterlist);
         var passedObjList = filObjOne.passedobjlist;
@@ -133,7 +138,6 @@ class DatasetList extends Component {
         var filObjTwo = filterObjectList(passedObjList, []);
         var filterInfo = filObjTwo.filterinfo;
 
-
         var batchSize = 20;
         var pageCount = parseInt(passedObjList.length/batchSize) + 1;
         pageCount = (this.state.objlist.length > 0 ? pageCount : 0);
@@ -141,7 +145,6 @@ class DatasetList extends Component {
         var startIdx = batchSize * (parseInt(this.state.pageIdx) - 1) + 1;
         var endIdx = startIdx + batchSize;
         endIdx = (endIdx > passedCount ? passedCount : endIdx);
-
 
         var tmpList = [];
         for (var i in this.state.filterlist){
@@ -176,11 +179,10 @@ class DatasetList extends Component {
 
         return (
             <div>
-                <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
                 <div className="searchboxwrapper">
                     <div style={{display:"block", textAlign:"center"}}>
                         Search results for `{this.state.searchquery}`,<br/>
-                        <a href="/"> click here </a> to search again.
+                        <a href="/">Click Here</a> to Reset Search
                     </div>
                 </div>
                

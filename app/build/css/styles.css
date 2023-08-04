@@ -22,7 +22,7 @@ html, body{
 .globalheader_logo {
     display:block;
     float:left;
-    font-size:30px;
+    font-size:35px !important;
     border:0px dashed orange;
 }
 
@@ -62,33 +62,28 @@ html, body{
     display:block;
     float:left;
     font-size:18px;
-    margin:5px 10px 10px 10px;
+    width:11% !important;
+    margin:5px 0px 10px 10px;
     border:0px solid red;
 }
 
-.search_target{
-    display:block;
-    float:left;
-    width:80%;
-    margin:5px 0px 10px 0%;
-    border:0px solid red;
-}
-
-.search_options{
-    display:block;
-    float:left;
-    width:15%;
-    margin:0px 10px 0px 0px;
-    height:35px;
-    border:0px solid #eee;
-}
 
 .search_paper_wrapper{
     display:block;
     float:left;
-    width:70%;
+    width:70% !important;
+    border:0px solid red;
 }
 
+.search_examples{
+    display:block;
+    float:left;
+    width:70% !important;
+    margin:0px 0px 0px 0px;
+    font-size:14px;
+    color:#777;
+    border:0px solid red;
+}
 
 .searchbox_paper {
     padding:0px 0px 0px 2px;

@@ -16,48 +16,25 @@ class Header extends Component {
     if (server !== "prd"){
       navbarStyle.backgroundImage = 'url("/imglib/watermark.'+server+'.png")';
     }
-    var urlDict = {
-      "prd":{
-        "portal":"https://glygen.org", 
-        "api":"https://api.glygen.org",
-        "sparql":"https://sparql.glygen.org"
-      },
-      "beta":{
-        "portal":"https://beta.glygen.org",
-        "api":"https://beta-api.glygen.org",
-        "sparql":"https://beta-sparql.glygen.org"
-      },
-      "tst":{
-        "portal":"https://tst.glygen.org",
-        "api":"https://api.tst.glygen.org",
-        "sparql":"https://sparql.tst.glygen.org"
-      },
-      "dev":{
-        "portal":"https://dev.glygen.org",
-        "api":"https://api.dev.glygen.org",
-        "sparql":"https://sparql.dev.glygen.org"
-      }
-    }
+    var moduleUrlDict = this.props.initObj.module_urls;
 
     console.log("headerlinks", this.props.initObj);
     var pageId = window.location.href.split("/")[3];
     pageId = (pageId.trim() === "" ? "home" : pageId);
-    var sOne = {color:"#ccc", margin:"0 10px 0px 0px"};
-    var sTwo = {color:"#fff", margin:"0 10px 0px 0px"};
+    var sOne = {color:"#ccc", margin:"0 20px 0px 0px"};
+    var sTwo = {color:"#fff", margin:"0 20px 0px 0px"};
     var headerLinks = [];
     for (var i in this.props.initObj.headerlinks){
       var obj = this.props.initObj.headerlinks[i];  
       var s = (obj.id === pageId ? sOne : sTwo);
       if (["api", "portal", "sparql"].indexOf(obj.id) !== -1){
-          obj.url = urlDict[server][obj.id]
+          obj.url = moduleUrlDict[server][obj.id];
           //alert(obj.id + ':' + obj.url);
       }
       headerLinks.push(<Nav.Link id={"link_" +obj.id} key={"link_" +obj.id} href={obj.url} style={{fontWeight:"bold"}} style={s}>{obj.label}</Nav.Link>)
     }
     
-    //var urlDict = {};
-
-    var logoUrl = urlDict[server]["portal"];
+    var logoUrl = moduleUrlDict[server]["portal"];
 
     return (
       <Navbar className="globalheader"  variant="dark" expand="lg" 
@@ -65,12 +42,11 @@ class Header extends Component {
         >
         <Container fluid>
           <Navbar.Brand href={logoUrl} className="globalheader_logo">
-             <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-glygen.svg'} 
-            style={{width:"100%"}} />
+             ArgosDB
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" navbarScroll style={{fontSize:"20px"}}>
+            <Nav className="me-auto my-2 my-lg-0" navbarScroll style={{fontSize:"22px", margin:"0px 0px 0px 30px"}}>
               {headerLinks}
               <NavDropdown title="About" id="navbarScrollingDropdown"
                 style={{display:"none"}}

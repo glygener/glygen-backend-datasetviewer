@@ -108,6 +108,7 @@ class DatasetSearch extends Component {
             tmpState.dialog.msg = result.error;
           }
           else{
+            //alert("/results/" + result.list_id);
             window.location.href = "/results/" + result.list_id;
           }
           this.setState(tmpState);
