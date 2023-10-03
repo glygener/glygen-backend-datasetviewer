@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import Navbar from 'navbar-react'
 //import { Container} from 'react-containers';
 import { Form, FormControl, Container, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Markup } from 'interweave';
 
 
 class Header extends Component {
@@ -42,7 +43,7 @@ class Header extends Component {
         >
         <Container fluid>
           <Navbar.Brand href={logoUrl} className="globalheader_logo">
-             ArgosDB
+            <Markup content={this.props.initObj.logo}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

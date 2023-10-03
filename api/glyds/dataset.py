@@ -22,6 +22,15 @@ dataset_getall_query_model = api.model(
     }
 )
 
+download_query_model = api.model(
+    "List Download Query",
+    {
+        "id": fields.String(required=True, default=""),
+        "format": fields.String(required=True, default="csv")
+    }
+)
+
+
 dataset_search_query_model = api.model(
     'Dataset Search Query',
     {
@@ -123,6 +132,12 @@ class DatasetGetAll(Resource):
         r_one = get_many({"coll":"c_extract", "query":""})
         if "error" in r_one:
             return r_one
+        
+        for obj in r_one["recordlist"]:
+            if "categories" in obj:
+                if "tag" in obj["categories"]:
+                    obj["categories"].pop("tag")
+
         res_obj["recordlist"] = r_one["recordlist"]
         n = len(res_obj["recordlist"])
         res_obj["stats"] = {"total":n, "retrieved":n}
@@ -600,5 +615,43 @@ class Dataset(Resource):
                 res_obj["mappingrows"].append([links, img])
 
         return res_obj
+
+
+
+
+
+@api.route('/download/')
+class Data(Resource):
+    @api.expect(download_query_model)
+    def post(self):
+        SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+        json_url = os.path.join(SITE_ROOT, "conf/config.json")
+        config_obj = json.load(open(json_url))
+        res_obj = {}
+        req_obj = request.json
+        req_obj["coll"] = "c_extract"
+        extract_obj = get_one(req_obj)
+        if "error" in extract_obj:
+            return extract_obj
+        header_row = []
+        for obj in extract_obj["record"]["sampledata"]["data"][0]:
+            header_row.append(obj["label"])
+
+        res = get_many_text_search({"coll":"c_records", "query":req_obj["bcoid"]})
+        if "error" in res:
+            return res
+        row_list = [header_row]
+        for obj in res["recordlist"]:
+            row_idx = int(obj["recordid"].split("_")[-1])
+            row = json.loads(obj["row"])
+            if row_idx in  req_obj["rowlist"]:
+                row_list.append(row)
+        res_obj = {"status":1, "rowlist":row_list}
+        
+        return res_obj
+
+    @api.doc(False)
+    def get(self):
+        return self.post()
 
 

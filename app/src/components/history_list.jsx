@@ -148,10 +148,6 @@ class HistoryList extends Component {
         </div>
 
 
-        <div className="leftblock" style={{width:"40%", margin:"40px 0px 0px 10px"}}>
-        <Searchbox label={"Search by BCOID or dataset file name."} onSearch={this.handleSearch} onKeyPress={this.handleKeyPress}/>
-        </div>
-
 
         <div className="leftblock" style={{width:"100%", margin:"0px 0px 0px 0px"}}>
             <Chart 

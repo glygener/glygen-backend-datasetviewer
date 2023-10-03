@@ -1,7 +1,7 @@
 prj="glyds"
-#srv="prd"
+srv="prd"
 #srv="beta"
-srv="tst"
+#srv="tst"
 
 sudo systemctl stop docker-$prj-app-$srv.service
 python3 create_app_container.py -s $srv

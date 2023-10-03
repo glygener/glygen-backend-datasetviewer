@@ -1,7 +1,7 @@
 prj="glyds"
-#srv="prd"
+srv="prd"
 #srv="beta"
-srv="tst"
+#srv="tst"
 
 
 sudo systemctl stop docker-$prj-api-$srv.service

@@ -2,6 +2,8 @@
     http POST :8081/dataset/getall
     http POST :8081/dataset/search < tests/queries/dataset_search.json
     http POST :8081/dataset/list < tests/queries/dataset_list.json
+    http POST :8081/dataset/download/ < tests/queries/dataset_download.json
+
 
     http POST :8081/dataset/detail < tests/queries/dataset_detail.json
     http POST :8081/dataset/historylist < tests/queries/dataset_historylist.json

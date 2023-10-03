@@ -24,6 +24,7 @@ class DatasetPage extends Component {
   
   state = {
     ver:"",
+    bco:{},
     tabidx: this.props.rowList.length > 0 ? "resultview" : "contentview",
     dialog:{
       status:false, 
@@ -77,6 +78,7 @@ class DatasetPage extends Component {
             //console.log("Ajax response:", result);
             var tmpState = this.state;
             tmpState.response = result;
+            tmpState.bco = result.record.bco;
             tmpState.isLoaded = true;          
             if (tmpState.response.status === 0){
                 tmpState.dialog.status = true;
@@ -91,7 +93,13 @@ class DatasetPage extends Component {
 
   }
 
- handleDownload = (e) => {
+ handleDownloadBco = (e) => {
+    e.preventDefault();
+    var buffer = JSON.stringify(this.state.bco, null, 2);
+    download(new Blob([buffer]), this.props.bcoId + ".json", "text/plain");
+ }
+
+ handleDownloadMatchedRecords = (e) => {
     e.preventDefault();
     var rowList = (this.props.rowList === undefined ? [] : this.props.rowList);
     var reqObj = {
@@ -117,8 +125,12 @@ class DatasetPage extends Component {
                 this.setState(tmpState);
             }
             else{
-                var buffer = result.rowlist.join("\n")
-                download(new Blob([buffer]), "matched_records.txt", "text/plain");
+                var buffer = "";
+                for (var i in result.rowlist){
+                    var row = result.rowlist[i];
+                    buffer += row.join("\t") + "\n";
+                }
+                download(new Blob([buffer]), "matched_records.tsv", "text/plain");
             }
         },
         (error) => {
@@ -180,7 +192,11 @@ class DatasetPage extends Component {
     var readMe = (extractObj !== undefined ? extractObj.readme : undefined); 
     var downloadUrl = (extractObj !== undefined ? extractObj.downloadurl : undefined);
     var bcoTitle = (extractObj !== undefined ? extractObj.title : undefined);
-    var bcoDescription = (extractObj !== undefined ? extractObj.description : undefined);
+    //var bcoDescription = (extractObj !== undefined ? extractObj.description : undefined);
+    var bcoDescription = "";
+    if (bcoObj !== undefined){
+        bcoDescription = bcoObj["usability_domain"].join(" ");
+    }
 
     var tabHash = {};
     if (this.props.rowList.length > 0){
@@ -217,8 +233,9 @@ class DatasetPage extends Component {
 
 
     var downloadItems = [];
+    downloadItems.push(<li><Link to={"#"} className="reglink" onClick={this.handleDownloadBco}>Download BCO</Link></li>);
     if (this.props.rowList.length > 0) {
-        downloadItems.push(<li><Link to={"#"} className="reglink" onClick={this.handleDownload}>Download matched records</Link></li>);
+        downloadItems.push(<li><Link to={"#"} className="reglink" onClick={this.handleDownloadMatchedRecords}>Download matched records</Link></li>);
 
     }
     downloadItems.push(<li><Link to={downloadUrl} className="reglink" target="_">Download dataset file</Link></li>);

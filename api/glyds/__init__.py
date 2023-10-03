@@ -13,6 +13,8 @@ from .dataset import api as dataset_api
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
+    app.url_map.strict_slashes = False
+
     #CORS(app, supports_credentials=True)
     CORS(app)
 

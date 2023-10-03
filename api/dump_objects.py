@@ -60,7 +60,9 @@ def main():
         #q = {"row":{"$regex":"kinase", "$options":"i"}}
         #q = {"$and": [ {"$or": [{ "row": {"$options": "i","$regex": "kinase"}}]}]}
         #q = { "$text": { "$search": "\"sarscov2_protein_signalp_annotation\"" } }
-        #n = dbh[coll].count_documents(q)
+        n = dbh[coll].count_documents(q)
+        print (n)
+        exit()
         #for doc in dbh[coll].find(q).skip(1).limit(100):
         for doc in dbh[coll].find(q):
             if "_id" in doc:

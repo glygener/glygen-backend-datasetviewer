@@ -53,9 +53,16 @@ def main():
     jsondb_dir = rel_dir + "/v-%s/jsondb/" % (ver)
     
 
+    #DEBUG = True
+    DEBUG = False
+    recordsdb_pattern = "*"
+    if DEBUG:
+        recordsdb_pattern = "GLY_000817"
+
+
     coll_list = []
     if options.coll != None:
-        coll_list = [options.coll]
+        coll_list = options.coll.split(",")
     else:
         for d in config_obj["downloads"]["jsondb"]:
             coll = "c_" + d[:-2]
@@ -77,14 +84,15 @@ def main():
         client.server_info()
         dbh = client[db_name]
         for coll in coll_list:
-            log_file = "logs/%s_loading_progress.txt" % (coll)
+            log_file = "logs/%s_loading_progress_%s.txt" % (coll, server)
             msg = "\n ... started loading %s " % (coll)
             write_progress_msg(msg, "w")
 
             db = "%sdb" % (coll[2:])
             subdir_list = [jsondb_dir + "/"  + db]
             if coll == "c_records":
-                subdir_list = sorted(glob.glob(jsondb_dir + "/" + db + "/*"))
+                subdir_list = sorted(glob.glob(jsondb_dir + "/" + db + "/" + recordsdb_pattern))
+
 
             if coll in ["c_extract", "c_bco", "c_history"]:
                 coll = "%s_v-%s" % (coll, ver)

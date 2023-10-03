@@ -142,8 +142,8 @@ html, body{
 div.searchboxwrapper{
     display:block;
     float:left;
-    width:90%;
-    margin:20px 5% 20px 5%;
+    width:98%;
+    margin:20px 1% 20px 1%;
     padding:20px 10px 20px 10px;
     border:1px solid #ccc;
     border-radius:5px;
@@ -153,15 +153,15 @@ div.filterboxwrapper{
     display:block;
     float:left;
     width:20%;
-    margin:5px 0px 0px 5%;
+    margin:5px 0px 0px 1%;
     border:0px dashed orange;
 }
 
 div.statscn{
     display:block;
     float:left;
-    width:90%;
-    margin:20px 5% 0px 5%;
+    width:98%;
+    margin:20px 1% 0px 1%;
     padding:10px;
     z-index:1;
     border:1px solid #ddd;
@@ -172,7 +172,7 @@ div.statscn{
 div.searchresultscn{
     display:block;
     float:left;
-    width:69%;
+    width:77%;
     margin:5px 1% 500px 10px;
     font-family: 'Montserrat', sans-serif; 
     z-index:1;
@@ -182,8 +182,8 @@ div.searchresultscn{
 div.pagecn{
     display:block;
     float:left;
-    width:90%;
-    margin:20px 5% 500px 5%;
+    width:98%;
+    margin:20px 1% 500px 1%;
     font-family: 'Montserrat', sans-serif;
     z-index:1;
     border:0px dashed orange;
