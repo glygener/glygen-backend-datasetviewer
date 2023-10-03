@@ -76,7 +76,7 @@ You can load data from the most recent release you have downloaded using
 the following command:
   ```
   cd api
-  python3 load_current_release.py -s $SER -v $VER -m full
+  python3 load_current_release.py -s $SER -v $VER 
   ```
 
 To load data from downloaded legacy releases:
