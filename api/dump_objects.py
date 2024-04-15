@@ -19,13 +19,14 @@ def main():
 
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-p","--project",action="store",dest="project",help="glyds/arogsdb/airmd")
     parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     parser.add_option("-v","--dataversion",action="store",dest="dataversion",help="2.0.2")
     parser.add_option("-c","--coll",action="store",dest="coll",help="collection")
 
     (options,args) = parser.parse_args()
 
-    for key in ([options.dataversion,options.coll, options.server]):
+    for key in ([options.project,options.dataversion,options.coll, options.server]):
         if not (key):
             parser.print_help()
             sys.exit(0)
@@ -33,12 +34,13 @@ def main():
     ver = options.dataversion
     coll = options.coll
     server = options.server
+    project = options.project
 
     if coll in ["c_extract", "c_bco", "c_history"]:
         coll = "%s_v-%s" % (coll, ver)
             
-
-    config_obj = json.loads(open("./conf/config.json", "r").read())
+    config_file = "conf/config_%s.json" % (project) 
+    config_obj = json.loads(open(config_file, "r").read())
     mongo_port = config_obj["dbinfo"]["port"][server]
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
     #host = "mongodb://localhost:%s" % (mongo_port)
@@ -60,9 +62,7 @@ def main():
         #q = {"row":{"$regex":"kinase", "$options":"i"}}
         #q = {"$and": [ {"$or": [{ "row": {"$options": "i","$regex": "kinase"}}]}]}
         #q = { "$text": { "$search": "\"sarscov2_protein_signalp_annotation\"" } }
-        n = dbh[coll].count_documents(q)
-        print (n)
-        exit()
+        #n = dbh[coll].count_documents(q)
         #for doc in dbh[coll].find(q).skip(1).limit(100):
         for doc in dbh[coll].find(q):
             if "_id" in doc:

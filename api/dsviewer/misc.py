@@ -3,7 +3,7 @@ import json
 import traceback
 import csv
 from flask import (Blueprint,request,jsonify,current_app)
-from glyds.db import get_mongodb, log_error, next_sequence_value
+from dsviewer.db import get_mongodb, log_error, next_sequence_value
 from flask_restx import Resource, Api
 from werkzeug.utils import secure_filename
 

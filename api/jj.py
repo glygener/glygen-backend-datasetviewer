@@ -48,48 +48,55 @@ def main():
     mongo_port = config_obj["dbinfo"]["port"][server]
     
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
-    #rel_dir = config_obj["data_path"] + "/releases/data/"
-    rel_dir = "/data/shared/glygen/releases/data/"
+    
+    #rel_dir = "/data/shared/glygen/releases/data/"
+    rel_dir = config_obj["data_path"] + "/releases/data/"
     jsondb_dir = rel_dir + "/v-%s/jsondb/" % (ver)
     
 
+    #DEBUG = True
+    DEBUG = False
+    recordsdb_pattern = "*"
+    if DEBUG:
+        recordsdb_pattern = "GLY_000817"
+
+
     coll_list = []
     if options.coll != None:
-        coll_list = [options.coll]
+        coll_list = options.coll.split(",")
     else:
         for d in config_obj["downloads"]["jsondb"]:
             coll = "c_" + d[:-2]
             coll_list.append("c_" + d[:-2])
 
 
+    db_name = config_obj["dbinfo"]["dbname"]
+    db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
 
-    glydb_user, glydb_pass = config_obj["dbinfo"]["glydb"]["user"], config_obj["dbinfo"]["glydb"]["password"]
-    glydb_db =  config_obj["dbinfo"]["glydb"]["db"]
 
     try:
         client = pymongo.MongoClient(host,
-            username=glydb_user,
-            password=glydb_pass,
-            authSource=glydb_db,
+            username=db_user,
+            password=db_pass,
+            authSource=db_name,
             authMechanism='SCRAM-SHA-1',
             serverSelectionTimeoutMS=10000
         )
         client.server_info()
-        dbh = client[glydb_db]
+        dbh = client[db_name]
         for coll in coll_list:
-            log_file = "logs/%s_loading_progress.txt" % (coll)
+            log_file = "logs/%s_loading_progress_%s.txt" % (coll, server)
             msg = "\n ... started loading %s " % (coll)
             write_progress_msg(msg, "w")
 
             db = "%sdb" % (coll[2:])
-            subdir_list = open("junk", "r").read().split("\n")
-            for subdir in subdir_list:
-                if subdir == "":
-                    continue
-                s_d = subdir.split("/")[-1] 
-                q = {"recordid":{"$regex":s_d, "$options":"i"}}
-                r = dbh[coll].delete_many(q)
+            subdir_list = sorted(glob.glob(jsondb_dir + "/" + db + "/" + recordsdb_pattern))
+            subdir_list = json.loads(open("junk.json", "r").read())
 
+ 
+            res = dbh[coll].drop()
+            for subdir in subdir_list:
+                s_d = subdir.split("/")[-1] 
                 file_list = glob.glob(subdir + "/*.json")
                 nrecords, ntotal = 0, len(file_list)
                 for in_file in sorted(file_list):
@@ -99,8 +106,6 @@ def main():
                     if "object_id" in doc:
                         bco_id = doc["object_id"].split("/")[-2]
                         doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
-                    if coll == "c_init":
-                        doc["search_options"] = config_obj["search_options"]
                     if coll == "c_records":
                         bco_id = in_file.split("/")[-2]
                         doc["bcoid"] = bco_id
@@ -115,10 +120,9 @@ def main():
                 msg = " ... finished loading %s/%s documents to %s (from %s)" % (nrecords, ntotal,coll, s_d)
                 write_progress_msg(msg, "a")
                 ts = datetime.datetime.now()
-            
-            #for c in ["c_records", "c_bco"]:
-            #    if coll.find(c) != -1:
-            #        res = dbh[coll].create_index([("$**", pymongo.TEXT)])
+            for c in ["c_records", "c_bco"]:
+                if coll.find(c) != -1:
+                    res = dbh[coll].create_index([("$**", pymongo.TEXT)])
 
     except pymongo.errors.ServerSelectionTimeoutError as err:
         print (err)

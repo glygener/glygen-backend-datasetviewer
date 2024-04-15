@@ -4,7 +4,7 @@ import json
 import glob
 import traceback
 from flask import current_app
-from glyds.db import log_error
+from dsviewer.db import log_error
 from Bio import SeqIO
 
 ac2canon = {}

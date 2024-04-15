@@ -21,11 +21,7 @@ def get_mongodb():
         conn_str, db_name, ser = "", "", ""
         ser = current_app.config["SERVER"] if "SERVER" in current_app.config else ser
         ser = os.environ["SERVER"] if "SERVER" in os.environ else ser
-        if ser == "dev":
-            conn_str =  current_app.config["MONGODB_CONNSTRING"]
-            db_name = current_app.config["DB_NAME"]
-        else:
-            conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
+        conn_str, db_name = os.environ['MONGODB_CONNSTRING'], os.environ['DB_NAME']
 
         client = pymongo.MongoClient(conn_str)
         client.server_info()

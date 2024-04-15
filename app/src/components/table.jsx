@@ -11,6 +11,7 @@ export default function Tableview(props) {
       height: 1000, width: '100%',  background:"#fff"
   };
 
+  console.log("rows-2",props.rows);
   return (
     <Box sx={boxStyle}>
       <DataGrid

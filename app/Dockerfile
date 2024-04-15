@@ -8,6 +8,8 @@ RUN ln -s /data/shared/glyds /usr/share/nginx/html/ln2data
 
 RUN ln -s /data/shared/glyds/releases /usr/share/nginx/html/ln2releases
 
+RUN ln -s /data/shared/glyds/releases/data/current /usr/share/nginx/html/ln2wwwdata
+
 RUN ln -s /data/shared/glyds/downloads /usr/share/nginx/html/ln2downloads
 
 RUN ln -s /data/shared/glyds/releases/ftp /usr/share/nginx/html/ftp

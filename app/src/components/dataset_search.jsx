@@ -31,7 +31,17 @@ class DatasetSearch extends Component {
   };
 
   componentDidMount() {
-  
+ 
+    const queryParameters = new URLSearchParams(window.location.search);
+    const searchquery = queryParameters.get("query");
+    if (searchquery !== null){
+        var tmpState = this.state;
+        tmpState.searchquery = searchquery;
+        this.setState(tmpState);
+        this.handleSearch();
+        return;
+    }
+ 
     var reqObj = {}
     const requestOptions = { 
       method: 'POST',

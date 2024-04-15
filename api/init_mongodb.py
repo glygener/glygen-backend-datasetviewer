@@ -16,20 +16,25 @@ __status__ = "Dev"
 ###############################
 def main():
 
+    
+    
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-p","--project",action="store",dest="project",help="glyds/argosdb/airmd")
     parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     (options,args) = parser.parse_args()
 
-    for key in ([options.server]):
+    for key in ([options.project, options.server]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
     server = options.server
+    project = options.project
 
+    config_file = "conf/config_%s.json" % (project)
+    config_obj = json.loads(open(config_file, "r").read())
 
-    config_obj = json.loads(open("./conf/config.json", "r").read())
     mongo_port = config_obj["dbinfo"]["port"][server]
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
     

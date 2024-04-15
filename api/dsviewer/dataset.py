@@ -1,16 +1,16 @@
 import os,sys
 from flask_restx import Namespace, Resource, fields
-from flask import (request, current_app)
-from glyds.document import get_one, get_many, get_many_text_search, get_ver_list, order_json_obj
+from flask import (request, current_app, Response)
+from dsviewer.document import get_one, get_many, get_many_text_search, get_ver_list, order_json_obj
 from werkzeug.utils import secure_filename
-from glyds.qc import run_qc
+from dsviewer.qc import run_qc
 import datetime
 import time
 import subprocess
 import json
 import pytz
 import hashlib
-from glyds.db import get_mongodb
+from dsviewer.db import get_mongodb
 
 
 
@@ -21,15 +21,6 @@ dataset_getall_query_model = api.model(
     {
     }
 )
-
-download_query_model = api.model(
-    "List Download Query",
-    {
-        "id": fields.String(required=True, default=""),
-        "format": fields.String(required=True, default="csv")
-    }
-)
-
 
 dataset_search_query_model = api.model(
     'Dataset Search Query',
@@ -52,43 +43,24 @@ dataset_list_query_model = api.model(
 dataset_historylist_query_model = api.model(
     'Dataset History List Query',
     {
-        'query': fields.String(required=True, default="", description='Query string')
+        'doctype': fields.String(required=True, default="track", description='e.g track or pair'),
+        'dataversion': fields.String(required=True, default="2.3.1", description='data version'),
+        'query': fields.String(required=True, default="masterlist", description='Query string')
     }
 )
+
 
 dataset_detail_query_model = api.model(
     'Dataset Detail Query',
     {
-        'bcoid': fields.String(required=True, default="GLY_000001", description='BCO ID'),
-        'dataversion': fields.String(required=False, default="1.12.1", description='Dataset Release [e.g: 1.12.1]'),
+        'doctype': fields.String(required=True, default="track", description='e.g track or pair'),
+        'dataversion': fields.String(required=True, default="2.3.1", description='data version'),
+        'bcoid': fields.String(required=True, default="GLY_000001", description='BCO ID')
     }
 )
 
-dataset_upload_query_model = api.model(
-    'Dataset Upload Query',
-    {
-        "format":fields.String(required=True, default="", description='File Format [csv/tsv]'),
-        "qctype":fields.String(required=True, default="", description='QC Type [basic/single_glyco_site]'),
-        "dataversion":fields.String(required=True, default="", description='Data Release [e.g: 1.12.1]')
-    }
-)
 
-dataset_submit_query_model = api.model(
-    'Dataset Submit Query',
-    {
-        'fname': fields.String(required=True, default="", description='First name'),
-        'lname': fields.String(required=True, default="", description='Last name'),
-        'email': fields.String(required=True, default="", description='Email address'),
-        'affilation': fields.String(required=True, default="", description='Affilation')
-    }
-)
 
-glycan_finder_query_model = api.model(
-    'Glycan Finder Query',
-    {
-        'filename': fields.String(required=True, default="", description='File name')
-    }
-)
 
 dataset_historydetail_query_model = api.model(
     'Dataset History Detail Query',
@@ -107,6 +79,14 @@ pagecn_query_model = api.model(
 init_query_model = api.model(
     'Init Query',
     {
+    }
+)
+
+download_query_model = api.model(
+    "List Download Query",
+    {
+        "id": fields.String(required=True, default=""),
+        "format": fields.String(required=True, default="csv")
     }
 )
 
@@ -137,7 +117,7 @@ class DatasetGetAll(Resource):
             if "categories" in obj:
                 if "tag" in obj["categories"]:
                     obj["categories"].pop("tag")
-
+        
         res_obj["recordlist"] = r_one["recordlist"]
         n = len(res_obj["recordlist"])
         res_obj["stats"] = {"total":n, "retrieved":n}
@@ -241,9 +221,10 @@ class DatasetSearch(Resource):
             cache_obj = { "list_id":list_id, "cache_info":cache_info, "results":res_obj}
             cache_coll = "c_cache"
             res = mongo_dbh[cache_coll].insert_one(cache_obj)
-
+            res_obj = {"list_id":list_id}
+        else:
+            res_obj = {"status":0, "error":"no results found"}
     
-        res_obj = {"list_id":list_id}
         return res_obj
 
 
@@ -289,16 +270,24 @@ class DatasetDetail(Resource):
         extract_obj = get_one(req_obj)
         if "error" in extract_obj:
             return extract_obj
-       
-        res = get_many_text_search({"coll":"c_records", "query":req_obj["bcoid"]})
+      
 
+        res = get_many_text_search({"coll":"c_records", "query":req_obj["bcoid"]})
+        
         row_list_one, row_list_two = [], []
-        limit_one, limit_two = 1000, 1000
+        limit_one, limit_two = 10000, 10000
         row_count_one, row_count_two = 0, 0
         req_obj["rowlist"] = [] if "rowlist" not in req_obj else req_obj["rowlist"]
 
+        tmp_list = []
         for obj in res["recordlist"]:
+            bco_id = obj["recordid"].split("_")[0] + "_" + obj["recordid"].split("_")[1]
+            if bco_id != req_obj["bcoid"]:
+                continue
+            tmp_list.append(bco_id)
             row_idx = int(obj["recordid"].split("_")[-1])
+            obj["row"] = obj["row"].replace("\\t", "\", \"")
+            obj["row"] = obj["row"].replace("\t", "\", \"")
             row = json.loads(obj["row"])
             if row_idx in  req_obj["rowlist"] and row_count_one < limit_one:
                 row_list_one.append(row)
@@ -308,7 +297,6 @@ class DatasetDetail(Resource):
                 row_count_two += 1
             if row_count_one > limit_one and row_count_two > limit_two:
                 break
-
 
 
         if extract_obj["record"]["sampledata"]["type"] == "table":
@@ -321,7 +309,7 @@ class DatasetDetail(Resource):
             extract_obj["record"]["alldata"]["data"].append(header_row)
             extract_obj["record"]["resultdata"]["data"] += row_list_one
             extract_obj["record"]["alldata"]["data"] += row_list_two
-        elif extract_obj["record"]["filetype"] in ["gz"]:
+        elif extract_obj["record"]["filetype"] in ["gz", "zip"]:
             extract_obj["record"]["alldata"] = {"type":"html", "data":"<pre>"}
             extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
             r_list_one, r_list_two = [], []
@@ -336,9 +324,9 @@ class DatasetDetail(Resource):
             extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
             r_list_one, r_list_two = [], []
             for row in row_list_one:
-                r_list_one.append("\n>"+row[-1]+"\n"+row[0])
+                r_list_one.append("\n>"+row[0]+"\n"+row[1])
             for row in row_list_two:
-                r_list_two.append("\n>"+row[-1]+"\n"+row[0])
+                r_list_two.append("\n>"+row[0]+"\n"+row[1])
             extract_obj["record"]["resultdata"]["data"] = "\n".join(r_list_one)
             extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
         elif extract_obj["record"]["sampledata"]["type"] in ["text"]:
@@ -353,6 +341,7 @@ class DatasetDetail(Resource):
             extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
 
         extract_obj["record"].pop("sampledata")
+
 
 
         req_obj["coll"] = "c_history"
@@ -493,130 +482,10 @@ class Dataset(Resource):
     @api.expect(init_query_model)
     def post(self):
         '''Get init '''
-        #req_obj = request.json
-        req_obj = {}
+        req_obj = request.json
         req_obj["coll"] = "c_init"
         res_obj = get_one(req_obj)
         return res_obj
-
-
-
-@api.route('/upload', methods=['GET', 'POST'])
-class DatasetUpload(Resource):
-    '''Upload dataset item'''
-    @api.doc('upload_dataset')
-    @api.expect(dataset_upload_query_model)
-    #@api.marshal_with(ds_model)
-    def post(self):
-        '''Upload dataset'''
-        res_obj = {}
-        req_obj = request.form
-        error_obj = {}
-        if request.method != 'POST':
-            error_obj = {"error":"only POST requests are accepted"}
-        elif 'userfile' not in request.files and 'file' not in request.files:
-            error_obj = {"error":"no file parameter given"}
-        else:
-            file = request.files['userfile'] if "userfile" in request.files else request.files['file']
-            file_format = req_obj["format"]
-            qc_type = req_obj["qctype"]
-            data_version = req_obj["dataversion"]
-            file_data = []
-            if file.filename == '':
-                error_obj = {"error":"no filename given"}
-            else:
-                file_name = secure_filename(file.filename)
-                data_path, ser = os.environ["DATA_PATH"], os.environ["SERVER"]
-                out_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, file_name)
-                file.save(out_file)
-                res_obj = {
-                    "inputinfo":{"name":file_name, "format":file_format}, 
-                    "summary":{"fatal_qc_flags":0, "total_qc_flags":0},
-                    "failedrows":[]
-                }
-
-                error_obj = run_qc(out_file, file_format, res_obj, qc_type, data_version)
-        res_obj = error_obj if error_obj != {} else res_obj
-        return res_obj
-
-
-@api.route('/submit')
-class Dataset(Resource):
-    '''Submit dataset '''
-    @api.doc('get_dataset')
-    @api.expect(dataset_submit_query_model)
-    def post(self):
-        '''Submit dataset '''
-        req_obj = request.json
-        data_path, ser = os.environ["DATA_PATH"], os.environ["SERVER"]
-        src_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, req_obj["filename"])
-        dst_dir = "%s/userdata/%s/%s" % (data_path, ser, req_obj["affilation"])
-        if os.path.isfile(src_file) == False:
-            res_obj = {"error":"submitted filename does not exist!", "status":0}
-        else:
-            if os.path.isdir(dst_dir) == False:
-                dst_dir = "%s/userdata/%s/%s" % (data_path, ser, "other")
-            today = datetime.datetime.today()
-            yy, mm, dd = today.year, today.month, today.day
-            dst_file = "%s/%s_%s_%s_%s" % (dst_dir, mm, dd, yy, req_obj["filename"])
-            json_file = ".".join(dst_file.split(".")[:-1]) + ".json"
-
-            cmd = "cp %s %s" % (src_file, dst_file)
-            x, y = subprocess.getstatusoutput(cmd)
-            if os.path.isfile(dst_file) == False:
-                res_obj = {"error":"save file failed!", "status":0}
-            else:
-                res_obj = {"confirmation":"Dataset file has been submitted successfully!", "status":1}
-                with open(json_file, "w") as FW:
-                    FW.write("%s\n" % (json.dumps(req_obj, indent=4)))
-        return res_obj
-
-
-
-@api.route('/glycan_finder')
-class Dataset(Resource):
-    '''Glycan Finder '''
-    @api.doc('get_dataset')
-    @api.expect(glycan_finder_query_model)
-    def post(self):
-        '''Glyca Finder '''
-        req_obj = request.json
-        data_path, ser = os.environ["DATA_PATH"], os.environ["SERVER"]
-        uploaded_file = "%s/userdata/%s/tmp/%s" % (data_path, ser, req_obj["filename"])
-        
-        output_file = "%s/userdata/%s/tmp/%s_output_%s.txt" % (data_path, ser, req_obj["filename"], os.getpid())
-
-        if os.path.isfile(uploaded_file) == False:
-            res_obj = {"error":"submitted filename does not exist!", "status":0}
-        else:
-            file_format = req_obj["filename"].split(".")[-1]
-            cmd = "sh /hostpipe/glycan_finder.sh %s %s" % (uploaded_file, output_file)
-            glycan_list = []
-            if ser != "dev":
-                glycan_list = subprocess.getoutput(cmd).strip().split(",")
-            else:
-                glycan_list = ["A", "B"]
-                time.sleep(5)
-
-            res_obj = {
-                "inputinfo":{"name":req_obj["filename"], "format":file_format},
-                "mappingrows":[
-                    [
-                        {"type": "string", "label": "GlyToucan Accession"},
-                        {"type": "string", "label": "Glycan Image"}
-                    ]
-                ]
-            }
-            for ac in glycan_list:
-                link_one = "<a href=\"https://glygen.org/glycan/%s\" target=_>%s</a>" % (ac,ac)
-                link_two = "<a href=\"https://gnome.glyomics.org/restrictions/GlyGen.StructureBrowser.html?focus=%s\" target=_>related glycans</a>" % (ac)
-                img = "<img src=\"https://api.glygen.org/glycan/image/%s\">" % (ac)
-                links = "%s (other %s)" % (link_one, link_two)
-                res_obj["mappingrows"].append([links, img])
-
-        return res_obj
-
-
 
 
 
@@ -647,11 +516,33 @@ class Data(Resource):
             if row_idx in  req_obj["rowlist"]:
                 row_list.append(row)
         res_obj = {"status":1, "rowlist":row_list}
+
+        #mime = "text/csv"
+        #if "format" in req_obj:
+        #    if req_obj["format"].lower() == "tsv":
+        #        mime = "text/tsv"
+        #if mime == "text/csv":
+        #    data_buffer = "\"%s\"" % ( "\",\"".join(header_row))
+        #    for row in row_list:
+        #        data_buffer += "\"%s\"" % ( "\",\"".join(row))
+        #else:
+            #data_buffer = "\t".join(header_row)
+            #for row in row_list:
+            #    data_buffer += "\t".join(row)
+        #res_obj = Response(data_buffer, mimetype=mime)
         
         return res_obj
 
     @api.doc(False)
     def get(self):
         return self.post()
+
+
+
+
+
+
+
+
 
 

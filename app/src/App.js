@@ -81,11 +81,13 @@ class App extends Component {
     var app_ver = process.env.REACT_APP_APP_VERSION;
     var data_ver = this.state.response.record.dataversion;
 
+    //<div className="versioncn">APP v-{app_ver} &nbsp; |&nbsp; Data v-{data_ver}</div>
+    
     return (
       <div>
       <Alertdialog dialog={this.state.dialog} onClose={this.handleDialogClose}/>
       <Header onSearch={this.handleSearch} onKeyPress={this.handleKeyPress} initObj={this.state.response.record}/>
-      <div className="versioncn">APP v-{app_ver} &nbsp; |&nbsp; Data v-{data_ver}</div>
+      <div className="versioncn">Release {data_ver}</div>
       <Router>
         <Switch>
         <Route

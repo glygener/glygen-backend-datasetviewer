@@ -30,6 +30,13 @@ export function getColumns(key){
         cellClassName:"dgcell"
       },
       {
+        field: 'title',
+        headerName: 'BCO TITLE',
+        width: 250,
+        headerClassName:"dgheader",
+        cellClassName:"dgcell"
+      },
+      {
         field: 'description',
         headerName: 'DESCRIPTION',
         width: 300,
@@ -40,13 +47,6 @@ export function getColumns(key){
         field: 'filename',
         headerName: 'FILE NAME',
         width: 300, 
-        headerClassName:"dgheader", 
-        cellClassName:"dgcell" 
-      },
-      {
-        field: 'title',
-        headerName: 'BCO TITLE',
-        width: 250, 
         headerClassName:"dgheader", 
         cellClassName:"dgcell" 
       },

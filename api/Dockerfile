@@ -2,7 +2,7 @@ FROM python:3.6.8
 
 WORKDIR /app
 
-ENV FLASK_APP=glyds
+ENV FLASK_APP=dsviewer
 
 ENV FLASK_ENV=production
 
@@ -22,17 +22,17 @@ COPY ./requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-COPY ./dist/glyds-1.0-py3-none-any.whl .
+COPY ./dist/dsviewer-1.0-py3-none-any.whl .
 
-RUN pip3 install glyds-1.0-py3-none-any.whl
+RUN pip3 install dsviewer-1.0-py3-none-any.whl
 
-RUN mkdir -p /data/shared/glyds
+#RUN mkdir -p /data/shared/glyds
 
-RUN mkdir -p /usr/local/var/glyds-instance
+RUN mkdir -p /usr/local/var/dsviewer-instance
 
-COPY ./instance/config.py /usr/local/var/glyds-instance/config.py
+COPY ./instance/config.py /usr/local/var/dsviewer-instance/config.py
 
 COPY . .
 
-ENTRYPOINT FLASK_APP=glyds gunicorn -b :80 'glyds:create_app()'
+ENTRYPOINT FLASK_APP=dsviewer gunicorn -b :80 'dsviewer:create_app()'
 

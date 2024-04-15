@@ -169,9 +169,10 @@ class DatasetPage extends Component {
           var f = (j == 0 ? "id" : tableData[0][j]);
           o[f] = row[j];
         }
-        tableRows.push(o)
+	tableRows.push(o)
       }
     }
+    console.log("rows-1",tableRows);
     return (<Tableview cols={tableCols} rows={tableRows}/>);
   }
 

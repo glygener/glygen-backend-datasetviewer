@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 def main():
 
     setup(
-        name="glyds",
+        name="dsviewer",
         version="1.0",
         packages=find_packages(),
         include_package_data=True,

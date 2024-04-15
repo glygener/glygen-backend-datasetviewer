@@ -1,0 +1,3 @@
+npm run build
+docker build -t airmd_app_dev .
+docker create --name running_airmd_app_dev -p 127.0.0.1:8080:80 -v /data/shared/airmd/:/data/shared/airmd/ airmd_app_dev

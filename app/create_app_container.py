@@ -17,6 +17,7 @@ def create_docker_file(prj):
         ,"RUN mkdir -p /data/shared/%s" % (prj)
         ,"RUN ln -s /data/shared/%s /usr/share/nginx/html/ln2data" % (prj)
         ,"RUN ln -s /data/shared/%s/releases /usr/share/nginx/html/ln2releases" % (prj)
+        ,"RUN ln -s /data/shared/%s/releases/data/current /usr/share/nginx/html/ln2wwwdata" % (prj)
         ,"RUN ln -s /data/shared/%s/downloads /usr/share/nginx/html/ln2downloads" % (prj)
         ,"RUN ln -s /data/shared/%s/releases/ftp /usr/share/nginx/html/ftp" % (prj)
         ,"COPY ./build /usr/share/nginx/html"
@@ -31,23 +32,24 @@ def create_docker_file(prj):
 ###############################
 def main():
 
-    
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-p","--project",action="store",dest="project",help="glyds/argosdb/airmd")
     parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     (options,args) = parser.parse_args()
 
-    for key in ([options.server]):
+    for key in ([options.project, options.server]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
     server = options.server
+    project = options.project
 
+    config_file = "conf/config_%s.json" % (project)
+    config_obj = json.loads(open(config_file, "r").read())
 
-    config_obj = json.loads(open("./conf/config.json", "r").read())
-
-    image = config_obj["project"] + "_app_%s" % (server) 
+    image = project + "_app_%s" % (server) 
     container = "running_" + image
     app_port = config_obj["app_port"][server]
     data_path = config_obj["data_path"]
@@ -59,7 +61,7 @@ def main():
         FW.write("REACT_APP_APP_VERSION=1.1\n")
 
 
-    create_docker_file(config_obj["project"])
+    create_docker_file(project)
 
     cmd_list = []
     if os.path.isdir(data_path) == False:
@@ -80,9 +82,16 @@ def main():
     cmd_list.append(cmd)
 
     for cmd in cmd_list:
-        #print (cmd)
         x = subprocess.getoutput(cmd)
-        print (x)
+        print (cmd)
+
+    #remove dangling images
+    cmd = "docker images -f dangling=true"
+    line_list = subprocess.getoutput(cmd).split("\n")
+    for line in line_list[1:]:
+        image_id = line.split()[2]
+        cmd = "docker image rm -f " + image_id
+        x = subprocess.getoutput(cmd)
     
 
 

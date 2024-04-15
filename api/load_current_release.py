@@ -27,6 +27,7 @@ def main():
 
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
+    parser.add_option("-p","--project",action="store",dest="project",help="glyds/argosdb/airmd")
     parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     parser.add_option("-v","--dataversion",action="store",dest="dataversion",help="2.0.2/2.0.3 ...")
     parser.add_option("-c","--coll",action="store",dest="coll",help="OPTIONAL c_glycan,c_protein ")
@@ -34,22 +35,22 @@ def main():
 
     (options,args) = parser.parse_args()
 
-    for key in ([options.dataversion, options.server]):
+    for key in ([options.project, options.server, options.dataversion]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
     global log_file
 
+    project = options.project
     server = options.server
     ver = options.dataversion
     
-    config_obj = json.loads(open("./conf/config.json", "r").read())
+    config_file = "conf/config_%s.json" % (project)
+    config_obj = json.loads(open(config_file, "r").read())
     mongo_port = config_obj["dbinfo"]["port"][server]
     
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
-    
-    #rel_dir = "/data/shared/glygen/releases/data/"
     rel_dir = config_obj["data_path"] + "/releases/data/"
     jsondb_dir = rel_dir + "/v-%s/jsondb/" % (ver)
     
@@ -58,7 +59,12 @@ def main():
     DEBUG = False
     recordsdb_pattern = "*"
     if DEBUG:
-        recordsdb_pattern = "GLY_000817"
+        recordsdb_pattern = "GLY_00095*"
+        #recordsdb_pattern = "GLY_000476"
+        #recordsdb_pattern = "GLY_000491"
+        #recordsdb_pattern = "GLY_000814"
+        #recordsdb_pattern = "GLY_000815"
+        #recordsdb_pattern = "GLY_000821"
 
 
     coll_list = []
@@ -73,6 +79,7 @@ def main():
     db_name = config_obj["dbinfo"]["dbname"]
     db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
 
+    bco_root = "https://biocomputeobject.org"
 
     try:
         client = pymongo.MongoClient(host,
@@ -94,36 +101,50 @@ def main():
             if coll == "c_records":
                 subdir_list = sorted(glob.glob(jsondb_dir + "/" + db + "/" + recordsdb_pattern))
 
-
             if coll in ["c_extract", "c_bco", "c_history"]:
                 coll = "%s_v-%s" % (coll, ver)
-            
-            res = dbh[coll].drop()
+            if DEBUG == False:
+                res = dbh[coll].drop()
             for subdir in subdir_list:
                 s_d = subdir.split("/")[-1] 
+                if DEBUG == True and coll == "c_records":
+                    bco_id = s_d
+                    tmp_res = dbh[coll].delete_one({"bcoid":bco_id})
+                    print ("cleared", bco_id)
+
+                #if int(s_d.split("_")[1]) <= 823:
+                #    continue
                 file_list = glob.glob(subdir + "/*.json")
                 nrecords, ntotal = 0, len(file_list)
                 for in_file in sorted(file_list):
+                    bco_id = in_file.split("/")[-2]
                     doc = json.loads(open(in_file, "r").read())
                     if "_id" in doc:
                         doc.pop("_id")
-                    if "object_id" in doc:
-                        bco_id = doc["object_id"].split("/")[-2]
-                        doc["object_id"] = "https://biocomputeobject.org/%s/%s" % (bco_id, ver)
-                    if coll == "c_init":
-                        doc["search_options"] = config_obj["search_options"]
                     if coll == "c_records":
-                        bco_id = in_file.split("/")[-2]
-                        doc["bcoid"] = bco_id
-                    result = dbh[coll].insert_one(doc)     
-                    if "_id" in doc:
-                        doc.pop("_id")
-                    nrecords += 1
-                    if nrecords != 0 and nrecords%1000 == 0:
-                        ts = datetime.datetime.now()
-                        msg = " ... loaded %s/%s documents to %s (from %s)" % (nrecords, ntotal, coll, s_d)
-                        write_progress_msg(msg, "a")
-                msg = " ... finished loading %s/%s documents to %s (from %s)" % (nrecords, ntotal,coll, s_d)
+                        ntotal = 1000 * len(file_list)
+                        for r in doc:
+                            r["bcoid"] = bco_id
+                            result = dbh[coll].insert_one(r)
+                            nrecords += 1
+                            if nrecords != 0 and nrecords%1000 == 0:
+                                ts = datetime.datetime.now()
+                                msg = " ... loaded %s/%s documents" % (nrecords, ntotal)
+                                msg += " to %s (from %s)" % (coll, s_d)
+                                write_progress_msg(msg, "a")
+                    else:
+                        if "object_id" in doc:
+                            bco_id = doc["object_id"].split("/")[-2]
+                            doc["object_id"] = "%s/%s/%s" % (bco_root, bco_id, ver)
+                        result = dbh[coll].insert_one(doc)     
+                        nrecords += 1
+                        if nrecords != 0 and nrecords%1000 == 0:
+                            ts = datetime.datetime.now()
+                            msg = " ... loaded %s/%s documents" % (nrecords, ntotal)
+                            msg += " to %s (from %s)" % (coll, s_d)
+                            write_progress_msg(msg, "a")
+                msg = " ... finished loading %s/%s documents" % (nrecords, ntotal)
+                msg += " to %s (from %s)" % (coll, s_d)
                 write_progress_msg(msg, "a")
                 ts = datetime.datetime.now()
             for c in ["c_records", "c_bco"]:

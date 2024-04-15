@@ -4,7 +4,7 @@ import json
 import traceback
 import pymongo
 from flask import (current_app)
-from glyds.db import get_mongodb, log_error, next_sequence_value
+from dsviewer.db import get_mongodb, log_error, next_sequence_value
 from collections import OrderedDict
 
 

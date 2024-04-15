@@ -13,7 +13,7 @@ from flask_jwt_extended import (
     set_refresh_cookies, unset_jwt_cookies
 )
 from werkzeug.security import check_password_hash, generate_password_hash
-from glyds.db import get_mongodb, log_error
+from dsviewer.db import get_mongodb, log_error
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
