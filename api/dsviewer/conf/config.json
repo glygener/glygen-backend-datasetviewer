@@ -40,6 +40,19 @@
                 }
             }
         },
+	"c_drs":{
+            "get_one":{
+                "prj":{},
+                "queryfields":{
+                    "id":{
+                      "required":true,
+                      "datatype":"string",
+                      "junction":"$or",
+                      "pathlist":[{"path":"id","operator":"$eq"}]
+                    }
+                }
+            }
+        },
         "c_history":{
             "get_one":{
                 "prj":{ },
@@ -115,7 +128,8 @@
                     "bcoid": 1,
                     "title": 1,
                     "description": 1,
-                    "filename": 1,
+                    "filename_list": 1,
+		    "filename": 1,
                     "filetype": 1,
                     "categories": 1,
                     "minitable": 1,

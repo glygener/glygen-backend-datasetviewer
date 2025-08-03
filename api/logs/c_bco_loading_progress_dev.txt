@@ -1,3 +1,0 @@
-
- ... started loading c_bco  [2024-04-05 08:15:28.039722]
- ... finished loading 2/2 documents to c_bco_v-1.0 (from bcodb) [2024-04-05 08:15:28.052902]

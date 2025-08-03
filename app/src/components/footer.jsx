@@ -11,7 +11,7 @@ class Globalfooter extends Component {
     var footerLinks = [];
     for (var i in this.props.initObj.footer.links){
         var obj = this.props.initObj.footer.links[i];
-        footerLinks.push(<Link id={"link_" +i} key={"link_" + i} href={obj.url} style={s}>{obj.label}</Link>);
+        footerLinks.push( <a id={"link_" +i} key={"link_" + i} href={obj.url} style={s}>{obj.label}</a>);
     }
     var funding = ("funding" in this.props.initObj.footer ? this.props.initObj.footer.funding : "");
     var license = ("license" in this.props.initObj.footer ? this.props.initObj.footer.license : "");
@@ -19,7 +19,7 @@ class Globalfooter extends Component {
     var logoImages = [];
     for (var i in this.props.initObj.footer.logos){
         var url = this.props.initObj.footer.logos[i];
-        logoImages.push(<img src={process.env.PUBLIC_URL + url} style={{width:"150px", margin:"0px 20px 0px 0px"}}/>);
+        logoImages.push(<img src={process.env.PUBLIC_URL + url} style={{width:"100px", margin:"0px 20px 0px 0px"}}/>);
     }
 
     var s = {width:"100%", background:"DodgerBlue", color:"#fff", margin:"0px 0px 0px 0px"}; 

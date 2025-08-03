@@ -45,7 +45,7 @@ def get_one(req_obj):
         else:
             doc = mongo_dbh[coll_name].find_one(qry_obj)
         if doc == None:
-            msg = "No '%s' record found for your query" % (coll_name)
+            msg = "no record found"
             #return {"status":0, "error":msg, "query":qry_obj}
             return {"status":0, "error":msg}
 
@@ -163,7 +163,7 @@ def get_many_text_search(req_obj):
 
 
         offset = req_obj["offset"] if "offset" in req_obj else 0
-        limit = req_obj["limit"] if "limit" in req_obj else 100000000
+        limit = req_obj["limit"] if "limit" in req_obj else 100000
         res_obj = {"status":1, "query":qry_obj, "coll":coll_name, "recordlist":[]}
         prj_obj = {"_id":0}
         res_obj["recordlist"]  = list(mongo_dbh[coll_name].find(qry_obj,prj_obj).skip(offset).limit(limit))

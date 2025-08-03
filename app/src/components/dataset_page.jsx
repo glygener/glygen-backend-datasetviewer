@@ -78,11 +78,13 @@ class DatasetPage extends Component {
             //console.log("Ajax response:", result);
             var tmpState = this.state;
             tmpState.response = result;
-            tmpState.bco = result.record.bco;
             tmpState.isLoaded = true;          
             if (tmpState.response.status === 0){
                 tmpState.dialog.status = true;
                 tmpState.dialog.msg = tmpState.response.error;
+            }
+	    else{
+                tmpState.bco = result.record.bco;
             }
             this.setState(tmpState);
         },
@@ -152,27 +154,66 @@ class DatasetPage extends Component {
   getTableView = (tableData) => {
 
     var tableCols = [];
-    var tableRows = [];
+	 var tableRows = [];
+	 var idx = 0;
     for (var i in tableData){
       var row =  tableData[i];
       if (i == 0){
+			var o  = {field:"id", headerName:"row_idx", minWidth:80,headerClassName:"dgheader",cellClassName:"dgcell"};
+        	tableCols.push(o);
+         for (var j in row){
+            var o  = {field:row[j], headerName:row[j], minWidth:225,headerClassName:"dgheader",cellClassName:"dgcell"};
+			   tableCols.push(o)
+         }
+      }
+      else{
+			idx += 1;
+         var o = {"id":idx.toString()};
+			for (var j in row){
+         	var f = tableData[0][j];	
+				o[f] = row[j];
+         }
+		   tableRows.push(o)
+      }
+    }
+    //console.log("cols-1",tableCols);
+    //console.log("rows-1",tableRows);
+    return (<Tableview cols={tableCols} rows={tableRows}/>);
+  }
+
+
+   getTableViewOld = (tableData) => {
+
+    var tableCols = [];
+    var tableRows = [];
+    var idx = 0;
+	 for (var i in tableData){
+      var row =  tableData[i];
+      if (i == 0){
+		  tableCols.push({field:"id", headerName:"id",minWidth:200,headerClassName:"dgheader", cellClassName:"dgcell"});
         for (var j in row){
-          var f = (j == 0 ? "id" : row[j]);
-          tableCols.push({
-              field:f, headerName:f, minWidth:225, headerClassName:"dgheader",
+          //var f = (j == 0 ? "id" : row[j]);
+          	var f = row[j];
+				tableCols.push({
+              field:f, headerName:f, minWidth:200, headerClassName:"dgheader",
               cellClassName:"dgcell"});
         }
       }
       else{
-        var o = {}
+        idx += 1;
+		  var o = {"id":idx.toString()};
         for (var j in row){
-          var f = (j == 0 ? "id" : tableData[0][j]);
-          o[f] = row[j];
+          //var f = (j == 0 ? "id" : tableData[0][j]);
+          	var f = tableData[0][j];
+				o[f] = row[j];
         }
-	tableRows.push(o)
+        tableRows.push(o)
       }
     }
+
+    console.log("cols-1",tableCols);
     console.log("rows-1",tableRows);
+    
     return (<Tableview cols={tableCols} rows={tableRows}/>);
   }
 
@@ -196,7 +237,9 @@ class DatasetPage extends Component {
     //var bcoDescription = (extractObj !== undefined ? extractObj.description : undefined);
     var bcoDescription = "";
     if (bcoObj !== undefined){
-        bcoDescription = bcoObj["usability_domain"].join(" ");
+        if ("usability_domain" in bcoObj){
+		bcoDescription = bcoObj["usability_domain"].join(" ");
+    	}
     }
 
     var tabHash = {};
@@ -273,6 +316,18 @@ class DatasetPage extends Component {
       );
     }
 
+	 var fileHistoryDict = {};
+    if (historyObj !== undefined){
+		for (var ver in historyObj){
+			var fileName = historyObj[ver]["file_name"];
+			if (!(fileName in fileHistoryDict)){
+				fileHistoryDict[fileName] = {}
+			}
+			fileHistoryDict[fileName][ver] = historyObj[ver];
+		}
+    }
+
+
     var selectedFileName = "";
     var verSelector = "";
     if (historyObj !== undefined){
@@ -298,7 +353,11 @@ class DatasetPage extends Component {
           verOptions.push(<option value={verLbl}>{lbl}</option>);
         }
       }
-      selectedFileName = "Sample view for " + verInfo[selectedVer].file_name;
+      selectedFileName = (
+			<div className="leftblock">
+			<span>Sample view for {verInfo[selectedVer].file_name}</span>
+			</div>
+		);
       var s = {width:"50%"};
       verSelector = (<select id="verselector" className="form-select" style={s} onChange={this.handleVersion}>{verOptions}</select>);
     }

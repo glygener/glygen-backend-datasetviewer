@@ -21,23 +21,17 @@ def main():
     parser = OptionParser(usage,version="%prog version___")
     parser.add_option("-p","--project",action="store",dest="project",help="glyds/arogsdb/airmd")
     parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
-    parser.add_option("-v","--dataversion",action="store",dest="dataversion",help="2.0.2")
-    parser.add_option("-c","--coll",action="store",dest="coll",help="collection")
 
     (options,args) = parser.parse_args()
 
-    for key in ([options.project,options.dataversion,options.coll, options.server]):
+    for key in ([options.project, options.server]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
-    ver = options.dataversion
-    coll = options.coll
     server = options.server
     project = options.project
 
-    if coll in ["c_extract", "c_bco", "c_history"]:
-        coll = "%s_v-%s" % (coll, ver)
             
     config_file = "conf/config_%s.json" % (project) 
     config_obj = json.loads(open(config_file, "r").read())
@@ -59,17 +53,9 @@ def main():
         )
         client.server_info()
         dbh = client[db_name]
-        q = {}
-        #q = {"bcoid": "GLY_000143"}
-        #q = {"row":{"$regex":"kinase", "$options":"i"}}
-        #q = {"$and": [ {"$or": [{ "row": {"$options": "i","$regex": "kinase"}}]}]}
-        #q = { "$text": { "$search": "\"sarscov2_protein_signalp_annotation\"" } }
-        #n = dbh[coll].count_documents(q)
-        #for doc in dbh[coll].find(q).skip(1).limit(100):
-        for doc in dbh[coll].find(q):
-            if "_id" in doc:
-                doc.pop("_id")
-            print (json.dumps(doc, indent=4))
+        for c in dbh.list_collection_names():
+            print (c)
+
     except pymongo.errors.ServerSelectionTimeoutError as err:
         print (err)
     except pymongo.errors.OperationFailure as err:

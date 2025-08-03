@@ -1,0 +1,12 @@
+1) Create new branch:
+
+    git branch glygen_1.0
+
+2) Checkout branch
+
+    git checkout glygen_1.0
+
+
+3) Push
+
+    git push --set-upstream origin glygen_1.0

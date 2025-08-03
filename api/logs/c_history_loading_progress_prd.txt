@@ -1,4 +1,0 @@
-
- ... started loading c_history  [2024-04-01 05:40:53.585580]
- ... loaded 1000/1514 documents to c_history_v-2.4.1 (from historydb) [2024-04-01 05:40:55.559938]
- ... finished loading 1514/1514 documents to c_history_v-2.4.1 (from historydb) [2024-04-01 05:40:56.461295]

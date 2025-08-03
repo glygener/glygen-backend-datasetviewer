@@ -117,8 +117,22 @@ class DatasetGetAll(Resource):
             if "categories" in obj:
                 if "tag" in obj["categories"]:
                     obj["categories"].pop("tag")
-        
-        res_obj["recordlist"] = r_one["recordlist"]
+
+
+
+        #res_obj["recordlist"] = r_one["recordlist"]
+        res_obj["recordlist"] = []
+        idx = 0
+        for obj in r_one["recordlist"]:
+            obj["filename"] = obj["filename_list"]
+            res_obj["recordlist"].append(obj)
+            #for file_name in obj["filename_list"].split(","):
+            #    s = json.dumps(obj)
+            #    res_obj["recordlist"].append(json.loads(s))
+            #    res_obj["recordlist"][idx]["filename"] = file_name
+            #    idx += 1
+    
+
         n = len(res_obj["recordlist"])
         res_obj["stats"] = {"total":n, "retrieved":n}
         return res_obj
@@ -146,25 +160,33 @@ class DatasetSearch(Resource):
         list_id = hash_obj.hexdigest()
                
         coll_names = mongo_dbh.collection_names()
-        if "c_cache" in coll_names:
-            res = get_one({"coll":"c_cache", "list_id":list_id})
-            if "error" not in res:
-                if "record" in res:
-                    return {"list_id":list_id}
+        #if "c_cache" in coll_names:
+        #    res = get_one({"coll":"c_cache", "list_id":list_id})
+        #    if "error" not in res:
+        #        if "record" in res:
+        #            return {"list_id":list_id}
 
         res_obj = {"recordlist":[]}
         r_one = get_many({"coll":"c_extract", "query":""})
         if "error" in r_one:
             return r_one
 
+
         bco_dict = {}
         for obj in r_one["recordlist"]:
-            bco_dict[obj["bcoid"]] = {"filename":obj["filename"],"categories":obj["categories"],
+            bco_dict[obj["bcoid"]] = {"filename":obj["filename"],"filename_list":obj["filename_list"], "categories":obj["categories"],
                 "title":obj["title"]
             }
 
         if req_obj["query"] == "":
-            res_obj["recordlist"] = r_one["recordlist"]
+            #res_obj["recordlist"] = r_one["recordlist"]
+            for obj in r_one["recordlist"]:
+                for file_name in obj["filename_list"].split(","):
+                    o = {"filename":file_name}
+                    for k in obj:
+                        if k != "filename":
+                            o[k] = obj[k]
+                    res_obj["recordlist"].append(o)
         else:
             #dataset body search
             req_obj["coll"] = "c_records"
@@ -178,16 +200,18 @@ class DatasetSearch(Resource):
                 if bco_id not in bco_dict:
                     continue
                 bco_title, file_name = bco_dict[bco_id]["title"], bco_dict[bco_id]["filename"]
-                o = {
-                    "recordid":obj["recordid"],
-                    "bcoid":bco_id, "fileidx":file_idx,
-                    "filename":file_name, "title":bco_title,
-                    "categories":bco_dict[bco_id]["categories"],
-                    "rowlist":[]
-                }
-                if bco_id not in out_dict:
-                    out_dict[bco_id] = o
-                out_dict[bco_id]["rowlist"].append(int(row_idx))
+                for file_name in bco_dict[bco_id]["filename_list"].split(","):
+                    o = {
+                        "recordid":obj["recordid"],
+                        "bcoid":bco_id, "fileidx":file_idx,
+                        "filename":file_name,
+                        "title":bco_title,
+                        "categories":bco_dict[bco_id]["categories"],
+                        "rowlist":[]
+                    }
+                    if bco_id not in out_dict:
+                        out_dict[bco_id] = o
+                    out_dict[bco_id]["rowlist"].append(int(row_idx))
             for bco_id in sorted(out_dict):
                 res_obj["recordlist"].append(out_dict[bco_id])
             
@@ -212,8 +236,10 @@ class DatasetSearch(Resource):
                     res_obj["recordlist"].append(doc)
 
 
+
         n = len(res_obj["recordlist"])
         res_obj["stats"] = {"total":n, "retrieved":n}
+        
         if n != 0:
             ts_format = "%Y-%m-%d %H:%M:%S %Z%z"
             ts = datetime.datetime.now(pytz.timezone('US/Eastern')).strftime(ts_format)
@@ -224,7 +250,7 @@ class DatasetSearch(Resource):
             res_obj = {"list_id":list_id}
         else:
             res_obj = {"status":0, "error":"no results found"}
-    
+   
         return res_obj
 
 
@@ -264,20 +290,25 @@ class DatasetDetail(Resource):
         '''Get single dataset object'''
         req_obj = request.json
         
-        ver_list = get_ver_list(req_obj["bcoid"])
-        
+ 
         req_obj["coll"] = "c_extract"
         extract_obj = get_one(req_obj)
         if "error" in extract_obj:
+            extract_obj["coll"] = "c_extract"
             return extract_obj
-      
+
 
         res = get_many_text_search({"coll":"c_records", "query":req_obj["bcoid"]})
-        
+        if "recordlist" not in res:
+            res["recordlist"] = []
+
+ 
         row_list_one, row_list_two = [], []
         limit_one, limit_two = 10000, 10000
         row_count_one, row_count_two = 0, 0
         req_obj["rowlist"] = [] if "rowlist" not in req_obj else req_obj["rowlist"]
+
+        #return res["recordlist"]
 
         tmp_list = []
         for obj in res["recordlist"]:
@@ -286,7 +317,7 @@ class DatasetDetail(Resource):
                 continue
             tmp_list.append(bco_id)
             row_idx = int(obj["recordid"].split("_")[-1])
-            obj["row"] = obj["row"].replace("\\t", "\", \"")
+            #obj["row"] = obj["row"].replace("\\t", "\", \"")
             obj["row"] = obj["row"].replace("\t", "\", \"")
             row = json.loads(obj["row"])
             if row_idx in  req_obj["rowlist"] and row_count_one < limit_one:
@@ -297,6 +328,7 @@ class DatasetDetail(Resource):
                 row_count_two += 1
             if row_count_one > limit_one and row_count_two > limit_two:
                 break
+
 
 
         if extract_obj["record"]["sampledata"]["type"] == "table":
@@ -324,9 +356,11 @@ class DatasetDetail(Resource):
             extract_obj["record"]["resultdata"] = {"type":"html", "data":"<pre>"}
             r_list_one, r_list_two = [], []
             for row in row_list_one:
-                r_list_one.append("\n>"+row[0]+"\n"+row[1])
+                rr = "\n>"+row[0] + "\n"+row[1] if len(row) > 1 else "\n>"+row[0]
+                r_list_one.append(rr)
             for row in row_list_two:
-                r_list_two.append("\n>"+row[0]+"\n"+row[1])
+                rr = "\n>"+row[0] + "\n"+row[1] if len(row) > 1 else "\n>"+row[0]
+                r_list_two.append(rr)
             extract_obj["record"]["resultdata"]["data"] = "\n".join(r_list_one)
             extract_obj["record"]["alldata"]["data"] = "\n".join(r_list_two)
         elif extract_obj["record"]["sampledata"]["type"] in ["text"]:
@@ -348,19 +382,24 @@ class DatasetDetail(Resource):
         req_obj["doctype"] = "track"
         history_obj = get_one(req_obj)
         if "error" in history_obj:
+            history_obj["coll"] = "c_history"
             return history_obj
 
-        
+
+        ver_list = get_ver_list(req_obj["bcoid"])
         history_dict = {}
+        tmp_list = []
         for ver in history_obj["record"]["history"]:
             if ver in ver_list:
                 history_dict[ver] = history_obj["record"]["history"][ver]
-
+            tmp_list.append([ver, ver in ver_list])
+        #return tmp_list
 
         req_obj["coll"] = "c_bco"
         req_obj["bcoid"] = "https://biocomputeobject.org/%s" % (req_obj["bcoid"])
         bco_obj = get_one(req_obj)
         if "error" in bco_obj:
+            bco_obj["coll"] = "c_bco"
             return bco_obj
 
         SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
@@ -379,6 +418,8 @@ class DatasetDetail(Resource):
         }
 
         return res_obj
+
+
 
 
 @api.route('/pagecn')
@@ -410,6 +451,8 @@ class HistoryList(Resource):
         hist_obj = get_many(req_obj)
         if "error" in hist_obj:
             return hist_obj
+        
+
         res_obj = {"tabledata":{"type": "table","data": []}}
         header_row = [
             {"type": "string", "label": "BCOID"}

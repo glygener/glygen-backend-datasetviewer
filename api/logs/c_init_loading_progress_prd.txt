@@ -1,3 +1,0 @@
-
- ... started loading c_init  [2024-04-01 05:40:48.629769]
- ... finished loading 1/1 documents to c_init (from initdb) [2024-04-01 05:40:48.655220]

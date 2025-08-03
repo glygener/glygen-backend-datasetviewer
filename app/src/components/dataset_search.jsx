@@ -229,7 +229,8 @@ class DatasetSearch extends Component {
                         filterlist={this.state.filterlist}
                         resultcount={this.state.objlist.length}
                         resultSummary={resultSummary}
-                        handleFilterApply = {this.handleFilterApply}
+                        handleFilterApply={this.handleFilterApply}
+			handleFilterReset={this.handleFilterReset}
                     />
                 </div>
                 <div className="searchresultscn">

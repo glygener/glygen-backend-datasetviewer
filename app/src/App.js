@@ -3,6 +3,7 @@ import DatasetSearch from "./components/dataset_search";
 import DatasetList from "./components/dataset_list";
 import RecordList from "./components/record_list";
 import StaticPage from "./components/static_page";
+import ErrorPage from "./components/error_page";
 import HistoryList from "./components/history_list";
 import HistoryDetail from "./components/history_detail";
 import FileUploads from "./components/file_uploads";
@@ -90,7 +91,20 @@ class App extends Component {
       <div className="versioncn">Release {data_ver}</div>
       <Router>
         <Switch>
-        <Route
+            
+           <Route
+             path="/ln2data"
+             render={(props) => (
+              <ErrorPage initObj={this.state.response.record}/>
+             )}
+           />
+          <Route
+             path="/ln2downloads"
+             render={(props) => (
+              <ErrorPage initObj={this.state.response.record} />
+             )}
+           />
+          <Route
             path="/gsd"
             render={(props) => (
               <Gsd initObj={this.state.response.record}/>

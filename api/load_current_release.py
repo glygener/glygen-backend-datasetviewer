@@ -27,7 +27,6 @@ def main():
 
     usage = "\n%prog  [options]"
     parser = OptionParser(usage,version="%prog version___")
-    parser.add_option("-p","--project",action="store",dest="project",help="glyds/argosdb/airmd")
     parser.add_option("-s","--server",action="store",dest="server",help="dev/tst/beta/prd")
     parser.add_option("-v","--dataversion",action="store",dest="dataversion",help="2.0.2/2.0.3 ...")
     parser.add_option("-c","--coll",action="store",dest="coll",help="OPTIONAL c_glycan,c_protein ")
@@ -35,32 +34,34 @@ def main():
 
     (options,args) = parser.parse_args()
 
-    for key in ([options.project, options.server, options.dataversion]):
+    for key in ([options.server, options.dataversion]):
         if not (key):
             parser.print_help()
             sys.exit(0)
 
     global log_file
 
-    project = options.project
     server = options.server
     ver = options.dataversion
     
-    config_file = "conf/config_%s.json" % (project)
+    config_file = "conf/config_glyds.json"
     config_obj = json.loads(open(config_file, "r").read())
-    mongo_port = config_obj["dbinfo"]["port"][server]
-    
+    #mongo_port = config_obj["dbinfo"]["port"][server]
+    mongo_port = "27017"
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
     rel_dir = config_obj["data_path"] + "/releases/data/"
     jsondb_dir = rel_dir + "/v-%s/jsondb/" % (ver)
-    
+    bco_root = "https://biocomputeobject.org"
+
+    db_name = "glydb_beta" if server == "beta" else "glydb"
+    db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
+
 
     #DEBUG = True
     DEBUG = False
     recordsdb_pattern = "*"
     if DEBUG:
-        recordsdb_pattern = "GLY_00095*"
-        #recordsdb_pattern = "GLY_000476"
+        recordsdb_pattern = "GLY_000922"
         #recordsdb_pattern = "GLY_000491"
         #recordsdb_pattern = "GLY_000814"
         #recordsdb_pattern = "GLY_000815"
@@ -74,12 +75,6 @@ def main():
         for d in config_obj["downloads"]["jsondb"]:
             coll = "c_" + d[:-2]
             coll_list.append("c_" + d[:-2])
-
-
-    db_name = config_obj["dbinfo"]["dbname"]
-    db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
-
-    bco_root = "https://biocomputeobject.org"
 
     try:
         client = pymongo.MongoClient(host,
@@ -109,11 +104,10 @@ def main():
                 s_d = subdir.split("/")[-1] 
                 if DEBUG == True and coll == "c_records":
                     bco_id = s_d
-                    tmp_res = dbh[coll].delete_one({"bcoid":bco_id})
-                    print ("cleared", bco_id)
-
-                #if int(s_d.split("_")[1]) <= 823:
+                    tmp_res = dbh[coll].delete_many({"bcoid":bco_id})
+                #if int(s_d.split("_")[1]) > 5:
                 #    continue
+                
                 file_list = glob.glob(subdir + "/*.json")
                 nrecords, ntotal = 0, len(file_list)
                 for in_file in sorted(file_list):
@@ -150,7 +144,9 @@ def main():
             for c in ["c_records", "c_bco"]:
                 if coll.find(c) != -1:
                     res = dbh[coll].create_index([("$**", pymongo.TEXT)])
-
+                    msg = " ... finished indexing %s" % (coll)
+                    write_progress_msg(msg, "a")
+                
         os.chdir(rel_dir)
         cmd = "rm -f current"
         x = subprocess.getoutput(cmd)

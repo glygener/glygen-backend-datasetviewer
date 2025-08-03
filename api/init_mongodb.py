@@ -41,7 +41,7 @@ def main():
     admin_user, admin_pass = config_obj["dbinfo"]["admin"]["user"], config_obj["dbinfo"]["admin"]["password"]
     admin_db = config_obj["dbinfo"]["admin"]["db"]
 
-    db_name = config_obj["dbinfo"]["dbname"]
+    db_name = "glydb_beta" if server == "beta" else "glydb"
     db_user, db_pass = config_obj["dbinfo"][db_name]["user"], config_obj["dbinfo"][db_name]["password"]
 
     try:

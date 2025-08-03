@@ -14,6 +14,10 @@
    
     http POST :8081/dataset/pagecn < tests/queries/dataset_pagecn.json
 
+    http GET :8081/drs/service-info/
+    http GET :8081/drs/objects/GLY_000001_1/
+    http GET :8081/drs/objects/GLY_000001_1/access/GLY_000001_1
+     
 
 
 

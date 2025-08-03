@@ -1,0 +1,20 @@
+{
+  "id": "org.glygen.data",
+  "name": "Glycan Data DRS API",
+  "type": {
+    "group": "org.ga4gh",
+    "artifact": "drs",
+    "version": "1.0.0"
+  },
+  "description": "This service provides implementation of DRS specification for accessing files for GlyGen datasets",
+  "organization": {
+    "name": "George Washington University",
+    "url": "https://hivelab.biochemistry.gwu.edu/"
+  },
+  "contactUrl": "mailto:myglygen@gmail.com",
+  "documentationUrl": "https://dsapi.glygen.org/",
+  "createdAt": "2024-07-08T00:00:00.000+0000",
+  "environment": "production",
+  "version": "1.0.0"
+}
+

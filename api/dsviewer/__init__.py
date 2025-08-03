@@ -6,6 +6,7 @@ from flask_cors import CORS
 from flask_restx import Api, Resource, fields
 
 from .dataset import api as dataset_api
+from .drs import api as drs_api
 
 
 
@@ -20,6 +21,7 @@ def create_app():
 
     api = Api(app, version='1.0', title='GlyGen Dataset APIs', description='Documentation for the GlyGen Dataset APIs',)
     api.add_namespace(dataset_api)
+    api.add_namespace(drs_api)
 
     try:
         os.makedirs(app.instance_path)

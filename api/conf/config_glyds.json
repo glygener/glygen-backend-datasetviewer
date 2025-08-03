@@ -1,5 +1,11 @@
 {
     	"data_path":"/data/shared/glygen/",
+	"host_ip":{
+	    "prd":"10.10.0.6",
+	    "beta":"10.10.0.6",
+	    "tst":"172.17.0.1",
+	    "dev":"172.17.0.1"
+        },
 	"api_port":{
             "prd":"8081",
             "beta":"8881",
@@ -26,9 +32,14 @@
             	"password":"superpass"
             },
             "glydb":{
-            	"db":"glydb",
-            	"user":"glydbadmin",
-            	"password":"glydbpass"
+                "db":"glydb",
+                "user":"glydbadmin",
+                "password":"glydbpass"
+             },
+	    "glydb_beta":{
+            	"db":"glydb_beta",
+            	"user":"glydb_betaadmin",
+            	"password":"glydb_betapass"
              }
 	},
 	"downloads":{
@@ -38,7 +49,8 @@
             	,"extractdb"
             	,"historydb"
             	,"htmldb"
-            	,"recordsdb"
+            	,"drsdb"
+		,"recordsdb"
              ],
              "others":[
             	"reviewed",

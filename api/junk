@@ -1,3 +1,0 @@
-python3 setup.py bdist_wheel
-docker build --network=host -t glyds_api_dev .
-docker create --name running_glyds_api_dev --network glyds_backend_dev -p 127.0.0.1:8081:80 -v /data/shared/glyds/:/data/shared/glyds/ -v /software/pipes:/hostpipe -e MONGODB_CONNSTRING=mongodb://glydbadmin:glydbpass@running_glyds_mongo_dev:27017/?authSource=glydb -e DB_NAME=glydb  -e MAIL_SERVER=x.x.x.x -e MAIL_PORT=25 -e MAIL_SENDER=no-reply@glygen.gwu.edu -e DATA_PATH=/data/shared/glyds/ -e SERVER=dev glyds_api_dev

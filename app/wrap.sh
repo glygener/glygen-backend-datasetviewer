@@ -1,5 +1,7 @@
-prj="airmd"
-srv="dev"
+prj="glyds"
+#srv="prd"
+srv="beta"
+#srv="tst"
 
 
 sudo systemctl stop docker-$prj-app-$srv.service
