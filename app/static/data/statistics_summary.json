@@ -1,0 +1,1277 @@
+{
+  "generated_at": "2025-10-21T16:33:31.430Z",
+  "genus": [
+    {
+      "key": "Escherichia",
+      "value": 300
+    },
+    {
+      "key": "Staphylococcus",
+      "value": 268
+    },
+    {
+      "key": "Bordetella",
+      "value": 211
+    },
+    {
+      "key": "Klebsiella",
+      "value": 203
+    },
+    {
+      "key": "Alphainfluenzavirus",
+      "value": 200
+    },
+    {
+      "key": "Streptococcus",
+      "value": 178
+    },
+    {
+      "key": "HIV1",
+      "value": 163
+    },
+    {
+      "key": "Salmonella",
+      "value": 144
+    },
+    {
+      "key": "Candida",
+      "value": 129
+    },
+    {
+      "key": "unclassified",
+      "value": 122
+    },
+    {
+      "key": "Flavivirus",
+      "value": 115
+    },
+    {
+      "key": "Corynebacterium",
+      "value": 114
+    },
+    {
+      "key": "hepatitis",
+      "value": 106
+    },
+    {
+      "key": "Betacoronavirus",
+      "value": 97
+    },
+    {
+      "key": "Burkholderia",
+      "value": 94
+    },
+    {
+      "key": "Bacillus",
+      "value": 84
+    },
+    {
+      "key": "Hepatitis",
+      "value": 81
+    },
+    {
+      "key": "Serratia",
+      "value": 79
+    },
+    {
+      "key": "Acinetobacter",
+      "value": 75
+    },
+    {
+      "key": "Pseudomonas",
+      "value": 66
+    },
+    {
+      "key": "Vibrio",
+      "value": 66
+    },
+    {
+      "key": "Enterococcus",
+      "value": 64
+    },
+    {
+      "key": "Citrobacter",
+      "value": 60
+    },
+    {
+      "key": "Yersinia",
+      "value": 57
+    },
+    {
+      "key": "West",
+      "value": 52
+    },
+    {
+      "key": "Enterobacter",
+      "value": 50
+    },
+    {
+      "key": "Campylobacter",
+      "value": 48
+    },
+    {
+      "key": "Mycobacterium",
+      "value": 46
+    },
+    {
+      "key": "pseudomallei",
+      "value": 45
+    },
+    {
+      "key": "Bacteroides",
+      "value": 44
+    },
+    {
+      "key": "Haemophilus",
+      "value": 44
+    },
+    {
+      "key": "Listeria",
+      "value": 43
+    },
+    {
+      "key": "Legionella",
+      "value": 42
+    },
+    {
+      "key": "Ebolavirus",
+      "value": 39
+    },
+    {
+      "key": "Zika",
+      "value": 37
+    },
+    {
+      "key": "Shigella",
+      "value": 35
+    },
+    {
+      "key": "Zaire",
+      "value": 33
+    },
+    {
+      "key": "human",
+      "value": 32
+    },
+    {
+      "key": "Proteus",
+      "value": 31
+    },
+    {
+      "key": "Aeromonas",
+      "value": 30
+    },
+    {
+      "key": "Achromobacter",
+      "value": 30
+    },
+    {
+      "key": "Neisseria",
+      "value": 30
+    },
+    {
+      "key": "Nocardia",
+      "value": 28
+    },
+    {
+      "key": "Severe",
+      "value": 28
+    },
+    {
+      "key": "Clostridium",
+      "value": 25
+    },
+    {
+      "key": "H1N1",
+      "value": 25
+    },
+    {
+      "key": "Providencia",
+      "value": 24
+    },
+    {
+      "key": "Dengue",
+      "value": 24
+    },
+    {
+      "key": "Lactococcus",
+      "value": 20
+    },
+    {
+      "key": "Clostridioides",
+      "value": 20
+    },
+    {
+      "key": "Respirovirus",
+      "value": 20
+    },
+    {
+      "key": "Alphavirus",
+      "value": 20
+    },
+    {
+      "key": "Parabacteroides",
+      "value": 19
+    },
+    {
+      "key": "Pasteurella",
+      "value": 18
+    },
+    {
+      "key": "Fusarium",
+      "value": 17
+    },
+    {
+      "key": "Moraxella",
+      "value": 17
+    },
+    {
+      "key": "Chryseobacterium",
+      "value": 17
+    },
+    {
+      "key": "Mycoplasmoides",
+      "value": 17
+    },
+    {
+      "key": "Nakaseomyces",
+      "value": 17
+    },
+    {
+      "key": "Pediococcus",
+      "value": 16
+    },
+    {
+      "key": "Sphingobacterium",
+      "value": 16
+    },
+    {
+      "key": "Candidozyma",
+      "value": 16
+    },
+    {
+      "key": "Aspergillus",
+      "value": 15
+    },
+    {
+      "key": "Hafnia",
+      "value": 14
+    },
+    {
+      "key": "Francisella",
+      "value": 14
+    },
+    {
+      "key": "Cupriavidus",
+      "value": 13
+    },
+    {
+      "key": "Stenotrophomonas",
+      "value": 13
+    },
+    {
+      "key": "Chlamydia",
+      "value": 13
+    },
+    {
+      "key": "Prevotella",
+      "value": 13
+    },
+    {
+      "key": "Human",
+      "value": 12
+    },
+    {
+      "key": "Betainfluenzavirus",
+      "value": 12
+    },
+    {
+      "key": "Raoultella",
+      "value": 12
+    },
+    {
+      "key": "Cryptococcus",
+      "value": 11
+    },
+    {
+      "key": "Psychrobacter",
+      "value": 11
+    },
+    {
+      "key": "Gemella",
+      "value": 10
+    },
+    {
+      "key": "Fusobacterium",
+      "value": 10
+    },
+    {
+      "key": "Mammaliicoccus",
+      "value": 10
+    },
+    {
+      "key": "Phocaeicola",
+      "value": 10
+    },
+    {
+      "key": "Brevibacterium",
+      "value": 10
+    },
+    {
+      "key": "Finegoldia",
+      "value": 10
+    },
+    {
+      "key": "Delftia",
+      "value": 10
+    },
+    {
+      "key": "Mycobacteroides",
+      "value": 10
+    },
+    {
+      "key": "Helicobacter",
+      "value": 10
+    },
+    {
+      "key": "Morganella",
+      "value": 10
+    },
+    {
+      "key": "Rothia",
+      "value": 10
+    },
+    {
+      "key": "Cytomegalovirus",
+      "value": 10
+    },
+    {
+      "key": "Mammarenavirus",
+      "value": 10
+    },
+    {
+      "key": "Pantoea",
+      "value": 10
+    },
+    {
+      "key": "Streptomyces",
+      "value": 10
+    },
+    {
+      "key": "Mycolicibacterium",
+      "value": 10
+    },
+    {
+      "key": "Stutzerimonas",
+      "value": 10
+    },
+    {
+      "key": "Elizabethkingia",
+      "value": 8
+    },
+    {
+      "key": "Gordonia",
+      "value": 8
+    },
+    {
+      "key": "Venezuelan",
+      "value": 8
+    },
+    {
+      "key": "Porphyromonas",
+      "value": 8
+    },
+    {
+      "key": "Leuconostoc",
+      "value": 8
+    },
+    {
+      "key": "Anaerococcus",
+      "value": 8
+    },
+    {
+      "key": "Lelliottia",
+      "value": 8
+    },
+    {
+      "key": "Henipavirus",
+      "value": 8
+    },
+    {
+      "key": "Coxiella",
+      "value": 7
+    },
+    {
+      "key": "Aggregatibacter",
+      "value": 7
+    },
+    {
+      "key": "Edwardsiella",
+      "value": 6
+    },
+    {
+      "key": "Mobiluncus",
+      "value": 6
+    },
+    {
+      "key": "Enterocloster",
+      "value": 6
+    },
+    {
+      "key": "Chromobacterium",
+      "value": 6
+    },
+    {
+      "key": "Aerococcus",
+      "value": 6
+    },
+    {
+      "key": "Micrococcus",
+      "value": 6
+    },
+    {
+      "key": "Bartonella",
+      "value": 6
+    },
+    {
+      "key": "Peptoniphilus",
+      "value": 6
+    },
+    {
+      "key": "Lentivirus",
+      "value": 5
+    },
+    {
+      "key": "Orthomarburgvirus",
+      "value": 5
+    },
+    {
+      "key": "Agrobacterium",
+      "value": 5
+    },
+    {
+      "key": "Ross",
+      "value": 5
+    },
+    {
+      "key": "Chikungunya",
+      "value": 5
+    },
+    {
+      "key": "Erysipelatoclostridium",
+      "value": 5
+    },
+    {
+      "key": "Marburgvirus",
+      "value": 5
+    },
+    {
+      "key": "Paraburkholderia",
+      "value": 5
+    },
+    {
+      "key": "Rhizobium",
+      "value": 4
+    },
+    {
+      "key": "Orthopoxvirus",
+      "value": 4
+    },
+    {
+      "key": "Pluralibacter",
+      "value": 4
+    },
+    {
+      "key": "Brucella",
+      "value": 4
+    },
+    {
+      "key": "Brevundimonas",
+      "value": 4
+    },
+    {
+      "key": "Middle",
+      "value": 4
+    },
+    {
+      "key": "Niallia",
+      "value": 4
+    },
+    {
+      "key": "Histoplasma",
+      "value": 4
+    },
+    {
+      "key": "Thomasclavelia",
+      "value": 4
+    },
+    {
+      "key": "Gardnerella",
+      "value": 4
+    },
+    {
+      "key": "Orthoebolavirus",
+      "value": 4
+    },
+    {
+      "key": "Ehrlichia",
+      "value": 4
+    },
+    {
+      "key": "Oligella",
+      "value": 4
+    },
+    {
+      "key": "Bundibugyo",
+      "value": 4
+    },
+    {
+      "key": "Schaalia",
+      "value": 4
+    },
+    {
+      "key": "Dermabacter",
+      "value": 4
+    },
+    {
+      "key": "Cutibacterium",
+      "value": 4
+    },
+    {
+      "key": "Leclercia",
+      "value": 4
+    },
+    {
+      "key": "Alcaligenes",
+      "value": 4
+    },
+    {
+      "key": "Leishmania",
+      "value": 4
+    },
+    {
+      "key": "Sphingomonas",
+      "value": 4
+    },
+    {
+      "key": "Jonesia",
+      "value": 4
+    },
+    {
+      "key": "Kytococcus",
+      "value": 4
+    },
+    {
+      "key": "Capnocytophaga",
+      "value": 4
+    },
+    {
+      "key": "Ralstonia",
+      "value": 4
+    },
+    {
+      "key": "Myroides",
+      "value": 4
+    },
+    {
+      "key": "Paracoccus",
+      "value": 4
+    },
+    {
+      "key": "Actinomyces",
+      "value": 4
+    },
+    {
+      "key": "Coprococcus",
+      "value": 4
+    },
+    {
+      "key": "Lactobacillus",
+      "value": 4
+    },
+    {
+      "key": "Granulicatella",
+      "value": 4
+    },
+    {
+      "key": "Merbecovirus",
+      "value": 4
+    },
+    {
+      "key": "Rhinovirus",
+      "value": 3
+    },
+    {
+      "key": "Talaromyces",
+      "value": 3
+    },
+    {
+      "key": "Rhizopus",
+      "value": 3
+    },
+    {
+      "key": "Lomentospora",
+      "value": 3
+    },
+    {
+      "key": "Arcanobacterium",
+      "value": 2
+    },
+    {
+      "key": "Lachnoclostridium",
+      "value": 2
+    },
+    {
+      "key": "Cronobacter",
+      "value": 2
+    },
+    {
+      "key": "Borreliella",
+      "value": 2
+    },
+    {
+      "key": "Macrococcoides",
+      "value": 2
+    },
+    {
+      "key": "Kingella",
+      "value": 2
+    },
+    {
+      "key": "Arachnia",
+      "value": 2
+    },
+    {
+      "key": "Kocuria",
+      "value": 2
+    },
+    {
+      "key": "Alistipes",
+      "value": 2
+    },
+    {
+      "key": "Atlantibacter",
+      "value": 2
+    },
+    {
+      "key": "Leptospira",
+      "value": 2
+    },
+    {
+      "key": "Mediterraneibacter",
+      "value": 2
+    },
+    {
+      "key": "Pneumocystis",
+      "value": 2
+    },
+    {
+      "key": "Grimontia",
+      "value": 2
+    },
+    {
+      "key": "Fannyhessea",
+      "value": 2
+    },
+    {
+      "key": "Butyricimonas",
+      "value": 2
+    },
+    {
+      "key": "Collinsella",
+      "value": 2
+    },
+    {
+      "key": "Cedecea",
+      "value": 2
+    },
+    {
+      "key": "Acidaminococcus",
+      "value": 2
+    },
+    {
+      "key": "Bifidobacterium",
+      "value": 2
+    },
+    {
+      "key": "Homo",
+      "value": 2
+    },
+    {
+      "key": "Ruminococcus",
+      "value": 2
+    },
+    {
+      "key": "Orthorubulavirus",
+      "value": 2
+    },
+    {
+      "key": "Weissella",
+      "value": 2
+    },
+    {
+      "key": "Veillonella",
+      "value": 2
+    },
+    {
+      "key": "Streptobacillus",
+      "value": 2
+    },
+    {
+      "key": "Dermacoccus",
+      "value": 2
+    },
+    {
+      "key": "Sutterella",
+      "value": 2
+    },
+    {
+      "key": "Comamonas",
+      "value": 2
+    },
+    {
+      "key": "Tsukamurella",
+      "value": 2
+    },
+    {
+      "key": "Budvicia",
+      "value": 2
+    },
+    {
+      "key": "Plesiomonas",
+      "value": 2
+    },
+    {
+      "key": "Roseobacter",
+      "value": 2
+    },
+    {
+      "key": "[Clostridium]",
+      "value": 2
+    },
+    {
+      "key": "Eastern",
+      "value": 2
+    },
+    {
+      "key": "Propionibacterium",
+      "value": 2
+    },
+    {
+      "key": "Prescottella",
+      "value": 2
+    },
+    {
+      "key": "Roseburia",
+      "value": 2
+    },
+    {
+      "key": "Yellow",
+      "value": 2
+    },
+    {
+      "key": "Rift",
+      "value": 2
+    },
+    {
+      "key": "Peribacillus",
+      "value": 2
+    },
+    {
+      "key": "Parvimonas",
+      "value": 2
+    },
+    {
+      "key": "Shewanella",
+      "value": 2
+    },
+    {
+      "key": "Roseomonas",
+      "value": 2
+    },
+    {
+      "key": "Reston",
+      "value": 2
+    },
+    {
+      "key": "Tai",
+      "value": 2
+    },
+    {
+      "key": "Blautia",
+      "value": 2
+    },
+    {
+      "key": "Odoribacter",
+      "value": 2
+    },
+    {
+      "key": "Lacrimispora",
+      "value": 2
+    },
+    {
+      "key": "Lachnospira",
+      "value": 2
+    },
+    {
+      "key": "Orthonairovirus",
+      "value": 2
+    },
+    {
+      "key": "Lysinibacillus",
+      "value": 2
+    },
+    {
+      "key": "Eikenella",
+      "value": 2
+    },
+    {
+      "key": "Abiotrophia",
+      "value": 2
+    },
+    {
+      "key": "Saccharomyces",
+      "value": 2
+    },
+    {
+      "key": "Clavispora",
+      "value": 2
+    },
+    {
+      "key": "Macrococcus",
+      "value": 2
+    },
+    {
+      "key": "Lymphocryptovirus",
+      "value": 1
+    },
+    {
+      "key": "Pandoraea",
+      "value": 1
+    },
+    {
+      "key": "Segatella",
+      "value": 1
+    },
+    {
+      "key": "Amycolatopsis",
+      "value": 1
+    },
+    {
+      "key": "Pichia",
+      "value": 1
+    },
+    {
+      "key": "Hoylesella",
+      "value": 1
+    },
+    {
+      "key": "Plasmodium",
+      "value": 1
+    },
+    {
+      "key": "Metapneumovirus",
+      "value": 1
+    },
+    {
+      "key": "Madurella",
+      "value": 1
+    },
+    {
+      "key": "Blastomyces",
+      "value": 1
+    },
+    {
+      "key": "Mitsuokella",
+      "value": 1
+    },
+    {
+      "key": "Coccidioides",
+      "value": 1
+    },
+    {
+      "key": "Simplexvirus",
+      "value": 1
+    },
+    {
+      "key": "Heyndrickxia",
+      "value": 1
+    },
+    {
+      "key": "[Candida]",
+      "value": 1
+    },
+    {
+      "key": "Weizmannia",
+      "value": 1
+    }
+  ],
+  "kingdom": [
+    {
+      "key": "cellular organisms",
+      "value": 3074
+    },
+    {
+      "key": "Viruses",
+      "value": 1012
+    },
+    {
+      "key": "Bacteria",
+      "value": 585
+    },
+    {
+      "key": "West Nile virus",
+      "value": 52
+    },
+    {
+      "key": "Zika virus",
+      "value": 37
+    },
+    {
+      "key": "Zaire ebolavirus",
+      "value": 33
+    },
+    {
+      "key": "Dengue virus",
+      "value": 24
+    },
+    {
+      "key": "Escherichia coli",
+      "value": 20
+    },
+    {
+      "key": "Eukaryota",
+      "value": 8
+    },
+    {
+      "key": "Venezuelan equine encephalitis virus",
+      "value": 8
+    },
+    {
+      "key": "Chikungunya virus",
+      "value": 5
+    },
+    {
+      "key": "Ross River virus",
+      "value": 5
+    },
+    {
+      "key": "Acinetobacter lwoffii",
+      "value": 4
+    },
+    {
+      "key": "Bundibugyo ebolavirus",
+      "value": 4
+    },
+    {
+      "key": "Lactococcus garvieae",
+      "value": 3
+    },
+    {
+      "key": "Pantoea agglomerans",
+      "value": 2
+    },
+    {
+      "key": "Corynebacterium jeikeium",
+      "value": 2
+    },
+    {
+      "key": "Eastern equine encephalitis virus",
+      "value": 2
+    },
+    {
+      "key": "Citrobacter braakii",
+      "value": 2
+    },
+    {
+      "key": "Staphylococcus cohnii",
+      "value": 2
+    },
+    {
+      "key": "Yellow fever virus",
+      "value": 2
+    },
+    {
+      "key": "Reston ebolavirus",
+      "value": 2
+    },
+    {
+      "key": "Tai Forest ebolavirus",
+      "value": 2
+    },
+    {
+      "key": "Bordetella pertussis",
+      "value": 2
+    },
+    {
+      "key": "Henipavirus hendraense",
+      "value": 2
+    },
+    {
+      "key": "Henipavirus nipahense",
+      "value": 2
+    },
+    {
+      "key": "Ralstonia pickettii",
+      "value": 1
+    },
+    {
+      "key": "Acinetobacter baumannii",
+      "value": 1
+    },
+    {
+      "key": "Orthonairovirus haemorrhagiae",
+      "value": 1
+    },
+    {
+      "key": "Citrobacter freundii",
+      "value": 1
+    },
+    {
+      "key": "Campylobacter jejuni",
+      "value": 1
+    },
+    {
+      "key": "Rift Valley fever virus",
+      "value": 1
+    },
+    {
+      "key": "Helicobacter pylori",
+      "value": 1
+    },
+    {
+      "key": "Klebsiella oxytoca",
+      "value": 1
+    },
+    {
+      "key": "Proteus vulgaris",
+      "value": 1
+    },
+    {
+      "key": "Campylobacter jejuni subsp. doylei",
+      "value": 1
+    },
+    {
+      "key": "Leuconostoc pseudomesenteroides",
+      "value": 1
+    },
+    {
+      "key": "Phocaeicola vulgatus",
+      "value": 1
+    },
+    {
+      "key": "Streptococcus dysgalactiae",
+      "value": 1
+    },
+    {
+      "key": "Corynebacterium tuberculostearicum",
+      "value": 1
+    },
+    {
+      "key": "Streptococcus equinus",
+      "value": 1
+    },
+    {
+      "key": "Staphylococcus pasteuri",
+      "value": 1
+    },
+    {
+      "key": "Pseudomonas luteola",
+      "value": 1
+    },
+    {
+      "key": "Mitsuokella multacida",
+      "value": 1
+    },
+    {
+      "key": "Enterococcus gallinarum",
+      "value": 1
+    },
+    {
+      "key": "Burkholderia thailandensis",
+      "value": 1
+    },
+    {
+      "key": "Serratia rubidaea",
+      "value": 1
+    },
+    {
+      "key": "Pseudomonas fluorescens",
+      "value": 1
+    },
+    {
+      "key": "Enterobacter cancerogenus",
+      "value": 1
+    },
+    {
+      "key": "[Clostridium] methylpentosum",
+      "value": 1
+    },
+    {
+      "key": "Achromobacter xylosoxidans",
+      "value": 1
+    },
+    {
+      "key": "Burkholderia multivorans",
+      "value": 1
+    },
+    {
+      "key": "Lactobacillus jensenii",
+      "value": 1
+    },
+    {
+      "key": "Mammaliicoccus fleurettii",
+      "value": 1
+    },
+    {
+      "key": "Corynebacterium kroppenstedtii",
+      "value": 1
+    },
+    {
+      "key": "Aerococcus viridans",
+      "value": 1
+    },
+    {
+      "key": "Bacillus sp. (in: firmicutes)",
+      "value": 1
+    },
+    {
+      "key": "Bacillus subtilis",
+      "value": 1
+    },
+    {
+      "key": "Paraburkholderia ginsengisoli",
+      "value": 1
+    },
+    {
+      "key": "Phocaeicola coprocola DSM 17136",
+      "value": 1
+    },
+    {
+      "key": "Hafnia paralvei",
+      "value": 1
+    },
+    {
+      "key": "[Clostridium] innocuum",
+      "value": 1
+    },
+    {
+      "key": "Enterobacter cloacae complex sp.",
+      "value": 1
+    },
+    {
+      "key": "Mammarenavirus juninense",
+      "value": 1
+    },
+    {
+      "key": "Aeromonas sp. FDAARGOS 1412",
+      "value": 1
+    },
+    {
+      "key": "Aeromonas sp. FDAARGOS 1413",
+      "value": 1
+    },
+    {
+      "key": "Aggregatibacter sp. FDAARGOS 1023",
+      "value": 1
+    },
+    {
+      "key": "Amycolatopsis sp. FDAARGOS 1241",
+      "value": 1
+    },
+    {
+      "key": "Bacteroides sp. FDAARGOS 1230",
+      "value": 1
+    },
+    {
+      "key": "Bacteroides sp. FDAARGOS 1232",
+      "value": 1
+    },
+    {
+      "key": "Corynebacterium sp. FDAARGOS 1362",
+      "value": 1
+    },
+    {
+      "key": "Prevotella sp. FDAARGOS 1228",
+      "value": 1
+    },
+    {
+      "key": "Rhizobium sp. FDAARGOS 1042",
+      "value": 1
+    },
+    {
+      "key": "Listeria welshimeri",
+      "value": 1
+    },
+    {
+      "key": "Nocardia asteroides",
+      "value": 1
+    },
+    {
+      "key": "Mammarenavirus chapareense",
+      "value": 1
+    },
+    {
+      "key": "Mammarenavirus guanaritoense",
+      "value": 1
+    },
+    {
+      "key": "Mammarenavirus lassaense",
+      "value": 1
+    },
+    {
+      "key": "Mammarenavirus machupoense",
+      "value": 1
+    },
+    {
+      "key": "Stenotrophomonas maltophilia",
+      "value": 1
+    }
+  ],
+  "location": [
+    {
+      "key": "Unknown",
+      "value": 3912
+    }
+  ],
+  "host": [
+    {
+      "key": "Unknown",
+      "value": 3912
+    }
+  ],
+  "sample_type": [
+    {
+      "key": "Other",
+      "value": 3980
+    },
+    {
+      "key": "Culture",
+      "value": 377
+    },
+    {
+      "key": "Clinical",
+      "value": 310
+    },
+    {
+      "key": "Swab/Skin",
+      "value": 178
+    },
+    {
+      "key": "Feces/Stool",
+      "value": 57
+    },
+    {
+      "key": "Water",
+      "value": 28
+    },
+    {
+      "key": "Soil",
+      "value": 14
+    },
+    {
+      "key": "Plant",
+      "value": 6
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+1) Create new branch:
+
+    git branch argos_1.0
+
+2) Checkout branch
+
+    git checkout argos_1.0
+
+
+3) Push
+
+    git push --set-upstream origin argos_1.0
+

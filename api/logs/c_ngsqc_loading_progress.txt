@@ -1,0 +1,8 @@
+
+ ... started loading c_ngsqc  [2025-11-14 17:03:02.336139]
+ ... loaded 1000/5090 documents to c_ngsqc (from ngsqcdb) [2025-11-14 17:03:03.440665]
+ ... loaded 2000/5090 documents to c_ngsqc (from ngsqcdb) [2025-11-14 17:03:04.482603]
+ ... loaded 3000/5090 documents to c_ngsqc (from ngsqcdb) [2025-11-14 17:03:05.543484]
+ ... loaded 4000/5090 documents to c_ngsqc (from ngsqcdb) [2025-11-14 17:03:06.670927]
+ ... loaded 5000/5090 documents to c_ngsqc (from ngsqcdb) [2025-11-14 17:03:07.803348]
+ ... finished loading 5090/5090 documents to c_ngsqc (from ngsqcdb) [2025-11-14 17:03:07.903241]

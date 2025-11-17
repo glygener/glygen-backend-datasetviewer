@@ -1,0 +1,1074 @@
+{
+  "schema_version": 2,
+  "kingdom": [
+    {
+      "key": "Bacteria",
+      "value": 1951
+    },
+    {
+      "key": "Viruses",
+      "value": 428
+    },
+    {
+      "key": "Eukaryota",
+      "value": 107
+    }
+  ],
+  "genus_family": [
+    {
+      "key": "Enterobacteriaceae",
+      "value": 235,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Alphainfluenzavirus",
+      "value": 225,
+      "category": "Viruses"
+    },
+    {
+      "key": "Alcaligenaceae",
+      "value": 207,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Staphylococcaceae",
+      "value": 137,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Streptococcaceae",
+      "value": 128,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Sarbecovirus",
+      "value": 98,
+      "category": "Viruses"
+    },
+    {
+      "key": "Yersiniaceae",
+      "value": 90,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Klebsiella/Raoultella group",
+      "value": 66,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Klebsiella",
+      "value": 66,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Burkholderia",
+      "value": 63,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Corynebacteriaceae",
+      "value": 61,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Pseudomonadaceae",
+      "value": 49,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Pasteurellaceae",
+      "value": 46,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Bacillus",
+      "value": 41,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Moraxellaceae",
+      "value": 38,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Legionellaceae",
+      "value": 36,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Morganellaceae",
+      "value": 35,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Listeriaceae",
+      "value": 33,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Enterococcaceae",
+      "value": 33,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Vibrionaceae",
+      "value": 31,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Aeromonadaceae",
+      "value": 30,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Orthopneumovirus",
+      "value": 28,
+      "category": "Viruses"
+    },
+    {
+      "key": "Nocardiaceae",
+      "value": 28,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Bacteroidaceae",
+      "value": 25,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Campylobacteraceae",
+      "value": 22,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Mycobacterium",
+      "value": 22,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Acinetobacter",
+      "value": 22,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Enterobacter",
+      "value": 20,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Respirovirus",
+      "value": 20,
+      "category": "Viruses"
+    },
+    {
+      "key": "Saccharomycetaceae",
+      "value": 18,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Burkholderiaceae",
+      "value": 18,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Neisseriaceae",
+      "value": 17,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Mycoplasmoidaceae",
+      "value": 17,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Metschnikowiaceae",
+      "value": 16,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Aspergillus",
+      "value": 14,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Chlamydia/Chlamydophila group",
+      "value": 13,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Peptoniphilaceae",
+      "value": 13,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Metapneumovirus",
+      "value": 13,
+      "category": "Viruses"
+    },
+    {
+      "key": "Mycobacteriaceae",
+      "value": 12,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Clostridiaceae",
+      "value": 12,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Fusarium",
+      "value": 12,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Betainfluenzavirus",
+      "value": 12,
+      "category": "Viruses"
+    },
+    {
+      "key": "Citrobacter",
+      "value": 11,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Fusobacteriaceae",
+      "value": 11,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Cryptococcus",
+      "value": 11,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Peptostreptococcaceae",
+      "value": 10,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Lachnospiraceae",
+      "value": 10,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Lactobacillaceae",
+      "value": 10,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Cytomegalovirus",
+      "value": 10,
+      "category": "Viruses"
+    },
+    {
+      "key": "Micrococcaceae",
+      "value": 10,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Tannerellaceae",
+      "value": 10,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Streptococcus",
+      "value": 10,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Actinomycetaceae",
+      "value": 9,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Candida/Lodderomyces clade",
+      "value": 9,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Bacillaceae",
+      "value": 9,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Chryseobacterium group",
+      "value": 9,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Hafniaceae",
+      "value": 9,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Coxiellaceae",
+      "value": 8,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Sphingobacteriaceae",
+      "value": 8,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Porphyromonadaceae",
+      "value": 7,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Francisellaceae",
+      "value": 7,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Prevotellaceae",
+      "value": 7,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Stenotrophomonas",
+      "value": 6,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Comamonadaceae",
+      "value": 6,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Flavobacteriaceae",
+      "value": 5,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Nectriaceae",
+      "value": 5,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Gemellaceae",
+      "value": 5,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Streptomycetaceae",
+      "value": 5,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Ajellomycetaceae",
+      "value": 5,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Brevibacteriaceae",
+      "value": 5,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Helicobacteraceae",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Propionibacteriaceae",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Staphylococcus",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Coprobacillaceae",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Anaplasmataceae",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Simplexvirus",
+      "value": 4,
+      "category": "Viruses"
+    },
+    {
+      "key": "Weeksellaceae",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Enterovirus",
+      "value": 4,
+      "category": "Viruses"
+    },
+    {
+      "key": "Rhizobium/Agrobacterium group",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Gordoniaceae",
+      "value": 4,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Aerococcaceae",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Microascaceae",
+      "value": 3,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Vibrio",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Bartonellaceae",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Erwiniaceae",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Talaromyces",
+      "value": 3,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Orthomarburgvirus",
+      "value": 3,
+      "category": "Viruses"
+    },
+    {
+      "key": "Orthorubulavirus",
+      "value": 3,
+      "category": "Viruses"
+    },
+    {
+      "key": "Bifidobacteriaceae",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Mycobacteroides",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Lachnospirales",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Pediococcus",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Chromobacteriaceae",
+      "value": 3,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Kytococcaceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Roseomonadaceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Chordopoxvirinae",
+      "value": 2,
+      "category": "Viruses"
+    },
+    {
+      "key": "Pneumocystaceae",
+      "value": 2,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Odoribacteraceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Jonesiaceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Caulobacteraceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Carnobacteriaceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Brucella/Ochrobactrum group",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Leishmaniinae",
+      "value": 2,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Paracoccaceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Sphingomonadaceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Dermabacteraceae",
+      "value": 2,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Rhizopodaceae",
+      "value": 2,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Budviciaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Agrobacterium",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Tsukamurellaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Coriobacteriaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Oscillospiraceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Rhodanobacteraceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Dermacoccaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Sutterellaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Veillonellaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Rhizopus",
+      "value": 1,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Atopobiaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Shewanellaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Lymphocryptovirus",
+      "value": 1,
+      "category": "Viruses"
+    },
+    {
+      "key": "Roseobacteraceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Leptotrichiaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Rikenellaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Shewanella",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Borreliaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Leptospiraceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Filoviridae",
+      "value": 1,
+      "category": "Viruses"
+    },
+    {
+      "key": "Simplexvirus humanalpha1",
+      "value": 1,
+      "category": "Viruses"
+    },
+    {
+      "key": "Influenza A virus",
+      "value": 1,
+      "category": "Viruses"
+    },
+    {
+      "key": "Orthoebolavirus",
+      "value": 1,
+      "category": "Viruses"
+    },
+    {
+      "key": "Orthoretrovirinae",
+      "value": 1,
+      "category": "Viruses"
+    },
+    {
+      "key": "Pichiaceae",
+      "value": 1,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Pantoea",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Acidaminococcaceae",
+      "value": 1,
+      "category": "Bacteria"
+    },
+    {
+      "key": "Onygenaceae",
+      "value": 1,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Sordariales incertae sedis",
+      "value": 1,
+      "category": "Eukaryota"
+    },
+    {
+      "key": "Plasmodium",
+      "value": 1,
+      "category": "Eukaryota"
+    }
+  ],
+  "location": [
+    {
+      "key": "United States",
+      "value": 2062
+    },
+    {
+      "key": "Unknown",
+      "value": 830
+    },
+    {
+      "key": "Germany",
+      "value": 807
+    },
+    {
+      "key": "United Kingdom",
+      "value": 139
+    },
+    {
+      "key": "Argentina",
+      "value": 96
+    },
+    {
+      "key": "Switzerland",
+      "value": 92
+    },
+    {
+      "key": "Canada",
+      "value": 63
+    },
+    {
+      "key": "Japan",
+      "value": 47
+    },
+    {
+      "key": "Nigeria",
+      "value": 43
+    },
+    {
+      "key": "France",
+      "value": 37
+    },
+    {
+      "key": "Sudan",
+      "value": 23
+    },
+    {
+      "key": "Australia",
+      "value": 19
+    },
+    {
+      "key": "South Africa",
+      "value": 19
+    },
+    {
+      "key": "China",
+      "value": 19
+    },
+    {
+      "key": "Spain",
+      "value": 16
+    },
+    {
+      "key": "Thailand",
+      "value": 15
+    },
+    {
+      "key": "not collected",
+      "value": 14
+    },
+    {
+      "key": "Denmark",
+      "value": 12
+    },
+    {
+      "key": "Taiwan",
+      "value": 12
+    },
+    {
+      "key": "Italy",
+      "value": 11
+    },
+    {
+      "key": "Bangladesh",
+      "value": 11
+    },
+    {
+      "key": "Brazil",
+      "value": 11
+    },
+    {
+      "key": "Poland",
+      "value": 8
+    },
+    {
+      "key": "Vietnam",
+      "value": 8
+    },
+    {
+      "key": "Hungary",
+      "value": 8
+    },
+    {
+      "key": "Portugal",
+      "value": 8
+    },
+    {
+      "key": "India",
+      "value": 8
+    },
+    {
+      "key": "Netherlands",
+      "value": 7
+    },
+    {
+      "key": "Russia",
+      "value": 7
+    },
+    {
+      "key": "Philippines",
+      "value": 6
+    },
+    {
+      "key": "Botswana",
+      "value": 6
+    },
+    {
+      "key": "New Zealand",
+      "value": 6
+    },
+    {
+      "key": "South Korea",
+      "value": 5
+    },
+    {
+      "key": "Norway",
+      "value": 5
+    },
+    {
+      "key": "Belgium",
+      "value": 5
+    },
+    {
+      "key": "Uganda",
+      "value": 4
+    },
+    {
+      "key": "Panama",
+      "value": 4
+    },
+    {
+      "key": "Czech Republic",
+      "value": 4
+    },
+    {
+      "key": "Indonesia",
+      "value": 3
+    },
+    {
+      "key": "Bahamas",
+      "value": 3
+    },
+    {
+      "key": "Sweden",
+      "value": 3
+    },
+    {
+      "key": "Austria",
+      "value": 3
+    },
+    {
+      "key": "Turkey",
+      "value": 3
+    },
+    {
+      "key": "Puerto Rico",
+      "value": 3
+    },
+    {
+      "key": "Jordan",
+      "value": 3
+    },
+    {
+      "key": "Malaysia",
+      "value": 2
+    },
+    {
+      "key": "Peru",
+      "value": 2
+    },
+    {
+      "key": "Czechoslovakia",
+      "value": 2
+    },
+    {
+      "key": "Georgia",
+      "value": 2
+    },
+    {
+      "key": "DR Congo",
+      "value": 2
+    },
+    {
+      "key": "French Guiana",
+      "value": 2
+    },
+    {
+      "key": "Egypt",
+      "value": 2
+    },
+    {
+      "key": "Bolivia",
+      "value": 2
+    },
+    {
+      "key": "Costa Rica",
+      "value": 2
+    },
+    {
+      "key": "Finland",
+      "value": 2
+    },
+    {
+      "key": "Guinea",
+      "value": 2
+    },
+    {
+      "key": "Colombia",
+      "value": 2
+    },
+    {
+      "key": "Ireland",
+      "value": 2
+    },
+    {
+      "key": "Pakistan",
+      "value": 1
+    },
+    {
+      "key": "Venezuela",
+      "value": 1
+    },
+    {
+      "key": "Not determined",
+      "value": 1
+    },
+    {
+      "key": "Mexico",
+      "value": 1
+    },
+    {
+      "key": "Laos",
+      "value": 1
+    },
+    {
+      "key": "Singapore",
+      "value": 1
+    },
+    {
+      "key": "Morocco",
+      "value": 1
+    },
+    {
+      "key": "Saudi Arabia",
+      "value": 1
+    },
+    {
+      "key": "Hong Kong",
+      "value": 1
+    },
+    {
+      "key": "Kazakhstan",
+      "value": 1
+    },
+    {
+      "key": "Papua New Guinea",
+      "value": 1
+    },
+    {
+      "key": "Kenya",
+      "value": 1
+    }
+  ],
+  "host": [
+    {
+      "key": "Human",
+      "value": 2430
+    },
+    {
+      "key": "Not Specified",
+      "value": 1722
+    },
+    {
+      "key": "Environmental",
+      "value": 170
+    },
+    {
+      "key": "Other",
+      "value": 152
+    },
+    {
+      "key": "Wildlife",
+      "value": 29
+    },
+    {
+      "key": "Poultry",
+      "value": 22
+    },
+    {
+      "key": "Bovine",
+      "value": 20
+    },
+    {
+      "key": "Rabbit",
+      "value": 6
+    },
+    {
+      "key": "Plant",
+      "value": 3
+    },
+    {
+      "key": "Rodent",
+      "value": 2
+    }
+  ],
+  "sample_type": [
+    {
+      "key": "Unknown",
+      "value": 2349
+    },
+    {
+      "key": "Other",
+      "value": 1121
+    },
+    {
+      "key": "Wound/Skin",
+      "value": 249
+    },
+    {
+      "key": "Blood",
+      "value": 194
+    },
+    {
+      "key": "Respiratory",
+      "value": 161
+    },
+    {
+      "key": "Gastrointestinal",
+      "value": 144
+    },
+    {
+      "key": "Environmental",
+      "value": 143
+    },
+    {
+      "key": "Urinary",
+      "value": 108
+    },
+    {
+      "key": "Tissue/Biopsy",
+      "value": 61
+    },
+    {
+      "key": "Food/Animal Product",
+      "value": 19
+    },
+    {
+      "key": "Reference/Synthetic",
+      "value": 7
+    }
+  ]
+}

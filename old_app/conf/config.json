@@ -1,0 +1,23 @@
+{
+    "project":"argosdb",
+    "app_port":{
+        "prd":"8080",
+        "beta":"8882",
+        "tst":"8080",
+        "dev":"8080"
+    },
+    "api_root":{
+        "prd":"https://api.argosdb.org",
+        "beta":"https://beta-api.argosdb.org",
+        "tst":"https://api.test.argosdb.org",
+        "dev":"https://api.dev.argosdb.org"
+    },
+    "app_root":{
+        "prd":"https://data.argosdb.org",
+        "beta":"https://beta-data.argosdb.org",
+        "tst":"https://data.test.argosdb.org",
+        "dev":"https://data.dev.argosdb.org"
+    },
+    "data_path":"/data/shared/argosdb/"
+}
+

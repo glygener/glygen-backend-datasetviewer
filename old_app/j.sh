@@ -1,0 +1,15 @@
+docker image rm -f c86d07b1cd7a
+docker image rm -f 6958b57e36e3
+docker image rm -f c8a9877bcbe8
+docker image rm -f f1596c63152c
+docker image rm -f e66c80009798
+docker image rm -f a59e031643cc
+docker image rm -f d7a50b20399f
+docker image rm -f c91f45ee07dc
+docker image rm -f df09e20c1b3f
+docker image rm -f b5a99b7f601b
+docker image rm -f b9a871b8cb79
+docker image rm -f c89c8aa4d9db
+docker image rm -f 458e5fa051b2
+docker image rm -f 1237be6dfa73
+docker image rm -f 6c2577360550

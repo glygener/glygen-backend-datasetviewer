@@ -1,0 +1,13 @@
+/* app/src/pages/statistics.css */
+.container { padding: 20px; }
+.chart-container { margin-top: 8px; }
+.pies-grid { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+.pie { width: 320px; }
+.stats-tooltip {
+  background: rgba(0,0,0,0.75);
+  color: white;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
