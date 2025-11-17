@@ -25,7 +25,7 @@ export function getColumns(key){
       {
         field: 'id', 
         headerName: 'BCO ID', 
-        width: 120, 
+        width: 150, 
         headerClassName:"dgheader", 
         cellClassName:"dgcell"
       },

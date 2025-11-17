@@ -6,17 +6,17 @@
         "dev":"8080"
     },
     "api_root":{
-        "prd":"https://dsapi.glygen.org",
-        "beta":"https://beta-dsapi.glygen.org",
-        "tst":"https://dsapi.tst.glygen.org",
-        "dev":"https://dsapi.dev.glygen.org"
+        "prd":"https://api.argosdb.org",
+        "beta":"https://beta-api.argosdb.org",
+        "tst":"https://api.tst.argosdb.org",
+        "dev":"https://api.dev.argosdb.org"
     },
     "app_root":{
-        "prd":"https://data.glygen.org",
-        "beta":"https://beta-data.glygen.org",
-        "tst":"https://data.tst.glygen.org",
-        "dev":"https://data.dev.glygen.org"
+        "prd":"https://data.argosdb.org",
+        "beta":"https://beta-data.argosdb.org",
+        "tst":"https://data.tst.argosdb.org",
+        "dev":"https://data.dev.argosdb.org"
     },
-    "data_path":"/data/shared/glyds/"
+    "data_path":"/data/shared/argosdb/"
 }
 

@@ -58,6 +58,7 @@ class Header extends Component {
     //var urlDict = {};
 
     var logoUrl = urlDict[server]["portal"];
+    //<img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-glygen.svg'} style={{width:"100%"}} />
 
     return (
       <Navbar className="globalheader"  variant="dark" expand="lg" 
@@ -65,8 +66,7 @@ class Header extends Component {
         >
         <Container fluid>
           <Navbar.Brand href={logoUrl} style={{fontSize:"30px"}}>
-             <img alt="" src={process.env.PUBLIC_URL + '/imglib/logo-glygen.svg'} 
-            style={{width:"100%"}} />
+             ArgosDB
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

@@ -10,7 +10,7 @@
         "port":"25",
         "sender":"no-reply@glygen.gwu.edu"
     },
-    "data_path":"/data/shared/glyds/",
+    "data_path":"/data/shared/argosdb/",
     "search_options":{
         "metadata":"dataset metadata",
         "data":"dataset body"

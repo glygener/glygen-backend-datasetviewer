@@ -1,7 +1,7 @@
 server="tst"
-image="glyds_tst_api"
+image="dsviewer_tst_api"
 api_container="running_"$image
-network="glyds_backend"
+network="ds_backend"
 port="9090"
 data_path="/data/shared/glyds/"
 mongo_db="glydb"

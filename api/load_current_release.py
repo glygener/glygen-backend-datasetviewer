@@ -48,8 +48,8 @@ def main():
     mongo_port = config_obj["dbinfo"]["port"][server]
     
     host = "mongodb://127.0.0.1:%s" % (mongo_port)
-    #rel_dir = config_obj["data_path"] + "/releases/data/"
-    rel_dir = "/data/shared/glygen/releases/data/"
+    rel_dir = config_obj["data_path"] + "/releases/data/"
+    #rel_dir = "/data/shared/glygen/releases/data/"
     jsondb_dir = rel_dir + "/v-%s/jsondb/" % (ver)
     
 
